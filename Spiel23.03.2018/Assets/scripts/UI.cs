@@ -19,6 +19,9 @@ public class UI : MonoBehaviour {
     public InputField inputRateTemp;
     public Text rateTemp;
     bool inputRateBool = false;
+    float laufzeitSek, laufzeitMin, LaufzeitStu;
+    public Text laufzeitText;
+    bool laufzeitBool = false;
 
     public void Update()
     {
@@ -31,6 +34,10 @@ public class UI : MonoBehaviour {
             inputZieltemp.image.color = Color.white;
         }
         InputFieldUpdate();
+        if (laufzeitBool)
+        {
+            Laufzeit_Ofen();
+        }
     }
 
     public void Button_OpenMenue()
@@ -289,5 +296,29 @@ public class UI : MonoBehaviour {
         {
             inputRateTemp.text = "Schmelze in Betrieb!";
         }
+    }
+
+    public void Button_Start()
+    {
+        if (inputZieltemp.text != "" && inputRateTemp.text != "")
+        {
+            laufzeitBool = true;
+        }
+    }
+
+    public void Laufzeit_Ofen()
+    {
+        laufzeitSek += Time.deltaTime;
+        if(laufzeitSek >= 60f)
+        {
+            laufzeitMin++;
+            laufzeitSek = 0;
+        }
+        if(laufzeitMin >= 60f)
+        {
+            LaufzeitStu++;
+            laufzeitMin = 0;
+        }
+        laufzeitText.text = "Laufzeit: " + LaufzeitStu + ":" + laufzeitMin + ":" + Mathf.Round(laufzeitSek);
     }
 }
