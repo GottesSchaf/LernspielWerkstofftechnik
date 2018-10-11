@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorHandler : MonoBehaviour {
-    private Animator animator = null; 
+public class DoorHandler : MonoBehaviour
+{
+    private Animator animator = null;
+    public bool inTrigger = false;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
-    private void OnTriggerEnter(Collider collider)
+	void Update ()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.F) && inTrigger)
         {
-            animator.SetBool("isopen", true);
+            animator.SetBool("isopen", !animator.GetBool("isopen"));
         }
-    }
-    private void OnTriggerExit(Collider collider)
-    {
-        animator.SetBool("isopen", false); 
+        else if(!inTrigger)
+        {
+            animator.SetBool("isopen", false);          
+        }
     }
 }
