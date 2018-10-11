@@ -7,10 +7,11 @@ public class Book : Interactive
     public Transform ThisBook;
     public static Transform instance;
     public string URL;
-
+    public CameraFollow boop; 
     void Update()
     {
         instance = this.ThisBook;
+        boop = CameraFollow.instance;
 
         if (CameraFollow.instance.closeupInteraction == true)
         {

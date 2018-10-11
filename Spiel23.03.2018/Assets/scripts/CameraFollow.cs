@@ -9,10 +9,13 @@ public class CameraFollow : MonoBehaviour
     public Transform CloseupBack;
     public GameObject Camera;
 
+
+    void Start()
+    {
+        instance = this; 
+    }
     void Update()
     {
-        instance = this;
-
         if(closeupInteraction == true)
         {
             CloseupBack.gameObject.SetActive(true);

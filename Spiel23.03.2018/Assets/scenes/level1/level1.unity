@@ -664,7 +664,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 55928914}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -627.7998, y: -30.40541, z: 0}
+  m_LocalPosition: {x: -627.7998, y: 2.2847595, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 406503847}
@@ -2496,7 +2496,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b3765888db152ac4d97dda8c8d5021e5, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b3765888db152ac4d97dda8c8d5021e5, type: 3}
       propertyPath: m_LocalScale.x
@@ -3436,7 +3436,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400006, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.19863704
+      value: -0.199
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3444,7 +3444,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.081892215
+      value: -0.0813
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3464,7 +3464,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
       propertyPath: m_LocalScale.x
@@ -3476,7 +3476,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.025674907
+      value: 0.05105645
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -3509,6 +3509,14 @@ Prefab:
     - target: {fileID: 100010, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
       propertyPath: m_TagString
       value: Interactive
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
+      propertyPath: m_Name
+      value: Right_door
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
+      propertyPath: m_Name
+      value: Left_door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
@@ -4544,7 +4552,7 @@ Animator:
   m_GameObject: {fileID: 429412369}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ca67b6b158f15b84e932c1cd00aa1359, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1600f900cae09684ba37e60d53fa609f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4556,6 +4564,18 @@ Animator:
 Transform:
   m_PrefabParentObject: {fileID: 400006, guid: 7ed8edf59893a2a429568b36f873602a, type: 3}
   m_PrefabInternal: {fileID: 336898838}
+--- !u!114 &429412373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 429412369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7731a515720f5064cb89048d2d914cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inTrigger: 0
 --- !u!1001 &432744373
 Prefab:
   m_ObjectHideFlags: 0
@@ -4731,6 +4751,7 @@ Transform:
   - {fileID: 1091968451}
   - {fileID: 1358502937}
   - {fileID: 2061457100}
+  - {fileID: 1438376019}
   - {fileID: 1635109516}
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -5418,6 +5439,7 @@ MonoBehaviour:
   playerAgent: {fileID: 291538160}
   ThisBook: {fileID: 551664626}
   URL: http://www.tu-berlin.de
+  boop: {fileID: 0}
 --- !u!4 &551664626 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: dc03f6fd8b3c34a4c917ef81b887ac12, type: 3}
@@ -6277,6 +6299,60 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc03f6fd8b3c34a4c917ef81b887ac12, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &646082782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 646082783}
+  - component: {fileID: 646082785}
+  - component: {fileID: 646082784}
+  m_Layer: 0
+  m_Name: DoorZone (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &646082783
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 646082782}
+  m_LocalRotation: {x: -0, y: 0.99995506, z: -0, w: -0.009484798}
+  m_LocalPosition: {x: -0.237, y: -0.0008491239, z: -0.0777}
+  m_LocalScale: {x: 0.09242993, y: 0.0066579087, z: 0.008196749}
+  m_Children: []
+  m_Father: {fileID: 1982332425}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &646082784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 646082782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479cf7b536c4205499ef8fdb312d5a4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 429412369}
+--- !u!65 &646082785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 646082782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4622695, y: 1.4043344, z: 1}
+  m_Center: {x: -0.04211856, y: 0.20216674, z: -0.007910146}
 --- !u!1001 &649374492
 Prefab:
   m_ObjectHideFlags: 0
@@ -6805,6 +6881,7 @@ MonoBehaviour:
   playerAgent: {fileID: 291538160}
   ThisBook: {fileID: 743064646}
   URL: http://www.tu-berlin.de
+  boop: {fileID: 0}
 --- !u!65 &743064649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7860,6 +7937,7 @@ MonoBehaviour:
   playerAgent: {fileID: 291538160}
   ThisBook: {fileID: 949657670}
   URL: http://www.tu-berlin.de
+  boop: {fileID: 0}
 --- !u!65 &949657673
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8032,6 +8110,7 @@ MonoBehaviour:
   playerAgent: {fileID: 291538160}
   ThisBook: {fileID: 974381869}
   URL: http://www.tu-berlin.de
+  boop: {fileID: 0}
 --- !u!65 &974381872
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11790,8 +11869,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1320966910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 296, y: 152, z: 0}
-  m_LocalScale: {x: 0.74, y: 0.74, z: 0.74}
+  m_LocalPosition: {x: 377.5, y: 163, z: 0}
+  m_LocalScale: {x: 0.94375, y: 0.94375, z: 0.94375}
   m_Children:
   - {fileID: 1774935037}
   - {fileID: 1070567812}
@@ -12059,6 +12138,7 @@ MonoBehaviour:
   playerAgent: {fileID: 291538160}
   ThisBook: {fileID: 1336406236}
   URL: http://www.tu-berlin.de
+  boop: {fileID: 0}
 --- !u!65 &1336406239
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12635,12 +12715,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1438376017}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.35, y: -18.78, z: 0.406}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5746292, y: 1.2199993, z: -1.5014192}
   m_LocalScale: {x: 0.050670166, y: 0.050670166, z: 0.036245488}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 435773927}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1462283817
 GameObject:
@@ -15375,7 +15455,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1742532175}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -627.7999, y: -30.40541, z: 0}
+  m_LocalPosition: {x: -627.7999, y: 2.2847595, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 69546432}
@@ -16666,6 +16746,7 @@ MonoBehaviour:
   playerAgent: {fileID: 291538160}
   ThisBook: {fileID: 1915934791}
   URL: http://www.tu-berlin.de
+  boop: {fileID: 0}
 --- !u!65 &1915934794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16703,7 +16784,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1918764304}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -627.7999, y: -30.40541, z: 0}
+  m_LocalPosition: {x: -627.7999, y: 2.2847595, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 512574346}
@@ -17017,6 +17098,7 @@ Transform:
   m_LocalPosition: {x: -1.32, y: 3.251, z: -3.02}
   m_LocalScale: {x: 10.364539, y: 174.41663, z: 84.88404}
   m_Children:
+  - {fileID: 646082783}
   - {fileID: 429412372}
   m_Father: {fileID: 283688456}
   m_RootOrder: 6

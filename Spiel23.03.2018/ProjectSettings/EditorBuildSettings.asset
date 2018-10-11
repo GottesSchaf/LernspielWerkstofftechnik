@@ -5,45 +5,48 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/scenes/level1/level1.unity
+    guid: 375edbdf4ada62c40b43717e33698618
   - enabled: 0
     path: 
-    guid: 052e411c443bf484189617cdbb03df62
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: 9ca15d513c6ed6648873275a1c62e2a1
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: d9368b5b1c6e2ba43b4fe11b5c8830e7
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: b90e62f6dbeafc0419b4a5a616b1fc58
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: a641ffca7019a864289172221c32b292
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: 25439a7aa3433ab4eadf1530bd86e16c
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: 85ded779468a11348969aac29438f21a
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: feec2bed7e66bf4409422558a42d3151
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: 110edeba3075ef64786b760b2a95b42d
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: 91a6731d522c7684291f5583123d566b
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: 447785901e7369b48acf4ac5d60c53fb
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: d7a8a10ca547e404a8948cbc21c33582
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: 128aeb4d9f9ecbd4da52600c7d3c0451
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
-    guid: 9aa53d5f668822a42968e34166361226
+    guid: 00000000000000000000000000000000
