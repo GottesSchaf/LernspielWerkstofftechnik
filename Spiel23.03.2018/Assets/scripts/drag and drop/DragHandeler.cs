@@ -104,7 +104,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             {
                 Debug.Log("Dragged on Machine");
                 GameObject temp = Instantiate(itemBeingDragged, new Vector3(0, 0, 0), Quaternion.identity);
-                //temp.transform.parent = MachineSlot.transform;
+                temp.transform.parent = MachineSlot.transform;
 				Machine.GetComponent<Machine>().Interact();
             }
             else if (hit.transform.name.Contains("player") && itemBeingDragged.name.Contains("clothes"))

@@ -13,8 +13,9 @@ public class UI : MonoBehaviour {
     public Transform CloseupBack;
     public Transform InventoryCollision;
     public Transform MachineWindow;
-    public Text zieltemp;   //Textfeld für die Zieltemperatur
+    public Text zieltemp;               //Textfeld für die Zieltemperatur
     public InputField inputZieltemp;    //Das Eingabefeld für die Zieltemperatur
+<<<<<<< HEAD
     bool inputZieltempBool = false;
     public InputField inputRateTemp;
     public Text rateTemp;
@@ -22,24 +23,47 @@ public class UI : MonoBehaviour {
     float laufzeitSek, laufzeitMin, LaufzeitStu;
     public Text laufzeitText;
     bool laufzeitBool = false;
+=======
+    bool inputZieltempBool = false;     //Boolean für Überprüfung ob das Zieltemperatur Eingabefeld ausgewählt ist
+    public InputField inputDauer;       //Eingabefeld für die Dauer
+    public Text rateTemp;               //Textfeld für die Rate in °C/h
+    bool inputRateBool = false;         //Boolean für Überprüfung ob das Rate °C/h Eingabefeld ausgewählt ist
+    float laufzeitSek, laufzeitMin, LaufzeitStu;    //Speicher für die Laufzeit des Ofens in Sekunden, Minuten und Stunden
+    public Text laufzeitText;           //Ausgabe Textfeld für die aktuelle Laufzeit
+    public Text aktuelleTempText;       //Ausgabe Textfeld für die aktuelle Temperatur
+    bool laufzeitBool = false;          //Boolean zum überprüfen ob der Ofen auch anlaufen kann
+    float aktuelleTemp = 25, zielTempSpeicher, dauerSpeicher;       //Speicher für die aktuelle, zu erreichende und Rate (°C/h) Temperatur
+    bool canStart = false, waiting = false;              //Boolean zur Überprüfung ob der Ofen gestartet werden kann
+    float[,] funktionen = new float[8, 3];                //Array zum abspeichern von den Funktionen (maximal 8), [X,0] Dauer // [X,1] StartTemperatur // [X,2] ZielTemperatur
+    public int arrayPosX, arrayTextPos;           //Aktuelle Position im Array
+    public Text[] tabelleText;          //Textfelder der Tabelle für die Ausgabe der eingegebenen Werte
+
+    public void Start()
+    {
+        SetStartTemperatur();
+    }
+>>>>>>> Roman_branch_local
 
     public void Update()
     {
-        if (inputZieltemp.isFocused)
+        InputFieldUpdate();
+        //Nur wenn der Ofen die richtigen Einstellungen hat, kann dieser gestartet werden
+        if (laufzeitBool)
         {
-            inputZieltemp.image.color = Color.green;
+            Laufzeit_Ofen();
+            StartCoroutine(TemperaturRechner());
         }
-        else
-        {
-            inputZieltemp.image.color = Color.white;
-        }
+<<<<<<< HEAD
         InputFieldUpdate();
         if (laufzeitBool)
         {
             Laufzeit_Ofen();
         }
+=======
+>>>>>>> Roman_branch_local
     }
 
+    #region UI Buttons
     public void Button_OpenMenue()
     {
         Debug.Log("The MenueButton was clicked.");
@@ -147,12 +171,15 @@ public class UI : MonoBehaviour {
             inputZieltempBool = true;
             inputRateBool = false;
         }
-        else if (inputRateTemp.isFocused == true)
+        else if (inputDauer.isFocused == true)
         {
             inputZieltempBool = false;
             inputRateBool = true;
         }
     }
+    #endregion
+
+    #region Numpad
     //Numpad Button 1 fügt, je nach ausgewähltem Eingabefeld, eine 1 der Zahl hinzu. Gleiches gilt für Numapad 2 - 0
     public void Button_Numpad1()
     {
@@ -162,7 +189,7 @@ public class UI : MonoBehaviour {
         }
         else if (inputRateBool)
         {
-            inputRateTemp.text += "1";
+            inputDauer.text += "1";
         }
     }
 
@@ -174,7 +201,7 @@ public class UI : MonoBehaviour {
         }
         else if (inputRateBool)
         {
-            inputRateTemp.text += "2";
+            inputDauer.text += "2";
         }
     }
 
@@ -186,7 +213,7 @@ public class UI : MonoBehaviour {
         }
         else if (inputRateBool)
         {
-            inputRateTemp.text += "3";
+            inputDauer.text += "3";
         }
     }
 
@@ -198,7 +225,7 @@ public class UI : MonoBehaviour {
         }
         else if (inputRateBool)
         {
-            inputRateTemp.text += "4";
+            inputDauer.text += "4";
         }
     }
 
@@ -210,7 +237,7 @@ public class UI : MonoBehaviour {
         }
         else if (inputRateBool)
         {
-            inputRateTemp.text += "5";
+            inputDauer.text += "5";
         }
     }
 
@@ -222,7 +249,7 @@ public class UI : MonoBehaviour {
         }
         else if (inputRateBool)
         {
-            inputRateTemp.text += "6";
+            inputDauer.text += "6";
         }
     }
 
@@ -234,7 +261,7 @@ public class UI : MonoBehaviour {
         }
         else if (inputRateBool)
         {
-            inputRateTemp.text += "7";
+            inputDauer.text += "7";
         }
     }
 
@@ -246,7 +273,7 @@ public class UI : MonoBehaviour {
         }
         else if (inputRateBool)
         {
-            inputRateTemp.text += "8";
+            inputDauer.text += "8";
         }
     }
 
@@ -258,7 +285,7 @@ public class UI : MonoBehaviour {
         }
         else if (inputRateBool)
         {
-            inputRateTemp.text += "9";
+            inputDauer.text += "9";
         }
     }
 
@@ -270,7 +297,7 @@ public class UI : MonoBehaviour {
         }
         else if (inputRateBool)
         {
-            inputRateTemp.text += "0";
+            inputDauer.text += "0";
         }
     }
     //Resettet das ausgewählte Eingabefeld
@@ -282,22 +309,167 @@ public class UI : MonoBehaviour {
         }
         else if (inputRateBool)
         {
-            inputRateTemp.text = "";
+            inputDauer.text = "";
         }
     }
     //Übergibt die eingegebenen Zahlen an die Schmelze
 	public void Button_NumpadOK()
 	{
-        if (inputZieltempBool)
+        if(inputZieltemp.text != "" && inputDauer.text != "" && funktionen[0,0] != 0 && funktionen[0,2] != 0)
         {
-            inputZieltemp.text = "Schmelze in Betrieb!";
+            if (funktionen[1,1] >= 25 && funktionen[1,0] > 0)
+            {
+                //GUI.Box(new Rect(0, 0, Screen.width / 2, Screen.height / 2), "Daten erfolgreich übergeben");
+                canStart = true;
+            }
+            else
+            {
+                //GUI.Box(new Rect(0, 0, Screen.width / 2, Screen.height / 2), "Falsche Eingabe im Eingabefeld!");
+            }
         }
-        else if (inputRateBool)
+        else
         {
-            inputRateTemp.text = "Schmelze in Betrieb!";
         }
     }
 
+    public void Button_Start()
+    {
+        if (canStart && funktionen[0, 0] != 0 && funktionen[0,2] != 0)
+        {
+            //GUI.Box(new Rect(0, 0, Screen.width / 2, Screen.height / 2), "Ofen wurde gestartet");
+            
+            arrayPosX = 0;
+            laufzeitBool = true;
+            canStart = false;
+        }
+        else
+        {
+            //GUI.Box(new Rect(0, 0, Screen.width / 2, Screen.height / 2), "Nicht genug Daten eingegeben!");
+            Debug.Log("Bitte genug Daten eingeben und mit OK bestätigen.");
+        }
+    }
+    #endregion
+
+    public void Laufzeit_Ofen()
+    {
+        laufzeitSek += Time.deltaTime;
+        if(laufzeitSek >= 60f)
+        {
+            laufzeitMin++;
+            laufzeitSek = 0;
+        }
+        if(laufzeitMin >= 60f)
+        {
+            LaufzeitStu++;
+            laufzeitMin = 0;
+        }
+        #region Laufzeit Anzeige
+        if(LaufzeitStu < 10 && laufzeitMin < 10 && laufzeitSek < 10)
+            laufzeitText.text = "Laufzeit: 0" + LaufzeitStu + ":0" + laufzeitMin + ":0" + Mathf.Round(laufzeitSek);
+        else if (LaufzeitStu < 10 && laufzeitMin < 10)
+            laufzeitText.text = "Laufzeit: 0" + LaufzeitStu + ":0" + laufzeitMin + ":" + Mathf.Round(laufzeitSek);
+        else if (LaufzeitStu < 10  && laufzeitSek < 10)
+            laufzeitText.text = "Laufzeit: 0" + LaufzeitStu + ":" + laufzeitMin + ":0" + Mathf.Round(laufzeitSek);
+        else if (laufzeitMin < 10 && laufzeitSek < 10)
+            laufzeitText.text = "Laufzeit: " + LaufzeitStu + ":0" + laufzeitMin + ":0" + Mathf.Round(laufzeitSek);
+        else if (laufzeitSek < 10)
+            laufzeitText.text = "Laufzeit: " + LaufzeitStu + ":" + laufzeitMin + ":0" + Mathf.Round(laufzeitSek);
+        else if (laufzeitMin < 10)
+            laufzeitText.text = "Laufzeit: " + LaufzeitStu + ":0" + laufzeitMin + ":" + Mathf.Round(laufzeitSek);
+        else if (LaufzeitStu < 10)
+            laufzeitText.text = "Laufzeit: 0" + LaufzeitStu + ":" + laufzeitMin + ":" + Mathf.Round(laufzeitSek);
+        else
+            laufzeitText.text = "Laufzeit: " + LaufzeitStu + ":" + laufzeitMin + ":" + Mathf.Round(laufzeitSek);
+        #endregion
+    }
+
+    public IEnumerator TemperaturRechner()
+    {
+        if (arrayPosX <= 8 && waiting == false)
+        {
+            if (aktuelleTemp < funktionen[arrayPosX, 2])
+            {
+                waiting = true;
+                yield return new WaitForSeconds(1);
+                if (funktionen[arrayPosX, 0] > 0 && funktionen[arrayPosX, 1] > 0 && funktionen[arrayPosX, 2] > 0)
+                {
+                    aktuelleTemp += (funktionen[arrayPosX, 2] - funktionen[arrayPosX, 1]) / (funktionen[arrayPosX, 0] * 60);    //Errechne die sekündliche Steigerungsrate der Temperatur und addiere sie zur aktuellen Temperatur hinzu
+                }
+                aktuelleTempText.text = "Aktuelle Temp.: " + Mathf.Round(aktuelleTemp) + "°C";
+                waiting = false;
+            }
+            else if(aktuelleTemp > funktionen[arrayPosX, 2])
+            {
+                waiting = true;
+                yield return new WaitForSeconds(1);
+                if (funktionen[arrayPosX, 0] > 0 && funktionen[arrayPosX, 1] > 0 && funktionen[arrayPosX, 2] > 0)
+                {
+                    aktuelleTemp -= (funktionen[arrayPosX, 1] - funktionen[arrayPosX, 2]) / (funktionen[arrayPosX, 0] * 60);    //Errechne die sekündliche Steigerungsrate der Temperatur und addiere sie zur aktuellen Temperatur hinzu
+                }
+                aktuelleTempText.text = "Aktuelle Temp.: " + Mathf.Round(aktuelleTemp) + "°C";
+                waiting = false;
+            }
+            else
+            {
+                arrayPosX++;
+            }
+        }
+    }
+
+    public void Button_AddFunction()
+    {
+        if(inputZieltemp.text != "" && inputDauer.text != "" && arrayPosX <= 8)
+        {
+            if(float.TryParse(inputZieltemp.text, out zielTempSpeicher) && float.TryParse(inputDauer.text, out dauerSpeicher))
+            {
+                zielTempSpeicher = float.Parse(inputZieltemp.text);
+                dauerSpeicher = float.Parse(inputDauer.text);
+                if (zielTempSpeicher > 24 && dauerSpeicher > 0 && zielTempSpeicher < 1901)
+                {
+                    if ((zielTempSpeicher - funktionen[arrayPosX, 2]) / (dauerSpeicher * 60) < 0.22222222222222222222222222222 && (zielTempSpeicher - funktionen[arrayPosX, 2]) / (dauerSpeicher * 60) > -0.22222222222222222222222222222)
+                    {
+                        if (arrayPosX == 0)
+                        {
+                            funktionen[arrayPosX, 0] = dauerSpeicher;
+                            funktionen[arrayPosX, 2] = zielTempSpeicher;
+                            tabelleText[arrayTextPos].text = "" + dauerSpeicher;
+                            tabelleText[arrayTextPos + 1].text = "" + funktionen[0, 1];
+                            tabelleText[arrayTextPos + 2].text = "" + zielTempSpeicher;
+                        }
+                        else
+                        {
+                            funktionen[arrayPosX, 0] = dauerSpeicher;
+                            funktionen[arrayPosX, 1] = funktionen[arrayPosX - 1, 2];
+                            funktionen[arrayPosX, 2] = zielTempSpeicher;
+                            tabelleText[arrayTextPos].text = "" + dauerSpeicher;
+                            tabelleText[arrayTextPos + 1].text = "" + funktionen[arrayPosX - 1, 2];
+                            tabelleText[arrayTextPos + 2].text = "" + zielTempSpeicher;
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("Zu große Temperaturrate!");
+                    }
+                }
+                else
+                {
+                    Debug.Log("Negative Zahlen sind nicht möglich");
+                }
+            }
+            else
+            {
+                Debug.Log("Invalide Eingabe");
+            }
+            arrayPosX++;
+            arrayTextPos += 3;
+        }
+        else
+        {
+            Debug.Log("Bitte in beide Eingabefelder eine valide Zahl eingeben.");
+        }
+    }
+
+<<<<<<< HEAD
     public void Button_Start()
     {
         if (inputZieltemp.text != "" && inputRateTemp.text != "")
@@ -320,5 +492,37 @@ public class UI : MonoBehaviour {
             laufzeitMin = 0;
         }
         laufzeitText.text = "Laufzeit: " + LaufzeitStu + ":" + laufzeitMin + ":" + Mathf.Round(laufzeitSek);
+=======
+    public void Button_ResetFunction()
+    {
+        arrayPosX = 0;
+        arrayTextPos = 0;
+        funktionen = new float[8,3];
+        SetStartTemperatur();
+    }
+
+    public void SetStartTemperatur()
+    {
+        funktionen[0, 0] = 0;
+        funktionen[0, 1] = 25;
+        funktionen[0, 2] = 0;
+        tabelleText[arrayTextPos].text = "" + funktionen[0, 0];
+        tabelleText[arrayTextPos + 1].text = "" + funktionen[0, 1];
+        tabelleText[arrayTextPos + 2].text = "" + funktionen[0, 2];
+        arrayTextPos += 3;
+        for (int i = 1; i < 8; i++)
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                funktionen[i, j] = 0;
+            }
+            tabelleText[arrayTextPos].text = "" + funktionen[i, 0];
+            tabelleText[arrayTextPos + 1].text = "" + funktionen[i, 1];
+            tabelleText[arrayTextPos + 2].text = "" + funktionen[i, 2];
+            arrayTextPos += 3;
+        }
+        arrayTextPos = 0;
+        aktuelleTempText.text = "Aktuelle Temp.: " + Mathf.Round(aktuelleTemp) + "°C";
+>>>>>>> Roman_branch_local
     }
 }
