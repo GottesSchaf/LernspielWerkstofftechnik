@@ -15,15 +15,6 @@ public class UI : MonoBehaviour {
     public Transform MachineWindow;
     public Text zieltemp;               //Textfeld für die Zieltemperatur
     public InputField inputZieltemp;    //Das Eingabefeld für die Zieltemperatur
-<<<<<<< HEAD
-    bool inputZieltempBool = false;
-    public InputField inputRateTemp;
-    public Text rateTemp;
-    bool inputRateBool = false;
-    float laufzeitSek, laufzeitMin, LaufzeitStu;
-    public Text laufzeitText;
-    bool laufzeitBool = false;
-=======
     bool inputZieltempBool = false;     //Boolean für Überprüfung ob das Zieltemperatur Eingabefeld ausgewählt ist
     public InputField inputDauer;       //Eingabefeld für die Dauer
     public Text rateTemp;               //Textfeld für die Rate in °C/h
@@ -42,7 +33,6 @@ public class UI : MonoBehaviour {
     {
         SetStartTemperatur();
     }
->>>>>>> Roman_branch_local
 
     public void Update()
     {
@@ -53,14 +43,6 @@ public class UI : MonoBehaviour {
             Laufzeit_Ofen();
             StartCoroutine(TemperaturRechner());
         }
-<<<<<<< HEAD
-        InputFieldUpdate();
-        if (laufzeitBool)
-        {
-            Laufzeit_Ofen();
-        }
-=======
->>>>>>> Roman_branch_local
     }
 
     #region UI Buttons
@@ -469,30 +451,6 @@ public class UI : MonoBehaviour {
         }
     }
 
-<<<<<<< HEAD
-    public void Button_Start()
-    {
-        if (inputZieltemp.text != "" && inputRateTemp.text != "")
-        {
-            laufzeitBool = true;
-        }
-    }
-
-    public void Laufzeit_Ofen()
-    {
-        laufzeitSek += Time.deltaTime;
-        if(laufzeitSek >= 60f)
-        {
-            laufzeitMin++;
-            laufzeitSek = 0;
-        }
-        if(laufzeitMin >= 60f)
-        {
-            LaufzeitStu++;
-            laufzeitMin = 0;
-        }
-        laufzeitText.text = "Laufzeit: " + LaufzeitStu + ":" + laufzeitMin + ":" + Mathf.Round(laufzeitSek);
-=======
     public void Button_ResetFunction()
     {
         arrayPosX = 0;
@@ -523,6 +481,5 @@ public class UI : MonoBehaviour {
         }
         arrayTextPos = 0;
         aktuelleTempText.text = "Aktuelle Temp.: " + Mathf.Round(aktuelleTemp) + "°C";
->>>>>>> Roman_branch_local
     }
 }
