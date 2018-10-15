@@ -28,6 +28,7 @@ public class UI : MonoBehaviour {
     float[,] funktionen = new float[8, 3];                //Array zum abspeichern von den Funktionen (maximal 8), [X,0] Dauer // [X,1] StartTemperatur // [X,2] ZielTemperatur
     public int arrayPosX, arrayTextPos;           //Aktuelle Position im Array
     public Text[] tabelleText;          //Textfelder der Tabelle für die Ausgabe der eingegebenen Werte
+    bool abgekuehlt = false;            //Array zum überprüfen, ob der Ofen noch aufgeheizt ist wenn keine weitere Eingabe vorhanden sind
 
     public void Start()
     {
@@ -367,15 +368,20 @@ public class UI : MonoBehaviour {
 
     public IEnumerator TemperaturRechner()
     {
-        if (arrayPosX <= 8 && waiting == false)
+        if (arrayPosX < funktionen.Length && waiting == false)
         {
             if (aktuelleTemp < funktionen[arrayPosX, 2])
             {
                 waiting = true;
                 yield return new WaitForSeconds(1);
-                if (funktionen[arrayPosX, 0] > 0 && funktionen[arrayPosX, 1] > 0 && funktionen[arrayPosX, 2] > 0)
+                if (funktionen[arrayPosX, 0] > 0 && funktionen[arrayPosX, 1] > 25 && funktionen[arrayPosX, 2] > 0)
                 {
                     aktuelleTemp += (funktionen[arrayPosX, 2] - funktionen[arrayPosX, 1]) / (funktionen[arrayPosX, 0] * 60);    //Errechne die sekündliche Steigerungsrate der Temperatur und addiere sie zur aktuellen Temperatur hinzu
+                }
+                else
+                {
+                    laufzeitBool = false;
+                    aktuelleTemp = 25;
                 }
                 aktuelleTempText.text = "Aktuelle Temp.: " + Mathf.Round(aktuelleTemp) + "°C";
                 waiting = false;
@@ -384,9 +390,18 @@ public class UI : MonoBehaviour {
             {
                 waiting = true;
                 yield return new WaitForSeconds(1);
-                if (funktionen[arrayPosX, 0] > 0 && funktionen[arrayPosX, 1] > 0 && funktionen[arrayPosX, 2] > 0)
+                if(aktuelleTemp <= 25)
+                {
+                    abgekuehlt = true;
+                }
+                if (funktionen[arrayPosX, 0] > 0 && funktionen[arrayPosX, 1] > 25 && funktionen[arrayPosX, 2] > 0 || abgekuehlt == false)
                 {
                     aktuelleTemp -= (funktionen[arrayPosX, 1] - funktionen[arrayPosX, 2]) / (funktionen[arrayPosX, 0] * 60);    //Errechne die sekündliche Steigerungsrate der Temperatur und addiere sie zur aktuellen Temperatur hinzu
+                }
+                else
+                {
+                    laufzeitBool = false;
+                    aktuelleTemp = 25;
                 }
                 aktuelleTempText.text = "Aktuelle Temp.: " + Mathf.Round(aktuelleTemp) + "°C";
                 waiting = false;
@@ -395,6 +410,11 @@ public class UI : MonoBehaviour {
             {
                 arrayPosX++;
             }
+        }
+        else if (arrayPosX >= funktionen.Length)
+        {
+            laufzeitBool = false;
+            aktuelleTemp = 25;
         }
     }
 

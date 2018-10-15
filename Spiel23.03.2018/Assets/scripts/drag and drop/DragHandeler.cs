@@ -10,6 +10,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private Ray updateRay;
     private RaycastHit updateHit;
     public GameObject RadialMenue;
+    public GameObject cam;
     public GameObject Inventory;
     public GameObject InventoryCollision;
     public GameObject UICanvas;
@@ -30,8 +31,9 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 		GetComponent<CanvasGroup>().blocksRaycasts = false;
 
 		RadialMenue = GameObject.Find("RadialMenue");
-		Inventory = GameObject.Find("Inventory");
-		InventoryCollision = GameObject.Find("InventoryCollision");
+        cam = GameObject.Find("Main Camera");
+		Inventory = GameObject.Find("InventoryMenue");
+		InventoryCollision = cam.transform.Find("InventoryCollision").gameObject; //GameObject.Find("InventoryCollision")
 		UICanvas = GameObject.Find("Canvas");
 		Machine = GameObject.Find("Machine");
 		//MachineSlot = 
@@ -65,7 +67,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 {
                     gameObject.transform.SetParent(UICanvas.transform);
                     Inventory.SetActive(false);
-                    RadialMenue.SetActive(false);
+                    //RadialMenue.SetActive(false);
                     InventoryCollision.SetActive(false);
                 }
             }
@@ -78,7 +80,10 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (!Inventory.activeSelf) transform.SetParent(startParent);
+        if (!Inventory.activeSelf)
+        {
+            transform.SetParent(startParent);
+        }
 
         
         //raycast
@@ -87,8 +92,8 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            Debug.Log("Raycast hit: " + hit.transform.name);
-            if (hit.transform.name.Contains("red") && itemBeingDragged.name.Contains("blue"))
+            Debug.Log("Raycast hitto: " + hit.transform.name);
+            if (hit.transform.name.StartsWith("red") && itemBeingDragged.name.StartsWith("blue"))
             {
                 Debug.Log("Mixing red and blue");
             }
