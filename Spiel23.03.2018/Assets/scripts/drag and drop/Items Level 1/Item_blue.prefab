@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 225151407291201872}
   - component: {fileID: 114001846829026768}
   - component: {fileID: 114079908092823964}
+  - component: {fileID: 65834636375515374}
   m_Layer: 5
   m_Name: Item_blue
   m_TagString: Untagged
@@ -30,6 +31,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &65834636375515374
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533105286633264}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 100}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114001846829026768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42,7 +55,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RadialMenue: {fileID: 0}
+  cam: {fileID: 0}
   Inventory: {fileID: 0}
+  InventoryCollision: {fileID: 0}
+  UICanvas: {fileID: 0}
+  Machine: {fileID: 0}
+  MachineSlot: {fileID: 0}
+  player: {fileID: 0}
+  mesh: {fileID: 0}
 --- !u!114 &114079908092823964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -63,7 +83,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -82,13 +102,13 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1533105286633264}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -25}
+  m_LocalRotation: {x: 0, y: 0, z: 0.17364816, w: 0.9848078}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 20}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
