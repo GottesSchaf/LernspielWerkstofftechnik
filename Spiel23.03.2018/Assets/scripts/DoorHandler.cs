@@ -15,7 +15,8 @@ public class DoorHandler : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.F) && inTrigger)
+        // if (Input.GetKeyDown(KeyCode.F) && inTrigger)
+        if (Input.GetMouseButtonDown(1) && inTrigger)
         {
             animator.SetBool("isopen", !animator.GetBool("isopen"));
         }
