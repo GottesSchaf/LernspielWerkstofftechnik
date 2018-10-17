@@ -20,7 +20,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public GameObject mesh;
 
     #region IBeginDragHandler implementation
-    
+
     public void OnBeginDrag(PointerEventData eventData)
     {
 		itemBeingDragged = gameObject;
@@ -56,9 +56,9 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = eventData.position;
-                
+        
+        
         updateRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
         if (Physics.Raycast(updateRay, out updateHit, Mathf.Infinity))
         {
             if (Physics.Raycast(updateRay, out updateHit))
@@ -92,9 +92,8 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            Debug.Log("Raycast hit transform: " + hit.transform.name);
-            Debug.Log("Raycast hit collider: " + hit.collider.name);
-            if (hit.transform.name.StartsWith("red") && itemBeingDragged.name.StartsWith("blue") || hit.collider.name.StartsWith("red")) 
+            Debug.Log("Raycast hitto: " + hit.transform.name);
+            if (hit.transform.name.StartsWith("red") && itemBeingDragged.name.StartsWith("blue"))
             {
                 Debug.Log("Mixing red and blue");
             }
@@ -126,13 +125,10 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 					temp.transform.parent = startParent.transform;
                 }
             }
-            else
-            {
-                InventoryCollision.SetActive(true);
-            }
         }
         
-        //InventoryCollision.SetActive(true);
+
+        InventoryCollision.SetActive(true);
 
         itemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -145,9 +141,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        RaycastHit hit = new RaycastHit();
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //Debug.Log("OnPointerEnter: " + hit.transform.name);
+
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -21,42 +21,37 @@ public class ColorBlock : Collectible
         {
             //create item in inventory
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
-            //temp.transform.parent = Slot1.transform;
-            temp.transform.SetParent(Slot1.transform);
+            temp.transform.parent = Slot1.transform;
         }
         else if (Slot2.transform.childCount == 0)
         {
             //create item in inventory
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
-            temp.transform.SetParent(Slot2.transform);
+            temp.transform.parent = Slot2.transform;
         }
         else if (Slot3.transform.childCount == 0)
         {
             //create item in inventory
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
-            temp.transform.SetParent(Slot3.transform);
+            temp.transform.parent = Slot3.transform;
         }
         else if (Slot4.transform.childCount == 0)
         {
             //create item in inventory
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
-            temp.transform.SetParent(Slot4.transform);
+            temp.transform.parent = Slot4.transform;
         }
         else if (Slot5.transform.childCount == 0)
         {
             //create item in inventory
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
-            temp.transform.SetParent(Slot5.transform);
+            temp.transform.parent = Slot5.transform;
         }
         else if (Slot6.transform.childCount == 0)
         {
             //create item in inventory
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
-            temp.transform.SetParent(Slot6.transform);
-        }
-        else
-        {
-            Debug.Log("Can't take more Items! Inventory full!");
+            temp.transform.parent = Slot6.transform;
         }
 
         Destroy(gameObject);
