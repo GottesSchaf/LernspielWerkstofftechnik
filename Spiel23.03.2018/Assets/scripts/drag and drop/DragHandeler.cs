@@ -93,6 +93,58 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
             Debug.Log("Raycast hitto: " + hit.transform.name);
+            //-----------------------------------Pleuel Form-------------------------------------------
+            if(itemBeingDragged.name.StartsWith("60%") && hit.transform.name == "pleuelForm")
+            {
+                Debug.Log("Befuelle Form mit Legierung // richtige Form // richtige Legierung");
+            }
+            else if(itemBeingDragged.name.StartsWith("40%") && hit.transform.name == "pleuelForm")
+            {
+                Debug.Log("Befuelle Form mit Legierung // richtige Form // falsche Legierung");
+            }
+            else if (itemBeingDragged.name.StartsWith("80%") && hit.transform.name == "pleuelForm")
+            {
+                Debug.Log("Befuelle Form mit Legierung // richtige Form // falsche Legierung");
+            }
+            else if (itemBeingDragged.name.StartsWith("20%") && hit.transform.name == "pleuelForm")
+            {
+                Debug.Log("Befuelle Form mit Legierung // richtige Form // falsche Legierung");
+            }
+            //-----------------------------------Zahnrad Form-----------------------------------------
+            else if (itemBeingDragged.name.StartsWith("60%") && hit.transform.name == "zahnradForm")
+            {
+                Debug.Log("Befuelle Form mit Legierung // falsche Form // richtige Legierung");
+            }
+            else if (itemBeingDragged.name.StartsWith("40%") && hit.transform.name == "zahnradForm")
+            {
+                Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
+            }
+            else if (itemBeingDragged.name.StartsWith("80%") && hit.transform.name == "zahnradForm")
+            {
+                Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
+            }
+            else if (itemBeingDragged.name.StartsWith("20%") && hit.transform.name == "zahnradForm")
+            {
+                Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
+            }
+            //-----------------------------------??? Form---------------------------------------
+            else if (itemBeingDragged.name.StartsWith("60%") && hit.transform.name == "???Form")
+            {
+                Debug.Log("Befuelle Form mit Legierung // falsche Form // richtige Legierung");
+            }
+            else if (itemBeingDragged.name.StartsWith("40%") && hit.transform.name == "???Form")
+            {
+                Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
+            }
+            else if (itemBeingDragged.name.StartsWith("80%") && hit.transform.name == "???Form")
+            {
+                Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
+            }
+            else if (itemBeingDragged.name.StartsWith("20%") && hit.transform.name == "???Form")
+            {
+                Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
+            }
+            //-----------------------------------Inventar Cubes----------------------------------
             if (hit.transform.name.StartsWith("red") && itemBeingDragged.name.StartsWith("blue"))
             {
                 Debug.Log("Mixing red and blue");
