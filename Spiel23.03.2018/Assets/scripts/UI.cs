@@ -141,7 +141,7 @@ public class UI : MonoBehaviour {
             CloseupBack.gameObject.SetActive(false);
             MachineWindow.gameObject.SetActive(false);
             CameraFollow.instance.closeupInteraction = false;
-            CameraFollow.instance.playerToFollow.GetComponent<MeshRenderer>().enabled = true;
+            CameraFollow.instance.playerToFollow.GetComponent<SkinnedMeshRenderer>().enabled = true;
 			CameraFollow.instance.playerToFollow.Find("clothes_green").GetComponent<MeshRenderer>().enabled = true;
             Book.instance.GetComponent<BoxCollider>().enabled = false;
         }
@@ -335,6 +335,7 @@ public class UI : MonoBehaviour {
 
     public void Laufzeit_Ofen()
     {
+        //Immer wenn eine Minute rum ist, erhöhe Minute um 1 und setze Sekunden wieder auf 0 und wenn 1 Stunde rum ist, erhöhe Stunde um 1 und setze Minute auf 0
         laufzeitSek += Time.deltaTime;
         if(laufzeitSek >= 60f)
         {
@@ -346,6 +347,7 @@ public class UI : MonoBehaviour {
             LaufzeitStu++;
             laufzeitMin = 0;
         }
+        //Die Korrekte Anzeige der Zeit in 00:00:00 Format
         #region Laufzeit Anzeige
         if(LaufzeitStu < 10 && laufzeitMin < 10 && laufzeitSek < 10)
             laufzeitText.text = "Laufzeit: 0" + LaufzeitStu + ":0" + laufzeitMin + ":0" + Mathf.Round(laufzeitSek);
@@ -368,16 +370,17 @@ public class UI : MonoBehaviour {
 
     public IEnumerator TemperaturRechner()
     {
-        if (arrayPosX < funktionen.Length && waiting == false)
+        if (arrayPosX < funktionen.Length && waiting == false) //Nur wenn die letzte Ofenfunktion noch nicht erreicht wurde und 1 Sekunde noch nicht abgelaufen ist
         {
-            if (aktuelleTemp < funktionen[arrayPosX, 2])
+            if (aktuelleTemp < funktionen[arrayPosX, 2]) //Solange die aktuelle Temp. kleiner als die zu erreichende Temp. ist
             {
                 waiting = true;
-                yield return new WaitForSeconds(1);
-                if (funktionen[arrayPosX, 0] > 0 && funktionen[arrayPosX, 1] > 25 && funktionen[arrayPosX, 2] > 0)
+                yield return new WaitForSeconds(1);     //Warte 1 Sekunde
+                if (funktionen[arrayPosX, 0] > 0 && funktionen[arrayPosX, 1] > 25 && funktionen[arrayPosX, 2] > 25) //Wenn die Zeit größer als 0 ist, die zu ist Temp. größer als 25°C und die zu erreichende Temp. größer als 25°C ist
                 {
                     aktuelleTemp += (funktionen[arrayPosX, 2] - funktionen[arrayPosX, 1]) / (funktionen[arrayPosX, 0] * 60);    //Errechne die sekündliche Steigerungsrate der Temperatur und addiere sie zur aktuellen Temperatur hinzu
                 }
+                //Sonst stoppe den Ofen und setze die Temp. auf 25°C
                 else
                 {
                     laufzeitBool = false;
@@ -386,6 +389,7 @@ public class UI : MonoBehaviour {
                 aktuelleTempText.text = "Aktuelle Temp.: " + Mathf.Round(aktuelleTemp) + "°C";
                 waiting = false;
             }
+            //Wenn die aktuelle Temp. größer als die zu erreichende Temp ist
             else if(aktuelleTemp > funktionen[arrayPosX, 2])
             {
                 waiting = true;
@@ -417,19 +421,21 @@ public class UI : MonoBehaviour {
             aktuelleTemp = 25;
         }
     }
-
+    //Fügt eine weitere Funktion zum Ofenprogramm hinzu
     public void Button_AddFunction()
     {
-        if(inputZieltemp.text != "" && inputDauer.text != "" && arrayPosX <= 8)
+        if(inputZieltemp.text != "" && inputDauer.text != "" && arrayPosX <= 8) //Nur wenn etwas in beiden Eingabefeldern drinnen steht und die Maximale Funktionen Anzahl noch nicht erreicht ist
         {
-            if(float.TryParse(inputZieltemp.text, out zielTempSpeicher) && float.TryParse(inputDauer.text, out dauerSpeicher))
+            if(float.TryParse(inputZieltemp.text, out zielTempSpeicher) && float.TryParse(inputDauer.text, out dauerSpeicher)) //Überprüfe ob im Eingabefeld nur Kommazahlen sind
             {
                 zielTempSpeicher = float.Parse(inputZieltemp.text);
                 dauerSpeicher = float.Parse(inputDauer.text);
-                if (zielTempSpeicher > 24 && dauerSpeicher > 0 && zielTempSpeicher < 1901)
+                if (zielTempSpeicher > 24 && dauerSpeicher > 0 && zielTempSpeicher < 1901) //Nur wenn die Eingegebene Temp. größer 25°C, die Dauer zum erreichen mehr als 0 min., aber weniger als 1900°C beträgt
                 {
+                    //Überprüfe, ob die maximale Temperatur Rate pro Stunde überschritten wurde
                     if ((zielTempSpeicher - funktionen[arrayPosX, 2]) / (dauerSpeicher * 60) < 0.22222222222222222222222222222 && (zielTempSpeicher - funktionen[arrayPosX, 2]) / (dauerSpeicher * 60) > -0.22222222222222222222222222222)
                     {
+                        //Wenn die Position im Array die erste ist, befülle nur die neue temp. und zeit
                         if (arrayPosX == 0)
                         {
                             funktionen[arrayPosX, 0] = dauerSpeicher;
@@ -438,6 +444,7 @@ public class UI : MonoBehaviour {
                             tabelleText[arrayTextPos + 1].text = "" + funktionen[0, 1];
                             tabelleText[arrayTextPos + 2].text = "" + zielTempSpeicher;
                         }
+                        //Sonst befülle neue temp., zeit und alte temp.
                         else
                         {
                             funktionen[arrayPosX, 0] = dauerSpeicher;
@@ -463,14 +470,14 @@ public class UI : MonoBehaviour {
                 Debug.Log("Invalide Eingabe");
             }
             arrayPosX++;
-            arrayTextPos += 3;
+            arrayTextPos += 3; //Wegen 1 Dimensionalem Array += 3, da dort die nächste Reihe gespeichert wird
         }
         else
         {
             Debug.Log("Bitte in beide Eingabefelder eine valide Zahl eingeben.");
         }
     }
-
+    //Setzt die Funktionen des Ofens wieder auf Standard zurück
     public void Button_ResetFunction()
     {
         arrayPosX = 0;
@@ -478,7 +485,7 @@ public class UI : MonoBehaviour {
         funktionen = new float[8,3];
         SetStartTemperatur();
     }
-
+    //Wenn das Spiel startet, wird der Array des Ofens befüllt, oder wenn man den reset Button klickt
     public void SetStartTemperatur()
     {
         funktionen[0, 0] = 0;
