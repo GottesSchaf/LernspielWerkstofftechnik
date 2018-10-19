@@ -8993,7 +8993,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &941104124
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9181,7 +9181,7 @@ Transform:
   - {fileID: 1827478133}
   - {fileID: 1342017722}
   m_Father: {fileID: 2079045537}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &965603734
 GameObject:
@@ -13317,7 +13317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1320966911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15814,7 +15814,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -373.4, y: 94.6, z: 28}
   m_LocalScale: {x: 0.32039845, y: 1.6763515, z: 0.98601574}
-  m_Children: [{fileID: 1046234747}]
+  m_Children:
+  - {fileID: 1046234747}
   m_Father: {fileID: 1320966915}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15861,10 +15862,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1580461320}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: [{m_Target: {fileID: 1580461322}, m_MethodName: HelpPopUp, m_Mode: 1,
-          m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object,
-              UnityEngine', m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: '',
-            m_BoolArgument: 0}, m_CallState: 2}]
+      m_Calls:
+      - m_Target: {fileID: 1580461322}
+        m_MethodName: HelpPopUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1580461320
@@ -19528,7 +19537,7 @@ Transform:
   m_LocalScale: {x: 0.58187324, y: 0.58187324, z: 0.58187324}
   m_Children: []
   m_Father: {fileID: 2079045537}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!23 &1940255747
 MeshRenderer:
@@ -20646,17 +20655,17 @@ Transform:
   m_LocalPosition: {x: 1.9246292, y: -30, z: 1.9074192}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1940255746}
   - {fileID: 710816829}
   - {fileID: 508369433}
   - {fileID: 35082589}
-  - {fileID: 1940255746}
   - {fileID: 2081022128}
   - {fileID: 2093541347}
   - {fileID: 1647505999}
   - {fileID: 1158372394}
   - {fileID: 2005618691}
-  - {fileID: 1274836273}
   - {fileID: 957800069}
+  - {fileID: 1274836273}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

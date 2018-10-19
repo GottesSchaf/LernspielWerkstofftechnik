@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -18,7 +19,15 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public Slot MachineSlot;
     public GameObject player;
     public GameObject mesh;
+    GraphicRaycaster hitUI;
+    EventSystem eventSys;
 
+
+    private void Start()
+    {
+        hitUI = GetComponent<GraphicRaycaster>();
+        eventSys = GetComponent<EventSystem>();
+    }
     #region IBeginDragHandler implementation
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -85,6 +94,12 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             transform.SetParent(startParent);
         }
 
+        eventData = new PointerEventData(eventSys);
+        eventData.position = Input.mousePosition;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        //Hier schmiert er mit "Null Reference" ab
+        hitUI.Raycast(eventData, results); //<<<<<<<<<<<<<<<<<<
         
         //raycast
         RaycastHit hit = new RaycastHit();
