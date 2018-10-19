@@ -20,14 +20,9 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public GameObject player;
     public GameObject mesh;
     GraphicRaycaster hitUI;
-    EventSystem eventSys;
+    //EventSystem eventSys;
 
 
-    private void Start()
-    {
-        hitUI = GetComponent<GraphicRaycaster>();
-        eventSys = GetComponent<EventSystem>();
-    }
     #region IBeginDragHandler implementation
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -45,6 +40,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 		InventoryCollision = cam.transform.Find("InventoryCollision").gameObject; //GameObject.Find("InventoryCollision")
 		UICanvas = GameObject.Find("Canvas");
 		Machine = GameObject.Find("Machine");
+        hitUI = GetComponent<GraphicRaycaster>();
 		//MachineSlot = 
 
 		if(itemBeingDragged.name.Contains("placeholder"))
@@ -93,6 +89,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             transform.SetParent(startParent);
         }
+        EventSystem eventSys = (EventSystem)FindObjectOfType(typeof(EventSystem));
 
         eventData = new PointerEventData(eventSys);
         eventData.position = Input.mousePosition;
