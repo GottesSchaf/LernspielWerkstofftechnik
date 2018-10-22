@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class ColorBlock : Collectible
     public Slot Slot4;
     public Slot Slot5;
     public Slot Slot6;
+
 
     public override void Collect()
     {

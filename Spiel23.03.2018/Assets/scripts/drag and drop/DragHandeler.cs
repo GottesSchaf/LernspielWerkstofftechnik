@@ -20,14 +20,9 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public GameObject player;
     public GameObject mesh;
     GraphicRaycaster hitUI;
-    EventSystem eventSys;
+    //EventSystem eventSys;
 
 
-    private void Start()
-    {
-        hitUI = GetComponent<GraphicRaycaster>();
-        eventSys = GetComponent<EventSystem>();
-    }
     #region IBeginDragHandler implementation
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -37,7 +32,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 		startPosition = transform.position;
 		Debug.Log("startParent " + transform.parent.name);
 		startParent = transform.parent;
-		GetComponent<CanvasGroup>().blocksRaycasts = false;
+		//GetComponent<CanvasGroup>().blocksRaycasts = false;
 
 		RadialMenue = GameObject.Find("RadialMenue");
         cam = GameObject.Find("Main Camera");
@@ -45,6 +40,8 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 		InventoryCollision = cam.transform.Find("InventoryCollision").gameObject; //GameObject.Find("InventoryCollision")
 		UICanvas = GameObject.Find("Canvas");
 		Machine = GameObject.Find("Machine");
+        hitUI = this.GetComponent<GraphicRaycaster>();
+        transform.SetParent(transform.root);
 		//MachineSlot = 
 
 		if(itemBeingDragged.name.Contains("placeholder"))
@@ -64,23 +61,23 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = eventData.position;
-        
-        
-        updateRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(updateRay, out updateHit, Mathf.Infinity))
-        {
-            if (Physics.Raycast(updateRay, out updateHit))
-            {
-                if (updateHit.transform.name != "InventoryCollision")
-                {
-                    gameObject.transform.SetParent(UICanvas.transform);
-                    Inventory.SetActive(false);
-                    //RadialMenue.SetActive(false);
-                    InventoryCollision.SetActive(false);
-                }
-            }
-        }
+        transform.position = Input.mousePosition; //eventData.position
+
+
+        //updateRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //if (Physics.Raycast(updateRay, out updateHit, Mathf.Infinity))
+        //{
+        //    if (Physics.Raycast(updateRay, out updateHit))
+        //    {
+        //        if (updateHit.transform.name != "InventoryCollision")
+        //        {
+        //            gameObject.transform.SetParent(UICanvas.transform);
+        //            Inventory.SetActive(false);
+        //            //RadialMenue.SetActive(false);
+        //            //InventoryCollision.SetActive(false);
+        //        }
+        //    }
+        //}
     }
 
     #endregion
@@ -93,13 +90,17 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             transform.SetParent(startParent);
         }
+        EventSystem eventSys = (EventSystem)FindObjectOfType(typeof(EventSystem));
 
-        eventData = new PointerEventData(eventSys);
-        eventData.position = Input.mousePosition;
+        PointerEventData ped = new PointerEventData(null);
+        //eventData = new PointerEventData(eventSys);
+        //eventData.position = Input.mousePosition;
+        ped.position = Input.mousePosition;
 
         List<RaycastResult> results = new List<RaycastResult>();
+        hitUI.Raycast(ped, results);
         //Hier schmiert er mit "Null Reference" ab
-        hitUI.Raycast(eventData, results); //<<<<<<<<<<<<<<<<<<
+        //hitUI.Raycast(eventData, results); //<<<<<<<<<<<<<<<<<<
         
         //raycast
         RaycastHit hit = new RaycastHit();
@@ -195,14 +196,15 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
         
 
-        InventoryCollision.SetActive(true);
+        //InventoryCollision.SetActive(true);
 
         itemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        if (transform.parent == startParent)
+        if (transform.parent == startParent || transform.parent == transform.root)
         {
             transform.position = startPosition;
+            transform.SetParent(startParent);
         }
     }
 
