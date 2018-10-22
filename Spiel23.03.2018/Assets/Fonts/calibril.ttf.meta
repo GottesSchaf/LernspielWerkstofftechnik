@@ -6,7 +6,7 @@ TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
   fontSize: 300
-  forceTextureCase: -2
+  forceTextureCase: -1
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
@@ -20,7 +20,7 @@ TrueTypeFontImporter:
   - {fileID: 12800000, guid: f5ed588dba0989649ba7256c9c32bfd7, type: 3}
   - {fileID: 12800000, guid: 35d4b59daa6575a4eafd7f32300273f8, type: 3}
   customCharacters: 
-  fontRenderingMode: 3
+  fontRenderingMode: 0
   ascentCalculationMode: 1
   userData: 
   assetBundleName: 
