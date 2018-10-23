@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactive
   - Collectible
+  - redCube
   layers:
   - Default
   - TransparentFX

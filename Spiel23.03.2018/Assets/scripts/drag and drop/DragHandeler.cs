@@ -20,6 +20,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public GameObject player;
     public GameObject mesh;
     GraphicRaycaster hitUI;
+    Collider2D col;
     //EventSystem eventSys;
 
 
@@ -40,8 +41,8 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 		InventoryCollision = cam.transform.Find("InventoryCollision").gameObject; //GameObject.Find("InventoryCollision")
 		UICanvas = GameObject.Find("Canvas");
 		Machine = GameObject.Find("Machine");
-        hitUI = this.GetComponent<GraphicRaycaster>();
-        transform.SetParent(transform.root);
+        //hitUI = this.GetComponent<GraphicRaycaster>();
+        //transform.SetParent(transform.root);
 		//MachineSlot = 
 
 		if(itemBeingDragged.name.Contains("placeholder"))
@@ -64,20 +65,20 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         transform.position = Input.mousePosition; //eventData.position
 
 
-        //updateRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        //if (Physics.Raycast(updateRay, out updateHit, Mathf.Infinity))
-        //{
-        //    if (Physics.Raycast(updateRay, out updateHit))
-        //    {
-        //        if (updateHit.transform.name != "InventoryCollision")
-        //        {
-        //            gameObject.transform.SetParent(UICanvas.transform);
-        //            Inventory.SetActive(false);
-        //            //RadialMenue.SetActive(false);
-        //            //InventoryCollision.SetActive(false);
-        //        }
-        //    }
-        //}
+        updateRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(updateRay, out updateHit, Mathf.Infinity))
+        {
+            if (Physics.Raycast(updateRay, out updateHit))
+            {
+                if (updateHit.transform.name != "InventoryCollision")
+                {
+                    gameObject.transform.SetParent(UICanvas.transform);
+                    Inventory.SetActive(false);
+                    //RadialMenue.SetActive(false);
+                    InventoryCollision.SetActive(false);
+                }
+            }
+        }
     }
 
     #endregion
@@ -90,15 +91,15 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             transform.SetParent(startParent);
         }
-        EventSystem eventSys = (EventSystem)FindObjectOfType(typeof(EventSystem));
+        //EventSystem eventSys = (EventSystem)FindObjectOfType(typeof(EventSystem));
 
-        PointerEventData ped = new PointerEventData(null);
+        //PointerEventData ped = new PointerEventData(null);
         //eventData = new PointerEventData(eventSys);
         //eventData.position = Input.mousePosition;
-        ped.position = Input.mousePosition;
+        //ped.position = Input.mousePosition;
 
-        List<RaycastResult> results = new List<RaycastResult>();
-        hitUI.Raycast(ped, results);
+        //List<RaycastResult> results = new List<RaycastResult>();
+        //hitUI.Raycast(ped, results);
         //Hier schmiert er mit "Null Reference" ab
         //hitUI.Raycast(eventData, results); //<<<<<<<<<<<<<<<<<<
         
@@ -109,6 +110,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
             Debug.Log("Raycast hitto: " + hit.transform.name);
+            #region Gussformen
             //-----------------------------------Pleuel Form-------------------------------------------
             if(itemBeingDragged.name.StartsWith("60%") && hit.transform.name == "pleuelForm")
             {
@@ -160,8 +162,9 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             {
                 Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
             }
+            #endregion
             //-----------------------------------Inventar Cubes----------------------------------
-            if (hit.transform.name.StartsWith("red") && itemBeingDragged.name.StartsWith("blue"))
+            if (itemBeingDragged.name.Contains("blue"))
             {
                 Debug.Log("Mixing red and blue");
             }
@@ -196,7 +199,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
         
 
-        //InventoryCollision.SetActive(true);
+        InventoryCollision.SetActive(true);
 
         itemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -204,7 +207,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (transform.parent == startParent || transform.parent == transform.root)
         {
             transform.position = startPosition;
-            transform.SetParent(startParent);
+            //transform.SetParent(startParent);
         }
     }
 
@@ -219,6 +222,5 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         //Debug.Log("Leaving now: Inventory");
 
     }
-
     #endregion
 }
