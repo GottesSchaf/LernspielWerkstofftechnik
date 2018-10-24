@@ -12,16 +12,13 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private RaycastHit updateHit;
     public GameObject RadialMenue;
     public GameObject cam;
-    public GameObject Inventory;
+    public static GameObject Inventory;
     public GameObject InventoryCollision;
     public GameObject UICanvas;
 	public GameObject Machine;
     public Slot MachineSlot;
     public GameObject player;
     public GameObject mesh;
-    GraphicRaycaster hitUI;
-    Collider2D col;
-    //EventSystem eventSys;
 
 
     #region IBeginDragHandler implementation
@@ -38,11 +35,8 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 		RadialMenue = GameObject.Find("RadialMenue");
         cam = GameObject.Find("Main Camera");
 		Inventory = GameObject.Find("InventoryMenue");
-		InventoryCollision = cam.transform.Find("InventoryCollision").gameObject; //GameObject.Find("InventoryCollision")
 		UICanvas = GameObject.Find("Canvas");
 		Machine = GameObject.Find("Machine");
-        //hitUI = this.GetComponent<GraphicRaycaster>();
-        //transform.SetParent(transform.root);
 		//MachineSlot = 
 
 		if(itemBeingDragged.name.Contains("placeholder"))
@@ -63,22 +57,9 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition; //eventData.position
+        itemBeingDragged.transform.SetParent(UICanvas.transform);
 
-
-        updateRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(updateRay, out updateHit, Mathf.Infinity))
-        {
-            if (Physics.Raycast(updateRay, out updateHit))
-            {
-                if (updateHit.transform.name != "InventoryCollision")
-                {
-                    gameObject.transform.SetParent(UICanvas.transform);
-                    Inventory.SetActive(false);
-                    //RadialMenue.SetActive(false);
-                    InventoryCollision.SetActive(false);
-                }
-            }
-        }
+        //updateRay = Camera.main.ScreenPointToRay(Input.mousePosition);
     }
 
     #endregion
@@ -91,17 +72,6 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             transform.SetParent(startParent);
         }
-        //EventSystem eventSys = (EventSystem)FindObjectOfType(typeof(EventSystem));
-
-        //PointerEventData ped = new PointerEventData(null);
-        //eventData = new PointerEventData(eventSys);
-        //eventData.position = Input.mousePosition;
-        //ped.position = Input.mousePosition;
-
-        //List<RaycastResult> results = new List<RaycastResult>();
-        //hitUI.Raycast(ped, results);
-        //Hier schmiert er mit "Null Reference" ab
-        //hitUI.Raycast(eventData, results); //<<<<<<<<<<<<<<<<<<
         
         //raycast
         RaycastHit hit = new RaycastHit();
@@ -199,12 +169,12 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
         
 
-        InventoryCollision.SetActive(true);
+        //InventoryCollision.SetActive(true);
 
         itemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        if (transform.parent == startParent || transform.parent == transform.root)
+        if (transform.parent != startParent)
         {
             transform.position = startPosition;
             //transform.SetParent(startParent);

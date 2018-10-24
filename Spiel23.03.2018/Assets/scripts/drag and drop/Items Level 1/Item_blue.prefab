@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 114601558319814406}
   m_Layer: 5
   m_Name: Item_blue
-  m_TagString: Untagged
+  m_TagString: blueCube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +91,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RadialMenue: {fileID: 0}
   cam: {fileID: 0}
-  Inventory: {fileID: 0}
   InventoryCollision: {fileID: 0}
   UICanvas: {fileID: 0}
   Machine: {fileID: 0}
