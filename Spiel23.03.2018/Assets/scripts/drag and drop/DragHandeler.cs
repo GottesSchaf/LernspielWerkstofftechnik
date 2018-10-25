@@ -153,12 +153,12 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 //temp.transform.parent = MachineSlot.transform;
 				Machine.GetComponent<Machine>().Interact();
             }
-            else if (hit.transform.name.Contains("player") && itemBeingDragged.name.Contains("clothes"))
+            else if (hit.transform.CompareTag("Player") && itemBeingDragged.name.Contains("clothes"))
             {
                 Debug.Log("You are now wearing a " + itemBeingDragged.name + ".");
                 if (itemBeingDragged.name.Contains("green"))
                 {
-                    player = GameObject.Find("player");
+                    player = GameObject.Find("Player");
                     mesh = player.transform.Find("clothes_green").gameObject;
                     mesh.SetActive(true);
 					Destroy (itemBeingDragged);

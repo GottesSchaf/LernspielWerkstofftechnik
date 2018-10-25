@@ -14,10 +14,31 @@ public class BunsenBrenner : MonoBehaviour {
     float[] istTemp = new float[4];
     public static Transform instance;
     public CameraFollow followCam;
-    bool hauptGasSchalter = true, platzGasSchalter = true, bBGasSchalter = true, waiting = false; //Zur Überprüfung ob die jeweiligen Gas Schalter bereits betätigt wurden
+    public static bool hauptGasSchalter = false, platzGasSchalter = false, bBGasSchalter = false, waiting = false; //Zur Überprüfung ob die jeweiligen Gas Schalter bereits betätigt wurden
     public Text ausgabeText;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.transform.CompareTag("Hauptgasschalter") && hauptGasSchalter == false)
+        {
+            hauptGasSchalter = true;
+        }
+        else
+        {
+            hauptGasSchalter = false;
+        }
+
+        if (other.gameObject.transform.CompareTag("Platzgasschalter") && platzGasSchalter == false)
+        {
+            platzGasSchalter = true;
+        }
+        else
+        {
+            platzGasSchalter = false;
+        }
+    }
+    void Start () {
         //Mische die Bunsen Brenner, sodass die Studenten nicht schummeln können
 		for(int i = 0; i < bunsenBrennerObjekt.Length; i++)
         {
@@ -33,9 +54,9 @@ public class BunsenBrenner : MonoBehaviour {
 	void Update ()
     {
         //CheckInstance();
-        if(hauptGasSchalter && platzGasSchalter && bBGasSchalter && waiting == false)
+        if(hauptGasSchalter && platzGasSchalter && waiting == false)
         {
-            //StartCoroutine(BunsenBrennerRechnung());
+            StartCoroutine(BunsenBrennerRechnung());
         }
     }
 
