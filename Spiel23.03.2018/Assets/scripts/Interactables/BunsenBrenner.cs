@@ -18,26 +18,6 @@ public class BunsenBrenner : MonoBehaviour {
     public Text ausgabeText;
     // Use this for initialization
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.transform.CompareTag("Hauptgasschalter") && hauptGasSchalter == false)
-        {
-            hauptGasSchalter = true;
-        }
-        else
-        {
-            hauptGasSchalter = false;
-        }
-
-        if (other.gameObject.transform.CompareTag("Platzgasschalter") && platzGasSchalter == false)
-        {
-            platzGasSchalter = true;
-        }
-        else
-        {
-            platzGasSchalter = false;
-        }
-    }
     void Start () {
         //Mische die Bunsen Brenner, sodass die Studenten nicht schummeln können
 		for(int i = 0; i < bunsenBrennerObjekt.Length; i++)

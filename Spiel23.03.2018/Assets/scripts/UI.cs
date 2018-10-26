@@ -12,7 +12,7 @@ public class UI : MonoBehaviour {
     public Transform Map;
     public Transform CloseupBack;
     public Transform InventoryCollision;
-    public Transform MachineWindow;
+    public Transform MachineWindow, BunsenBrennerWindow;
     public Text zieltemp;               //Textfeld für die Zieltemperatur
     public InputField inputZieltemp;    //Das Eingabefeld für die Zieltemperatur
     bool inputZieltempBool = false;     //Boolean für Überprüfung ob das Zieltemperatur Eingabefeld ausgewählt ist
@@ -140,6 +140,7 @@ public class UI : MonoBehaviour {
         {
             CloseupBack.gameObject.SetActive(false);
             MachineWindow.gameObject.SetActive(false);
+            BunsenBrennerWindow.gameObject.SetActive(false);
             CameraFollow.instance.closeupInteraction = false;
             CameraFollow.instance.playerToFollow.GetComponent<SkinnedMeshRenderer>().enabled = true;
 			CameraFollow.instance.playerToFollow.Find("clothes_green").GetComponent<MeshRenderer>().enabled = true;
