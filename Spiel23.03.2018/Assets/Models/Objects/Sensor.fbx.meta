@@ -1,33 +1,21 @@
 fileFormatVersion: 2
-guid: 83ce4b610f5bc3e4b8c7895ea8a560e8
-timeCreated: 1540813259
+guid: 68d6921c5fd4db449b8f5baec03c658c
+timeCreated: 1540809305
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Mold
-    100002: //RootNode
-    100004: Top
-    400000: Mold
-    400002: //RootNode
-    400004: Top
-    2300000: Mold
-    2300002: Top
-    3300000: Mold
-    3300002: Top
-    4300000: Mold
-    4300002: Top
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Sensor
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
-    second: {fileID: 2100000, guid: 26a6b6866ac1c944e83bf6209270878a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: cac2cb884af803043b848ce998426b2e, type: 2}
+    second: {fileID: 2100000, guid: 3f48da84b7ef33f41804b3ce97214665, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
