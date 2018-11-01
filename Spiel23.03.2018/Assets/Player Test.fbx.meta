@@ -27,6 +27,12 @@ ModelImporter:
     100038: Character1_Spine2
     100040: //RootNode
     100042: Skeleton_pl
+    100044: Glove_Left
+    100046: Glove_Right
+    100048: LabCoat
+    100050: polySurface1
+    100052: polySurface2
+    100054: transform1
     400000: Character1_Head
     400002: Character1_Hips
     400004: Character1_LeftHand1
@@ -49,15 +55,45 @@ ModelImporter:
     400038: Character1_Spine2
     400040: //RootNode
     400042: Skeleton_pl
+    400044: Glove_Left
+    400046: Glove_Right
+    400048: LabCoat
+    400050: polySurface1
+    400052: polySurface2
+    400054: transform1
     4300000: Player
+    4300002: polySurface2
+    4300004: Glove_Right
+    4300006: Glove_Left
+    4300008: LabCoat
+    7400000: Take 001
     9500000: //RootNode
     13700000: //RootNode
+    13700002: Glove_Left
+    13700004: Glove_Right
+    13700006: LabCoat
+    13700008: polySurface2
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
     second: {fileID: 2100000, guid: c137229952fc1db488af3c5849fad66f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 361ba1cae1e29f040986b8bfc5105685, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert3
+    second: {fileID: 2100000, guid: 2e1ef170da1822f42b2be664403acbcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert4
+    second: {fileID: 2100000, guid: c6180326325bbe7409c0d70cf3dc8668, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
