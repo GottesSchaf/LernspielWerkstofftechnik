@@ -27,12 +27,6 @@ ModelImporter:
     100038: Character1_Spine2
     100040: //RootNode
     100042: Skeleton_pl
-    100044: LabCoat
-    100046: polySurface1
-    100048: Glove_Left
-    100050: Glove_Right
-    100052: polySurface2
-    100054: transform1
     400000: Character1_Head
     400002: Character1_Hips
     400004: Character1_LeftHand1
@@ -55,51 +49,15 @@ ModelImporter:
     400038: Character1_Spine2
     400040: //RootNode
     400042: Skeleton_pl
-    400044: LabCoat
-    400046: polySurface1
-    400048: Glove_Left
-    400050: Glove_Right
-    400052: polySurface2
-    400054: transform1
-    2300000: LabCoat
-    2300002: polySurface1
-    3300000: LabCoat
-    3300002: polySurface1
     4300000: Player
-    4300002: polySurface1
-    4300004: LabCoat
-    4300006: polySurface2
-    4300008: Glove_Right
-    4300010: Glove_Left
-    7400000: Walk
-    7400002: Idle
     9500000: //RootNode
     13700000: //RootNode
-    13700002: Glove_Left
-    13700004: Glove_Right
-    13700006: LabCoat
-    13700008: polySurface2
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert1
     second: {fileID: 2100000, guid: c137229952fc1db488af3c5849fad66f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: f03ae8311e794a34cbaf2b500a54bd94, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert3
-    second: {fileID: 2100000, guid: df85d5071cadd5f4a947207d729719c4, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert4
-    second: {fileID: 2100000, guid: 8674dd54fc035a2499819ff4e48d71f3, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -118,70 +76,14 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    animationCompression: 0
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Idle
-      takeName: Take 001
-      firstFrame: 1
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Walk
-      takeName: Take 001
-      firstFrame: 10
-      lastFrame: 35
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
