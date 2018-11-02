@@ -8,6 +8,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public static GameObject itemBeingDragged;
     Vector3 startPosition;
     Transform startParent;
+    public static Transform oldParent;
     private Ray updateRay;
     private RaycastHit updateHit;
     public GameObject RadialMenue;
@@ -30,6 +31,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 		startPosition = transform.position;
 		Debug.Log("startParent " + transform.parent.name);
 		startParent = transform.parent;
+        oldParent = startParent;
 		//GetComponent<CanvasGroup>().blocksRaycasts = false;
 
 		RadialMenue = GameObject.Find("RadialMenue");
@@ -177,7 +179,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (transform.parent != startParent)
         {
             transform.position = startPosition;
-            //transform.SetParent(startParent);
+            transform.SetParent(transform.parent);
         }
     }
 

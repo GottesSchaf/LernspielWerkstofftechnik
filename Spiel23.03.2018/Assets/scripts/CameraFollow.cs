@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
     public bool closeupInteraction = false;
     public Transform CloseupBack;
     public GameObject Camera;
+    public GameObject player;
 
 
     void Start()
@@ -19,8 +20,8 @@ public class CameraFollow : MonoBehaviour
         if(closeupInteraction == true)
         {
             CloseupBack.gameObject.SetActive(true);
-            playerToFollow.GetComponent<SkinnedMeshRenderer>().enabled = false;
-			playerToFollow.Find("clothes_green").GetComponent<MeshRenderer>().enabled = false;
+            player.SetActive(false); //playerToFollow.GetComponent<SkinnedMeshRenderer>().enabled = false
+            playerToFollow.Find("clothes_green").GetComponent<MeshRenderer>().enabled = false;
             Camera = GameObject.Find("Main Camera");
 
             if (Camera.transform.position.z < -6)
