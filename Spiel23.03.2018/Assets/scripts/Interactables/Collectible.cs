@@ -17,9 +17,10 @@ public class Collectible : MonoBehaviour
 
     IEnumerator WaitForAction()
     {
-        yield return new WaitWhile(() => playerAgent.velocity == new Vector3(0, 0, 0));
-        yield return new WaitWhile(() => playerAgent.velocity != new Vector3(0, 0, 0));
+        //yield return new WaitWhile(() => playerAgent.velocity == new Vector3(0, 0, 0));    <--- Das auch!
+        //yield return new WaitWhile(() => playerAgent.velocity != new Vector3(0, 0, 0));    <--- Das hier ist böse Roman :D
         Collect();
+        yield return null;
     }
 
     public virtual void Collect()

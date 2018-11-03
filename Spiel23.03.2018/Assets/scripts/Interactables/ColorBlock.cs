@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,39 +22,46 @@ public class ColorBlock : Collectible
         {
             //create item in inventory
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
+            Destroy(gameObject);
             temp.transform.SetParent(Slot1.transform);
         }
         else if (Slot2.transform.childCount == 0)
         {
             //create item in inventory
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
+            Destroy(gameObject);
             temp.transform.SetParent(Slot2.transform);
         }
         else if (Slot3.transform.childCount == 0)
         {
             //create item in inventory
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
+            Destroy(gameObject);
             temp.transform.SetParent(Slot3.transform);
         }
         else if (Slot4.transform.childCount == 0)
         {
             //create item in inventory
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
+            Destroy(gameObject);
             temp.transform.SetParent(Slot4.transform);
         }
         else if (Slot5.transform.childCount == 0)
         {
             //create item in inventory
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
+            Destroy(gameObject);
             temp.transform.SetParent(Slot5.transform);
         }
         else if (Slot6.transform.childCount == 0)
         {
             //create item in inventory
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
+            Destroy(gameObject);
             temp.transform.SetParent(Slot6.transform);
         }
+        
 
-        Destroy(gameObject);
+        
     }
 }
