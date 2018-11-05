@@ -5,6 +5,12 @@ using UnityEngine;
 public class CollisionDetection : MonoBehaviour {
 
     bool isCollidingBlue, isCollidingRed;
+    GameObject UICanvas;
+
+    private void Start()
+    {
+        UICanvas = GameObject.Find("Canvas");
+    }
 
     //private void OnTriggerStay2D(Collider2D collision)
     //{
@@ -37,10 +43,12 @@ public class CollisionDetection : MonoBehaviour {
         if (collision.CompareTag("Inventory") && !collision.CompareTag("redCube") && DragHandeler.itemBeingDragged.name.Contains("blue"))
         {
             DragHandeler.Inventory.SetActive(false);
+            DragHandeler.itemBeingDragged.transform.SetParent(UICanvas.transform);
         }
         if (collision.CompareTag("Inventory") && !collision.CompareTag("blueCube") && DragHandeler.itemBeingDragged.name.Contains("red"))
         {
             DragHandeler.Inventory.SetActive(false);
+            DragHandeler.itemBeingDragged.transform.SetParent(UICanvas.transform);
         }
         Debug.Log("Ich bin zurückgesetzt.");
     }

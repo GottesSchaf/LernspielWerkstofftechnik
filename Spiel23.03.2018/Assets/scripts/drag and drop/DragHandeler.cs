@@ -59,7 +59,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition; //eventData.position
-        itemBeingDragged.transform.SetParent(UICanvas.transform);
+        //itemBeingDragged.transform.SetParent(UICanvas.transform);
 
         //updateRay = Camera.main.ScreenPointToRay(Input.mousePosition);
     }
@@ -170,9 +170,6 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             }
         }
         
-
-        //InventoryCollision.SetActive(true);
-
         itemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 

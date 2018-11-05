@@ -8,14 +8,18 @@ public class Slot : MonoBehaviour, IDropHandler
     {
         get
         {
-            if (transform.childCount > 0)
-            {
-                return transform.GetChild(0).gameObject;
-            }
             if (DragHandeler.oldParent.GetChild(0).gameObject != DragHandeler.itemBeingDragged)
             {
-                return null;
+                Debug.Log("2 tf: " + transform.childCount);
+                return transform.GetChild(0).gameObject;
             }
+            else if (transform.childCount > 0)
+            {
+                Debug.Log("1 tf: " + transform.childCount);
+                return transform.GetChild(0).gameObject;
+            }
+            
+            Debug.Log("get item else");
             return null;
         }
     }
