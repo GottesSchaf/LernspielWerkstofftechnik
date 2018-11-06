@@ -11,11 +11,12 @@ public class ColorBlock : Collectible
     public Slot Slot4;
     public Slot Slot5;
     public Slot Slot6;
+    public int childs;
 
 
     public override void Collect()
     {
-        Debug.Log("Try to collect.");
+
 
         //check every item slot if it is empty
         if(Slot1.transform.childCount == 0)
@@ -24,6 +25,7 @@ public class ColorBlock : Collectible
             GameObject temp = Instantiate(itemToCreate, new Vector3(0, 0, 0), Quaternion.identity);
             Destroy(gameObject);
             temp.transform.SetParent(Slot1.transform);
+            childs = transform.childCount;
         }
         else if (Slot2.transform.childCount == 0)
         {

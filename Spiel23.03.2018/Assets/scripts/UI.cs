@@ -49,7 +49,7 @@ public class UI : MonoBehaviour {
     #region UI Buttons
     public void Button_OpenMenue()
     {
-        Debug.Log("The MenueButton was clicked.");
+
 
         if (RadialMenue.gameObject.activeInHierarchy == false)
         {

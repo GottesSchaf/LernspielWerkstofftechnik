@@ -25,7 +25,7 @@ public class CollisionDetection : MonoBehaviour {
     //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("OnTriggerEnter2D");
+
         if (collision.CompareTag("redCube") && DragHandeler.itemBeingDragged.name.Contains("blue"))
         {
             Debug.Log("Item blau über Item rot");

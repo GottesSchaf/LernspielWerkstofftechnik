@@ -214,7 +214,7 @@ public class CameraFollow : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter No Clip");
+
         if (other.tag == "NoClip")
         {
             noClipEnabled = true;
