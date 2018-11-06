@@ -9,11 +9,7 @@ TagManager:
   - redCube
   - Inventory
   - blueCube
-<<<<<<< HEAD
   - NoClip
-=======
-  - Target
->>>>>>> Hannah_Branch_Local
   layers:
   - Default
   - TransparentFX
