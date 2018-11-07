@@ -29,6 +29,7 @@ public class UI : MonoBehaviour {
     public int arrayPosX, arrayTextPos;           //Aktuelle Position im Array
     public Text[] tabelleText;          //Textfelder der Tabelle für die Ausgabe der eingegebenen Werte
     bool abgekuehlt = false;            //Array zum überprüfen, ob der Ofen noch aufgeheizt ist wenn keine weitere Eingabe vorhanden sind
+    public static bool tutorialinventory; // Button für das Tutorial 
 
     public void Start()
     {
@@ -57,6 +58,11 @@ public class UI : MonoBehaviour {
         }
         else
         {
+            if (tutorialinventory)
+            {
+                Tutorial.step4Done = true; 
+            }
+
             RadialMenue.gameObject.SetActive(false);
             MainMenue.gameObject.SetActive(false);
             Inventory.gameObject.SetActive(false);

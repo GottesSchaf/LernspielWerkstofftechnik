@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Tutorial : MonoBehaviour
 {
     [SerializeField] private GameObject Player;
+    [SerializeField] private NavMeshAgent agent;
 
     [SerializeField] private SpriteRenderer spriteToChange;
     [SerializeField] private Sprite[] tutSprites;
@@ -21,9 +23,17 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject invMenu;
     [SerializeField] private GameObject[] invSlots;
 
+    [SerializeField] private GameObject Helpbtn;
+    [SerializeField] private GameObject Screenshot;
+    [SerializeField] private GameObject Speed1;
+    [SerializeField] private GameObject Speed2;
+    [SerializeField] private GameObject Questwindow;
+
     [SerializeField] private GameObject pauseScreen;
 
     [SerializeField] private GameObject[] Buttons;
+
+    public Vector3 destination;
 
     private GameObject toDelete;
 
@@ -31,7 +41,8 @@ public class Tutorial : MonoBehaviour
 
     private bool step2Done;
     private bool step3Done;
-    private bool step4Done;
+    public static bool step4Done;
+    private bool step5Done;
     /*
      1. Willkommen Screen 
      2. > Weiter drücken auf Button (schon drinne) 
@@ -57,6 +68,7 @@ public class Tutorial : MonoBehaviour
         step2Done = false;
         step3Done = false;
         step4Done = false;
+        step5Done = false; 
     }
 
     private void Update()
@@ -86,10 +98,10 @@ public class Tutorial : MonoBehaviour
             }
         }
 
-        if(step3Done && !step4Done)
+        if(step2Done && step3Done && !step4Done)
         {
-            spriteToChange.sprite = tutSprites[4];
-            invOpen.SetActive(true);
+            spriteToChange.sprite = tutSprites[4]; // In der Tasche sind deine Objekte (Bild)
+            invOpen.SetActive(true);               // Icon für Inventar taucht auf
             foreach (GameObject x in invSlots)
             {
                 
@@ -97,7 +109,7 @@ public class Tutorial : MonoBehaviour
                 {
                     if(x == invSlots[slot])
                     {
-
+                        UI.tutorialinventory = true; 
                     }
                     else
                     {
@@ -111,17 +123,19 @@ public class Tutorial : MonoBehaviour
             }
         }
         
-        if(step4Done)
+        if(step4Done && !step5Done)
         {
             spriteToChange.sprite = tutSprites[5];
             if (pauseScreen.activeSelf)
             {
                 spriteToChange.sprite = tutSprites[6];
             }
+            step5Done = true;
         }
         
     }
 
+    // Change Sprite
     public void Forward()
     {
         spriteToChange.sprite = tutSprites[0];
@@ -130,6 +144,7 @@ public class Tutorial : MonoBehaviour
         Buttons[2].SetActive(true);
     }
 
+    // Button "Ja" pressed
     public void Yes()
     {
         tutCam.enabled = false;
@@ -140,6 +155,7 @@ public class Tutorial : MonoBehaviour
         target.SetActive(true);
     }
 
+    // Button "No" pressed
     public void No()
     {
         tutCam.enabled = false;
@@ -147,5 +163,12 @@ public class Tutorial : MonoBehaviour
         Buttons[1].SetActive(false);
         Buttons[2].SetActive(false);
         door.SetActive(true);
+        agent.Warp(destination);
+        Helpbtn.SetActive(true);
+        Screenshot.SetActive(true);
+        invOpen.SetActive(true);
+        Speed1.SetActive(true);
+        Speed2.SetActive(true);
+        Questwindow.SetActive(true);
     }
 }
