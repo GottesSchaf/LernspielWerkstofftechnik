@@ -8,7 +8,6 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public static GameObject itemBeingDragged;
     Vector3 startPosition;
     Transform startParent;
-    public static Transform oldParent;
     private Ray updateRay;
     private RaycastHit updateHit;
     public GameObject RadialMenue;
