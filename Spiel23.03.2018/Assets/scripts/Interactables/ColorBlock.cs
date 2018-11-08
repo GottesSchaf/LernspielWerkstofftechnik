@@ -14,8 +14,6 @@ public class ColorBlock : Collectible
 
     public override void Collect()
     {
-
-
         //check every item slot if it is empty
         if(Slot1.transform.childCount == 0)
         {

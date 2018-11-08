@@ -136,7 +136,7 @@ public class UI : MonoBehaviour {
     {
         Debug.Log("The Closeup was closed.");
 
-        if (CameraFollow.instance.closeupInteraction == true)
+        if (MachineWindow.gameObject.activeInHierarchy || BunsenBrennerWindow.gameObject.activeInHierarchy)
         {
             CloseupBack.gameObject.SetActive(false);
             MachineWindow.gameObject.SetActive(false);
@@ -144,7 +144,7 @@ public class UI : MonoBehaviour {
             CameraFollow.instance.closeupInteraction = false;
             //CameraFollow.instance.playerToFollow.GetComponent<SkinnedMeshRenderer>().enabled = true;
             CameraFollow.instance.player.SetActive(true);
-			CameraFollow.instance.playerToFollow.Find("clothes_green").GetComponent<MeshRenderer>().enabled = true;
+			//CameraFollow.instance.playerToFollow.Find("clothes_green").GetComponent<MeshRenderer>().enabled = true;
             Book.instance.GetComponent<BoxCollider>().enabled = false;
         }
     }

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PleuelForm : Interactive
+public class FormWindow : Interactive
 {
-    public Transform ThisForm;              //Datenblatt Position
+    public Transform ThisForm;              //Position des Fensters
     public static Transform instance;       //Position
     public CameraFollow boop;               //Kamera Position
-    public GameObject pleuelForm;           //Datenblatt Objekt
+    public GameObject formWindow;           //Fenster für die Form
+    public GameObject deckel;               //Deckel für die Form
 
     void Update()
     {
@@ -22,11 +23,21 @@ public class PleuelForm : Interactive
     //Wenn der Close Button gedrückt wird, wird die Form "geschlossen"
     public void CloseWindow()
     {
-        pleuelForm.SetActive(false);
+        formWindow.SetActive(false);
     }
     //Wenn man auf die Form klickt, öffnet sie sich
     public override void Interact()
     {
-        pleuelForm.SetActive(true);
+        formWindow.SetActive(true);
+    }
+
+    public void FormSchliessen()
+    {
+        deckel.SetActive(true);
+    }
+
+    public void FormOeffnen()
+    {
+        deckel.SetActive(false);
     }
 }

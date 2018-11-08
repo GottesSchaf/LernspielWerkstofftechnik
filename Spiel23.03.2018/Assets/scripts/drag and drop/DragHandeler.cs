@@ -38,15 +38,15 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 		Machine = GameObject.Find("Machine");
 		//MachineSlot = 
 
-		if(itemBeingDragged.name.Contains("placeholder"))
-		{
-			player = GameObject.Find("player");
-			mesh = player.transform.Find("clothes_green").gameObject;
-			mesh.SetActive(false);
-			Destroy (itemBeingDragged);
-			GameObject temp = Instantiate(mesh.GetComponent<Clothes>().inventoryobject, new Vector3(0, 0, 0), Quaternion.identity);
-			temp.transform.parent = startParent.transform;
-		}
+		//if(itemBeingDragged.name.Contains("placeholder"))
+		//{
+		//	player = GameObject.Find("player");
+		//	mesh = player.transform.Find("clothes_green").gameObject;
+		//	mesh.SetActive(false);
+		//	Destroy (itemBeingDragged);
+		//	GameObject temp = Instantiate(mesh.GetComponent<Clothes>().inventoryobject, new Vector3(0, 0, 0), Quaternion.identity);
+		//	temp.transform.parent = startParent.transform;
+		//}
     }
 
     #endregion
@@ -147,17 +147,24 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 //temp.transform.parent = MachineSlot.transform;
                 Machine.GetComponent<Machine>().Interact();
             }
-            else if (hit.transform.CompareTag("Player") && itemBeingDragged.name.Contains("clothes"))
+            else if (hit.transform.CompareTag("Player") && itemBeingDragged.name.Contains("Labcoat"))
             {
-                Debug.Log("You are now wearing a " + itemBeingDragged.name + ".");
-                if (itemBeingDragged.name.Contains("green"))
+                if (itemBeingDragged.name.Contains("Labcoat"))
                 {
                     player = GameObject.Find("Player");
-                    mesh = player.transform.Find("clothes_green").gameObject;
+                    mesh = player.transform.Find("LabCoat").gameObject;
                     mesh.SetActive(true);
                     Destroy(itemBeingDragged);
-                    GameObject temp = Instantiate(mesh.GetComponent<Clothes>().placeholder, new Vector3(0, 0, 0), Quaternion.identity);
-                    temp.transform.parent = startParent.transform;
+                }
+            }
+            else if (hit.transform.CompareTag("Player") && itemBeingDragged.name.Contains("Glove"))
+            {
+                if (itemBeingDragged.name.Contains("Glove"))
+                {
+                    player = GameObject.Find("Player");
+                    mesh = player.transform.Find("Glove_Left").gameObject;
+                    mesh.SetActive(true);
+                    Destroy(itemBeingDragged);
                 }
             }
         }
