@@ -5,24 +5,28 @@ using UnityEngine.AI;
 
 public class Tutorial : MonoBehaviour
 {
+    //Player
     [SerializeField] private GameObject Player;
     [SerializeField] private NavMeshAgent agent;
 
+    //Sprites
     [SerializeField] private SpriteRenderer spriteToChange;
     [SerializeField] private Sprite[] tutSprites;
     [SerializeField] private GameObject target;
 
+    //Cameras
     [SerializeField] private Camera tutCam;
     [SerializeField] private Camera playerCam;
 
+    //Objects in Tut.Room
     [SerializeField] private GameObject door;
     [SerializeField] private GameObject table;
     [SerializeField] private GameObject cube;
 
+    //Canvas Buttons
     [SerializeField] private GameObject invOpen;
     [SerializeField] private GameObject invMenu;
     [SerializeField] private GameObject[] invSlots;
-
     [SerializeField] private GameObject Helpbtn;
     [SerializeField] private GameObject Screenshot;
     [SerializeField] private GameObject Speed1;
@@ -33,6 +37,7 @@ public class Tutorial : MonoBehaviour
 
     [SerializeField] private GameObject[] Buttons;
 
+    // Playerposition
     public Vector3 destination;
 
     private GameObject toDelete;
@@ -43,6 +48,8 @@ public class Tutorial : MonoBehaviour
     private bool step3Done;
     public static bool step4Done;
     private bool step5Done;
+    private bool step6Done;
+    private bool step7Done;
     /*
      1. Willkommen Screen 
      2. > Weiter drücken auf Button (schon drinne) 
@@ -65,15 +72,17 @@ public class Tutorial : MonoBehaviour
 
     private void Awake()
     {
-        step2Done = false;
-        step3Done = false;
-        step4Done = false;
-        step5Done = false; 
+        step2Done = false; // Walking
+        step3Done = false; // Pick Up
+        step4Done = false; // Open Inventory
+        step5Done = false; // Pausescreen
+        step6Done = false; // Buttons
+        step7Done = false; // Door
     }
 
     private void Update()
     {
-        if(Player.GetComponent<CheckCollision>().HitTarget && !step2Done)
+        if(Player.GetComponent<CheckCollision>().HitTarget && !step2Done) // Laufen Screen 
         {
             spriteToChange.sprite = tutSprites[2];
             target.SetActive(false);
@@ -82,8 +91,8 @@ public class Tutorial : MonoBehaviour
             cube.SetActive(true);
         }
 
-        if(step2Done && !step3Done)
-        {
+        if(step2Done && !step3Done) // Pick Up Screen
+        { 
             foreach(GameObject x in invSlots)
             {
                 slot++;
@@ -132,6 +141,24 @@ public class Tutorial : MonoBehaviour
             }
             step5Done = true;
         }
+
+        if (step5Done && !step6Done)
+        {
+            spriteToChange.sprite = tutSprites[6];
+
+            Helpbtn.SetActive(true);
+            Screenshot.SetActive(true);
+            invOpen.SetActive(true);
+            Speed1.SetActive(true);
+            Speed2.SetActive(true);
+
+            if (Helpbtn.activeSelf)
+            {
+                spriteToChange.sprite = tutSprites[7];
+            }
+            step6Done = true; 
+        }
+
         
     }
 
@@ -155,7 +182,8 @@ public class Tutorial : MonoBehaviour
         target.SetActive(true);
     }
 
-    // Button "No" pressed
+    // Button "Nein" pressed
+    // Spiel wird gestartet
     public void No()
     {
         tutCam.enabled = false;
@@ -163,12 +191,12 @@ public class Tutorial : MonoBehaviour
         Buttons[1].SetActive(false);
         Buttons[2].SetActive(false);
         door.SetActive(true);
-        agent.Warp(destination);
+        agent.Warp(destination); // teleports player into hallway
+        Questwindow.SetActive(true);
         Helpbtn.SetActive(true);
         Screenshot.SetActive(true);
         invOpen.SetActive(true);
         Speed1.SetActive(true);
         Speed2.SetActive(true);
-        Questwindow.SetActive(true);
     }
 }
