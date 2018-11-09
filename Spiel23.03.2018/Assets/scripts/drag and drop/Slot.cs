@@ -13,6 +13,10 @@ public class Slot : MonoBehaviour, IDropHandler
             {
                 return transform.GetChild(0).gameObject;
             }
+            if (DragHandeler.oldParent.GetChild(0).gameObject != DragHandeler.itemBeingDragged)
+            {
+                return null;
+            }
             return null;
         }
     }
