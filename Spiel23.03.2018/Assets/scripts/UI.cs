@@ -29,6 +29,7 @@ public class UI : MonoBehaviour {
     public int arrayPosX, arrayTextPos;           //Aktuelle Position im Array
     public Text[] tabelleText;          //Textfelder der Tabelle für die Ausgabe der eingegebenen Werte
     bool abgekuehlt = false;            //Array zum überprüfen, ob der Ofen noch aufgeheizt ist wenn keine weitere Eingabe vorhanden sind
+    public static bool tutorialinventory; // Button für das Tutorial 
 
     public void Start()
     {
@@ -49,7 +50,7 @@ public class UI : MonoBehaviour {
     #region UI Buttons
     public void Button_OpenMenue()
     {
-
+        Debug.Log("The MenueButton was clicked.");
 
         if (RadialMenue.gameObject.activeInHierarchy == false)
         {
@@ -57,6 +58,11 @@ public class UI : MonoBehaviour {
         }
         else
         {
+            if (tutorialinventory)
+            {
+                Tutorial.step4Done = true; 
+            }
+
             RadialMenue.gameObject.SetActive(false);
             MainMenue.gameObject.SetActive(false);
             Inventory.gameObject.SetActive(false);
@@ -136,15 +142,14 @@ public class UI : MonoBehaviour {
     {
         Debug.Log("The Closeup was closed.");
 
-        if (MachineWindow.gameObject.activeInHierarchy || BunsenBrennerWindow.gameObject.activeInHierarchy)
+        if (CameraFollow.instance.closeupInteraction == true)
         {
             CloseupBack.gameObject.SetActive(false);
             MachineWindow.gameObject.SetActive(false);
             BunsenBrennerWindow.gameObject.SetActive(false);
             CameraFollow.instance.closeupInteraction = false;
-            //CameraFollow.instance.playerToFollow.GetComponent<SkinnedMeshRenderer>().enabled = true;
-            CameraFollow.instance.player.SetActive(true);
-			//CameraFollow.instance.playerToFollow.Find("clothes_green").GetComponent<MeshRenderer>().enabled = true;
+            CameraFollow.instance.playerToFollow.GetComponent<SkinnedMeshRenderer>().enabled = true;
+			CameraFollow.instance.playerToFollow.Find("clothes_green").GetComponent<MeshRenderer>().enabled = true;
             Book.instance.GetComponent<BoxCollider>().enabled = false;
         }
     }
