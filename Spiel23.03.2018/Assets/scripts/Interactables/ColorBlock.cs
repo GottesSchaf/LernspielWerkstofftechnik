@@ -12,11 +12,8 @@ public class ColorBlock : Collectible
     public Slot Slot5;
     public Slot Slot6;
 
-
     public override void Collect()
     {
-        Debug.Log("Try to collect.");
-
         //check every item slot if it is empty
         if(Slot1.transform.childCount == 0)
         {
