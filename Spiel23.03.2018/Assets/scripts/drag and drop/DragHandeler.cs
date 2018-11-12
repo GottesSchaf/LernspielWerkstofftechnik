@@ -169,18 +169,19 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             }
         }
 
+        
         itemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
-        if (transform.parent != startParent)
+        if (startParent != transform.parent && !transform.parent.CompareTag("Canvas"))
         {
+            Debug.Log("Isch geh da rein, LAN!");
             transform.position = startPosition;
             transform.SetParent(transform.parent);
-            //if (!Inventory.activeSelf)
-            //{
-            //    transform.SetParent(startParent);
-            //}
         }
-
+        else if (!Inventory.activeSelf)
+        {
+            transform.SetParent(startParent);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

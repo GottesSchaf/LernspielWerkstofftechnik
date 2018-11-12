@@ -18,7 +18,6 @@ public class MouseInput : MonoBehaviour
 
     void Update()
     {
-
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
