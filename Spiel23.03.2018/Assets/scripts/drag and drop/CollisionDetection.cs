@@ -37,14 +37,19 @@ public class CollisionDetection : MonoBehaviour {
             isCollidingBlue = true;
         }
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         Debug.Log("OnTriggerExit2D");
-        if (collision.CompareTag("Inventory"))
+        if (collision.CompareTag("Inventory") && !collision.CompareTag("redCube") && DragHandeler.itemBeingDragged.name.Contains("blue"))
         {
             DragHandeler.Inventory.SetActive(false);
             DragHandeler.itemBeingDragged.transform.SetParent(UICanvas.transform);
         }
+        if (collision.CompareTag("Inventory") && !collision.CompareTag("blueCube") && DragHandeler.itemBeingDragged.name.Contains("red"))
+        {
+            DragHandeler.Inventory.SetActive(false);
+            DragHandeler.itemBeingDragged.transform.SetParent(UICanvas.transform);
+        }
+        Debug.Log("Ich bin zurückgesetzt.");
     }
 }
