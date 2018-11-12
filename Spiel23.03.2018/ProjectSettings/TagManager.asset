@@ -10,8 +10,6 @@ TagManager:
   - Inventory
   - blueCube
   - NoClip
-  - Target
-  - Canvas
   layers:
   - Default
   - TransparentFX

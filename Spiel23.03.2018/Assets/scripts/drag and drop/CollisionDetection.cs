@@ -12,17 +12,6 @@ public class CollisionDetection : MonoBehaviour {
         UICanvas = GameObject.Find("Canvas");
     }
 
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if (!collision.CompareTag("Inventory"))
-    //    {
-    //        DragHandeler.Inventory.SetActive(false);
-    //    }
-    //    else
-    //    {
-    //        DragHandeler.Inventory.SetActive(true);
-    //    }
-    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -37,7 +26,6 @@ public class CollisionDetection : MonoBehaviour {
             isCollidingBlue = true;
         }
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         Debug.Log("OnTriggerExit2D");
