@@ -9,7 +9,7 @@ TagManager:
   - redCube
   - Inventory
   - blueCube
-  - Target
+  - NoClip
   layers:
   - Default
   - TransparentFX

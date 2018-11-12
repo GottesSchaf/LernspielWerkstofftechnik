@@ -42,7 +42,7 @@ public class Tutorial : MonoBehaviour
 
     private GameObject toDelete;
 
-    private int slot = -1;
+    public int slot = -1;
 
     private bool step2Done;
     private bool step3Done;
@@ -92,9 +92,10 @@ public class Tutorial : MonoBehaviour
         }
 
         if(step2Done && !step3Done) // Pick Up Screen
-        { 
+        {
+            slot = -1;
             foreach(GameObject x in invSlots)
-            {
+            { 
                 slot++;
                 if(x.GetComponentInChildren<DragHandeler>())
                 {
@@ -113,12 +114,11 @@ public class Tutorial : MonoBehaviour
             invOpen.SetActive(true);               // Icon für Inventar taucht auf
             foreach (GameObject x in invSlots)
             {
-                
                 if (x.GetComponentInChildren<DragHandeler>())
                 {
                     if(x == invSlots[slot])
                     {
-                        UI.tutorialinventory = true; 
+                     
                     }
                     else
                     {
@@ -131,35 +131,33 @@ public class Tutorial : MonoBehaviour
                 }
             }
         }
-        
-        if(step4Done && !step5Done)
+        if (step2Done && step3Done && step4Done && !step5Done)
         {
             spriteToChange.sprite = tutSprites[5];
-            if (pauseScreen.activeSelf)
+            if (pauseScreen.activeSelf)   
             {
                 spriteToChange.sprite = tutSprites[6];
+                step5Done = true;
+                Screenshot.SetActive(true);                
+                Speed1.SetActive(true);
+                Speed2.SetActive(true);
+                Helpbtn.SetActive(true);
             }
-            step5Done = true;
-        }
-
-        if (step5Done && !step6Done)
-        {
-            spriteToChange.sprite = tutSprites[6];
-
-            Helpbtn.SetActive(true);
-            Screenshot.SetActive(true);
-            invOpen.SetActive(true);
-            Speed1.SetActive(true);
-            Speed2.SetActive(true);
-
-            if (Helpbtn.activeSelf)
-            {
-                spriteToChange.sprite = tutSprites[7];
-            }
-            step6Done = true; 
-        }
-
+        }      
         
+        if(step2Done && step3Done && step4Done && step5Done && step6Done && !step7Done)
+        {
+            spriteToChange.sprite = tutSprites[7];
+            door.SetActive(true);
+            Questwindow.SetActive(true);
+            step7Done = true;
+        }
+
+    }
+
+    public void Help()
+    {
+        step6Done = true;
     }
 
     // Change Sprite
@@ -190,9 +188,12 @@ public class Tutorial : MonoBehaviour
         playerCam.enabled = true;
         Buttons[1].SetActive(false);
         Buttons[2].SetActive(false);
-        door.SetActive(true);
         agent.Warp(destination); // teleports player into hallway
         Questwindow.SetActive(true);
+    }
+
+    public void Understood()
+    {
         Helpbtn.SetActive(true);
         Screenshot.SetActive(true);
         invOpen.SetActive(true);

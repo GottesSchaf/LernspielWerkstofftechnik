@@ -9,6 +9,6 @@ public class BunsenBrennerOpen : Interactive {
     {
         Debug.Log("Interagiere mit Bunsen Brenner.");
         BBWindow.gameObject.SetActive(true);
-        CameraFollow.instance.closeupInteraction = true;
+        //CameraFollow.instance.closeupInteraction = true;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.EventSystems;
 
 public class Slot : MonoBehaviour, IDropHandler
@@ -23,9 +24,7 @@ public class Slot : MonoBehaviour, IDropHandler
         {
             DragHandeler.itemBeingDragged.transform.SetParent(transform);
             //ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
-            Debug.Log("Innerhalb: " + transform.childCount);
         }
-        Debug.Log("Außerhalb: " + transform.childCount);
     }
     #endregion
 }

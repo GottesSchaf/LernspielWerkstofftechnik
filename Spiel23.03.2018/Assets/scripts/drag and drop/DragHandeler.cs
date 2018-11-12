@@ -26,11 +26,10 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnBeginDrag(PointerEventData eventData)
     {
 		itemBeingDragged = gameObject;
-		Debug.Log("itemBeingDragged: " + gameObject.name);
+
 		startPosition = transform.position;
-		Debug.Log("startParent " + transform.parent.name);
 		startParent = transform.parent;
-		//GetComponent<CanvasGroup>().blocksRaycasts = false;
+		GetComponent<CanvasGroup>().blocksRaycasts = false;
 
 		RadialMenue = GameObject.Find("RadialMenue");
         cam = GameObject.Find("Main Camera");
@@ -39,15 +38,15 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 		Machine = GameObject.Find("Machine");
 		//MachineSlot = 
 
-		if(itemBeingDragged.name.Contains("placeholder"))
-		{
-			player = GameObject.Find("player");
-			mesh = player.transform.Find("clothes_green").gameObject;
-			mesh.SetActive(false);
-			Destroy (itemBeingDragged);
-			GameObject temp = Instantiate(mesh.GetComponent<Clothes>().inventoryobject, new Vector3(0, 0, 0), Quaternion.identity);
-			temp.transform.parent = startParent.transform;
-		}
+		//if(itemBeingDragged.name.Contains("placeholder"))
+		//{
+		//	player = GameObject.Find("player");
+		//	mesh = player.transform.Find("clothes_green").gameObject;
+		//	mesh.SetActive(false);
+		//	Destroy (itemBeingDragged);
+		//	GameObject temp = Instantiate(mesh.GetComponent<Clothes>().inventoryobject, new Vector3(0, 0, 0), Quaternion.identity);
+		//	temp.transform.parent = startParent.transform;
+		//}
     }
 
     #endregion
@@ -57,7 +56,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition; //eventData.position
-        itemBeingDragged.transform.SetParent(UICanvas.transform);
+        //itemBeingDragged.transform.SetParent(UICanvas.transform);
 
         //updateRay = Camera.main.ScreenPointToRay(Input.mousePosition);
     }
@@ -68,11 +67,6 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (!Inventory.activeSelf)
-        {
-            transform.SetParent(startParent);
-        }
-        
         //raycast
         RaycastHit hit = new RaycastHit();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -82,11 +76,11 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             Debug.Log("Raycast hitto: " + hit.transform.name);
             #region Gussformen
             //-----------------------------------Pleuel Form-------------------------------------------
-            if(itemBeingDragged.name.StartsWith("60%") && hit.transform.name == "pleuelForm")
+            if (itemBeingDragged.name.StartsWith("60%") && hit.transform.name == "pleuelForm")
             {
                 Debug.Log("Befuelle Form mit Legierung // richtige Form // richtige Legierung");
             }
-            else if(itemBeingDragged.name.StartsWith("40%") && hit.transform.name == "pleuelForm")
+            else if (itemBeingDragged.name.StartsWith("40%") && hit.transform.name == "pleuelForm")
             {
                 Debug.Log("Befuelle Form mit Legierung // richtige Form // falsche Legierung");
             }
@@ -151,34 +145,44 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 Debug.Log("Dragged on Machine");
                 GameObject temp = Instantiate(itemBeingDragged, new Vector3(0, 0, 0), Quaternion.identity);
                 //temp.transform.parent = MachineSlot.transform;
-				Machine.GetComponent<Machine>().Interact();
+                Machine.GetComponent<Machine>().Interact();
             }
-            else if (hit.transform.CompareTag("Player") && itemBeingDragged.name.Contains("clothes"))
+            else if (hit.transform.CompareTag("Player") && itemBeingDragged.name.Contains("Labcoat"))
             {
-                Debug.Log("You are now wearing a " + itemBeingDragged.name + ".");
-                if (itemBeingDragged.name.Contains("green"))
+                if (itemBeingDragged.name.Contains("Labcoat"))
                 {
                     player = GameObject.Find("Player");
-                    mesh = player.transform.Find("clothes_green").gameObject;
+                    mesh = player.transform.Find("LabCoat").gameObject;
                     mesh.SetActive(true);
-					Destroy (itemBeingDragged);
-					GameObject temp = Instantiate(mesh.GetComponent<Clothes>().placeholder, new Vector3(0, 0, 0), Quaternion.identity);
-					temp.transform.parent = startParent.transform;
+                    Destroy(itemBeingDragged);
+                }
+            }
+            else if (hit.transform.CompareTag("Player") && itemBeingDragged.name.Contains("Glove"))
+            {
+                if (itemBeingDragged.name.Contains("Glove"))
+                {
+                    player = GameObject.Find("Player");
+                    mesh = player.transform.Find("Glove_Left").gameObject;
+                    mesh.SetActive(true);
+                    Destroy(itemBeingDragged);
                 }
             }
         }
-        
-
-        //InventoryCollision.SetActive(true);
 
         itemBeingDragged = null;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
+        if (!Inventory.activeSelf)
+        {
+            transform.SetParent(startParent);
+        }
         if (transform.parent != startParent)
         {
             transform.position = startPosition;
-            //transform.SetParent(startParent);
+            transform.SetParent(transform.parent);
+            
         }
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)

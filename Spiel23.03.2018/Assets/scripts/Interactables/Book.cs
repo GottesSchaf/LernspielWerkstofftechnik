@@ -18,11 +18,11 @@ public class Book : Interactive
             ThisBook.GetComponent<BoxCollider>().enabled = true;
         }
     }
-      
+
     public override void Interact()
-        {
-            Debug.Log("You opend the URL.");
+    {
+        Debug.Log("You opend the URL.");
         //Application.OpenURL(URL);
-        Application.ExternalEval("window.open('"+ URL + "', 'Buch');");
-        }
+        Application.ExternalEval("window.open('" + URL + "', 'Buch');");
+    }
 }
