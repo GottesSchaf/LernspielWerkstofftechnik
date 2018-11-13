@@ -149,7 +149,7 @@ public class UI : MonoBehaviour {
             BunsenBrennerWindow.gameObject.SetActive(false);
             CameraFollow.instance.closeupInteraction = false;
             CameraFollow.instance.playerToFollow.GetComponent<SkinnedMeshRenderer>().enabled = true;
-			CameraFollow.instance.playerToFollow.Find("clothes_green").GetComponent<MeshRenderer>().enabled = true;
+			//CameraFollow.instance.playerToFollow.Find("clothes_green").GetComponent<MeshRenderer>().enabled = true;
             Book.instance.GetComponent<BoxCollider>().enabled = false;
         }
     }

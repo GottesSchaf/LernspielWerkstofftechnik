@@ -14,10 +14,10 @@ public class DatenBlatt : Interactive
         instance = this.ThisPaper;
         boop = CameraFollow.instance;
 
-        if (CameraFollow.instance.closeupInteraction == true)
-        {
-            ThisPaper.GetComponent<BoxCollider>().enabled = true;
-        }
+        //if (CameraFollow.instance.closeupInteraction == true)
+        //{
+        //    ThisPaper.GetComponent<BoxCollider>().enabled = true;
+        //}
     }
     //Wenn der Close Button gedrückt wird, wird das Datenblatt "geschlossen"
     public void CloseWindow()

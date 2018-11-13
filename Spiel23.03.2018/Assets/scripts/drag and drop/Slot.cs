@@ -22,9 +22,11 @@ public class Slot : MonoBehaviour, IDropHandler
     {
         if (!item)
         {
+            Debug.Log("Hier ist noch kein Item im Slot " + this.gameObject.name);
             DragHandeler.itemBeingDragged.transform.SetParent(transform);
             //ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
         }
+        Debug.Log("Hier ist schon ein Item im Slot " + this.gameObject.name);
     }
     #endregion
 }

@@ -15,10 +15,10 @@ public class FormWindow : Interactive
         instance = this.ThisForm;
         boop = CameraFollow.instance;
 
-        if (CameraFollow.instance.closeupInteraction == true)
-        {
-            ThisForm.GetComponent<BoxCollider>().enabled = true;
-        }
+        //if (CameraFollow.instance.closeupInteraction == true)
+        //{
+        //    ThisForm.GetComponent<BoxCollider>().enabled = true;
+        //}
     }
     //Wenn der Close Button gedrückt wird, wird die Form "geschlossen"
     public void CloseWindow()

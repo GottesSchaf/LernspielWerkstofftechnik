@@ -21,13 +21,13 @@ public class BunsenBrenner : MonoBehaviour {
 
     void Start () {
         //Mische die Bunsen Brenner, sodass die Studenten nicht schummeln können
-        //for (int i = 0; i < bunsenBrennerObjekt.Length; i++)
-        //{
-        //    int rnd = Random.Range(0, bunsenBrennerObjekt.Length);
-        //    tempGO = bunsenBrennerObjekt[rnd];
-        //    bunsenBrennerObjekt[rnd] = bunsenBrennerObjekt[i];
-        //    bunsenBrennerObjekt[i] = tempGO;
-        //}
+        for (int i = 0; i < bunsenBrennerObjekt.Length; i++)
+        {
+            int rnd = Random.Range(0, bunsenBrennerObjekt.Length);
+            tempGO = bunsenBrennerObjekt[rnd];
+            bunsenBrennerObjekt[rnd] = bunsenBrennerObjekt[i];
+            bunsenBrennerObjekt[i] = tempGO;
+        }
         //for (int i = 0; i < bunsenBrennerObjekt.Length; i++)
         //{
         //    if (slot1.transform.childCount == 0)
@@ -51,10 +51,10 @@ public class BunsenBrenner : MonoBehaviour {
         //        temp.transform.SetParent(slot4.transform);
         //    }
         //}
-        
+
 
         //StartCoroutine(BunsenBrennerRechnung());
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()
