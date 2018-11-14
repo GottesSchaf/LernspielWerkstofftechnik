@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 225621007634715490}
   m_Layer: 0
   m_Name: Tiegel_1
-  m_TagString: Untagged
+  m_TagString: 20SiCold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,7 +70,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8, y: 19.2}
+    oldSize: {x: 10.8, y: 10.8}
     newSize: {x: 10.8, y: 19.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

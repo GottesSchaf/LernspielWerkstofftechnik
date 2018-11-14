@@ -10,6 +10,17 @@ TagManager:
   - Inventory
   - blueCube
   - NoClip
+  - Canvas
+  - Target
+  - 20SiHot
+  - 40SiHot
+  - 60SiHot
+  - 80SiHot
+  - 20SiCold
+  - 40SiCold
+  - 60SiCold
+  - 80SiCold
+  - InvSlot
   layers:
   - Default
   - TransparentFX

@@ -31,8 +31,11 @@ public class CollisionDetection : MonoBehaviour {
         Debug.Log("OnTriggerExit2D");
         if (collision.CompareTag("Inventory"))
         {
-            DragHandeler.Inventory.SetActive(false);
-            DragHandeler.itemBeingDragged.transform.SetParent(UICanvas.transform);
+            if (DragHandeler.draggingItem)
+            {
+                DragHandeler.Inventory.SetActive(false);
+                DragHandeler.itemBeingDragged.transform.SetParent(UICanvas.transform);
+            }
         }
     }
 }
