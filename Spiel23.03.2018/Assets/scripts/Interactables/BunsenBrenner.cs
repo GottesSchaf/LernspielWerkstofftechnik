@@ -9,15 +9,16 @@ public class BunsenBrenner : MonoBehaviour {
     public GameObject[] gasSchalter;
     public Transform[] bunsenBrennerTransf;
     GameObject tempGO;
-    public int[] bBRate;                        //Array zum abspeichern der Rate in °C der jeweiligen Bunsen Brenner
+    public float[] bBZieltemp;                        //Array zum abspeichern der Rate in °C der jeweiligen Bunsen Brenner
     public int[] bBZeit;                        //Array zum abspeichern der Zeit in sekunden der jeweiligen Bunsen Brenner
-    float[] istTemp = new float[4];
+    public float[] istTemp = new float[4];
     public static Transform instance;
     public CameraFollow followCam;
     public static bool hauptGasSchalter = false, platzGasSchalter = false, bBGasSchalter = false, waiting = false; //Zur Überprüfung ob die jeweiligen Gas Schalter bereits betätigt wurden
     public Text ausgabeText;
-    public Slot slot1, slot2, slot3, slot4;
+    public Transform slot1, slot2, slot3, slot4;
     [SerializeField] GameObject flamme1, flamme2, flamme3, flamme4;
+    [SerializeField] GameObject tiegelZahnrad;
     // Use this for initialization
 
     void Start () {
@@ -126,38 +127,42 @@ public class BunsenBrenner : MonoBehaviour {
             yield return new WaitForSeconds(1);
             #region Bunsen Brenner Abfrage
             //20% Si / 80%Ge || Wenn der Tiegel auf einem Bunsen Brenner liegt und die jeweilige Flamme an ist, erhitze den Tiegel
-            if (flamme1.activeInHierarchy && slot1.transform.gameObject.GetComponentInChildren<Slot>().CompareTag("20SiCold") || flamme2.activeInHierarchy && slot2.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("20SiCold") || flamme3.activeInHierarchy && slot3.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("20SiCold") || flamme4.activeInHierarchy && slot4.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("20SiCold"))
+            if (flamme1.activeInHierarchy && slot1.transform.GetChild(0).CompareTag("20SiCold") || flamme2.activeInHierarchy && slot2.transform.GetChild(0).CompareTag("20SiCold") || flamme3.activeInHierarchy && slot3.transform.GetChild(0).CompareTag("20SiCold") || flamme4.activeInHierarchy && slot4.transform.GetChild(0).CompareTag("20SiCold"))
             {
                 Debug.Log("Tiegel 1 wird erhitzt");
                 if (istTemp[0] <= 1250)
                 {
-                    istTemp[0] += bBRate[0] / bBZeit[0];
+                    istTemp[0] += bBZieltemp[0] / bBZeit[0];
+                    Debug.Log("IstTemp[0]: " + istTemp[0]);
                 }
                 else if (istTemp[0] <= 1400)
                 {
-                    istTemp[0] += bBRate[1] / bBZeit[1];
+                    istTemp[0] += (bBZieltemp[1] - bBZieltemp[0]) / bBZeit[1];
+                    Debug.Log("IstTemp[0]: " + istTemp[0]);
                 }
                 else if (istTemp[0] < 1550)
                 {
-                    istTemp[0] += bBRate[2] / bBZeit[2];
+                    istTemp[0] += (bBZieltemp[2] - bBZieltemp[1]) / bBZeit[2];
+                    Debug.Log("IstTemp[0]: " + istTemp[0]);
                 }
                 else if(istTemp[0] >= 1550)
                 {
-                    if (slot1.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("20SiCold"))
+                    if (slot1.transform.GetChild(0).CompareTag("20SiCold"))
                     {
-                        slot1.transform.gameObject.GetComponentInChildren<GameObject>().tag = "20SiHot";
+                        slot1.transform.GetChild(0).tag = "20SiHot";
+                        Debug.Log("IstTemp[0]: " + istTemp[0]);
                     }
-                    else if (slot2.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("20SiCold"))
+                    else if (slot2.transform.GetChild(0).CompareTag("20SiCold"))
                     {
-                        slot2.transform.gameObject.GetComponentInChildren<GameObject>().tag = "20SiHot";
+                        slot2.transform.GetChild(0).tag = "20SiHot";
                     }
-                    else if (slot3.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("20SiCold"))
+                    else if (slot3.transform.GetChild(0).CompareTag("20SiCold"))
                     {
-                        slot3.transform.gameObject.GetComponentInChildren<GameObject>().tag = "20SiHot";
+                        slot3.transform.GetChild(0).tag = "20SiHot";
                     }
-                    else if (slot4.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("20SiCold"))
+                    else if (slot4.transform.GetChild(0).CompareTag("20SiCold"))
                     {
-                        slot4.transform.gameObject.GetComponentInChildren<GameObject>().tag = "20SiHot";
+                        slot4.transform.GetChild(0).tag = "20SiHot";
                     }
                 }
             }
@@ -167,49 +172,49 @@ public class BunsenBrenner : MonoBehaviour {
                 Debug.Log("Tiegel 1 wird abgekühlt");
                 if(istTemp[0] > 25 && istTemp[0] <= 1250)
                 {
-                    istTemp[0] -= bBRate[0] / bBZeit[0];
+                    istTemp[0] -= bBZieltemp[0] / bBZeit[0];
                 }
                 else if (istTemp[0] > 1250 && istTemp[0] <= 1400)
                 {
-                    istTemp[0] -= bBRate[1] / bBZeit[1];
+                    istTemp[0] -= (bBZieltemp[1] - bBZieltemp[0]) / bBZeit[1];
                 }
                 else if (istTemp[0] > 1400)
                 {
-                    istTemp[0] -= bBRate[2] / bBZeit[2];
+                    istTemp[0] -= (bBZieltemp[2] - bBZieltemp[1]) / bBZeit[2];
                 }
             }
             //40% Si / 60% Ge
-            if (flamme1.activeInHierarchy && slot1.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("40SiCold") || flamme2.activeInHierarchy && slot2.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("40SiCold") || flamme3.activeInHierarchy && slot3.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("40SiCold") || flamme4.activeInHierarchy && slot4.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("40SiCold"))
+            if (flamme1.activeInHierarchy && slot1.transform.GetChild(0).CompareTag("40SiCold") || flamme2.activeInHierarchy && slot2.transform.GetChild(0).CompareTag("40SiCold") || flamme3.activeInHierarchy && slot3.transform.GetChild(0).CompareTag("40SiCold") || flamme4.activeInHierarchy && slot4.transform.GetChild(0).CompareTag("40SiCold"))
             {
                 if (istTemp[1] <= 1100)
                 {
-                    istTemp[1] += bBRate[3] / bBZeit[3];
+                    istTemp[1] += bBZieltemp[3] / bBZeit[3];
                 }
                 else if (istTemp[1] <= 1350)
                 {
-                    istTemp[1] += bBRate[4] / bBZeit[4];
+                    istTemp[1] += (bBZieltemp[4] - bBZieltemp[3]) / bBZeit[4];
                 }
                 else if (istTemp[1] < 1550)
                 {
-                    istTemp[1] += bBRate[5] / bBZeit[5];
+                    istTemp[1] += (bBZieltemp[5] - bBZieltemp[4]) / bBZeit[5];
                 }
                 else if (istTemp[1] >= 1550)
                 {
-                    if (slot1.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("40SiCold"))
+                    if (slot1.transform.GetChild(0).CompareTag("40SiCold"))
                     {
-                        slot1.transform.gameObject.GetComponentInChildren<GameObject>().tag = "40SiHot";
+                        slot1.transform.GetChild(0).tag = "40SiHot";
                     }
-                    else if (slot2.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("40SiCold"))
+                    else if (slot2.transform.GetChild(0).CompareTag("40SiCold"))
                     {
-                        slot2.transform.gameObject.GetComponentInChildren<GameObject>().tag = "40SiHot";
+                        slot2.transform.GetChild(0).tag = "40SiHot";
                     }
-                    else if (slot3.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("40SiCold"))
+                    else if (slot3.transform.GetChild(0).CompareTag("40SiCold"))
                     {
-                        slot3.transform.gameObject.GetComponentInChildren<GameObject>().tag = "40SiHot";
+                        slot3.transform.GetChild(0).tag = "40SiHot";
                     }
-                    else if (slot4.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("40SiCold"))
+                    else if (slot4.transform.GetChild(0).CompareTag("40SiCold"))
                     {
-                        slot4.transform.gameObject.GetComponentInChildren<GameObject>().tag = "40SiHot";
+                        slot4.transform.GetChild(0).tag = "40SiHot";
                     }
                 }
             }
@@ -217,49 +222,49 @@ public class BunsenBrenner : MonoBehaviour {
             {
                 if (istTemp[1] > 25 && istTemp[1] <= 1250)
                 {
-                    istTemp[1] -= bBRate[3] / bBZeit[3];
+                    istTemp[1] -= bBZieltemp[3] / bBZeit[3];
                 }
                 else if (istTemp[1] > 1250 && istTemp[1] <= 1400)
                 {
-                    istTemp[1] -= bBRate[4] / bBZeit[4];
+                    istTemp[1] -= (bBZieltemp[4] - bBZieltemp[3]) / bBZeit[4];
                 }
                 else if (istTemp[1] > 1400)
                 {
-                    istTemp[1] -= bBRate[5] / bBZeit[5];
+                    istTemp[1] -= (bBZieltemp[5] - bBZieltemp[4]) / bBZeit[5];
                 }
             }
             //60% Si / 40% Ge
-            if (flamme1.activeInHierarchy && slot1.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("60SiCold") || flamme2.activeInHierarchy && slot2.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("60SiCold") || flamme3.activeInHierarchy && slot3.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("60SiCold") || flamme4.activeInHierarchy && slot4.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("60SiCold"))
+            if (flamme1.activeInHierarchy && slot1.transform.GetChild(0).CompareTag("60SiCold") || flamme2.activeInHierarchy && slot2.transform.GetChild(0).CompareTag("60SiCold") || flamme3.activeInHierarchy && slot3.transform.GetChild(0).CompareTag("60SiCold") || flamme4.activeInHierarchy && slot4.transform.GetChild(0).CompareTag("60SiCold"))
             {
                 if (istTemp[2] <= 1125)
                 {
-                    istTemp[2] += bBRate[6] / bBZeit[6];
+                    istTemp[2] += bBZieltemp[6] / bBZeit[6];
                 }
                 else if (istTemp[2] <= 1250)
                 {
-                    istTemp[2] += bBRate[7] / bBZeit[7];
+                    istTemp[2] += (bBZieltemp[7] - bBZieltemp[6]) / bBZeit[7];
                 }
                 else if (istTemp[2] < 1550)
                 {
-                    istTemp[2] += bBRate[8] / bBZeit[8];
+                    istTemp[2] += (bBZieltemp[8] - bBZieltemp[7]) / bBZeit[8];
                 }
                 else if (istTemp[2] >= 1550)
                 {
-                    if (slot1.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("60SiCold"))
+                    if (slot1.transform.GetChild(0).CompareTag("60SiCold"))
                     {
-                        slot1.transform.gameObject.GetComponentInChildren<GameObject>().tag = "60SiHot";
+                        slot1.transform.GetChild(0).tag = "60SiHot";
                     }
-                    else if (slot2.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("60SiCold"))
+                    else if (slot2.transform.GetChild(0).CompareTag("60SiCold"))
                     {
-                        slot2.transform.gameObject.GetComponentInChildren<GameObject>().tag = "60SiHot";
+                        slot2.transform.GetChild(0).tag = "60SiHot";
                     }
-                    else if (slot3.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("60SiCold"))
+                    else if (slot3.transform.GetChild(0).CompareTag("60SiCold"))
                     {
-                        slot3.transform.gameObject.GetComponentInChildren<GameObject>().tag = "60SiHot";
+                        slot3.transform.GetChild(0).tag = "60SiHot";
                     }
-                    else if (slot4.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("60SiCold"))
+                    else if (slot4.transform.GetChild(0).CompareTag("60SiCold"))
                     {
-                        slot4.transform.gameObject.GetComponentInChildren<GameObject>().tag = "60SiHot";
+                        slot4.transform.GetChild(0).tag = "60SiHot";
                     }
                 }
             }
@@ -267,49 +272,49 @@ public class BunsenBrenner : MonoBehaviour {
             {
                 if (istTemp[2] > 25 && istTemp[2] <= 1250)
                 {
-                    istTemp[2] -= bBRate[6] / bBZeit[6];
+                    istTemp[2] -= bBZieltemp[6] / bBZeit[6];
                 }
                 else if (istTemp[2] > 1250 && istTemp[2] <= 1400)
                 {
-                    istTemp[2] -= bBRate[7] / bBZeit[7];
+                    istTemp[2] -= (bBZieltemp[7] - bBZieltemp[6]) / bBZeit[7];
                 }
                 else if (istTemp[2] > 1400)
                 {
-                    istTemp[2] -= bBRate[8] / bBZeit[8];
+                    istTemp[2] -= (bBZieltemp[8] - bBZieltemp[7]) / bBZeit[8];
                 }
             }
             //80% Si / 20% Ge
-            if (flamme1.activeInHierarchy && slot1.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("80SiCold") || flamme2.activeInHierarchy && slot2.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("80SiCold") || flamme3.activeInHierarchy && slot3.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("80SiCold") || flamme4.activeInHierarchy && slot4.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("80SiCold"))
+            if (flamme1.activeInHierarchy && slot1.transform.GetChild(0).CompareTag("80SiCold") || flamme2.activeInHierarchy && slot2.transform.GetChild(0).CompareTag("80SiCold") || flamme3.activeInHierarchy && slot3.transform.GetChild(0).CompareTag("80SiCold") || flamme4.activeInHierarchy && slot4.transform.GetChild(0).CompareTag("80SiCold"))
             {
                 if (istTemp[3] <= 950)
                 {
-                    istTemp[3] += bBRate[9] / bBZeit[9];
+                    istTemp[3] += bBZieltemp[9] / bBZeit[9];
                 }
                 else if (istTemp[3] <= 1100)
                 {
-                    istTemp[3] += bBRate[10] / bBZeit[10];
+                    istTemp[3] += (bBZieltemp[10] - bBZieltemp[9]) / bBZeit[10];
                 }
                 else if (istTemp[3] < 1550)
                 {
-                    istTemp[3] += bBRate[11] / bBZeit[11];
+                    istTemp[3] += (bBZieltemp[11] - bBZieltemp[10]) / bBZeit[11];
                 }
                 else if (istTemp[3] >= 1550)
                 {
-                    if (slot1.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("80SiCold"))
+                    if (slot1.transform.GetChild(0).CompareTag("80SiCold"))
                     {
-                        slot1.transform.gameObject.GetComponentInChildren<GameObject>().tag = "80SiHot";
+                        slot1.transform.GetChild(0).tag = "80SiHot";
                     }
-                    else if (slot2.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("80SiCold"))
+                    else if (slot2.transform.GetChild(0).CompareTag("80SiCold"))
                     {
-                        slot2.transform.gameObject.GetComponentInChildren<GameObject>().tag = "80SiHot";
+                        slot2.transform.GetChild(0).tag = "80SiHot";
                     }
-                    else if (slot3.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("80SiCold"))
+                    else if (slot3.transform.GetChild(0).CompareTag("80SiCold"))
                     {
-                        slot3.transform.gameObject.GetComponentInChildren<GameObject>().tag = "80SiHot";
+                        slot3.transform.GetChild(0).tag = "80SiHot";
                     }
-                    else if (slot4.gameObject.GetComponentInChildren<Slot>().gameObject.CompareTag("80SiCold"))
+                    else if (slot4.transform.GetChild(0).CompareTag("80SiCold"))
                     {
-                        slot4.transform.gameObject.GetComponentInChildren<GameObject>().tag = "80SiHot";
+                        slot4.transform.GetChild(0).tag = "80SiHot";
                     }
                 }
             }
@@ -317,15 +322,65 @@ public class BunsenBrenner : MonoBehaviour {
             {
                 if (istTemp[3] > 25 && istTemp[3] <= 1250)
                 {
-                    istTemp[3] -= bBRate[9] / bBZeit[9];
+                    istTemp[3] -= bBZieltemp[9] / bBZeit[9];
                 }
                 else if (istTemp[3] > 1250 && istTemp[3] <= 1400)
                 {
-                    istTemp[3] -= bBRate[10] / bBZeit[10];
+                    istTemp[3] -= (bBZieltemp[10] - bBZieltemp[9]) / bBZeit[10];
                 }
                 else if (istTemp[3] > 1400)
                 {
-                    istTemp[3] -= bBRate[11] / bBZeit[11];
+                    istTemp[3] -= (bBZieltemp[11] - bBZieltemp[10]) / bBZeit[11];
+                }
+            }
+            //Eingeschmolzenes Zahnrad
+            if (flamme1.activeInHierarchy && slot1.transform.GetChild(0).CompareTag("ZahnradKaputt") || flamme2.activeInHierarchy && slot2.transform.GetChild(0).CompareTag("ZahnradKaputt") || flamme3.activeInHierarchy && slot3.transform.GetChild(0).CompareTag("ZahnradKaputt") || flamme4.activeInHierarchy && slot4.transform.GetChild(0).CompareTag("ZahnradKaputt"))
+            {
+                Debug.Log("Zahnrad wird erhitzt");
+                Debug.Log("istTemp[1] gerade: " + istTemp[1]);
+                if (istTemp[1] <= 1100)
+                {
+                    istTemp[1] += bBZieltemp[3] / bBZeit[3];
+                }
+                else if (istTemp[1] <= 1350)
+                {
+                    istTemp[1] += (bBZieltemp[4] - bBZieltemp[3]) / bBZeit[4];
+                }
+                else if (istTemp[1] < 1550)
+                {
+                    istTemp[1] += (bBZieltemp[5] - bBZieltemp[4]) / bBZeit[5];
+                }
+                else if (istTemp[1] >= 1550)
+                {
+                    if (slot1.transform.GetChild(0).CompareTag("ZahnradKaputt"))
+                    {
+                        Destroy(slot1.transform.GetChild(0));
+                        GameObject newTiegel = Instantiate(tiegelZahnrad);
+                        newTiegel.transform.SetParent(slot1);
+                        istTemp[1] = 25;
+
+                    }
+                    else if (slot2.transform.GetChild(0).CompareTag("ZahnradKaputt"))
+                    {
+                        Destroy(slot2.transform.GetChild(0));
+                        GameObject newTiegel = Instantiate(tiegelZahnrad);
+                        newTiegel.transform.SetParent(slot2);
+                        istTemp[1] = 25;
+                    }
+                    else if (slot3.transform.GetChild(0).CompareTag("ZahnradKaputt"))
+                    {
+                        Destroy(slot3.transform.GetChild(0));
+                        GameObject newTiegel = Instantiate(tiegelZahnrad);
+                        newTiegel.transform.SetParent(slot3);
+                        istTemp[1] = 25;
+                    }
+                    else if (slot4.transform.GetChild(0).CompareTag("ZahnradKaputt"))
+                    {
+                        Destroy(slot4.transform.GetChild(0));
+                        GameObject newTiegel = Instantiate(tiegelZahnrad);
+                        newTiegel.transform.SetParent(slot4);
+                        istTemp[1] = 25;
+                    }
                 }
             }
             #endregion

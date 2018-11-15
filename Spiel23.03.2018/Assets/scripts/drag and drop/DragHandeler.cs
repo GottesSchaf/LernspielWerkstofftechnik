@@ -75,59 +75,6 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
             Debug.Log("Raycast hitto: " + hit.transform.name);
-            #region Gussformen
-            ////-----------------------------------Pleuel Form-------------------------------------------
-            //if (itemBeingDragged.name.StartsWith("60%") && hit.transform.name == "pleuelForm")
-            //{
-            //    Debug.Log("Befuelle Form mit Legierung // richtige Form // richtige Legierung");
-            //}
-            //else if (itemBeingDragged.name.StartsWith("40%") && hit.transform.name == "pleuelForm")
-            //{
-            //    Debug.Log("Befuelle Form mit Legierung // richtige Form // falsche Legierung");
-            //}
-            //else if (itemBeingDragged.name.StartsWith("80%") && hit.transform.name == "pleuelForm")
-            //{
-            //    Debug.Log("Befuelle Form mit Legierung // richtige Form // falsche Legierung");
-            //}
-            //else if (itemBeingDragged.name.StartsWith("20%") && hit.transform.name == "pleuelForm")
-            //{
-            //    Debug.Log("Befuelle Form mit Legierung // richtige Form // falsche Legierung");
-            //}
-            ////-----------------------------------Zahnrad Form-----------------------------------------
-            //else if (itemBeingDragged.name.StartsWith("60%") && hit.transform.name == "zahnradForm")
-            //{
-            //    Debug.Log("Befuelle Form mit Legierung // falsche Form // richtige Legierung");
-            //}
-            //else if (itemBeingDragged.name.StartsWith("40%") && hit.transform.name == "zahnradForm")
-            //{
-            //    Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
-            //}
-            //else if (itemBeingDragged.name.StartsWith("80%") && hit.transform.name == "zahnradForm")
-            //{
-            //    Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
-            //}
-            //else if (itemBeingDragged.name.StartsWith("20%") && hit.transform.name == "zahnradForm")
-            //{
-            //    Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
-            //}
-            ////-----------------------------------??? Form---------------------------------------
-            //else if (itemBeingDragged.name.StartsWith("60%") && hit.transform.name == "???Form")
-            //{
-            //    Debug.Log("Befuelle Form mit Legierung // falsche Form // richtige Legierung");
-            //}
-            //else if (itemBeingDragged.name.StartsWith("40%") && hit.transform.name == "???Form")
-            //{
-            //    Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
-            //}
-            //else if (itemBeingDragged.name.StartsWith("80%") && hit.transform.name == "???Form")
-            //{
-            //    Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
-            //}
-            //else if (itemBeingDragged.name.StartsWith("20%") && hit.transform.name == "???Form")
-            //{
-            //    Debug.Log("Befuelle Form mit Legierung // falsche Form // falsche Legierung");
-            //}
-            #endregion
             //-----------------------------------Inventar Cubes----------------------------------
             //if (itemBeingDragged.name.Contains("blue"))
             //{
@@ -148,25 +95,35 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             //    //temp.transform.parent = MachineSlot.transform;
             //    //Machine.GetComponent<Machine>().Interact();
             //}
+            if (hit.transform.CompareTag("Machine") && itemBeingDragged.transform.tag == "Richtig")
+            {
+                Machine = GameObject.Find("Crazy_Machine1");
+                mesh = Machine.transform.Find("Gear1").gameObject;
+                mesh.SetActive(true);
+                Destroy(itemBeingDragged);
+            }
+            else if(hit.transform.CompareTag("Machine") && itemBeingDragged.transform.tag == "FalschCheat")
+            {
+                //Text: du kleiner Cheater
+                //Game Over
+            }
+            else
+            {
+                //GameOver
+            }
             if (hit.transform.CompareTag("Player") && itemBeingDragged.name.Contains("Labcoat"))
             {
-                if (itemBeingDragged.name.Contains("Labcoat"))
-                {
-                    player = GameObject.Find("Player");
-                    mesh = player.transform.Find("LabCoat").gameObject;
-                    mesh.SetActive(true);
-                    Destroy(itemBeingDragged);
-                }
+                player = GameObject.Find("Player");
+                mesh = player.transform.Find("LabCoat").gameObject;
+                mesh.SetActive(true);
+                Destroy(itemBeingDragged);
             }
             else if (hit.transform.CompareTag("Player") && itemBeingDragged.name.Contains("Glove"))
             {
-                if (itemBeingDragged.name.Contains("Glove"))
-                {
-                    player = GameObject.Find("Player");
-                    mesh = player.transform.Find("Glove_Left").gameObject;
-                    mesh.SetActive(true);
-                    Destroy(itemBeingDragged);
-                }
+                player = GameObject.Find("Player");
+                mesh = player.transform.Find("Glove_Left").gameObject;
+                mesh.SetActive(true);
+                Destroy(itemBeingDragged);
             }
         }
 

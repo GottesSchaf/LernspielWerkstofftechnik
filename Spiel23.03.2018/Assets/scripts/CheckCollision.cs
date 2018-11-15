@@ -11,7 +11,7 @@ public class CheckCollision : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Boop");
+        //Debug.Log("Boop");
         if (other.tag == "Target")
         {
             hitTarget = true;
