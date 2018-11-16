@@ -123,29 +123,29 @@ public class GussformScript : MonoBehaviour {
             }
         }
         //Kaputtes Zahnrad
-        else if (slotWrenchTiegel.transform.childCount > 0 && slotWrenchTiegel.transform.GetChild(0).CompareTag("Geschmolzen"))
-        {
-            if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
-            {
-                bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
-            }
-            else if (bunsenBrenner.istTemp[1] > 1250 && bunsenBrenner.istTemp[1] <= 1400)
-            {
-                bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[4] - bunsenBrenner.bBZieltemp[3]) / bunsenBrenner.bBZeit[4];
-            }
-            else if (bunsenBrenner.istTemp[1] > 1400)
-            {
-                bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[5] - bunsenBrenner.bBZieltemp[4]) / bunsenBrenner.bBZeit[5];
-            }
-            else if (bunsenBrenner.istTemp[1] <= 25)
-            {
-                bunsenBrenner.istTemp[1] = 25;
-                GameObject newWrench = Instantiate(wrench);
-                newWrench.transform.SetParent(slotWrench);
-                newWrench.transform.tag = "Falsch";
-                slotWrenchTiegel.transform.GetChild(0).tag = "GeschmolzenEmpty";
-            }
-        }
+        //else if (slotWrenchTiegel.transform.childCount > 0 && slotWrenchTiegel.transform.GetChild(0).CompareTag("Geschmolzen"))
+        //{
+        //    if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
+        //    {
+        //        bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
+        //    }
+        //    else if (bunsenBrenner.istTemp[1] > 1250 && bunsenBrenner.istTemp[1] <= 1400)
+        //    {
+        //        bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[4] - bunsenBrenner.bBZieltemp[3]) / bunsenBrenner.bBZeit[4];
+        //    }
+        //    else if (bunsenBrenner.istTemp[1] > 1400)
+        //    {
+        //        bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[5] - bunsenBrenner.bBZieltemp[4]) / bunsenBrenner.bBZeit[5];
+        //    }
+        //    else if (bunsenBrenner.istTemp[1] <= 25)
+        //    {
+        //        bunsenBrenner.istTemp[1] = 25;
+        //        GameObject newWrench = Instantiate(wrench);
+        //        newWrench.transform.SetParent(slotWrench);
+        //        newWrench.transform.tag = "Falsch";
+        //        slotWrenchTiegel.transform.GetChild(0).tag = "GeschmolzenEmpty";
+        //    }
+        //}
         //Pleuel Slot
         else if (slotPleuelTiegel.transform.childCount > 0 && slotPleuelTiegel.transform.GetChild(0).CompareTag("20SiHot"))
         {
@@ -191,7 +191,7 @@ public class GussformScript : MonoBehaviour {
                 GameObject newPleuel = Instantiate(pleuel);
                 newPleuel.transform.SetParent(slotPleuel.transform);
                 newPleuel.transform.tag = "Falsch";
-                slotWrenchTiegel.transform.GetChild(0).tag = "40SiEmpty";
+                slotPleuelTiegel.transform.GetChild(0).tag = "40SiEmpty";
             }
         }
         //60%Si / 40%Ge
@@ -215,7 +215,7 @@ public class GussformScript : MonoBehaviour {
                 GameObject newPleuel = Instantiate(pleuel);
                 newPleuel.transform.SetParent(slotPleuel.transform);
                 newPleuel.transform.tag = "Falsch";
-                slotWrenchTiegel.transform.GetChild(0).tag = "60SiEmpty";
+                slotPleuelTiegel.transform.GetChild(0).tag = "60SiEmpty";
             }
         }
         //80%Si / 20%Ge
@@ -237,35 +237,35 @@ public class GussformScript : MonoBehaviour {
             {
                 bunsenBrenner.istTemp[3] = 25;
                 GameObject newPleuel = Instantiate(pleuel);
-                newPleuel.transform.SetParent(slotWrench.transform);
+                newPleuel.transform.SetParent(slotPleuel.transform);
                 newPleuel.transform.tag = "Falsch";
-                slotWrenchTiegel.transform.GetChild(0).tag = "80SiEmpty";
+                slotPleuelTiegel.transform.GetChild(0).tag = "80SiEmpty";
             }
         }
         //Kaputtes Zahnrad
-        else if (slotWrenchTiegel.transform.childCount > 0 && slotWrenchTiegel.transform.GetChild(0).CompareTag("Geschmolzen"))
-        {
-            if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
-            {
-                bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
-            }
-            else if (bunsenBrenner.istTemp[1] > 1250 && bunsenBrenner.istTemp[1] <= 1400)
-            {
-                bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[4] - bunsenBrenner.bBZieltemp[3]) / bunsenBrenner.bBZeit[4];
-            }
-            else if (bunsenBrenner.istTemp[1] > 1400)
-            {
-                bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[5] - bunsenBrenner.bBZieltemp[4]) / bunsenBrenner.bBZeit[5];
-            }
-            else if (bunsenBrenner.istTemp[1] <= 25)
-            {
-                bunsenBrenner.istTemp[1] = 25;
-                GameObject newPleuel = Instantiate(pleuel);
-                newPleuel.transform.SetParent(slotPleuel.transform);
-                newPleuel.transform.tag = "Falsch";
-                slotPleuelTiegel.transform.GetChild(0).tag = "GeschmolzenEmpty";
-            }
-        }
+        //else if (slotPleuelTiegel.transform.childCount > 0 && slotPleuelTiegel.transform.GetChild(0).CompareTag("Geschmolzen"))
+        //{
+        //    if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
+        //    {
+        //        bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
+        //    }
+        //    else if (bunsenBrenner.istTemp[1] > 1250 && bunsenBrenner.istTemp[1] <= 1400)
+        //    {
+        //        bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[4] - bunsenBrenner.bBZieltemp[3]) / bunsenBrenner.bBZeit[4];
+        //    }
+        //    else if (bunsenBrenner.istTemp[1] > 1400)
+        //    {
+        //        bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[5] - bunsenBrenner.bBZieltemp[4]) / bunsenBrenner.bBZeit[5];
+        //    }
+        //    else if (bunsenBrenner.istTemp[1] <= 25)
+        //    {
+        //        bunsenBrenner.istTemp[1] = 25;
+        //        GameObject newPleuel = Instantiate(pleuel);
+        //        newPleuel.transform.SetParent(slotPleuel.transform);
+        //        newPleuel.transform.tag = "Falsch";
+        //        slotPleuelTiegel.transform.GetChild(0).tag = "GeschmolzenEmpty";
+        //    }
+        //}
         //Zahnrad Slot
         else if (slotZahnradTiegel.transform.childCount > 0 && slotZahnradTiegel.transform.GetChild(0).CompareTag("20SiHot"))
         {
@@ -311,7 +311,7 @@ public class GussformScript : MonoBehaviour {
                 GameObject newZahnrad = Instantiate(zahnrad);
                 newZahnrad.transform.SetParent(slotZahnrad.transform);
                 newZahnrad.transform.tag = "Richtig";
-                slotWrenchTiegel.transform.GetChild(0).tag = "40SiEmpty";
+                slotZahnradTiegel.transform.GetChild(0).tag = "40SiEmpty";
             }
         }
         //60%Si / 40%Ge
@@ -335,7 +335,7 @@ public class GussformScript : MonoBehaviour {
                 GameObject newZahnrad = Instantiate(zahnrad);
                 newZahnrad.transform.SetParent(slotZahnrad.transform);
                 newZahnrad.transform.tag = "Falsch";
-                slotWrenchTiegel.transform.GetChild(0).tag = "60SiEmpty";
+                slotZahnradTiegel.transform.GetChild(0).tag = "60SiEmpty";
             }
         }
         //80%Si / 20%Ge
@@ -359,33 +359,33 @@ public class GussformScript : MonoBehaviour {
                 GameObject newZahnrad = Instantiate(zahnrad);
                 newZahnrad.transform.SetParent(slotZahnrad.transform);
                 newZahnrad.transform.tag = "Falsch";
-                slotWrenchTiegel.transform.GetChild(0).tag = "80SiEmpty";
+                slotZahnradTiegel.transform.GetChild(0).tag = "80SiEmpty";
             }
         }
         //Kaputtes Zahnrad
-        else if (slotWrenchTiegel.transform.childCount > 0 && slotWrenchTiegel.transform.GetChild(0).CompareTag("Geschmolzen"))
-        {
-            if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
-            {
-                bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
-            }
-            else if (bunsenBrenner.istTemp[1] > 1250 && bunsenBrenner.istTemp[1] <= 1400)
-            {
-                bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[4] - bunsenBrenner.bBZieltemp[3]) / bunsenBrenner.bBZeit[4];
-            }
-            else if (bunsenBrenner.istTemp[1] > 1400)
-            {
-                bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[5] - bunsenBrenner.bBZieltemp[4]) / bunsenBrenner.bBZeit[5];
-            }
-            else if (bunsenBrenner.istTemp[1] <= 25)
-            {
-                bunsenBrenner.istTemp[1] = 25;
-                GameObject newZahnrad = Instantiate(zahnrad);
-                newZahnrad.transform.SetParent(slotZahnrad.transform);
-                newZahnrad.transform.tag = "FalschCheat";
-                slotZahnradTiegel.transform.GetChild(0).tag = "GeschmolzenEmpty";
-            }
-        }
+        //else if (slotZahnradTiegel.transform.childCount > 0 && slotZahnradTiegel.transform.GetChild(0).CompareTag("Geschmolzen"))
+        //{
+        //    if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
+        //    {
+        //        bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
+        //    }
+        //    else if (bunsenBrenner.istTemp[1] > 1250 && bunsenBrenner.istTemp[1] <= 1400)
+        //    {
+        //        bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[4] - bunsenBrenner.bBZieltemp[3]) / bunsenBrenner.bBZeit[4];
+        //    }
+        //    else if (bunsenBrenner.istTemp[1] > 1400)
+        //    {
+        //        bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[5] - bunsenBrenner.bBZieltemp[4]) / bunsenBrenner.bBZeit[5];
+        //    }
+        //    else if (bunsenBrenner.istTemp[1] <= 25)
+        //    {
+        //        bunsenBrenner.istTemp[1] = 25;
+        //        GameObject newZahnrad = Instantiate(zahnrad);
+        //        newZahnrad.transform.SetParent(slotZahnrad.transform);
+        //        newZahnrad.transform.tag = "FalschCheat";
+        //        slotZahnradTiegel.transform.GetChild(0).tag = "GeschmolzenEmpty";
+        //    }
+        //}
         #endregion
     }
 }

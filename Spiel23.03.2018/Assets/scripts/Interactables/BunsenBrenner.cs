@@ -19,8 +19,8 @@ public class BunsenBrenner : MonoBehaviour {
     public Transform slot1, slot2, slot3, slot4;
     [SerializeField] GameObject flamme1, flamme2, flamme3, flamme4;
     [SerializeField] GameObject tiegelZahnrad;
+    Window_Graph windowGraph = new Window_Graph();
     // Use this for initialization
-
     void Start () {
         //Mische die Bunsen Brenner, sodass die Studenten nicht schummeln können
         for (int i = 0; i < bunsenBrennerObjekt.Length; i++)
@@ -134,23 +134,25 @@ public class BunsenBrenner : MonoBehaviour {
                 {
                     istTemp[0] += bBZieltemp[0] / bBZeit[0];
                     Debug.Log("IstTemp[0]: " + istTemp[0]);
+                    //windowGraph.ShowGraph(istTemp[0], 10);
                 }
                 else if (istTemp[0] <= 1400)
                 {
                     istTemp[0] += (bBZieltemp[1] - bBZieltemp[0]) / bBZeit[1];
                     Debug.Log("IstTemp[0]: " + istTemp[0]);
+                    //windowGraph.ShowGraph(istTemp[0], 10);
                 }
                 else if (istTemp[0] < 1550)
                 {
                     istTemp[0] += (bBZieltemp[2] - bBZieltemp[1]) / bBZeit[2];
                     Debug.Log("IstTemp[0]: " + istTemp[0]);
+                    //windowGraph.ShowGraph(istTemp[0], 10);
                 }
                 else if(istTemp[0] >= 1550)
                 {
                     if (slot1.transform.GetChild(0).CompareTag("20SiCold"))
                     {
                         slot1.transform.GetChild(0).tag = "20SiHot";
-                        Debug.Log("IstTemp[0]: " + istTemp[0]);
                     }
                     else if (slot2.transform.GetChild(0).CompareTag("20SiCold"))
                     {
@@ -334,55 +336,55 @@ public class BunsenBrenner : MonoBehaviour {
                 }
             }
             //Eingeschmolzenes Zahnrad
-            if (flamme1.activeInHierarchy && slot1.transform.GetChild(0).CompareTag("ZahnradKaputt") || flamme2.activeInHierarchy && slot2.transform.GetChild(0).CompareTag("ZahnradKaputt") || flamme3.activeInHierarchy && slot3.transform.GetChild(0).CompareTag("ZahnradKaputt") || flamme4.activeInHierarchy && slot4.transform.GetChild(0).CompareTag("ZahnradKaputt"))
-            {
-                Debug.Log("Zahnrad wird erhitzt");
-                Debug.Log("istTemp[1] gerade: " + istTemp[1]);
-                if (istTemp[1] <= 1100)
-                {
-                    istTemp[1] += bBZieltemp[3] / bBZeit[3];
-                }
-                else if (istTemp[1] <= 1350)
-                {
-                    istTemp[1] += (bBZieltemp[4] - bBZieltemp[3]) / bBZeit[4];
-                }
-                else if (istTemp[1] < 1550)
-                {
-                    istTemp[1] += (bBZieltemp[5] - bBZieltemp[4]) / bBZeit[5];
-                }
-                else if (istTemp[1] >= 1550)
-                {
-                    if (slot1.transform.GetChild(0).CompareTag("ZahnradKaputt"))
-                    {
-                        Destroy(slot1.transform.GetChild(0));
-                        GameObject newTiegel = Instantiate(tiegelZahnrad);
-                        newTiegel.transform.SetParent(slot1);
-                        istTemp[1] = 25;
+            //if (flamme1.activeInHierarchy && slot1.transform.GetChild(0).CompareTag("ZahnradKaputt") || flamme2.activeInHierarchy && slot2.transform.GetChild(0).CompareTag("ZahnradKaputt") || flamme3.activeInHierarchy && slot3.transform.GetChild(0).CompareTag("ZahnradKaputt") || flamme4.activeInHierarchy && slot4.transform.GetChild(0).CompareTag("ZahnradKaputt"))
+            //{
+            //    Debug.Log("Zahnrad wird erhitzt");
+            //    Debug.Log("istTemp[1] gerade: " + istTemp[1]);
+            //    if (istTemp[1] <= 1100)
+            //    {
+            //        istTemp[1] += bBZieltemp[3] / bBZeit[3];
+            //    }
+            //    else if (istTemp[1] <= 1350)
+            //    {
+            //        istTemp[1] += (bBZieltemp[4] - bBZieltemp[3]) / bBZeit[4];
+            //    }
+            //    else if (istTemp[1] < 1550)
+            //    {
+            //        istTemp[1] += (bBZieltemp[5] - bBZieltemp[4]) / bBZeit[5];
+            //    }
+            //    else if (istTemp[1] >= 1550)
+            //    {
+            //        if (slot1.transform.GetChild(0).CompareTag("ZahnradKaputt"))
+            //        {
+            //            Destroy(slot1.transform.GetChild(0));
+            //            GameObject newTiegel = Instantiate(tiegelZahnrad);
+            //            newTiegel.transform.SetParent(slot1);
+            //            istTemp[1] = 25;
 
-                    }
-                    else if (slot2.transform.GetChild(0).CompareTag("ZahnradKaputt"))
-                    {
-                        Destroy(slot2.transform.GetChild(0));
-                        GameObject newTiegel = Instantiate(tiegelZahnrad);
-                        newTiegel.transform.SetParent(slot2);
-                        istTemp[1] = 25;
-                    }
-                    else if (slot3.transform.GetChild(0).CompareTag("ZahnradKaputt"))
-                    {
-                        Destroy(slot3.transform.GetChild(0));
-                        GameObject newTiegel = Instantiate(tiegelZahnrad);
-                        newTiegel.transform.SetParent(slot3);
-                        istTemp[1] = 25;
-                    }
-                    else if (slot4.transform.GetChild(0).CompareTag("ZahnradKaputt"))
-                    {
-                        Destroy(slot4.transform.GetChild(0));
-                        GameObject newTiegel = Instantiate(tiegelZahnrad);
-                        newTiegel.transform.SetParent(slot4);
-                        istTemp[1] = 25;
-                    }
-                }
-            }
+            //        }
+            //        else if (slot2.transform.GetChild(0).CompareTag("ZahnradKaputt"))
+            //        {
+            //            Destroy(slot2.transform.GetChild(0));
+            //            GameObject newTiegel = Instantiate(tiegelZahnrad);
+            //            newTiegel.transform.SetParent(slot2);
+            //            istTemp[1] = 25;
+            //        }
+            //        else if (slot3.transform.GetChild(0).CompareTag("ZahnradKaputt"))
+            //        {
+            //            Destroy(slot3.transform.GetChild(0));
+            //            GameObject newTiegel = Instantiate(tiegelZahnrad);
+            //            newTiegel.transform.SetParent(slot3);
+            //            istTemp[1] = 25;
+            //        }
+            //        else if (slot4.transform.GetChild(0).CompareTag("ZahnradKaputt"))
+            //        {
+            //            Destroy(slot4.transform.GetChild(0));
+            //            GameObject newTiegel = Instantiate(tiegelZahnrad);
+            //            newTiegel.transform.SetParent(slot4);
+            //            istTemp[1] = 25;
+            //        }
+            //    }
+            //}
             #endregion
             //ausgabeText.text = ("istTemp[0]: " + istTemp[0] + " / istTemp[1]: " + istTemp[1] + " / istTemp[2]: " + istTemp[2] + " / istTemp[3]: " + istTemp[3]);
             if (istTemp[0] >= 1550 && istTemp[1] >= 1550 && istTemp[2] >= 1550 && istTemp[3] >= 1550)
