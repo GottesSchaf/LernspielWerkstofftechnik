@@ -10,6 +10,27 @@ TagManager:
   - Inventory
   - blueCube
   - NoClip
+  - Canvas
+  - Target
+  - 20SiHot
+  - 40SiHot
+  - 60SiHot
+  - 80SiHot
+  - 20SiCold
+  - 40SiCold
+  - 60SiCold
+  - 80SiCold
+  - InvSlot
+  - 20SiEmpty
+  - 40SiEmpty
+  - 60SiEmpty
+  - 80SiEmpty
+  - Machine
+  - Geschmolzen
+  - ZahnradKaputt
+  - GeschmolzenEmpty
+  - Richtig
+  - Falsch
   layers:
   - Default
   - TransparentFX
@@ -46,4 +67,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Second Foreground
+    uniqueID: 1095041343
+    locked: 0
+  - name: Foreground
+    uniqueID: 4127593039
     locked: 0

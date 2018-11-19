@@ -20,6 +20,7 @@ public class Tutorial : MonoBehaviour
 
     //Objects in Tut.Room
     [SerializeField] private GameObject door;
+    [SerializeField] private GameObject doorframe;
     [SerializeField] private GameObject table;
     [SerializeField] private GameObject cube;
 
@@ -27,7 +28,6 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject invOpen;
     [SerializeField] private GameObject invMenu;
     [SerializeField] private GameObject[] invSlots;
-    [SerializeField] private GameObject Helpbtn;
     [SerializeField] private GameObject Screenshot;
     [SerializeField] private GameObject Speed1;
     [SerializeField] private GameObject Speed2;
@@ -141,7 +141,6 @@ public class Tutorial : MonoBehaviour
                 Screenshot.SetActive(true);                
                 Speed1.SetActive(true);
                 Speed2.SetActive(true);
-                Helpbtn.SetActive(true);
             }
         }      
         
@@ -149,6 +148,7 @@ public class Tutorial : MonoBehaviour
         {
             spriteToChange.sprite = tutSprites[7];
             door.SetActive(true);
+            doorframe.SetActive(true);
             Questwindow.SetActive(true);
             step7Done = true;
         }
@@ -194,7 +194,6 @@ public class Tutorial : MonoBehaviour
 
     public void Understood()
     {
-        Helpbtn.SetActive(true);
         Screenshot.SetActive(true);
         invOpen.SetActive(true);
         Speed1.SetActive(true);
