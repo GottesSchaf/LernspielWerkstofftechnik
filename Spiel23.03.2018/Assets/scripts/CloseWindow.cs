@@ -7,5 +7,6 @@ public class CloseWindow : MonoBehaviour {
 	public void CloseThisWindow()
     {
         this.gameObject.SetActive(false);
+        Time.timeScale = 1;
     }
 }

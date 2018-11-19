@@ -40,8 +40,6 @@ public class Tutorial : MonoBehaviour
     // Playerposition
     public Vector3 destination;
 
-    private GameObject toDelete;
-
     public int slot = -1;
 
     private bool step2Done;
@@ -102,7 +100,6 @@ public class Tutorial : MonoBehaviour
                     table.SetActive(false);
                     step3Done = true;
                     spriteToChange.sprite = tutSprites[3];
-                    toDelete = x;
                     break;
                 }
             }
@@ -124,7 +121,7 @@ public class Tutorial : MonoBehaviour
                     {
                         invMenu.SetActive(false);
                         invOpen.SetActive(true);
-                        Destroy(toDelete);
+                        Destroy(x.GetComponentInChildren<DragHandeler>().gameObject);
                         step4Done = true;
                     }
                     break;
@@ -149,7 +146,6 @@ public class Tutorial : MonoBehaviour
             spriteToChange.sprite = tutSprites[7];
             door.SetActive(true);
             doorframe.SetActive(true);
-            Questwindow.SetActive(true);
             step7Done = true;
         }
 

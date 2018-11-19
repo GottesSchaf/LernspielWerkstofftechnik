@@ -124,7 +124,6 @@ GameObject:
   - component: {fileID: 1395903}
   - component: {fileID: 1395902}
   - component: {fileID: 1395905}
-  - component: {fileID: 1395904}
   m_Layer: 5
   m_Name: Fire_4
   m_TagString: Untagged
@@ -183,20 +182,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1395900}
---- !u!111 &1395904
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1395900}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 3377aa955a7dbb540864d459b612cf4c, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &1395905
 Animator:
   serializedVersion: 3
@@ -2025,6 +2010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: 9, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!65 &87439257
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2740,6 +2726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: 5, y: 0, z: -0.3}
+  questWindow: {fileID: 0}
 --- !u!65 &146314825
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2794,6 +2781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: -30, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!65 &151366615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4849,7 +4837,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 413604936}
+  m_TargetTexture: {fileID: 790139952}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -7973,6 +7961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: -10, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!114 &400334266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8114,33 +8103,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 406503846}
---- !u!84 &413604936
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 804
-  m_Height: 326
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &414105954
 GameObject:
   m_ObjectHideFlags: 0
@@ -8232,6 +8194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: 9, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!95 &429412371
 Animator:
   serializedVersion: 3
@@ -8700,6 +8663,33 @@ Transform:
   m_Father: {fileID: 2067010731}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 173.57501, z: 0}
+--- !u!84 &454240299
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 804
+  m_Height: 326
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &454677453
 GameObject:
   m_ObjectHideFlags: 0
@@ -10831,7 +10821,6 @@ GameObject:
   - component: {fileID: 552970896}
   - component: {fileID: 552970895}
   - component: {fileID: 552970898}
-  - component: {fileID: 552970897}
   m_Layer: 5
   m_Name: Fire_2
   m_TagString: Untagged
@@ -10890,20 +10879,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 552970893}
---- !u!111 &552970897
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 552970893}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 3377aa955a7dbb540864d459b612cf4c, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &552970898
 Animator:
   serializedVersion: 3
@@ -11727,6 +11702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: 9, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!65 &590183153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12993,6 +12969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: 3, y: 0, z: -0.3}
+  questWindow: {fileID: 0}
 --- !u!65 &649400418
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17684,6 +17661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 1213766852}
   destination: {x: 1.88, y: 0.26, z: -2.59}
+  questWindow: {fileID: 0}
 --- !u!65 &733916657
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18222,6 +18200,33 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 787623819}
+--- !u!84 &790139952
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 804
+  m_Height: 326
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &801957398
 GameObject:
   m_ObjectHideFlags: 0
@@ -18808,6 +18813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 1213766852}
   destination: {x: -1.9, y: 9, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!65 &826263311
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18848,6 +18854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 1213766852}
   destination: {x: -1.9, y: 9, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!65 &826263314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18873,6 +18880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 1213766852}
   destination: {x: -1.9, y: 9, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!114 &826263316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18898,6 +18906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.9, y: 9, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!95 &826263318
 Animator:
   serializedVersion: 3
@@ -20189,6 +20198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -0.5, y: 0, z: -0.3}
+  questWindow: {fileID: 0}
 --- !u!114 &931460323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20999,6 +21009,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: 9, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!65 &964057755
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21196,6 +21207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: -10, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!1 &966960741
 GameObject:
   m_ObjectHideFlags: 0
@@ -22041,6 +22053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: -10, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!114 &1008056120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22297,7 +22310,6 @@ GameObject:
   - component: {fileID: 1023545637}
   - component: {fileID: 1023545636}
   - component: {fileID: 1023545639}
-  - component: {fileID: 1023545638}
   m_Layer: 5
   m_Name: Fire_1
   m_TagString: Untagged
@@ -22356,20 +22368,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1023545634}
---- !u!111 &1023545638
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1023545634}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 3377aa955a7dbb540864d459b612cf4c, type: 2}
-  m_Animations: []
-  m_WrapMode: 2
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &1023545639
 Animator:
   serializedVersion: 3
@@ -23511,8 +23509,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 1075912873}
   outlineCamera: {fileID: 260511559}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 413604936}
-  extraRenderTexture: {fileID: 1289920352}
+  renderTexture: {fileID: 790139952}
+  extraRenderTexture: {fileID: 454240299}
 --- !u!54 &1075912876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23785,6 +23783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: 1, y: 0, z: -0.3}
+  questWindow: {fileID: 0}
 --- !u!65 &1093813675
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24975,6 +24974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: -20, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!65 &1162130530
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26503,6 +26503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: -10, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!114 &1218406867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27552,33 +27553,6 @@ MonoBehaviour:
   BBScriptObj: {fileID: 1940255745}
   graphZahnrad: {fileID: 243992847}
   graphAlle: {fileID: 1893422899}
---- !u!84 &1289920352
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 804
-  m_Height: 326
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1300258816
 GameObject:
   m_ObjectHideFlags: 0
@@ -27867,6 +27841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: -10, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!4 &1310747813 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: e1cda3b2f420a5a43986ee725ff4b8da, type: 3}
@@ -29259,7 +29234,6 @@ GameObject:
   - component: {fileID: 1378983736}
   - component: {fileID: 1378983735}
   - component: {fileID: 1378983738}
-  - component: {fileID: 1378983737}
   m_Layer: 5
   m_Name: Fire_3
   m_TagString: Untagged
@@ -29318,20 +29292,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1378983733}
---- !u!111 &1378983737
-Animation:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1378983733}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 3377aa955a7dbb540864d459b612cf4c, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &1378983738
 Animator:
   serializedVersion: 3
@@ -31417,6 +31377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: -10, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!114 &1499048422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36437,6 +36398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: 9, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!1 &1724255807 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: c7b570153069e14498a05d7e1e6c14a9, type: 3}
@@ -37877,6 +37839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: -10, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!95 &1829745689
 Animator:
   serializedVersion: 3
@@ -39531,6 +39494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 0}
   destination: {x: -1.7, y: 9, z: -0.75}
+  questWindow: {fileID: 0}
 --- !u!114 &1938823052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41768,6 +41732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAgent: {fileID: 1213766852}
   destination: {x: 1.88, y: 0.26, z: -2.59}
+  questWindow: {fileID: 941104123}
 --- !u!65 &2067010734
 BoxCollider:
   m_ObjectHideFlags: 0
