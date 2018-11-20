@@ -19,9 +19,10 @@ public class BunsenBrenner : MonoBehaviour {
     public Transform slot1, slot2, slot3, slot4;
     [SerializeField] GameObject flamme1, flamme2, flamme3, flamme4;
     [SerializeField] GameObject tiegelZahnrad;
-    Window_Graph windowGraph = new Window_Graph();
+    [SerializeField] private Window_Graph windowGraph;
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
         //Mische die Bunsen Brenner, sodass die Studenten nicht schummeln können
         for (int i = 0; i < bunsenBrennerObjekt.Length; i++)
         {
@@ -134,19 +135,19 @@ public class BunsenBrenner : MonoBehaviour {
                 {
                     istTemp[0] += bBZieltemp[0] / bBZeit[0];
                     Debug.Log("IstTemp[0]: " + istTemp[0]);
-                    //windowGraph.ShowGraph(istTemp[0], 10);
+                    windowGraph.ShowGraph(istTemp[0], 10);
                 }
                 else if (istTemp[0] <= 1400)
                 {
                     istTemp[0] += (bBZieltemp[1] - bBZieltemp[0]) / bBZeit[1];
                     Debug.Log("IstTemp[0]: " + istTemp[0]);
-                    //windowGraph.ShowGraph(istTemp[0], 10);
+                    windowGraph.ShowGraph(istTemp[0], 10);
                 }
                 else if (istTemp[0] < 1550)
                 {
                     istTemp[0] += (bBZieltemp[2] - bBZieltemp[1]) / bBZeit[2];
                     Debug.Log("IstTemp[0]: " + istTemp[0]);
-                    //windowGraph.ShowGraph(istTemp[0], 10);
+                    windowGraph.ShowGraph(istTemp[0], 10);
                 }
                 else if(istTemp[0] >= 1550)
                 {

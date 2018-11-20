@@ -5,17 +5,15 @@ using UnityEngine.UI;
 
 public class Window_Graph : MonoBehaviour {
     [SerializeField] Sprite circleSprite;
-    [SerializeField] RectTransform graphContainer;
+    [SerializeField] private RectTransform graphContainer;
     private int i = 0;
     //BunsenBrenner bunsenBrenner = new BunsenBrenner();
 
     private void Awake()
-    {
-        graphContainer = transform.Find("GraphContainer").GetComponent<RectTransform>();
+    {       
         Debug.Log(graphContainer);
         //List<int> valueList = new List<int>() { 5, 98, 56, 45, 30, 22, 17, 15, 13, 17, 25, 37, 40, 36, 33 }; //Liste für y Koordinaten (°C)
         //ShowGraph(valueList);
-
     }
 
     private GameObject CreatCircle(Vector2 anchoredPosition)
@@ -33,7 +31,7 @@ public class Window_Graph : MonoBehaviour {
 
     public void ShowGraph(float value, int sekunden) //Vorher: ShowGraph(List<int> valueList)
     {
-        //graphContainer = transform.Find("GraphContainer").GetComponent<RectTransform>();
+        graphContainer = this.gameObject.GetComponentsInChildren<RectTransform>(true)[1];
         //if(transform.Find("GraphContainer").GetComponent<RectTransform>())
         //{
         //    Debug.Log("Habe dich gefunden!");
