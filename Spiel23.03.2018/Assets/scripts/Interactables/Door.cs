@@ -14,7 +14,7 @@ public class Door : Interactive
 		if (this.name != "door_elevatorout")
         {
 			playerAgent.Warp(destination);
-            if(this.gameObject.name == "Doors_Tutorial_2")
+            if(this.gameObject.name == "Doors_Tutorial_2" || this.gameObject.name == "Door_Tutorial_Backside")
             {
                 questWindow.SetActive(true);
             }           
