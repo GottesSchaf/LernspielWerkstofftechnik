@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Window_Graph : MonoBehaviour {
+public class Window_Graph_Tiegel4 : MonoBehaviour {
     [SerializeField] Sprite circleSprite;
     [SerializeField] private RectTransform graphContainer;
     private int i = 0;
@@ -56,7 +56,7 @@ public class Window_Graph : MonoBehaviour {
     {
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));
         gameObject.transform.SetParent(graphContainer, false);
-        gameObject.GetComponent<Image>().color = new Color(1, 1, 1, .75f); //R, G, B, Transparenz
+        gameObject.GetComponent<Image>().color = new Color(0, 0, 1, .75f);
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         Vector2 dir = (dotPositionB - dotPositionA).normalized;
         float distance = Vector2.Distance(dotPositionA, dotPositionB);

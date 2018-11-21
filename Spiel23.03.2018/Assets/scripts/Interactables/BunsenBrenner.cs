@@ -18,8 +18,13 @@ public class BunsenBrenner : MonoBehaviour {
     public Text ausgabeText;
     public Transform slot1, slot2, slot3, slot4;
     [SerializeField] GameObject flamme1, flamme2, flamme3, flamme4;
+    bool flamme1Bool, flamme2Bool, flamme3Bool, flamme4Bool;
     [SerializeField] GameObject tiegelZahnrad;
     [SerializeField] private Window_Graph windowGraph;
+    [SerializeField] Window_Graph_Tiegel2 windowGraphTiegel2;
+    [SerializeField] Window_Graph_Tiegel3 windowGraphTiegel3;
+    [SerializeField] Window_Graph_Tiegel4 windowGraphTiegel4;
+    int tiegelFarbe;
     // Use this for initialization
     void Start ()
     {
@@ -128,44 +133,56 @@ public class BunsenBrenner : MonoBehaviour {
             yield return new WaitForSeconds(1);
             #region Bunsen Brenner Abfrage
             //20% Si / 80%Ge || Wenn der Tiegel auf einem Bunsen Brenner liegt und die jeweilige Flamme an ist, erhitze den Tiegel
-            if (flamme1.activeInHierarchy && slot1.transform.GetChild(0).CompareTag("20SiCold") || flamme2.activeInHierarchy && slot2.transform.GetChild(0).CompareTag("20SiCold") || flamme3.activeInHierarchy && slot3.transform.GetChild(0).CompareTag("20SiCold") || flamme4.activeInHierarchy && slot4.transform.GetChild(0).CompareTag("20SiCold"))
+            if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("20SiCold") || slot1.transform.GetChild(0).CompareTag("20SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("20SiCold") || slot2.transform.GetChild(0).CompareTag("20SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("20SiCold") || slot3.transform.GetChild(0).CompareTag("20SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("20SiCold") || slot4.transform.GetChild(0).CompareTag("20SiHot")))
             {
                 Debug.Log("Tiegel 1 wird erhitzt");
                 if (istTemp[0] <= 1250)
                 {
                     istTemp[0] += bBZieltemp[0] / bBZeit[0];
-                    Debug.Log("IstTemp[0]: " + istTemp[0]);
-                    windowGraph.ShowGraph(istTemp[0], 10);
+                    tiegelFarbe = 20;
+                    windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[0] <= 1400)
                 {
                     istTemp[0] += (bBZieltemp[1] - bBZieltemp[0]) / bBZeit[1];
-                    Debug.Log("IstTemp[0]: " + istTemp[0]);
-                    windowGraph.ShowGraph(istTemp[0], 10);
+                    tiegelFarbe = 20;
+                    windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[0] < 1550)
                 {
                     istTemp[0] += (bBZieltemp[2] - bBZieltemp[1]) / bBZeit[2];
-                    Debug.Log("IstTemp[0]: " + istTemp[0]);
-                    windowGraph.ShowGraph(istTemp[0], 10);
+                    tiegelFarbe = 20;
+                    windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if(istTemp[0] >= 1550)
                 {
-                    if (slot1.transform.GetChild(0).CompareTag("20SiCold"))
+                    if (slot1.transform.childCount > 0)
                     {
-                        slot1.transform.GetChild(0).tag = "20SiHot";
+                        if (slot1.transform.GetChild(0).CompareTag("20SiCold"))
+                        {
+                            slot1.transform.GetChild(0).tag = "20SiHot";
+                        }
                     }
-                    else if (slot2.transform.GetChild(0).CompareTag("20SiCold"))
+                    else if (slot2.transform.childCount > 0)
                     {
-                        slot2.transform.GetChild(0).tag = "20SiHot";
+                        if (slot2.transform.GetChild(0).CompareTag("20SiCold"))
+                        {
+                            slot2.transform.GetChild(0).tag = "20SiHot";
+                        }
                     }
-                    else if (slot3.transform.GetChild(0).CompareTag("20SiCold"))
+                    else if (slot3.transform.childCount > 0)
                     {
-                        slot3.transform.GetChild(0).tag = "20SiHot";
+                        if (slot3.transform.GetChild(0).CompareTag("20SiCold"))
+                        {
+                            slot3.transform.GetChild(0).tag = "20SiHot";
+                        }
                     }
-                    else if (slot4.transform.GetChild(0).CompareTag("20SiCold"))
+                    else if (slot4.transform.childCount > 0)
                     {
-                        slot4.transform.GetChild(0).tag = "20SiHot";
+                        if (slot4.transform.GetChild(0).CompareTag("20SiCold"))
+                        {
+                            slot4.transform.GetChild(0).tag = "20SiHot";
+                        }
                     }
                 }
             }
@@ -187,37 +204,55 @@ public class BunsenBrenner : MonoBehaviour {
                 }
             }
             //40% Si / 60% Ge
-            if (flamme1.activeInHierarchy && slot1.transform.GetChild(0).CompareTag("40SiCold") || flamme2.activeInHierarchy && slot2.transform.GetChild(0).CompareTag("40SiCold") || flamme3.activeInHierarchy && slot3.transform.GetChild(0).CompareTag("40SiCold") || flamme4.activeInHierarchy && slot4.transform.GetChild(0).CompareTag("40SiCold"))
+            if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("40SiCold") || slot1.transform.GetChild(0).CompareTag("40SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("40SiCold") || slot2.transform.GetChild(0).CompareTag("40SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("40SiCold") || slot3.transform.GetChild(0).CompareTag("40SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("40SiCold") || slot4.transform.GetChild(0).CompareTag("40SiHot")))
             {
                 if (istTemp[1] <= 1100)
                 {
                     istTemp[1] += bBZieltemp[3] / bBZeit[3];
+                    tiegelFarbe = 40;
+                    windowGraphTiegel2.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[1] <= 1350)
                 {
                     istTemp[1] += (bBZieltemp[4] - bBZieltemp[3]) / bBZeit[4];
+                    tiegelFarbe = 40;
+                    windowGraphTiegel2.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[1] < 1550)
                 {
                     istTemp[1] += (bBZieltemp[5] - bBZieltemp[4]) / bBZeit[5];
+                    tiegelFarbe = 40;
+                    windowGraphTiegel2.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[1] >= 1550)
                 {
-                    if (slot1.transform.GetChild(0).CompareTag("40SiCold"))
+                    if (slot1.transform.childCount > 0)
                     {
-                        slot1.transform.GetChild(0).tag = "40SiHot";
+                        if (slot1.transform.GetChild(0).CompareTag("40SiCold"))
+                        {
+                            slot1.transform.GetChild(0).tag = "40SiHot";
+                        }
                     }
-                    else if (slot2.transform.GetChild(0).CompareTag("40SiCold"))
+                    else if (slot2.transform.childCount > 0)
                     {
-                        slot2.transform.GetChild(0).tag = "40SiHot";
+                        if (slot2.transform.GetChild(0).CompareTag("40SiCold"))
+                        {
+                            slot2.transform.GetChild(0).tag = "40SiHot";
+                        }
                     }
-                    else if (slot3.transform.GetChild(0).CompareTag("40SiCold"))
+                    else if (slot3.transform.childCount > 0)
                     {
-                        slot3.transform.GetChild(0).tag = "40SiHot";
+                        if (slot3.transform.GetChild(0).CompareTag("40SiCold"))
+                        {
+                            slot3.transform.GetChild(0).tag = "40SiHot";
+                        }
                     }
-                    else if (slot4.transform.GetChild(0).CompareTag("40SiCold"))
+                    else if (slot4.transform.childCount > 0)
                     {
-                        slot4.transform.GetChild(0).tag = "40SiHot";
+                        if (slot4.transform.GetChild(0).CompareTag("40SiCold"))
+                        {
+                            slot4.transform.GetChild(0).tag = "40SiHot";
+                        }
                     }
                 }
             }
@@ -237,37 +272,55 @@ public class BunsenBrenner : MonoBehaviour {
                 }
             }
             //60% Si / 40% Ge
-            if (flamme1.activeInHierarchy && slot1.transform.GetChild(0).CompareTag("60SiCold") || flamme2.activeInHierarchy && slot2.transform.GetChild(0).CompareTag("60SiCold") || flamme3.activeInHierarchy && slot3.transform.GetChild(0).CompareTag("60SiCold") || flamme4.activeInHierarchy && slot4.transform.GetChild(0).CompareTag("60SiCold"))
+            if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("60SiCold") || slot1.transform.GetChild(0).CompareTag("60SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("60SiCold") || slot2.transform.GetChild(0).CompareTag("60SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("60SiCold") || slot3.transform.GetChild(0).CompareTag("60SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("60SiCold") || slot4.transform.GetChild(0).CompareTag("60SiHot")))
             {
                 if (istTemp[2] <= 1125)
                 {
                     istTemp[2] += bBZieltemp[6] / bBZeit[6];
+                    tiegelFarbe = 60;
+                    windowGraphTiegel3.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[2] <= 1250)
                 {
                     istTemp[2] += (bBZieltemp[7] - bBZieltemp[6]) / bBZeit[7];
+                    tiegelFarbe = 60;
+                    windowGraphTiegel3.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[2] < 1550)
                 {
                     istTemp[2] += (bBZieltemp[8] - bBZieltemp[7]) / bBZeit[8];
+                    tiegelFarbe = 60;
+                    windowGraphTiegel3.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[2] >= 1550)
                 {
-                    if (slot1.transform.GetChild(0).CompareTag("60SiCold"))
+                    if (slot1.transform.childCount > 0)
                     {
-                        slot1.transform.GetChild(0).tag = "60SiHot";
+                        if (slot1.transform.GetChild(0).CompareTag("60SiCold"))
+                        {
+                            slot1.transform.GetChild(0).tag = "60SiHot";
+                        }
                     }
-                    else if (slot2.transform.GetChild(0).CompareTag("60SiCold"))
+                    else if (slot2.transform.childCount > 0)
                     {
-                        slot2.transform.GetChild(0).tag = "60SiHot";
+                        if (slot2.transform.GetChild(0).CompareTag("60SiCold"))
+                        {
+                            slot2.transform.GetChild(0).tag = "60SiHot";
+                        }
                     }
-                    else if (slot3.transform.GetChild(0).CompareTag("60SiCold"))
+                    else if (slot3.transform.childCount > 0)
                     {
-                        slot3.transform.GetChild(0).tag = "60SiHot";
+                        if (slot3.transform.GetChild(0).CompareTag("60SiCold"))
+                        {
+                            slot3.transform.GetChild(0).tag = "60SiHot";
+                        }
                     }
-                    else if (slot4.transform.GetChild(0).CompareTag("60SiCold"))
+                    else if (slot4.transform.childCount > 0)
                     {
-                        slot4.transform.GetChild(0).tag = "60SiHot";
+                        if (slot4.transform.GetChild(0).CompareTag("60SiCold"))
+                        {
+                            slot4.transform.GetChild(0).tag = "60SiHot";
+                        }
                     }
                 }
             }
@@ -287,37 +340,55 @@ public class BunsenBrenner : MonoBehaviour {
                 }
             }
             //80% Si / 20% Ge
-            if (flamme1.activeInHierarchy && slot1.transform.GetChild(0).CompareTag("80SiCold") || flamme2.activeInHierarchy && slot2.transform.GetChild(0).CompareTag("80SiCold") || flamme3.activeInHierarchy && slot3.transform.GetChild(0).CompareTag("80SiCold") || flamme4.activeInHierarchy && slot4.transform.GetChild(0).CompareTag("80SiCold"))
+            if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("80SiCold") || slot1.transform.GetChild(0).CompareTag("80SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("80SiCold") || slot2.transform.GetChild(0).CompareTag("80SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("80SiCold") || slot3.transform.GetChild(0).CompareTag("80SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("80SiCold") || slot4.transform.GetChild(0).CompareTag("80SiHot")))
             {
                 if (istTemp[3] <= 950)
                 {
                     istTemp[3] += bBZieltemp[9] / bBZeit[9];
+                    tiegelFarbe = 80;
+                    windowGraphTiegel4.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[3] <= 1100)
                 {
                     istTemp[3] += (bBZieltemp[10] - bBZieltemp[9]) / bBZeit[10];
+                    tiegelFarbe = 80;
+                    windowGraphTiegel4.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[3] < 1550)
                 {
                     istTemp[3] += (bBZieltemp[11] - bBZieltemp[10]) / bBZeit[11];
+                    tiegelFarbe = 80;
+                    windowGraphTiegel4.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[3] >= 1550)
                 {
-                    if (slot1.transform.GetChild(0).CompareTag("80SiCold"))
+                    if (slot1.transform.childCount > 0)
                     {
-                        slot1.transform.GetChild(0).tag = "80SiHot";
+                        if (slot1.transform.GetChild(0).CompareTag("80SiCold"))
+                        {
+                            slot1.transform.GetChild(0).tag = "80SiHot";
+                        }
                     }
-                    else if (slot2.transform.GetChild(0).CompareTag("80SiCold"))
+                    else if (slot2.transform.childCount > 0)
                     {
-                        slot2.transform.GetChild(0).tag = "80SiHot";
+                        if (slot2.transform.GetChild(0).CompareTag("80SiCold"))
+                        {
+                            slot2.transform.GetChild(0).tag = "80SiHot";
+                        }
                     }
-                    else if (slot3.transform.GetChild(0).CompareTag("80SiCold"))
+                    else if (slot3.transform.childCount > 0)
                     {
-                        slot3.transform.GetChild(0).tag = "80SiHot";
+                        if (slot3.transform.GetChild(0).CompareTag("80SiCold"))
+                        {
+                            slot3.transform.GetChild(0).tag = "80SiHot";
+                        }
                     }
-                    else if (slot4.transform.GetChild(0).CompareTag("80SiCold"))
+                    else if (slot4.transform.childCount > 0)
                     {
-                        slot4.transform.GetChild(0).tag = "80SiHot";
+                        if (slot4.transform.GetChild(0).CompareTag("80SiCold"))
+                        {
+                            slot4.transform.GetChild(0).tag = "80SiHot";
+                        }
                     }
                 }
             }
@@ -402,10 +473,12 @@ public class BunsenBrenner : MonoBehaviour {
         if (flamme1.activeInHierarchy == false)
         {
             flamme1.SetActive(true);
+            flamme1Bool = true;
         }
         else
         {
             flamme1.SetActive(false);
+            flamme1Bool = false;
         }
     }
     //Zünde Bunsen Brenner links mittig an
@@ -414,10 +487,12 @@ public class BunsenBrenner : MonoBehaviour {
         if(flamme2.activeInHierarchy == false)
         {
             flamme2.SetActive(true);
+            flamme2Bool = true;
         }
         else
         {
             flamme2.SetActive(false);
+            flamme2Bool = false;
         }
     }
     //Zünde Bunsen Brenner rechts mittig an
@@ -426,10 +501,12 @@ public class BunsenBrenner : MonoBehaviour {
         if (flamme3.activeInHierarchy == false)
         {
             flamme3.SetActive(true);
+            flamme3Bool = true;
         }
         else
         {
             flamme3.SetActive(false);
+            flamme3Bool = false;
         }
     }
     //Zünde Bunsen Brenner ganz rechts an
@@ -438,10 +515,12 @@ public class BunsenBrenner : MonoBehaviour {
         if (flamme4.activeInHierarchy == false)
         {
             flamme4.SetActive(true);
+            flamme4Bool = true;
         }
         else
         {
             flamme4.SetActive(false);
+            flamme4Bool = false;
         }
     }
     #endregion
