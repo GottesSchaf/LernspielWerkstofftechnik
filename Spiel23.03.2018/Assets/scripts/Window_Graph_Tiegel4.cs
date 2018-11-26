@@ -10,6 +10,9 @@ public class Window_Graph_Tiegel4 : MonoBehaviour {
     GameObject lastCircleGameObject;
     int tiegelColor;
     //BunsenBrenner bunsenBrenner = new BunsenBrenner();
+    [SerializeField] GameObject PanelTiegel;
+    bool changedPos;
+    [SerializeField] GameObject BBSlot1, BBSlot2, BBSlot3, BBSlot4;
 
     private void Awake()
     {       
@@ -33,6 +36,36 @@ public class Window_Graph_Tiegel4 : MonoBehaviour {
 
     public void ShowGraph(float value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
     {
+        if (changedPos == false)
+        {
+            if (BBSlot1.GetComponentInChildren<GameObject>().tag.Equals("80SiCold"))
+            {
+                PanelTiegel.transform.position = new Vector2(-42, -101);
+                PanelTiegel.layer = 0;
+            }
+            else if (BBSlot2.GetComponentInChildren<GameObject>().tag.Equals("80SiCold"))
+            {
+                PanelTiegel.transform.position = new Vector2(-42, -231);
+                PanelTiegel.layer = 0;
+            }
+            else if (BBSlot3.GetComponentInChildren<GameObject>().tag.Equals("80SiCold"))
+            {
+                PanelTiegel.transform.position = new Vector2(-42, -387);
+                PanelTiegel.layer = 0;
+            }
+            else if (BBSlot4.GetComponentInChildren<GameObject>().tag.Equals("80SiCold"))
+            {
+                PanelTiegel.transform.position = new Vector2(-42, -541);
+                PanelTiegel.layer = 0;
+            }
+            else
+            {
+                PanelTiegel.transform.position = new Vector2(-42, -101);
+                PanelTiegel.layer = 1;
+                Debug.Log("Konnte kein Tiegel finden mit dem Tag '80SiCold'");
+            }
+            changedPos = true;
+        }
         graphContainer = this.gameObject.GetComponentsInChildren<RectTransform>(true)[1];
         tiegelColor = tiegelFarbe;
         float graphHeight = graphContainer.sizeDelta.y; //Größe des Graphen

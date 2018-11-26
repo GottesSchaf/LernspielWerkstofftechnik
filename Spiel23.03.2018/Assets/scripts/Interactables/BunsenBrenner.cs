@@ -20,7 +20,7 @@ public class BunsenBrenner : MonoBehaviour {
     [SerializeField] GameObject flamme1, flamme2, flamme3, flamme4;
     bool flamme1Bool, flamme2Bool, flamme3Bool, flamme4Bool;
     [SerializeField] GameObject tiegelZahnrad;
-    [SerializeField] private Window_Graph windowGraph;
+    [SerializeField] Window_Graph windowGraph;
     [SerializeField] Window_Graph_Tiegel2 windowGraphTiegel2;
     [SerializeField] Window_Graph_Tiegel3 windowGraphTiegel3;
     [SerializeField] Window_Graph_Tiegel4 windowGraphTiegel4;
@@ -28,13 +28,23 @@ public class BunsenBrenner : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        List<int> usedRnd = new List<int>();
         //Mische die Bunsen Brenner, sodass die Studenten nicht schummeln können
         for (int i = 0; i < bunsenBrennerObjekt.Length; i++)
         {
             int rnd = Random.Range(0, bunsenBrennerObjekt.Length);
-            tempGO = bunsenBrennerObjekt[rnd];
+            while (usedRnd.Contains(rnd))
+            {
+                rnd = Random.Range(0, bunsenBrennerObjekt.Length);
+            }
+            usedRnd.Add(rnd);
+            tempGO = bunsenBrennerObjekt[i];
+            bunsenBrennerObjekt[i].transform.position = tempGO.transform.position;
             bunsenBrennerObjekt[rnd] = bunsenBrennerObjekt[i];
-            bunsenBrennerObjekt[i] = tempGO;
+            bunsenBrennerObjekt[rnd].transform.position = bunsenBrennerObjekt[i].transform.position;
+            tempGO = bunsenBrennerObjekt[rnd];
+            tempGO.transform.position = bunsenBrennerObjekt[rnd].transform.position;
+
         }
         for(int i = 0; i < istTemp.Length; i++)
         {
@@ -192,14 +202,20 @@ public class BunsenBrenner : MonoBehaviour {
                 Debug.Log("Tiegel 1 wird abgekühlt");
                 if(istTemp[0] > 25 && istTemp[0] <= 1250)
                 {
+                    tiegelFarbe = 20;
+                    windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
                     istTemp[0] -= bBZieltemp[0] / bBZeit[0];
                 }
                 else if (istTemp[0] > 1250 && istTemp[0] <= 1400)
                 {
+                    tiegelFarbe = 20;
+                    windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
                     istTemp[0] -= (bBZieltemp[1] - bBZieltemp[0]) / bBZeit[1];
                 }
                 else if (istTemp[0] > 1400)
                 {
+                    tiegelFarbe = 20;
+                    windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
                     istTemp[0] -= (bBZieltemp[2] - bBZieltemp[1]) / bBZeit[2];
                 }
             }
@@ -209,20 +225,14 @@ public class BunsenBrenner : MonoBehaviour {
                 if (istTemp[1] <= 1100)
                 {
                     istTemp[1] += bBZieltemp[3] / bBZeit[3];
-                    tiegelFarbe = 40;
-                    windowGraphTiegel2.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[1] <= 1350)
                 {
                     istTemp[1] += (bBZieltemp[4] - bBZieltemp[3]) / bBZeit[4];
-                    tiegelFarbe = 40;
-                    windowGraphTiegel2.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[1] < 1550)
                 {
                     istTemp[1] += (bBZieltemp[5] - bBZieltemp[4]) / bBZeit[5];
-                    tiegelFarbe = 40;
-                    windowGraphTiegel2.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[1] >= 1550)
                 {
@@ -260,14 +270,20 @@ public class BunsenBrenner : MonoBehaviour {
             {
                 if (istTemp[1] > 25 && istTemp[1] <= 1250)
                 {
+                    tiegelFarbe = 40;
+                    windowGraphTiegel2.ShowGraph(istTemp[1], 10, tiegelFarbe);
                     istTemp[1] -= bBZieltemp[3] / bBZeit[3];
                 }
                 else if (istTemp[1] > 1250 && istTemp[1] <= 1400)
                 {
+                    tiegelFarbe = 40;
+                    windowGraphTiegel2.ShowGraph(istTemp[1], 10, tiegelFarbe);
                     istTemp[1] -= (bBZieltemp[4] - bBZieltemp[3]) / bBZeit[4];
                 }
                 else if (istTemp[1] > 1400)
                 {
+                    tiegelFarbe = 40;
+                    windowGraphTiegel2.ShowGraph(istTemp[1], 10, tiegelFarbe);
                     istTemp[1] -= (bBZieltemp[5] - bBZieltemp[4]) / bBZeit[5];
                 }
             }
@@ -277,20 +293,14 @@ public class BunsenBrenner : MonoBehaviour {
                 if (istTemp[2] <= 1125)
                 {
                     istTemp[2] += bBZieltemp[6] / bBZeit[6];
-                    tiegelFarbe = 60;
-                    windowGraphTiegel3.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[2] <= 1250)
                 {
                     istTemp[2] += (bBZieltemp[7] - bBZieltemp[6]) / bBZeit[7];
-                    tiegelFarbe = 60;
-                    windowGraphTiegel3.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[2] < 1550)
                 {
                     istTemp[2] += (bBZieltemp[8] - bBZieltemp[7]) / bBZeit[8];
-                    tiegelFarbe = 60;
-                    windowGraphTiegel3.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[2] >= 1550)
                 {
@@ -328,14 +338,20 @@ public class BunsenBrenner : MonoBehaviour {
             {
                 if (istTemp[2] > 25 && istTemp[2] <= 1250)
                 {
+                    tiegelFarbe = 60;
+                    windowGraphTiegel3.ShowGraph(istTemp[2], 10, tiegelFarbe);
                     istTemp[2] -= bBZieltemp[6] / bBZeit[6];
                 }
                 else if (istTemp[2] > 1250 && istTemp[2] <= 1400)
                 {
+                    tiegelFarbe = 60;
+                    windowGraphTiegel3.ShowGraph(istTemp[2], 10, tiegelFarbe);
                     istTemp[2] -= (bBZieltemp[7] - bBZieltemp[6]) / bBZeit[7];
                 }
                 else if (istTemp[2] > 1400)
                 {
+                    tiegelFarbe = 60;
+                    windowGraphTiegel3.ShowGraph(istTemp[2], 10, tiegelFarbe);
                     istTemp[2] -= (bBZieltemp[8] - bBZieltemp[7]) / bBZeit[8];
                 }
             }
@@ -345,20 +361,14 @@ public class BunsenBrenner : MonoBehaviour {
                 if (istTemp[3] <= 950)
                 {
                     istTemp[3] += bBZieltemp[9] / bBZeit[9];
-                    tiegelFarbe = 80;
-                    windowGraphTiegel4.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[3] <= 1100)
                 {
                     istTemp[3] += (bBZieltemp[10] - bBZieltemp[9]) / bBZeit[10];
-                    tiegelFarbe = 80;
-                    windowGraphTiegel4.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[3] < 1550)
                 {
                     istTemp[3] += (bBZieltemp[11] - bBZieltemp[10]) / bBZeit[11];
-                    tiegelFarbe = 80;
-                    windowGraphTiegel4.ShowGraph(istTemp[0], 10, tiegelFarbe);
                 }
                 else if (istTemp[3] >= 1550)
                 {
@@ -396,14 +406,20 @@ public class BunsenBrenner : MonoBehaviour {
             {
                 if (istTemp[3] > 25 && istTemp[3] <= 1250)
                 {
+                    tiegelFarbe = 80;
+                    windowGraphTiegel4.ShowGraph(istTemp[3], 10, tiegelFarbe);
                     istTemp[3] -= bBZieltemp[9] / bBZeit[9];
                 }
                 else if (istTemp[3] > 1250 && istTemp[3] <= 1400)
                 {
+                    tiegelFarbe = 80;
+                    windowGraphTiegel4.ShowGraph(istTemp[3], 10, tiegelFarbe);
                     istTemp[3] -= (bBZieltemp[10] - bBZieltemp[9]) / bBZeit[10];
                 }
                 else if (istTemp[3] > 1400)
                 {
+                    tiegelFarbe = 80;
+                    windowGraphTiegel4.ShowGraph(istTemp[3], 10, tiegelFarbe);
                     istTemp[3] -= (bBZieltemp[11] - bBZieltemp[10]) / bBZeit[11];
                 }
             }

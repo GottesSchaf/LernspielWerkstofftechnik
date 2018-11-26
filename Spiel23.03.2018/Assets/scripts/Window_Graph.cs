@@ -9,14 +9,9 @@ public class Window_Graph : MonoBehaviour {
     private int i = 0;
     GameObject lastCircleGameObject;
     int tiegelColor;
-    //BunsenBrenner bunsenBrenner = new BunsenBrenner();
-
-    private void Awake()
-    {       
-        Debug.Log(graphContainer);
-        //List<int> valueList = new List<int>() { 5, 98, 56, 45, 30, 22, 17, 15, 13, 17, 25, 37, 40, 36, 33 }; //Liste für y Koordinaten (°C)
-        //ShowGraph(valueList);
-    }
+    [SerializeField] GameObject PanelTiegel;
+    bool changedPos;
+    [SerializeField] GameObject BBSlot1, BBSlot2, BBSlot3, BBSlot4;
 
     private GameObject CreatCircle(Vector2 anchoredPosition)
     {
@@ -33,15 +28,43 @@ public class Window_Graph : MonoBehaviour {
 
     public void ShowGraph(float value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
     {
+        if(changedPos == false)
+        {
+            if (BBSlot1.GetComponentInChildren<GameObject>().tag.Equals("20SiCold"))
+            {
+                PanelTiegel.transform.position = new Vector2(-42, -101);
+                PanelTiegel.layer = 0;
+            }
+            else if(BBSlot2.GetComponentInChildren<GameObject>().tag.Equals("20SiCold"))
+            {
+                PanelTiegel.transform.position = new Vector2(-42, -231);
+                PanelTiegel.layer = 0;
+            }
+            else if (BBSlot3.GetComponentInChildren<GameObject>().tag.Equals("20SiCold"))
+            {
+                PanelTiegel.transform.position = new Vector2(-42, -387);
+                PanelTiegel.layer = 0;
+            }
+            else if (BBSlot4.GetComponentInChildren<GameObject>().tag.Equals("20SiCold"))
+            {
+                PanelTiegel.transform.position = new Vector2(-42, -541);
+                PanelTiegel.layer = 0;
+            }
+            else
+            {
+                PanelTiegel.transform.position = new Vector2(-42, -101);
+                PanelTiegel.layer = 1;
+                Debug.Log("Konnte kein Tiegel finden mit dem Tag '20SiCold'");
+            }
+            changedPos = true;
+        }
         graphContainer = this.gameObject.GetComponentsInChildren<RectTransform>(true)[1];
         tiegelColor = tiegelFarbe;
         float graphHeight = graphContainer.sizeDelta.y; //Größe des Graphen
         float yMaximum = 2000f; //Maximale Größe des Graphen
         float xSize = sekunden; //Abstand zwischen X Positionen (sekunden)
-        //GameObject lastCircleGameObject = null; //Letzter Punkt, der erstellt wurde
-        //Vorher: if(i < valueList.Count)
-        float xPosition = i * xSize;
-        float yPosition = (value / yMaximum) * graphHeight;
+        float xPosition = i * xSize; //Berechne die X Position auf dem Graphen
+        float yPosition = (value / yMaximum) * graphHeight; //Berechne die Y Position auf dem Graphen
         GameObject circleGameObject = CreatCircle(new Vector2(xPosition, yPosition));
         //Falls ein vorheriger Punkt vorhanden, erstelle eine Verbindung
         if (lastCircleGameObject != null)
@@ -55,16 +78,16 @@ public class Window_Graph : MonoBehaviour {
     private void CreateDotConnection(Vector2 dotPositionA, Vector2 dotPositionB)
     {
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));
-        gameObject.transform.SetParent(graphContainer, false);
+        gameObject.transform.SetParent(graphContainer, false);  //Setze den Parent des neuen Objektes, auch wenn der Parent nicht aktiv ist in der Hierarchy
         gameObject.GetComponent<Image>().color = new Color(1, 1, 1, .75f); //R, G, B, Transparenz
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
-        Vector2 dir = (dotPositionB - dotPositionA).normalized;
-        float distance = Vector2.Distance(dotPositionA, dotPositionB);
+        Vector2 dir = (dotPositionB - dotPositionA).normalized;     //Setze die Länge des Vektors auf 1
+        float distance = Vector2.Distance(dotPositionA, dotPositionB); //Errechne die Distanz zwischen zwei Punkten
         rectTransform.anchorMin = new Vector2(0, 0); //Ankerpunkt unten links
         rectTransform.anchorMax = new Vector2(0, 0); //Ankerpunkt unten links
         rectTransform.sizeDelta = new Vector2(distance, 3f);
         rectTransform.anchoredPosition = dotPositionA + dir * distance * .5f;
-        rectTransform.localEulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(dir));
+        rectTransform.localEulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(dir));   //Stelle den Winkel der Geraden zwischen den Punkten richtig ein
     }
 
     public static float GetAngleFromVectorFloat(Vector3 dir)
