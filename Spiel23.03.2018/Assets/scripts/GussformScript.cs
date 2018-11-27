@@ -28,7 +28,6 @@ public class GussformScript : MonoBehaviour {
         //Schraubenschlüssel Slot
         if (slotWrenchTiegel.transform.childCount > 0 && slotWrenchTiegel.transform.GetChild(0).CompareTag("20SiHot"))
         {
-            Debug.Log("Going to work");
             if (bunsenBrenner.istTemp[0] > 25 && bunsenBrenner.istTemp[0] <= 1250)
             {
                 bunsenBrenner.istTemp[0] -= bunsenBrenner.bBZieltemp[0] / bunsenBrenner.bBZeit[0];
