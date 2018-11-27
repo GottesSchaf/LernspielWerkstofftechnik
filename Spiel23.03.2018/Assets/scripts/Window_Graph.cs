@@ -11,7 +11,7 @@ public class Window_Graph : MonoBehaviour {
     int tiegelColor;
     [SerializeField] GameObject PanelTiegel;
     bool changedPos;
-    [SerializeField] GameObject BBSlot1, BBSlot2, BBSlot3, BBSlot4;
+    [SerializeField] GameObject[] BBSlot;
 
     private GameObject CreatCircle(Vector2 anchoredPosition)
     {
@@ -28,36 +28,36 @@ public class Window_Graph : MonoBehaviour {
 
     public void ShowGraph(float value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
     {
-        if(changedPos == false)
-        {
-            if (BBSlot1.GetComponentInChildren<GameObject>().tag.Equals("20SiCold"))
-            {
-                PanelTiegel.transform.position = new Vector2(-42, -101);
-                PanelTiegel.layer = 0;
-            }
-            else if(BBSlot2.GetComponentInChildren<GameObject>().tag.Equals("20SiCold"))
-            {
-                PanelTiegel.transform.position = new Vector2(-42, -231);
-                PanelTiegel.layer = 0;
-            }
-            else if (BBSlot3.GetComponentInChildren<GameObject>().tag.Equals("20SiCold"))
-            {
-                PanelTiegel.transform.position = new Vector2(-42, -387);
-                PanelTiegel.layer = 0;
-            }
-            else if (BBSlot4.GetComponentInChildren<GameObject>().tag.Equals("20SiCold"))
-            {
-                PanelTiegel.transform.position = new Vector2(-42, -541);
-                PanelTiegel.layer = 0;
-            }
-            else
-            {
-                PanelTiegel.transform.position = new Vector2(-42, -101);
-                PanelTiegel.layer = 1;
-                Debug.Log("Konnte kein Tiegel finden mit dem Tag '20SiCold'");
-            }
-            changedPos = true;
-        }
+        //if(changedPos == false)
+        //{
+        //    if (BBSlot[0].GetComponentInChildren<GameObject>().CompareTag("20SiCold"))
+        //    {
+        //        PanelTiegel.transform.position = new Vector2(-42, -101);
+        //        PanelTiegel.layer = 0;
+        //    }
+        //    else if(BBSlot[1].GetComponentInChildren<GameObject>().CompareTag("20SiCold"))
+        //    {
+        //        PanelTiegel.transform.position = new Vector2(-42, -231);
+        //        PanelTiegel.layer = 0;
+        //    }
+        //    else if (BBSlot[2].GetComponentInChildren<GameObject>().CompareTag("20SiCold"))
+        //    {
+        //        PanelTiegel.transform.position = new Vector2(-42, -387);
+        //        PanelTiegel.layer = 0;
+        //    }
+        //    else if (BBSlot[3].GetComponentInChildren<GameObject>().CompareTag("20SiCold"))
+        //    {
+        //        PanelTiegel.transform.position = new Vector2(-42, -541);
+        //        PanelTiegel.layer = 0;
+        //    }
+        //    else
+        //    {
+        //        PanelTiegel.transform.position = new Vector2(-42, -101);
+        //        PanelTiegel.layer = 1;
+        //        Debug.Log("Konnte kein Tiegel finden mit dem Tag '20SiCold'");
+        //    }
+        //    changedPos = true;
+        //}
         graphContainer = this.gameObject.GetComponentsInChildren<RectTransform>(true)[1];
         tiegelColor = tiegelFarbe;
         float graphHeight = graphContainer.sizeDelta.y; //Größe des Graphen

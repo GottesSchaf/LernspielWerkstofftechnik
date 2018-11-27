@@ -8,7 +8,8 @@ public class BunsenBrenner : MonoBehaviour {
     public GameObject[] bunsenBrennerObjekt;
     public GameObject[] gasSchalter;
     public Transform[] bunsenBrennerTransf;
-    GameObject tempGO;
+    [SerializeField] Transform tempGOTransf;
+    [SerializeField] GameObject tempGO;
     public float[] bBZieltemp;                        //Array zum abspeichern der Rate in °C der jeweiligen Bunsen Brenner
     public int[] bBZeit;                        //Array zum abspeichern der Zeit in sekunden der jeweiligen Bunsen Brenner
     public float[] istTemp = new float[4];
@@ -24,11 +25,17 @@ public class BunsenBrenner : MonoBehaviour {
     [SerializeField] Window_Graph_Tiegel2 windowGraphTiegel2;
     [SerializeField] Window_Graph_Tiegel3 windowGraphTiegel3;
     [SerializeField] Window_Graph_Tiegel4 windowGraphTiegel4;
+    [SerializeField] GameObject[] tiegelAufBB;
     int tiegelFarbe;
     // Use this for initialization
     void Start ()
     {
+        Vector3[] shuffleArray = new Vector3[bunsenBrennerTransf.Length];
         List<int> usedRnd = new List<int>();
+        for(int i = 0; i < bunsenBrennerObjekt.Length; i++)
+        {
+            shuffleArray[i] = bunsenBrennerObjekt[i].transform.position;
+        }
         //Mische die Bunsen Brenner, sodass die Studenten nicht schummeln können
         for (int i = 0; i < bunsenBrennerObjekt.Length; i++)
         {
@@ -38,13 +45,7 @@ public class BunsenBrenner : MonoBehaviour {
                 rnd = Random.Range(0, bunsenBrennerObjekt.Length);
             }
             usedRnd.Add(rnd);
-            tempGO = bunsenBrennerObjekt[i];
-            bunsenBrennerObjekt[i].transform.position = tempGO.transform.position;
-            bunsenBrennerObjekt[rnd] = bunsenBrennerObjekt[i];
-            bunsenBrennerObjekt[rnd].transform.position = bunsenBrennerObjekt[i].transform.position;
-            tempGO = bunsenBrennerObjekt[rnd];
-            tempGO.transform.position = bunsenBrennerObjekt[rnd].transform.position;
-
+            bunsenBrennerObjekt[rnd].transform.position = shuffleArray[i];
         }
         for(int i = 0; i < istTemp.Length; i++)
         {
@@ -81,8 +82,42 @@ public class BunsenBrenner : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        #region Tiegel auf Bunsenbrenner
+        if (slot1.transform.childCount > 0)
+        {
+            tiegelAufBB[0].SetActive(true);
+        }
+        else
+        {
+            tiegelAufBB[0].SetActive(false);
+        }
+        if (slot2.transform.childCount > 0)
+        {
+            tiegelAufBB[1].SetActive(true);
+        }
+        else
+        {
+            tiegelAufBB[1].SetActive(false);
+        }
+        if (slot3.transform.childCount > 0)
+        {
+            tiegelAufBB[2].SetActive(true);
+        }
+        else
+        {
+            tiegelAufBB[2].SetActive(false);
+        }
+        if (slot4.transform.childCount > 0)
+        {
+            tiegelAufBB[3].SetActive(true);
+        }
+        else
+        {
+            tiegelAufBB[3].SetActive(false);
+        }
+        #endregion
         //CheckInstance();
-        if(hauptGasSchalter && platzGasSchalter && waiting == false)
+        if (hauptGasSchalter && platzGasSchalter && waiting == false)
         {
             StartCoroutine(BunsenBrennerRechnung());
         }
