@@ -28,7 +28,10 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
 		itemBeingDragged = gameObject;
         draggingItem = true;
-		startPosition = transform.position;
+        if (transform.parent != startParent)
+        {
+            startPosition = transform.position;
+        }
 		startParent = transform.parent;
 		GetComponent<CanvasGroup>().blocksRaycasts = false;
 
@@ -74,7 +77,6 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            Debug.Log("Raycast hitto: " + hit.transform.name);
             //-----------------------------------Inventar Cubes----------------------------------
             //if (itemBeingDragged.name.Contains("blue"))
             //{
@@ -131,12 +133,12 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         draggingItem = false;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        if (!Inventory.activeSelf && Slot.otherSlot == false)
+        if (Slot.otherSlot == false) //!Inventory.activeSelf &&
         {
             transform.position = startPosition;
             transform.SetParent(startParent);
         }
-        //if (transform.parent != startParent)
+        //else if (transform.parent != startParent)
         //{
         //    transform.position = startPosition;
         //    transform.SetParent(transform.parent);

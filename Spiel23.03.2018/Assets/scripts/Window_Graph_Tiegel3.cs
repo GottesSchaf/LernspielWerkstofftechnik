@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Window_Graph : MonoBehaviour {
+public class Window_Graph_Tiegel3 : MonoBehaviour {
     [SerializeField] Sprite circleSprite;
     [SerializeField] private RectTransform graphContainer;
     private int i = 0;
     GameObject lastCircleGameObject;
     int tiegelColor;
+    //BunsenBrenner bunsenBrenner = new BunsenBrenner();
     [SerializeField] GameObject PanelTiegel;
     bool changedPos;
     [SerializeField] GameObject BBSlot1, BBSlot2, BBSlot3, BBSlot4;
+
+    private void Awake()
+    {       
+        Debug.Log(graphContainer);
+        //List<int> valueList = new List<int>() { 5, 98, 56, 45, 30, 22, 17, 15, 13, 17, 25, 37, 40, 36, 33 }; //Liste für y Koordinaten (°C)
+        //ShowGraph(valueList);
+    }
 
     private GameObject CreatCircle(Vector2 anchoredPosition)
     {
@@ -28,24 +36,24 @@ public class Window_Graph : MonoBehaviour {
 
     public void ShowGraph(float value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
     {
-        if(changedPos == false)
+        if (changedPos == false)
         {
-            if (BBSlot1.GetComponentInChildren<GameObject>().tag.Equals("20SiCold"))
+            if (BBSlot1.GetComponentInChildren<GameObject>().tag.Equals("60SiCold"))
             {
                 PanelTiegel.transform.position = new Vector2(-42, -101);
                 PanelTiegel.layer = 0;
             }
-            else if(BBSlot2.GetComponentInChildren<GameObject>().tag.Equals("20SiCold"))
+            else if (BBSlot2.GetComponentInChildren<GameObject>().tag.Equals("60SiCold"))
             {
                 PanelTiegel.transform.position = new Vector2(-42, -231);
                 PanelTiegel.layer = 0;
             }
-            else if (BBSlot3.GetComponentInChildren<GameObject>().tag.Equals("20SiCold"))
+            else if (BBSlot3.GetComponentInChildren<GameObject>().tag.Equals("60SiCold"))
             {
                 PanelTiegel.transform.position = new Vector2(-42, -387);
                 PanelTiegel.layer = 0;
             }
-            else if (BBSlot4.GetComponentInChildren<GameObject>().tag.Equals("20SiCold"))
+            else if (BBSlot4.GetComponentInChildren<GameObject>().tag.Equals("60SiCold"))
             {
                 PanelTiegel.transform.position = new Vector2(-42, -541);
                 PanelTiegel.layer = 0;
@@ -54,7 +62,7 @@ public class Window_Graph : MonoBehaviour {
             {
                 PanelTiegel.transform.position = new Vector2(-42, -101);
                 PanelTiegel.layer = 1;
-                Debug.Log("Konnte kein Tiegel finden mit dem Tag '20SiCold'");
+                Debug.Log("Konnte kein Tiegel finden mit dem Tag '60SiCold'");
             }
             changedPos = true;
         }
@@ -63,8 +71,10 @@ public class Window_Graph : MonoBehaviour {
         float graphHeight = graphContainer.sizeDelta.y; //Größe des Graphen
         float yMaximum = 2000f; //Maximale Größe des Graphen
         float xSize = sekunden; //Abstand zwischen X Positionen (sekunden)
-        float xPosition = i * xSize; //Berechne die X Position auf dem Graphen
-        float yPosition = (value / yMaximum) * graphHeight; //Berechne die Y Position auf dem Graphen
+        //GameObject lastCircleGameObject = null; //Letzter Punkt, der erstellt wurde
+        //Vorher: if(i < valueList.Count)
+        float xPosition = i * xSize;
+        float yPosition = (value / yMaximum) * graphHeight;
         GameObject circleGameObject = CreatCircle(new Vector2(xPosition, yPosition));
         //Falls ein vorheriger Punkt vorhanden, erstelle eine Verbindung
         if (lastCircleGameObject != null)
@@ -78,16 +88,16 @@ public class Window_Graph : MonoBehaviour {
     private void CreateDotConnection(Vector2 dotPositionA, Vector2 dotPositionB)
     {
         GameObject gameObject = new GameObject("dotConnection", typeof(Image));
-        gameObject.transform.SetParent(graphContainer, false);  //Setze den Parent des neuen Objektes, auch wenn der Parent nicht aktiv ist in der Hierarchy
-        gameObject.GetComponent<Image>().color = new Color(1, 1, 1, .75f); //R, G, B, Transparenz
+        gameObject.transform.SetParent(graphContainer, false);
+        gameObject.GetComponent<Image>().color = new Color(0, 1, 0, .75f);
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
-        Vector2 dir = (dotPositionB - dotPositionA).normalized;     //Setze die Länge des Vektors auf 1
-        float distance = Vector2.Distance(dotPositionA, dotPositionB); //Errechne die Distanz zwischen zwei Punkten
+        Vector2 dir = (dotPositionB - dotPositionA).normalized;
+        float distance = Vector2.Distance(dotPositionA, dotPositionB);
         rectTransform.anchorMin = new Vector2(0, 0); //Ankerpunkt unten links
         rectTransform.anchorMax = new Vector2(0, 0); //Ankerpunkt unten links
         rectTransform.sizeDelta = new Vector2(distance, 3f);
         rectTransform.anchoredPosition = dotPositionA + dir * distance * .5f;
-        rectTransform.localEulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(dir));   //Stelle den Winkel der Geraden zwischen den Punkten richtig ein
+        rectTransform.localEulerAngles = new Vector3(0, 0, GetAngleFromVectorFloat(dir));
     }
 
     public static float GetAngleFromVectorFloat(Vector3 dir)
