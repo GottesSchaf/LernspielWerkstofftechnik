@@ -11,13 +11,13 @@ public class Door : Interactive
 
     public override void Interact()
     {
-		if (this.name != "door_elevatorout")
+        if (this.name != "door_elevatorout")
         {
-			playerAgent.Warp(destination);
-            if(this.gameObject.name == "Doors_Tutorial_2" || this.gameObject.name == "Door_Tutorial_Backside")
+            playerAgent.Warp(destination);
+            if (this.gameObject.name == "Doors_Tutorial_2" || this.gameObject.name == "Door_Tutorial_Backside")
             {
                 questWindow.SetActive(true);
-            }           
+            }
         }
         else
         {
