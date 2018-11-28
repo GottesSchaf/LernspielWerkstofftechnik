@@ -53,7 +53,7 @@ public class MouseInput : MonoBehaviour
             else
             {
                 playerAgent.destination = interactionInfo.point;
-                this.gameObject.transform.LookAt(interactionInfo.point);
+                this.gameObject.transform.LookAt(new Vector3(interactionInfo.point.x, transform.position.y, interactionInfo.point.z));
             }
         }
 

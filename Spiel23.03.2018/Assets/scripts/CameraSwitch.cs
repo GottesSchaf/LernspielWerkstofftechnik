@@ -8,7 +8,6 @@ public class CameraSwitch : MonoBehaviour {
     public Camera Tutorialcamera;
     public GameObject Inventory;
     public GameObject Photo;
-    public GameObject Question;
     public GameObject Speed1;
     public GameObject Speed2;
     public GameObject Button; 
@@ -29,7 +28,6 @@ public class CameraSwitch : MonoBehaviour {
         // enabling parts of the canvas
         Inventory.SetActive(true);
         Photo.SetActive(true);
-        Question.SetActive(true);
         Speed1.SetActive(true);
         Speed2.SetActive(true);
     }
