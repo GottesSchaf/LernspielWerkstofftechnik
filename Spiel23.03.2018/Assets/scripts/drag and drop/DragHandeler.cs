@@ -7,8 +7,8 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 {
     public static GameObject itemBeingDragged;
     public static bool draggingItem;
-    Vector3 startPosition;
-    Transform startParent;
+    [SerializeField] Vector3 startPosition;
+    [SerializeField] Transform startParent;
     private Ray updateRay;
     private RaycastHit updateHit;
     public GameObject RadialMenue;
@@ -20,6 +20,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public Slot MachineSlot;
     public GameObject player;
     public GameObject mesh;
+    GameObject gameOverScreen;
 
 
     #region IBeginDragHandler implementation
@@ -40,6 +41,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 		Inventory = GameObject.Find("InventoryMenue");
 		UICanvas = GameObject.Find("Canvas");
 		Machine = GameObject.Find("Machine");
+        gameOverScreen = GameObject.Find("Maschine_Kaputt");
 		//MachineSlot = 
 
 		//if(itemBeingDragged.name.Contains("placeholder"))
@@ -109,9 +111,10 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 //Text: du kleiner Cheater
                 //Game Over
             }
-            else
+            else if(hit.transform.CompareTag("Machine") && itemBeingDragged.transform.tag == "Falsch")
             {
                 //GameOver
+                gameOverScreen.SetActive(true);
             }
             if (hit.transform.CompareTag("Player") && itemBeingDragged.name.Contains("Labcoat"))
             {
@@ -133,7 +136,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         draggingItem = false;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        if (Slot.otherSlot == false) //!Inventory.activeSelf &&
+        if (Slot.otherSlot == false || transform.parent.name.Equals("Canvas")) //!Inventory.activeSelf &&
         {
             transform.position = startPosition;
             transform.SetParent(startParent);
