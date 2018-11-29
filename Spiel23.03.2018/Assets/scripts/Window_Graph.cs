@@ -26,6 +26,24 @@ public class Window_Graph : MonoBehaviour {
         return gameObject;
     }
 
+    public void DeleteGraph()
+    {
+        if (graphContainer.transform.childCount > 0)
+        {
+            while (true)
+            {
+                if (graphContainer.transform.GetChild(1))
+                {
+                    Destroy(graphContainer.transform.GetChild(1));
+                    
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+    }
     public void ShowGraph(float value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
     {
         //if(changedPos == false)
