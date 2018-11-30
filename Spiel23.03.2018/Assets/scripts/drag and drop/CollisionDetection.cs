@@ -28,6 +28,7 @@ public class CollisionDetection : MonoBehaviour {
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        Debug.Log("OnTriggerExit2D");
         if (collision.CompareTag("Inventory"))
         {
             if (DragHandeler.draggingItem)

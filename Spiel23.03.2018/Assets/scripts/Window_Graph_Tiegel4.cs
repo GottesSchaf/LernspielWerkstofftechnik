@@ -18,11 +18,18 @@ public class Window_Graph_Tiegel4 : MonoBehaviour {
     {
         if (graphContainer.transform.childCount > 0)
         {
-            foreach (Transform child in graphContainer)
+            while (true)
             {
-                Destroy(child.gameObject);
+
+                if (graphContainer.transform.GetChild(1))
+                {
+                    Destroy(graphContainer.transform.GetChild(1));
+                }
+                else
+                {
+                    break;
+                }
             }
-            i = 0;
         }
     }
 

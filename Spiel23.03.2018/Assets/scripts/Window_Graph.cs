@@ -30,11 +30,18 @@ public class Window_Graph : MonoBehaviour {
     {
         if (graphContainer.transform.childCount > 0)
         {
-            foreach(Transform child in graphContainer)
+            while (true)
             {
-                Destroy(child.gameObject);
+                if (graphContainer.transform.GetChild(1))
+                {
+                    Destroy(graphContainer.transform.GetChild(1));
+                    
+                }
+                else
+                {
+                    break;
+                }
             }
-            i = 0;
         }
     }
     public void ShowGraph(float value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
