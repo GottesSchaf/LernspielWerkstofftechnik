@@ -6,7 +6,7 @@ public class GussformScript : MonoBehaviour {
 
     public Transform slotWrenchTiegel, slotPleuelTiegel, slotZahnradTiegel, slotWrench, slotPleuel, slotZahnrad;
     public GameObject[] legierungForm;
-    public int abkuehlZeit;
+    //public int abkuehlZeit;
     public GameObject zahnrad, pleuel, wrench;
     public GameObject BBScriptObjekt;
     BunsenBrenner bunsenBrenner;

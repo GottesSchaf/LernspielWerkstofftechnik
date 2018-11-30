@@ -195,18 +195,21 @@ public class BunsenBrenner : MonoBehaviour
                     {
                         istTemp[0] += bBZieltemp[0] / bBZeit[0];
                         tiegelFarbe = 20;
+                        tiegel1Heated = true;
                         //windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
                     }
                     else if (istTemp[0] <= 1400)
                     {
                         istTemp[0] += (bBZieltemp[1] - bBZieltemp[0]) / bBZeit[1];
                         tiegelFarbe = 20;
+                        tiegel1Heated = true;
                         //windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
                     }
                     else if (istTemp[0] < 1550)
                     {
                         istTemp[0] += (bBZieltemp[2] - bBZieltemp[1]) / bBZeit[2];
                         tiegelFarbe = 20;
+                        tiegel1Heated = true;
                         //windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
                     }
                     else if (istTemp[0] >= 1550)
@@ -313,14 +316,17 @@ public class BunsenBrenner : MonoBehaviour
                     if (istTemp[1] <= 1100)
                     {
                         istTemp[1] += bBZieltemp[3] / bBZeit[3];
+                        tiegel2Heated = true;
                     }
                     else if (istTemp[1] <= 1350)
                     {
                         istTemp[1] += (bBZieltemp[4] - bBZieltemp[3]) / bBZeit[4];
+                        tiegel2Heated = true;
                     }
                     else if (istTemp[1] < 1550)
                     {
                         istTemp[1] += (bBZieltemp[5] - bBZieltemp[4]) / bBZeit[5];
+                        tiegel2Heated = true;
                     }
                     else if (istTemp[1] >= 1550)
                     {
@@ -425,14 +431,17 @@ public class BunsenBrenner : MonoBehaviour
                     if (istTemp[2] <= 1125)
                     {
                         istTemp[2] += bBZieltemp[6] / bBZeit[6];
+                        tiegel3Heated = true;
                     }
                     else if (istTemp[2] <= 1250)
                     {
                         istTemp[2] += (bBZieltemp[7] - bBZieltemp[6]) / bBZeit[7];
+                        tiegel3Heated = true;
                     }
                     else if (istTemp[2] < 1550)
                     {
                         istTemp[2] += (bBZieltemp[8] - bBZieltemp[7]) / bBZeit[8];
+                        tiegel3Heated = true;
                     }
                     else if (istTemp[2] >= 1550)
                     {
@@ -537,14 +546,17 @@ public class BunsenBrenner : MonoBehaviour
                     if (istTemp[3] <= 950)
                     {
                         istTemp[3] += bBZieltemp[9] / bBZeit[9];
+                        tiegel4Heated = true;
                     }
                     else if (istTemp[3] <= 1100)
                     {
                         istTemp[3] += (bBZieltemp[10] - bBZieltemp[9]) / bBZeit[10];
+                        tiegel4Heated = true;
                     }
                     else if (istTemp[3] < 1550)
                     {
                         istTemp[3] += (bBZieltemp[11] - bBZieltemp[10]) / bBZeit[11];
+                        tiegel4Heated = true;
                     }
                     else if (istTemp[3] >= 1550)
                     {
