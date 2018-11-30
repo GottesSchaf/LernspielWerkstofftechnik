@@ -10,6 +10,7 @@ public class MouseInput : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     public string RayHitsThis;
+    [SerializeField] GameObject laptop, bunsenBrenner, gussformWrench, gussformPleuel, gussformZahnrad, datenblatt, laborkittelError, tiegelBeschriftung, verbrannt, ofen;
 
     void Start()
     {
@@ -41,19 +42,21 @@ public class MouseInput : MonoBehaviour
         RaycastHit interactionInfo;
         if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
         {
-            GameObject interactiveObject = interactionInfo.collider.gameObject;
-            if (interactiveObject.tag == "Interactive")
-            {
-                interactiveObject.GetComponent<Interactive>().MoveToInteraction(playerAgent);
-            }
-            if (interactiveObject.tag == "Collectible")
-            {
-                interactiveObject.GetComponent<Collectible>().MoveToCollectible(playerAgent);
-            }
-            else
-            {
-                playerAgent.destination = interactionInfo.point;
-                this.gameObject.transform.LookAt(new Vector3(interactionInfo.point.x, transform.position.y, interactionInfo.point.z));
+            if (laptop.activeInHierarchy == false && bunsenBrenner.activeInHierarchy == false && gussformPleuel.activeInHierarchy == false && gussformWrench.activeInHierarchy == false && gussformZahnrad.activeInHierarchy == false && datenblatt.activeInHierarchy == false && laborkittelError.activeInHierarchy == false && tiegelBeschriftung.activeInHierarchy == false && verbrannt.activeInHierarchy == false && ofen.activeInHierarchy == false) {
+                GameObject interactiveObject = interactionInfo.collider.gameObject;
+                if (interactiveObject.tag == "Interactive")
+                {
+                    interactiveObject.GetComponent<Interactive>().MoveToInteraction(playerAgent);
+                }
+                if (interactiveObject.tag == "Collectible")
+                {
+                    interactiveObject.GetComponent<Collectible>().MoveToCollectible(playerAgent);
+                }
+                else
+                {
+                    playerAgent.destination = interactionInfo.point;
+                    this.gameObject.transform.LookAt(new Vector3(interactionInfo.point.x, transform.position.y, interactionInfo.point.z));
+                }
             }
         }
 
