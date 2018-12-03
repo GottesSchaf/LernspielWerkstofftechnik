@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class Slot : MonoBehaviour, IDropHandler
 {
     public static bool otherSlot;
+
     public GameObject item
     {
         get
