@@ -167,7 +167,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 643b22de28c248244b34ca9f1b83617b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a70eaf9885f61c46974e50093f31227, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2297,6 +2297,33 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: -0.029000001, z: 0}
   m_TimeToStationary: 0.5
+--- !u!84 &99150798
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 757
+  m_Height: 326
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &103811627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2486,33 +2513,6 @@ Transform:
   m_Father: {fileID: 853005778}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &117973530
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 757
-  m_Height: 326
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &119923108
 GameObject:
   m_ObjectHideFlags: 0
@@ -5219,7 +5219,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 117973530}
+  m_TargetTexture: {fileID: 1126180546}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -5560,7 +5560,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0bf8ffb587baccc4ca86f9605dcee121, type: 3}
-    m_FontSize: 32
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -5571,7 +5571,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "schlie\xDFen"
+  m_Text: "Schlie\xDFen"
 --- !u!222 &273951186
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14924,7 +14924,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 643b22de28c248244b34ca9f1b83617b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a70eaf9885f61c46974e50093f31227, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -36740,7 +36740,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -389}
-  m_SizeDelta: {x: 250, y: 40}
+  m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1005286429
 MonoBehaviour:
@@ -37195,7 +37195,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 643b22de28c248244b34ca9f1b83617b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a70eaf9885f61c46974e50093f31227, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -38365,8 +38365,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 1075912873}
   outlineCamera: {fileID: 260511559}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 117973530}
-  extraRenderTexture: {fileID: 1327171916}
+  renderTexture: {fileID: 1126180546}
+  extraRenderTexture: {fileID: 99150798}
 --- !u!54 &1075912876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -39314,6 +39314,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6ad87e7d4d4fa4b8969455fd7d5b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!84 &1126180546
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 757
+  m_Height: 326
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &1127660829
 Prefab:
   m_ObjectHideFlags: 0
@@ -44016,33 +44043,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1322548140}
---- !u!84 &1327171916
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 757
-  m_Height: 326
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1330087845
 GameObject:
   m_ObjectHideFlags: 0
@@ -45115,7 +45115,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 643b22de28c248244b34ca9f1b83617b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a70eaf9885f61c46974e50093f31227, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
