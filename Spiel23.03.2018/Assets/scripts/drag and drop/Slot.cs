@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class Slot : MonoBehaviour, IDropHandler
 {
     public static bool otherSlot;
+
     public GameObject item
     {
         get
@@ -23,10 +24,9 @@ public class Slot : MonoBehaviour, IDropHandler
     {
         if (!item)
         {
-            Debug.Log("Hier ist noch kein Item im Slot " + this.gameObject.name);
             DragHandeler.itemBeingDragged.transform.SetParent(transform);
             otherSlot = true;
-            //ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
+            ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
             //DragHandeler.itemBeingDragged = null;
         }
         else

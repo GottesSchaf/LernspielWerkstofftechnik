@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatzGasSchalterScript : MonoBehaviour
+public class PlatzGasSchalterScript : Interactive
 {
-
-    private void OnTriggerEnter(Collider other)
+    public override void Interact()
     {
-        if (other.gameObject.transform.CompareTag("Player") && BunsenBrenner.platzGasSchalter == false && BunsenBrenner.hauptGasSchalter == true)
+        if (BunsenBrenner.platzGasSchalter == false && BunsenBrenner.hauptGasSchalter == true)
         {
             BunsenBrenner.platzGasSchalter = true;
             Debug.Log("Platz Gas ein geschaltet");

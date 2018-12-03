@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HauptGasSchalterScript : MonoBehaviour {
+public class HauptGasSchalterScript : Interactive
+{
+    [SerializeField] Material fuseOn, fuseOff;
 
-    private void OnTriggerEnter(Collider other)
+    public override void Interact()
     {
-        if (other.gameObject.transform.CompareTag("Player") && BunsenBrenner.hauptGasSchalter == false)
+        if (BunsenBrenner.hauptGasSchalter == false)
         {
             BunsenBrenner.hauptGasSchalter = true;
+            this.gameObject.GetComponent<Renderer>().material = fuseOn;
             Debug.Log("Haupt Gas ein geschaltet");
         }
         else
         {
             BunsenBrenner.hauptGasSchalter = false;
+            this.gameObject.GetComponent<Renderer>().material = fuseOff;
             Debug.Log("Haupt Gas aus geschaltet");
         }
     }
