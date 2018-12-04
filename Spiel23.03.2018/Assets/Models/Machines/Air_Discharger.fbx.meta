@@ -17,6 +17,12 @@ ModelImporter:
     100018: transform3
     100020: transform4
     100022: transform5
+    100024: polySurface1
+    100026: polySurface2
+    100028: polySurface3
+    100030: polySurface4
+    100032: polySurface5
+    100034: transform6
     400000: Air_Discharge
     400002: //RootNode
     400004: Button_1
@@ -29,9 +35,30 @@ ModelImporter:
     400018: transform3
     400020: transform4
     400022: transform5
+    400024: polySurface1
+    400026: polySurface2
+    400028: polySurface3
+    400030: polySurface4
+    400032: polySurface5
+    400034: transform6
     2300000: Air_Discharge
+    2300002: polySurface1
+    2300004: polySurface2
+    2300006: polySurface3
+    2300008: polySurface4
+    2300010: polySurface5
     3300000: Air_Discharge
+    3300002: polySurface1
+    3300004: polySurface2
+    3300006: polySurface3
+    3300008: polySurface4
+    3300010: polySurface5
     4300000: Air_Discharge
+    4300002: polySurface1
+    4300004: polySurface2
+    4300006: polySurface3
+    4300008: polySurface4
+    4300010: polySurface5
   externalObjects:
   - first:
       type: UnityEngine:Material
