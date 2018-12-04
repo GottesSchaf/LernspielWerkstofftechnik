@@ -10,6 +10,7 @@ public class GussformScript : MonoBehaviour {
     public GameObject zahnrad, pleuel, wrench;
     public GameObject BBScriptObjekt;
     BunsenBrenner bunsenBrenner;
+    bool waiting;
 
     void Start()
     {
@@ -18,10 +19,14 @@ public class GussformScript : MonoBehaviour {
 
     private void Update()
     {
-        StartCoroutine(KuehleAb());
+        if (waiting == false)
+        {
+            StartCoroutine(KuehleAb());
+        }
     }
     IEnumerator KuehleAb()
     {
+        waiting = true;
         yield return new WaitForSeconds(1);
         //Schaue nach, welche Legierung in welchem Slot ist und kühle sie ab
         #region Slot Ueberpruefung
@@ -385,6 +390,7 @@ public class GussformScript : MonoBehaviour {
         //        slotZahnradTiegel.transform.GetChild(0).tag = "GeschmolzenEmpty";
         //    }
         //}
+        waiting = false;
         #endregion
     }
 }

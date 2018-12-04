@@ -30,6 +30,8 @@ public class BunsenBrenner : MonoBehaviour
     int tiegelFarbe;
     [SerializeField] ParticleSystem[] BunsenBrennerFlammen;
     bool tiegel1Heated, tiegel2Heated, tiegel3Heated, tiegel4Heated;
+    [SerializeField] Material[] tiegelMat;
+    [SerializeField] Sprite[] tiegelSprite;
 
     // Use this for initialization
     void Start()
@@ -220,6 +222,10 @@ public class BunsenBrenner : MonoBehaviour
                             if (slot1.transform.GetChild(0).CompareTag("20SiCold"))
                             {
                                 slot1.transform.GetChild(0).tag = "20SiHot";
+                                tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                //tiegelAufBB[0].gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                         else if (slot2.transform.childCount > 0)
@@ -228,6 +234,9 @@ public class BunsenBrenner : MonoBehaviour
                             if (slot2.transform.GetChild(0).CompareTag("20SiCold"))
                             {
                                 slot2.transform.GetChild(0).tag = "20SiHot";
+                                tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                         else if (slot3.transform.childCount > 0)
@@ -236,6 +245,9 @@ public class BunsenBrenner : MonoBehaviour
                             if (slot3.transform.GetChild(0).CompareTag("20SiCold"))
                             {
                                 slot3.transform.GetChild(0).tag = "20SiHot";
+                                tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                         else if (slot4.transform.childCount > 0)
@@ -244,6 +256,9 @@ public class BunsenBrenner : MonoBehaviour
                             if (slot4.transform.GetChild(0).CompareTag("20SiCold"))
                             {
                                 slot4.transform.GetChild(0).tag = "20SiHot";
+                                tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                     }
@@ -260,6 +275,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot1.transform.GetChild(0).CompareTag("20SiHot"))
                                 {
                                     slot1.transform.GetChild(0).tag = "20SiCold";
+                                    tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                             else if (slot2.transform.childCount > 0)
@@ -267,6 +285,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot2.transform.GetChild(0).CompareTag("20SiHot"))
                                 {
                                     slot2.transform.GetChild(0).tag = "20SiCold";
+                                    tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                             else if (slot3.transform.childCount > 0)
@@ -274,6 +295,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot3.transform.GetChild(0).CompareTag("20SiHot"))
                                 {
                                     slot3.transform.GetChild(0).tag = "20SiCold";
+                                    tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                             else if (slot4.transform.childCount > 0)
@@ -281,6 +305,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot4.transform.GetChild(0).CompareTag("20SiHot"))
                                 {
                                     slot4.transform.GetChild(0).tag = "20SiCold";
+                                    tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                         }
@@ -381,6 +408,9 @@ public class BunsenBrenner : MonoBehaviour
                             {
                                 slot1.transform.GetChild(0).tag = "40SiHot";
                                 tiegel2Heated = true;
+                                tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                         else if (slot2.transform.childCount > 0)
@@ -389,6 +419,9 @@ public class BunsenBrenner : MonoBehaviour
                             {
                                 slot2.transform.GetChild(0).tag = "40SiHot";
                                 tiegel2Heated = true;
+                                tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                         else if (slot3.transform.childCount > 0)
@@ -397,6 +430,9 @@ public class BunsenBrenner : MonoBehaviour
                             {
                                 slot3.transform.GetChild(0).tag = "40SiHot";
                                 tiegel2Heated = true;
+                                tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                         else if (slot4.transform.childCount > 0)
@@ -405,6 +441,9 @@ public class BunsenBrenner : MonoBehaviour
                             {
                                 slot4.transform.GetChild(0).tag = "40SiHot";
                                 tiegel2Heated = true;
+                                tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                     }
@@ -420,6 +459,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot1.transform.GetChild(0).CompareTag("40SiHot"))
                                 {
                                     slot1.transform.GetChild(0).tag = "40SiCold";
+                                    tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                             else if (slot2.transform.childCount > 0)
@@ -427,6 +469,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot2.transform.GetChild(0).CompareTag("40SiHot"))
                                 {
                                     slot2.transform.GetChild(0).tag = "40SiCold";
+                                    tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                             else if (slot3.transform.childCount > 0)
@@ -434,6 +479,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot3.transform.GetChild(0).CompareTag("40SiHot"))
                                 {
                                     slot3.transform.GetChild(0).tag = "40SiCold";
+                                    tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                             else if (slot4.transform.childCount > 0)
@@ -441,6 +489,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot4.transform.GetChild(0).CompareTag("40SiHot"))
                                 {
                                     slot4.transform.GetChild(0).tag = "40SiCold";
+                                    tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                         }
@@ -541,6 +592,9 @@ public class BunsenBrenner : MonoBehaviour
                             {
                                 slot1.transform.GetChild(0).tag = "60SiHot";
                                 tiegel3Heated = true;
+                                tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                         else if (slot2.transform.childCount > 0)
@@ -549,6 +603,9 @@ public class BunsenBrenner : MonoBehaviour
                             {
                                 slot2.transform.GetChild(0).tag = "60SiHot";
                                 tiegel3Heated = true;
+                                tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                         else if (slot3.transform.childCount > 0)
@@ -557,6 +614,9 @@ public class BunsenBrenner : MonoBehaviour
                             {
                                 slot3.transform.GetChild(0).tag = "60SiHot";
                                 tiegel3Heated = true;
+                                tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                         else if (slot4.transform.childCount > 0)
@@ -565,6 +625,9 @@ public class BunsenBrenner : MonoBehaviour
                             {
                                 slot4.transform.GetChild(0).tag = "60SiHot";
                                 tiegel3Heated = true;
+                                tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                     }
@@ -580,6 +643,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot1.transform.GetChild(0).CompareTag("60SiHot"))
                                 {
                                     slot1.transform.GetChild(0).tag = "60SiCold";
+                                    tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                             else if (slot2.transform.childCount > 0)
@@ -587,6 +653,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot2.transform.GetChild(0).CompareTag("60SiHot"))
                                 {
                                     slot2.transform.GetChild(0).tag = "60SiCold";
+                                    tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                             else if (slot3.transform.childCount > 0)
@@ -594,6 +663,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot3.transform.GetChild(0).CompareTag("60SiHot"))
                                 {
                                     slot3.transform.GetChild(0).tag = "60SiCold";
+                                    tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                             else if (slot4.transform.childCount > 0)
@@ -601,6 +673,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot4.transform.GetChild(0).CompareTag("60SiHot"))
                                 {
                                     slot4.transform.GetChild(0).tag = "60SiCold";
+                                    tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                         }
@@ -701,6 +776,9 @@ public class BunsenBrenner : MonoBehaviour
                             {
                                 slot1.transform.GetChild(0).tag = "80SiHot";
                                 tiegel4Heated = true;
+                                tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                         else if (slot2.transform.childCount > 0)
@@ -709,6 +787,9 @@ public class BunsenBrenner : MonoBehaviour
                             {
                                 slot2.transform.GetChild(0).tag = "80SiHot";
                                 tiegel4Heated = true;
+                                tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                         else if (slot3.transform.childCount > 0)
@@ -717,6 +798,9 @@ public class BunsenBrenner : MonoBehaviour
                             {
                                 slot3.transform.GetChild(0).tag = "80SiHot";
                                 tiegel4Heated = true;
+                                tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                         else if (slot4.transform.childCount > 0)
@@ -725,6 +809,9 @@ public class BunsenBrenner : MonoBehaviour
                             {
                                 slot4.transform.GetChild(0).tag = "80SiHot";
                                 tiegel4Heated = true;
+                                tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                             }
                         }
                     }
@@ -740,6 +827,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot1.transform.GetChild(0).CompareTag("80SiHot"))
                                 {
                                     slot1.transform.GetChild(0).tag = "80SiCold";
+                                    tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                             else if (slot2.transform.childCount > 0)
@@ -747,6 +837,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot2.transform.GetChild(0).CompareTag("80SiHot"))
                                 {
                                     slot2.transform.GetChild(0).tag = "80SiCold";
+                                    tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                             else if (slot3.transform.childCount > 0)
@@ -754,6 +847,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot3.transform.GetChild(0).CompareTag("80SiHot"))
                                 {
                                     slot3.transform.GetChild(0).tag = "80SiCold";
+                                    tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                             else if (slot4.transform.childCount > 0)
@@ -761,6 +857,9 @@ public class BunsenBrenner : MonoBehaviour
                                 if (slot4.transform.GetChild(0).CompareTag("80SiHot"))
                                 {
                                     slot4.transform.GetChild(0).tag = "80SiCold";
+                                    tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                    slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                    slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                                 }
                             }
                         }
@@ -894,7 +993,7 @@ public class BunsenBrenner : MonoBehaviour
     //Zünde Bunsen Brenner ganz links an
     public void Flamme1Button()
     {
-        if (flamme1.activeInHierarchy == false && hauptGasSchalter == true)
+        if (flamme1.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter)
         {
             flamme1.SetActive(true);
             flamme1Bool = true;
@@ -911,7 +1010,7 @@ public class BunsenBrenner : MonoBehaviour
     //Zünde Bunsen Brenner links mittig an
     public void Flamme2Button()
     {
-        if (flamme2.activeInHierarchy == false && hauptGasSchalter == true)
+        if (flamme2.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter)
         {
             flamme2.SetActive(true);
             flamme2Bool = true;
@@ -928,7 +1027,7 @@ public class BunsenBrenner : MonoBehaviour
     //Zünde Bunsen Brenner rechts mittig an
     public void Flamme3Button()
     {
-        if (flamme3.activeInHierarchy == false && hauptGasSchalter == true)
+        if (flamme3.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter)
         {
             flamme3.SetActive(true);
             flamme3Bool = true;
@@ -945,7 +1044,7 @@ public class BunsenBrenner : MonoBehaviour
     //Zünde Bunsen Brenner ganz rechts an
     public void Flamme4Button()
     {
-        if (flamme4.activeInHierarchy == false && hauptGasSchalter == true)
+        if (flamme4.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter)
         {
             flamme4.SetActive(true);
             flamme4Bool = true;
