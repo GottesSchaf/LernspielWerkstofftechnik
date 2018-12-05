@@ -32,6 +32,10 @@ public class BunsenBrenner : MonoBehaviour
     bool tiegel1Heated, tiegel2Heated, tiegel3Heated, tiegel4Heated;
     [SerializeField] Material[] tiegelMat;
     [SerializeField] Sprite[] tiegelSprite;
+    bool zeigeVerbrennung = false;
+    public static bool verbrannt = false;
+    [SerializeField] GameObject verbranntFenster;
+    [SerializeField] GameObject erstVerarztenFenster;
 
     // Use this for initialization
     void Start()
@@ -126,6 +130,42 @@ public class BunsenBrenner : MonoBehaviour
         if (hauptGasSchalter && platzGasSchalter && waiting == false)
         {
             StartCoroutine(BunsenBrennerRechnung());
+        }
+        if (flamme1.activeInHierarchy == true && slot1.transform.childCount == 0 && zeigeVerbrennung == false)
+        {
+            zeigeVerbrennung = true;
+            verbranntFenster.SetActive(true);
+            verbrannt = true;
+            flamme1.SetActive(false);
+            flamme1Bool = false;
+            BunsenBrennerFlammen[0].gameObject.SetActive(false);
+        }
+        else if (flamme2.activeInHierarchy == true && slot2.transform.childCount == 0 && zeigeVerbrennung == false)
+        {
+            zeigeVerbrennung = true;
+            verbranntFenster.SetActive(true);
+            verbrannt = true;
+            flamme2.SetActive(false);
+            flamme2Bool = false;
+            BunsenBrennerFlammen[1].gameObject.SetActive(false);
+        }
+        else if (flamme3.activeInHierarchy == true && slot3.transform.childCount == 0 && zeigeVerbrennung == false)
+        {
+            zeigeVerbrennung = true;
+            verbranntFenster.SetActive(true);
+            verbrannt = true;
+            flamme3.SetActive(false);
+            flamme3Bool = false;
+            BunsenBrennerFlammen[2].gameObject.SetActive(false);
+        }
+        else if (flamme4.activeInHierarchy == true && slot4.transform.childCount == 0 && zeigeVerbrennung == false)
+        {
+            zeigeVerbrennung = true;
+            verbranntFenster.SetActive(true);
+            verbrannt = true;
+            flamme4.SetActive(false);
+            flamme4Bool = false;
+            BunsenBrennerFlammen[3].gameObject.SetActive(false);
         }
     }
 
@@ -993,7 +1033,11 @@ public class BunsenBrenner : MonoBehaviour
     //Zünde Bunsen Brenner ganz links an
     public void Flamme1Button()
     {
-        if (flamme1.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter)
+        if(flamme1.activeInHierarchy == false && hauptGasSchalter && platzGasSchalter && verbrannt)
+        {
+            erstVerarztenFenster.SetActive(true);
+        }
+        if (flamme1.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false)
         {
             flamme1.SetActive(true);
             flamme1Bool = true;
@@ -1010,7 +1054,11 @@ public class BunsenBrenner : MonoBehaviour
     //Zünde Bunsen Brenner links mittig an
     public void Flamme2Button()
     {
-        if (flamme2.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter)
+        if (flamme2.activeInHierarchy == false && hauptGasSchalter && platzGasSchalter && verbrannt)
+        {
+            erstVerarztenFenster.SetActive(true);
+        }
+        if (flamme2.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false)
         {
             flamme2.SetActive(true);
             flamme2Bool = true;
@@ -1027,7 +1075,11 @@ public class BunsenBrenner : MonoBehaviour
     //Zünde Bunsen Brenner rechts mittig an
     public void Flamme3Button()
     {
-        if (flamme3.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter)
+        if (flamme3.activeInHierarchy == false && hauptGasSchalter && platzGasSchalter && verbrannt)
+        {
+            erstVerarztenFenster.SetActive(true);
+        }
+        if (flamme3.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false)
         {
             flamme3.SetActive(true);
             flamme3Bool = true;
@@ -1044,7 +1096,11 @@ public class BunsenBrenner : MonoBehaviour
     //Zünde Bunsen Brenner ganz rechts an
     public void Flamme4Button()
     {
-        if (flamme4.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter)
+        if (flamme4.activeInHierarchy == false && hauptGasSchalter && platzGasSchalter && verbrannt)
+        {
+            erstVerarztenFenster.SetActive(true);
+        }
+        if (flamme4.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false)
         {
             flamme4.SetActive(true);
             flamme4Bool = true;
@@ -1059,4 +1115,20 @@ public class BunsenBrenner : MonoBehaviour
         }
     }
     #endregion
+
+    public void CloseVerbranntWindow()
+    {
+        verbranntFenster.SetActive(false);
+        zeigeVerbrennung = false;
+    }
+
+    public void VerbrennungBehandelt()
+    {
+        verbrannt = false;
+    }
+
+    public void CloseErstVerarztenWindow()
+    {
+        erstVerarztenFenster.SetActive(false);
+    }
 }
