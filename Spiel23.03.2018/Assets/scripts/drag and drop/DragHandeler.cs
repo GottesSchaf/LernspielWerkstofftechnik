@@ -16,11 +16,14 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public static GameObject Inventory;
     public GameObject InventoryCollision;
     public GameObject UICanvas;
-	public GameObject Machine;
+	public GameObject Machine, machineNew, machineNewParent;
+    GameObject[] shatter;
+    List<GameObject> shatter1 = new List<GameObject>();
     public Slot MachineSlot;
     public GameObject player;
     public GameObject mesh;
     GameObject gameOverScreen;
+    DestroyMachine desMachine;
 
 
     #region IBeginDragHandler implementation
@@ -101,10 +104,22 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             //}
             if (hit.transform.CompareTag("Machine") && itemBeingDragged.transform.tag == "Richtig")
             {
-                Machine = GameObject.Find("Crazy_Machine1");
-                mesh = Machine.transform.Find("Gear1").gameObject;
-                mesh.SetActive(true);
+                Machine = GameObject.Find("Crazy_Machine_Shatter");
+                //Machine.GetComponent<Rigidbody>().isKinematic = true;
+                for(int i = 0; i < Machine.transform.childCount; i++)
+                {
+                    shatter1.Add(Machine.transform.GetChild(i).gameObject);
+                }
+                int childCount = Machine.transform.childCount;
+                for(int i = 0; i < childCount; i++)
+                {
+                    Destroy(Machine.transform.GetChild(0).gameObject);
+                }
+                machineNewParent = GameObject.Find("NewMachineParent");
+                machineNew = machineNewParent.transform.GetChild(0).gameObject;
+                machineNew.SetActive(true);
                 Destroy(itemBeingDragged);
+                Invoke("Gewonnen", 2);
             }
             else if(hit.transform.CompareTag("Machine") && itemBeingDragged.transform.tag == "FalschCheat")
             {
@@ -114,7 +129,20 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             else if(hit.transform.CompareTag("Machine") && itemBeingDragged.transform.tag == "Falsch")
             {
                 //GameOver
-                gameOverScreen.SetActive(true);
+                Machine = GameObject.Find("Crazy_Machine_Shatter");
+                Machine.SetActive(false);
+                machineNewParent = GameObject.Find("NewMachineParent");
+                machineNew = machineNewParent.transform.GetChild(0).gameObject;
+                if (machineNew != null)
+                {
+                    machineNew.SetActive(true);
+                    Invoke("DestroyMachine", 2);
+                }
+                else
+                {
+                    Debug.Log("Konnte keine machineNew finden!");
+                    Debug.Log(machineNew);
+                }
             }
             if (hit.transform.CompareTag("Player") && itemBeingDragged.name.Contains("Labcoat"))
             {
@@ -147,6 +175,18 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         //    transform.SetParent(transform.parent);
         //}
 
+    }
+
+    void DestroyMachine()
+    {
+        desMachine = machineNew.GetComponent<DestroyMachine>();
+        desMachine.DestroyMe();
+    }
+
+    void Gewonnen()
+    {
+        desMachine = machineNew.GetComponent<DestroyMachine>();
+        desMachine.ShowGameWonScreen();
     }
 
     public void OnPointerEnter(PointerEventData eventData)

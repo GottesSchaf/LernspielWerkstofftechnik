@@ -1,64 +1,56 @@
 fileFormatVersion: 2
-guid: 66732c1e28a74414cbbab7a23d954851
-timeCreated: 1539872179
+guid: 77612d9958d6991409acc02bc0d30a37
+timeCreated: 1543931302
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Air_Discharge
-    100002: //RootNode
-    100004: Button_1
-    100006: Button_2
-    100008: Button_3
-    100010: Button_4
+    100002: Button_1
+    100004: Button_2
+    100006: Button_3
+    100008: Button_4
+    100010: //RootNode
     100012: Closet
-    100014: transform1
-    100016: transform2
-    100018: transform3
-    100020: transform4
-    100022: transform5
-    100024: polySurface1
-    100026: polySurface2
-    100028: polySurface3
-    100030: polySurface4
-    100032: polySurface5
-    100034: transform6
+    100014: polySurface1
+    100016: polySurface2
+    100018: polySurface3
+    100020: polySurface4
+    100022: transform1
+    100024: transform2
+    100026: transform3
+    100028: transform4
+    100030: transform5
+    100032: transform6
     400000: Air_Discharge
-    400002: //RootNode
-    400004: Button_1
-    400006: Button_2
-    400008: Button_3
-    400010: Button_4
+    400002: Button_1
+    400004: Button_2
+    400006: Button_3
+    400008: Button_4
+    400010: //RootNode
     400012: Closet
-    400014: transform1
-    400016: transform2
-    400018: transform3
-    400020: transform4
-    400022: transform5
-    400024: polySurface1
-    400026: polySurface2
-    400028: polySurface3
-    400030: polySurface4
-    400032: polySurface5
-    400034: transform6
-    2300000: Air_Discharge
-    2300002: polySurface1
-    2300004: polySurface2
-    2300006: polySurface3
-    2300008: polySurface4
-    2300010: polySurface5
-    3300000: Air_Discharge
-    3300002: polySurface1
-    3300004: polySurface2
-    3300006: polySurface3
-    3300008: polySurface4
-    3300010: polySurface5
-    4300000: Air_Discharge
-    4300002: polySurface1
-    4300004: polySurface2
-    4300006: polySurface3
-    4300008: polySurface4
-    4300010: polySurface5
+    400014: polySurface1
+    400016: polySurface2
+    400018: polySurface3
+    400020: polySurface4
+    400022: transform1
+    400024: transform2
+    400026: transform3
+    400028: transform4
+    400030: transform5
+    400032: transform6
+    2300000: polySurface1
+    2300002: polySurface2
+    2300004: polySurface3
+    2300006: polySurface4
+    3300000: polySurface1
+    3300002: polySurface2
+    3300004: polySurface3
+    3300006: polySurface4
+    4300000: polySurface1
+    4300002: polySurface2
+    4300004: polySurface3
+    4300006: polySurface4
   externalObjects:
   - first:
       type: UnityEngine:Material
