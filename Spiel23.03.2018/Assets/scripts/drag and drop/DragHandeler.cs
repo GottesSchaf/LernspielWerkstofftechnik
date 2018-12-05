@@ -118,8 +118,6 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 machineNewParent = GameObject.Find("NewMachineParent");
                 machineNew = machineNewParent.transform.GetChild(0).gameObject;
                 machineNew.SetActive(true);
-                mesh = Machine.transform.Find("Gear1").gameObject;
-                mesh.SetActive(true);
                 Destroy(itemBeingDragged);
                 Invoke("Gewonnen", 2);
             }
