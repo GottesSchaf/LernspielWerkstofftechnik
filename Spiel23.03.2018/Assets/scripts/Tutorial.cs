@@ -28,7 +28,6 @@ public class Tutorial : MonoBehaviour
     [SerializeField] private GameObject invOpen;
     [SerializeField] private GameObject invMenu;
     [SerializeField] private GameObject[] invSlots;
-    [SerializeField] private GameObject Screenshot;
     [SerializeField] private GameObject Speed1;
     [SerializeField] private GameObject Speed2;
     [SerializeField] private GameObject Questwindow;
@@ -134,8 +133,7 @@ public class Tutorial : MonoBehaviour
             if (pauseScreen.activeSelf)   
             {
                 spriteToChange.sprite = tutSprites[6];
-                step5Done = true;
-                Screenshot.SetActive(true);                
+                step5Done = true;           
                 Speed1.SetActive(true);
                 Speed2.SetActive(true);
             }
@@ -190,7 +188,6 @@ public class Tutorial : MonoBehaviour
 
     public void Understood()
     {
-        Screenshot.SetActive(true);
         invOpen.SetActive(true);
         Speed1.SetActive(true);
         Speed2.SetActive(true);
