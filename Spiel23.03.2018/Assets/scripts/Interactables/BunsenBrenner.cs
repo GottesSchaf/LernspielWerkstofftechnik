@@ -36,6 +36,8 @@ public class BunsenBrenner : MonoBehaviour
     public static bool verbrannt = false;
     [SerializeField] GameObject verbranntFenster;
     [SerializeField] GameObject erstVerarztenFenster;
+    [SerializeField] Transform infoBBAusgeschaltet;
+    public static bool tiegelLocked20, tiegelLocked40, tiegelLocked60, tiegelLocked80;
 
     // Use this for initialization
     void Start()
@@ -228,6 +230,7 @@ public class BunsenBrenner : MonoBehaviour
             {
                 if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("20SiCold") || slot1.transform.GetChild(0).CompareTag("20SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("20SiCold") || slot2.transform.GetChild(0).CompareTag("20SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("20SiCold") || slot3.transform.GetChild(0).CompareTag("20SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("20SiCold") || slot4.transform.GetChild(0).CompareTag("20SiHot")))
                 {
+                    tiegelLocked20 = true;
                     if (tiegel1Heated)
                     {
                         windowGraph.DeleteGraph();
@@ -306,6 +309,7 @@ public class BunsenBrenner : MonoBehaviour
                 //Sonst kühl das ganze mit gleichen Raten ab
                 else
                 {
+                    tiegelLocked20 = false;
                     if (istTemp[0] > 25 && istTemp[0] <= 1250)
                     {
                         if (istTemp[0] >= 25 && istTemp[0] < 100)
@@ -420,6 +424,7 @@ public class BunsenBrenner : MonoBehaviour
                 //40% Si / 60% Ge
                 if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("40SiCold") || slot1.transform.GetChild(0).CompareTag("40SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("40SiCold") || slot2.transform.GetChild(0).CompareTag("40SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("40SiCold") || slot3.transform.GetChild(0).CompareTag("40SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("40SiCold") || slot4.transform.GetChild(0).CompareTag("40SiHot")))
                 {
+                    tiegelLocked40 = true;
                     if (tiegel2Heated)
                     {
                         windowGraphTiegel2.DeleteGraph();
@@ -490,6 +495,7 @@ public class BunsenBrenner : MonoBehaviour
                 }
                 else
                 {
+                    tiegelLocked40 = false;
                     if (istTemp[1] > 25 && istTemp[1] <= 1250)
                     {
                         if (istTemp[1] >= 25 && istTemp[1] < 100)
@@ -604,6 +610,7 @@ public class BunsenBrenner : MonoBehaviour
                 //60% Si / 40% Ge
                 if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("60SiCold") || slot1.transform.GetChild(0).CompareTag("60SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("60SiCold") || slot2.transform.GetChild(0).CompareTag("60SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("60SiCold") || slot3.transform.GetChild(0).CompareTag("60SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("60SiCold") || slot4.transform.GetChild(0).CompareTag("60SiHot")))
                 {
+                    tiegelLocked60 = true;
                     if (tiegel3Heated)
                     {
                         windowGraphTiegel3.DeleteGraph();
@@ -674,6 +681,7 @@ public class BunsenBrenner : MonoBehaviour
                 }
                 else
                 {
+                    tiegelLocked60 = false;
                     if (istTemp[2] > 25 && istTemp[2] <= 1250)
                     {
                         if (istTemp[2] >= 25 && istTemp[2] < 100)
@@ -788,6 +796,7 @@ public class BunsenBrenner : MonoBehaviour
                 //80% Si / 20% Ge
                 if (flamme1Bool && (slot1.transform.GetChild(0).CompareTag("80SiCold") || slot1.transform.GetChild(0).CompareTag("80SiHot")) || flamme2Bool && (slot2.transform.GetChild(0).CompareTag("80SiCold") || slot2.transform.GetChild(0).CompareTag("80SiHot")) || flamme3Bool && (slot3.transform.GetChild(0).CompareTag("80SiCold") || slot3.transform.GetChild(0).CompareTag("80SiHot")) || flamme4Bool && (slot4.transform.GetChild(0).CompareTag("80SiCold") || slot4.transform.GetChild(0).CompareTag("80SiHot")))
                 {
+                    tiegelLocked80 = true;
                     if (tiegel4Heated)
                     {
                         windowGraphTiegel4.DeleteGraph();
@@ -858,6 +867,7 @@ public class BunsenBrenner : MonoBehaviour
                 }
                 else
                 {
+                    tiegelLocked80 = false;
                     if (istTemp[3] > 25 && istTemp[3] <= 1250)
                     {
                         if (istTemp[3] >= 25 && istTemp[3] < 100)
@@ -1033,6 +1043,12 @@ public class BunsenBrenner : MonoBehaviour
     //Zünde Bunsen Brenner ganz links an
     public void Flamme1Button()
     {
+        //Wenn entweder das Hauptgas oder das Platzgas noch nicht eingeschaltet ist, dann zeige die Info, dass beides eingeschaltet sein muss
+        if ((hauptGasSchalter == false || platzGasSchalter == false) && verbrannt == false)
+        {
+            infoBBAusgeschaltet.gameObject.SetActive(true);
+        }
+        //Wenn man sich verbrannt hat, zeige Fenster, dass man zuerst sich verarzten soll, bevor man weiter arbeiten kann
         if(flamme1.activeInHierarchy == false && hauptGasSchalter && platzGasSchalter && verbrannt)
         {
             erstVerarztenFenster.SetActive(true);
@@ -1054,6 +1070,10 @@ public class BunsenBrenner : MonoBehaviour
     //Zünde Bunsen Brenner links mittig an
     public void Flamme2Button()
     {
+        if ((hauptGasSchalter == false || platzGasSchalter == false) && verbrannt == false)
+        {
+            infoBBAusgeschaltet.gameObject.SetActive(true);
+        }
         if (flamme2.activeInHierarchy == false && hauptGasSchalter && platzGasSchalter && verbrannt)
         {
             erstVerarztenFenster.SetActive(true);
@@ -1075,6 +1095,10 @@ public class BunsenBrenner : MonoBehaviour
     //Zünde Bunsen Brenner rechts mittig an
     public void Flamme3Button()
     {
+        if ((hauptGasSchalter == false || platzGasSchalter == false) && verbrannt == false)
+        {
+            infoBBAusgeschaltet.gameObject.SetActive(true);
+        }
         if (flamme3.activeInHierarchy == false && hauptGasSchalter && platzGasSchalter && verbrannt)
         {
             erstVerarztenFenster.SetActive(true);
@@ -1096,6 +1120,10 @@ public class BunsenBrenner : MonoBehaviour
     //Zünde Bunsen Brenner ganz rechts an
     public void Flamme4Button()
     {
+        if ((hauptGasSchalter == false || platzGasSchalter == false) && verbrannt == false)
+        {
+            infoBBAusgeschaltet.gameObject.SetActive(true);
+        }
         if (flamme4.activeInHierarchy == false && hauptGasSchalter && platzGasSchalter && verbrannt)
         {
             erstVerarztenFenster.SetActive(true);
