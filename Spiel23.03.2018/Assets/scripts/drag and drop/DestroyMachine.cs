@@ -23,6 +23,7 @@ public class DestroyMachine : MonoBehaviour {
 
     public void ShowGameWonScreen()
     {
+        Debug.Log("public void ShowGameWonScreen()");
         gameWonScreen.SetActive(true);
     }
 }

@@ -81,22 +81,29 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             if (hit.transform.CompareTag("Machine") && itemBeingDragged.transform.tag == "Richtig")
             {
+                //Gewonnen
                 Machine = GameObject.Find("Crazy_Machine_Shatter");
-                //Machine.GetComponent<Rigidbody>().isKinematic = true;
-                for(int i = 0; i < Machine.transform.childCount; i++)
-                {
-                    shatter1.Add(Machine.transform.GetChild(i).gameObject);
-                }
-                int childCount = Machine.transform.childCount;
-                for(int i = 0; i < childCount; i++)
-                {
-                    Destroy(Machine.transform.GetChild(0).gameObject);
-                }
+                Machine.SetActive(false);
                 machineNewParent = GameObject.Find("NewMachineParent");
                 machineNew = machineNewParent.transform.GetChild(0).gameObject;
-                machineNew.SetActive(true);
-                Destroy(itemBeingDragged);
-                Invoke("Gewonnen", 2);
+                //for (int i = 0; i < Machine.transform.childCount; i++)
+                //{
+                //    shatter1.Add(Machine.transform.GetChild(i).gameObject);
+                //}
+                //int childCount = Machine.transform.childCount;
+                //for(int i = 0; i < childCount; i++)
+                //{
+                //    Destroy(Machine.transform.GetChild(0).gameObject);
+                //}
+                if (machineNew != null)
+                {
+                    machineNew.SetActive(true);
+                    Invoke("Gewonnen", 2);
+                }
+                else
+                {
+                    Debug.Log("Konnte keine machineNew finden!");
+                }
             }
             else if(hit.transform.CompareTag("Machine") && itemBeingDragged.transform.tag == "FalschCheat")
             {
@@ -162,6 +169,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     void Gewonnen()
     {
+        Debug.Log("void Gewonnen()");
         desMachine = machineNew.GetComponent<DestroyMachine>();
         desMachine.ShowGameWonScreen();
     }

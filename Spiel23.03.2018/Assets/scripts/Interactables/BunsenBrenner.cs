@@ -259,50 +259,38 @@ public class BunsenBrenner : MonoBehaviour
                     }
                     else if (istTemp[0] >= 1550)
                     {
-                        if (slot1.transform.childCount > 0)
+                        if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).CompareTag("20SiCold"))
                         {
                             tiegel1Heated = true;
-                            if (slot1.transform.GetChild(0).CompareTag("20SiCold"))
-                            {
-                                slot1.transform.GetChild(0).tag = "20SiHot";
-                                tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                //tiegelAufBB[0].gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot1.transform.GetChild(0).tag = "20SiHot";
+                            tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            //tiegelAufBB[0].gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
-                        else if (slot2.transform.childCount > 0)
+                        else if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).CompareTag("20SiCold"))
                         {
                             tiegel1Heated = true;
-                            if (slot2.transform.GetChild(0).CompareTag("20SiCold"))
-                            {
-                                slot2.transform.GetChild(0).tag = "20SiHot";
-                                tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot2.transform.GetChild(0).tag = "20SiHot";
+                            tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
-                        else if (slot3.transform.childCount > 0)
+                        else if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).CompareTag("20SiCold"))
                         {
                             tiegel1Heated = true;
-                            if (slot3.transform.GetChild(0).CompareTag("20SiCold"))
-                            {
-                                slot3.transform.GetChild(0).tag = "20SiHot";
-                                tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot3.transform.GetChild(0).tag = "20SiHot";
+                            tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
-                        else if (slot4.transform.childCount > 0)
+                        else if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).CompareTag("20SiCold"))
                         {
                             tiegel1Heated = true;
-                            if (slot4.transform.GetChild(0).CompareTag("20SiCold"))
-                            {
-                                slot4.transform.GetChild(0).tag = "20SiHot";
-                                tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot4.transform.GetChild(0).tag = "20SiHot";
+                            tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
                     }
                 }
@@ -314,45 +302,33 @@ public class BunsenBrenner : MonoBehaviour
                     {
                         if (istTemp[0] >= 25 && istTemp[0] < 100)
                         {
-                            if (slot1.transform.childCount > 0)
+                            if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).CompareTag("20SiHot"))
                             {
-                                if (slot1.transform.GetChild(0).CompareTag("20SiHot"))
-                                {
-                                    slot1.transform.GetChild(0).tag = "20SiCold";
-                                    tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot1.transform.GetChild(0).tag = "20SiCold";
+                                tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
-                            else if (slot2.transform.childCount > 0)
+                            else if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).CompareTag("20SiHot"))
                             {
-                                if (slot2.transform.GetChild(0).CompareTag("20SiHot"))
-                                {
-                                    slot2.transform.GetChild(0).tag = "20SiCold";
-                                    tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot2.transform.GetChild(0).tag = "20SiCold";
+                                tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
-                            else if (slot3.transform.childCount > 0)
+                            else if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).CompareTag("20SiHot"))
                             {
-                                if (slot3.transform.GetChild(0).CompareTag("20SiHot"))
-                                {
-                                    slot3.transform.GetChild(0).tag = "20SiCold";
-                                    tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot3.transform.GetChild(0).tag = "20SiCold";
+                                tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
-                            else if (slot4.transform.childCount > 0)
+                            else if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).CompareTag("20SiHot"))
                             {
-                                if (slot4.transform.GetChild(0).CompareTag("20SiHot"))
-                                {
-                                    slot4.transform.GetChild(0).tag = "20SiCold";
-                                    tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot4.transform.GetChild(0).tag = "20SiCold";
+                                tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
                         }
                         if (slot1.transform.childCount > 0 && (slot1.transform.GetChild(0).CompareTag("20SiHot") || slot1.transform.GetChild(0).CompareTag("20SiCold")))
@@ -447,49 +423,38 @@ public class BunsenBrenner : MonoBehaviour
                     }
                     else if (istTemp[1] >= 1550)
                     {
-                        if (slot1.transform.childCount > 0)
+                        if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).CompareTag("40SiCold"))
                         {
-                            if (slot1.transform.GetChild(0).CompareTag("40SiCold"))
-                            {
-                                slot1.transform.GetChild(0).tag = "40SiHot";
-                                tiegel2Heated = true;
-                                tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot1.transform.GetChild(0).tag = "40SiHot";
+                            tiegel2Heated = true;
+                            tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
-                        else if (slot2.transform.childCount > 0)
+                        else if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).CompareTag("40SiCold"))
                         {
-                            if (slot2.transform.GetChild(0).CompareTag("40SiCold"))
-                            {
-                                slot2.transform.GetChild(0).tag = "40SiHot";
-                                tiegel2Heated = true;
-                                tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot2.transform.GetChild(0).tag = "40SiHot";
+                            tiegel2Heated = true;
+                            tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
-                        else if (slot3.transform.childCount > 0)
+
+                        else if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).CompareTag("40SiCold"))
                         {
-                            if (slot3.transform.GetChild(0).CompareTag("40SiCold"))
-                            {
-                                slot3.transform.GetChild(0).tag = "40SiHot";
-                                tiegel2Heated = true;
-                                tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot3.transform.GetChild(0).tag = "40SiHot";
+                            tiegel2Heated = true;
+                            tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
-                        else if (slot4.transform.childCount > 0)
+                        else if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).CompareTag("40SiCold"))
                         {
-                            if (slot4.transform.GetChild(0).CompareTag("40SiCold"))
-                            {
-                                slot4.transform.GetChild(0).tag = "40SiHot";
-                                tiegel2Heated = true;
-                                tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot4.transform.GetChild(0).tag = "40SiHot";
+                            tiegel2Heated = true;
+                            tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
                     }
                 }
@@ -500,45 +465,33 @@ public class BunsenBrenner : MonoBehaviour
                     {
                         if (istTemp[1] >= 25 && istTemp[1] < 100)
                         {
-                            if (slot1.transform.childCount > 0)
+                            if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).CompareTag("40SiHot"))
                             {
-                                if (slot1.transform.GetChild(0).CompareTag("40SiHot"))
-                                {
-                                    slot1.transform.GetChild(0).tag = "40SiCold";
-                                    tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot1.transform.GetChild(0).tag = "40SiCold";
+                                tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
-                            else if (slot2.transform.childCount > 0)
+                            else if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).CompareTag("40SiHot"))
                             {
-                                if (slot2.transform.GetChild(0).CompareTag("40SiHot"))
-                                {
-                                    slot2.transform.GetChild(0).tag = "40SiCold";
-                                    tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot2.transform.GetChild(0).tag = "40SiCold";
+                                tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
-                            else if (slot3.transform.childCount > 0)
+                            else if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).CompareTag("40SiHot"))
                             {
-                                if (slot3.transform.GetChild(0).CompareTag("40SiHot"))
-                                {
-                                    slot3.transform.GetChild(0).tag = "40SiCold";
-                                    tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot3.transform.GetChild(0).tag = "40SiCold";
+                                tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
-                            else if (slot4.transform.childCount > 0)
+                            else if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).CompareTag("40SiHot"))
                             {
-                                if (slot4.transform.GetChild(0).CompareTag("40SiHot"))
-                                {
-                                    slot4.transform.GetChild(0).tag = "40SiCold";
-                                    tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot4.transform.GetChild(0).tag = "40SiCold";
+                                tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
                         }
                         if (slot1.transform.childCount > 0 && (slot1.transform.GetChild(0).CompareTag("40SiHot") || slot1.transform.GetChild(0).CompareTag("40SiCold")))
@@ -633,49 +586,37 @@ public class BunsenBrenner : MonoBehaviour
                     }
                     else if (istTemp[2] >= 1550)
                     {
-                        if (slot1.transform.childCount > 0)
+                        if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).CompareTag("60SiCold"))
                         {
-                            if (slot1.transform.GetChild(0).CompareTag("60SiCold"))
-                            {
-                                slot1.transform.GetChild(0).tag = "60SiHot";
-                                tiegel3Heated = true;
-                                tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot1.transform.GetChild(0).tag = "60SiHot";
+                            tiegel3Heated = true;
+                            tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
-                        else if (slot2.transform.childCount > 0)
+                        else if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).CompareTag("60SiCold"))
                         {
-                            if (slot2.transform.GetChild(0).CompareTag("60SiCold"))
-                            {
-                                slot2.transform.GetChild(0).tag = "60SiHot";
-                                tiegel3Heated = true;
-                                tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot2.transform.GetChild(0).tag = "60SiHot";
+                            tiegel3Heated = true;
+                            tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
-                        else if (slot3.transform.childCount > 0)
+                        else if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).CompareTag("60SiCold"))
                         {
-                            if (slot3.transform.GetChild(0).CompareTag("60SiCold"))
-                            {
-                                slot3.transform.GetChild(0).tag = "60SiHot";
-                                tiegel3Heated = true;
-                                tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot3.transform.GetChild(0).tag = "60SiHot";
+                            tiegel3Heated = true;
+                            tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
-                        else if (slot4.transform.childCount > 0)
+                        else if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).CompareTag("60SiCold"))
                         {
-                            if (slot4.transform.GetChild(0).CompareTag("60SiCold"))
-                            {
-                                slot4.transform.GetChild(0).tag = "60SiHot";
-                                tiegel3Heated = true;
-                                tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot4.transform.GetChild(0).tag = "60SiHot";
+                            tiegel3Heated = true;
+                            tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
                     }
                 }
@@ -686,45 +627,33 @@ public class BunsenBrenner : MonoBehaviour
                     {
                         if (istTemp[2] >= 25 && istTemp[2] < 100)
                         {
-                            if (slot1.transform.childCount > 0)
+                            if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).CompareTag("60SiHot"))
                             {
-                                if (slot1.transform.GetChild(0).CompareTag("60SiHot"))
-                                {
-                                    slot1.transform.GetChild(0).tag = "60SiCold";
-                                    tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot1.transform.GetChild(0).tag = "60SiCold";
+                                tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
-                            else if (slot2.transform.childCount > 0)
+                            else if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).CompareTag("60SiHot"))
                             {
-                                if (slot2.transform.GetChild(0).CompareTag("60SiHot"))
-                                {
-                                    slot2.transform.GetChild(0).tag = "60SiCold";
-                                    tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot2.transform.GetChild(0).tag = "60SiCold";
+                                tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
-                            else if (slot3.transform.childCount > 0)
+                            else if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).CompareTag("60SiHot"))
                             {
-                                if (slot3.transform.GetChild(0).CompareTag("60SiHot"))
-                                {
-                                    slot3.transform.GetChild(0).tag = "60SiCold";
-                                    tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot3.transform.GetChild(0).tag = "60SiCold";
+                                tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
-                            else if (slot4.transform.childCount > 0)
+                            else if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).CompareTag("60SiHot"))
                             {
-                                if (slot4.transform.GetChild(0).CompareTag("60SiHot"))
-                                {
-                                    slot4.transform.GetChild(0).tag = "60SiCold";
-                                    tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot4.transform.GetChild(0).tag = "60SiCold";
+                                tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
                         }
                         if (slot1.transform.childCount > 0 && (slot1.transform.GetChild(0).CompareTag("60SiHot") || slot1.transform.GetChild(0).CompareTag("60SiCold")))
@@ -819,49 +748,37 @@ public class BunsenBrenner : MonoBehaviour
                     }
                     else if (istTemp[3] >= 1550)
                     {
-                        if (slot1.transform.childCount > 0)
+                        if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).CompareTag("80SiCold"))
                         {
-                            if (slot1.transform.GetChild(0).CompareTag("80SiCold"))
-                            {
-                                slot1.transform.GetChild(0).tag = "80SiHot";
-                                tiegel4Heated = true;
-                                tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot1.transform.GetChild(0).tag = "80SiHot";
+                            tiegel4Heated = true;
+                            tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
-                        else if (slot2.transform.childCount > 0)
+                        else if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).CompareTag("80SiCold"))
                         {
-                            if (slot2.transform.GetChild(0).CompareTag("80SiCold"))
-                            {
-                                slot2.transform.GetChild(0).tag = "80SiHot";
-                                tiegel4Heated = true;
-                                tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot2.transform.GetChild(0).tag = "80SiHot";
+                            tiegel4Heated = true;
+                            tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
-                        else if (slot3.transform.childCount > 0)
+                        else if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).CompareTag("80SiCold"))
                         {
-                            if (slot3.transform.GetChild(0).CompareTag("80SiCold"))
-                            {
-                                slot3.transform.GetChild(0).tag = "80SiHot";
-                                tiegel4Heated = true;
-                                tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot3.transform.GetChild(0).tag = "80SiHot";
+                            tiegel4Heated = true;
+                            tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot3.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
-                        else if (slot4.transform.childCount > 0)
+                        else if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).CompareTag("80SiCold"))
                         {
-                            if (slot4.transform.GetChild(0).CompareTag("80SiCold"))
-                            {
-                                slot4.transform.GetChild(0).tag = "80SiHot";
-                                tiegel4Heated = true;
-                                tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
-                                slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
-                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
-                            }
+                            slot4.transform.GetChild(0).tag = "80SiHot";
+                            tiegel4Heated = true;
+                            tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[0];
+                            slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
+                            slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
                     }
                 }
@@ -872,45 +789,33 @@ public class BunsenBrenner : MonoBehaviour
                     {
                         if (istTemp[3] >= 25 && istTemp[3] < 100)
                         {
-                            if (slot1.transform.childCount > 0)
+                            if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).CompareTag("80SiHot"))
                             {
-                                if (slot1.transform.GetChild(0).CompareTag("80SiHot"))
-                                {
-                                    slot1.transform.GetChild(0).tag = "80SiCold";
-                                    tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot1.transform.GetChild(0).tag = "80SiCold";
+                                tiegelAufBB[0].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot1.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
-                            else if (slot2.transform.childCount > 0)
+                            else if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).CompareTag("80SiHot"))
                             {
-                                if (slot2.transform.GetChild(0).CompareTag("80SiHot"))
-                                {
-                                    slot2.transform.GetChild(0).tag = "80SiCold";
-                                    tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot2.transform.GetChild(0).tag = "80SiCold";
+                                tiegelAufBB[1].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
-                            else if (slot3.transform.childCount > 0)
+                            else if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).CompareTag("80SiHot"))
                             {
-                                if (slot3.transform.GetChild(0).CompareTag("80SiHot"))
-                                {
-                                    slot3.transform.GetChild(0).tag = "80SiCold";
-                                    tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot3.transform.GetChild(0).tag = "80SiCold";
+                                tiegelAufBB[2].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot3.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot2.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
-                            else if (slot4.transform.childCount > 0)
+                            else if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).CompareTag("80SiHot"))
                             {
-                                if (slot4.transform.GetChild(0).CompareTag("80SiHot"))
-                                {
-                                    slot4.transform.GetChild(0).tag = "80SiCold";
-                                    tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
-                                    slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
-                                    slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
-                                }
+                                slot4.transform.GetChild(0).tag = "80SiCold";
+                                tiegelAufBB[3].gameObject.GetComponent<Renderer>().material = tiegelMat[1];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[1];
+                                slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[1];
                             }
                         }
                         if (slot1.transform.childCount > 0 && (slot1.transform.GetChild(0).CompareTag("80SiHot") || slot1.transform.GetChild(0).CompareTag("80SiCold")))
