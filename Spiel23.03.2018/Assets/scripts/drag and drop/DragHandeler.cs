@@ -45,17 +45,6 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 		UICanvas = GameObject.Find("Canvas");
 		Machine = GameObject.Find("Machine");
         gameOverScreen = GameObject.Find("Maschine_Kaputt");
-		//MachineSlot = 
-
-		//if(itemBeingDragged.name.Contains("placeholder"))
-		//{
-		//	player = GameObject.Find("player");
-		//	mesh = player.transform.Find("clothes_green").gameObject;
-		//	mesh.SetActive(false);
-		//	Destroy (itemBeingDragged);
-		//	GameObject temp = Instantiate(mesh.GetComponent<Clothes>().inventoryobject, new Vector3(0, 0, 0), Quaternion.identity);
-		//	temp.transform.parent = startParent.transform;
-		//}
     }
 
     #endregion
@@ -64,10 +53,18 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition; //eventData.position
-        //itemBeingDragged.transform.SetParent(UICanvas.transform);
-
-        //updateRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if ((this.gameObject.name.Contains("Tiegel_1") && BunsenBrenner.tiegelLocked20 == false) || (this.gameObject.name.Contains("Tiegel_2") && BunsenBrenner.tiegelLocked40 == false) || (this.gameObject.name.Contains("Tiegel_3") && BunsenBrenner.tiegelLocked60 == false) || (this.gameObject.name.Contains("Tiegel_4") && BunsenBrenner.tiegelLocked80 == false))
+        {
+            transform.position = Input.mousePosition; //eventData.position
+        }
+        else if (this.gameObject.name.Contains("Tiegel_1") == false && this.gameObject.name.Contains("Tiegel_2") == false && this.gameObject.name.Contains("Tiegel_3") == false && this.gameObject.name.Contains("Tiegel_4") == false)
+        {
+            transform.position = Input.mousePosition; //eventData.position
+        }
+        else
+        {
+            Debug.Log("Error: Kann GameObject nicht bewegen");
+        }
     }
 
     #endregion
@@ -82,26 +79,6 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            //-----------------------------------Inventar Cubes----------------------------------
-            //if (itemBeingDragged.name.Contains("blue"))
-            //{
-            //    Debug.Log("Mixing red and blue");
-            //}
-            //else if (hit.transform.name.Contains("blue") && itemBeingDragged.name.Contains("red"))
-            //{
-            //    Debug.Log("Mixing blue and red");
-            //}
-            //else if (hit.transform.name.Contains("Machine") && itemBeingDragged.name.Contains("clothes"))
-            //{
-            //    Debug.Log("Thats not what you use clothes for."); ;
-            //}
-            //else if (hit.transform.name.Contains("Machine"))
-            //{
-            //    Debug.Log("Dragged on Machine");
-            //    GameObject temp = Instantiate(itemBeingDragged, new Vector3(0, 0, 0), Quaternion.identity);
-            //    //temp.transform.parent = MachineSlot.transform;
-            //    //Machine.GetComponent<Machine>().Interact();
-            //}
             if (hit.transform.CompareTag("Machine") && itemBeingDragged.transform.tag == "Richtig")
             {
                 Machine = GameObject.Find("Crazy_Machine_Shatter");
@@ -164,7 +141,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         draggingItem = false;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-        if (Slot.otherSlot == false || transform.parent.name.Equals("Canvas")) //!Inventory.activeSelf &&
+        if (Slot.otherSlot == false || transform.parent.name.Equals("Canvas") || transform.parent == startParent) //!Inventory.activeSelf &&
         {
             transform.position = startPosition;
             transform.SetParent(startParent);
