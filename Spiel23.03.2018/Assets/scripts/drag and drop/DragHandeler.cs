@@ -30,21 +30,23 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-		itemBeingDragged = gameObject;
+        itemBeingDragged = gameObject;
         draggingItem = true;
         if (transform.parent != startParent)
         {
             startPosition = transform.position;
         }
-		startParent = transform.parent;
-		GetComponent<CanvasGroup>().blocksRaycasts = false;
+        startParent = transform.parent;
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
 
-		RadialMenue = GameObject.Find("RadialMenue");
+        RadialMenue = GameObject.Find("RadialMenue");
         cam = GameObject.Find("Main Camera");
-		Inventory = GameObject.Find("InventoryMenue");
-		UICanvas = GameObject.Find("Canvas");
-		Machine = GameObject.Find("Machine");
+        Inventory = GameObject.Find("InventoryMenue");
+        UICanvas = GameObject.Find("Canvas");
+        Machine = GameObject.Find("Machine");
         gameOverScreen = GameObject.Find("Maschine_Kaputt");
+        //itemBeingDragged.transform.SetParent(UICanvas.transform);
+        //itemBeingDragged.transform.SetAsLastSibling();
     }
 
     #endregion
