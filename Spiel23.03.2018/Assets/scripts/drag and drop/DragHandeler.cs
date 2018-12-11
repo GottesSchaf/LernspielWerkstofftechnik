@@ -25,7 +25,12 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     GameObject gameOverScreen;
     DestroyMachine desMachine;
     GameObject invFix;
+    public Transform[] parents;
 
+    private void Update()
+    {
+        parents = GetComponentsInParent<Transform>(true);
+    }
 
     #region IBeginDragHandler implementation
 
@@ -48,11 +53,19 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         gameOverScreen = GameObject.Find("Maschine_Kaputt");
         //invFix = GameObject.Find("InventoryFix");
         //invFix.SetActive(true);
-        if (transform.parent.transform.parent.transform.parent.transform.name.Contains("InventoryMen") == false)
+        
+        foreach(Transform x in parents)
         {
-            itemBeingDragged.transform.SetParent(UICanvas.transform, false);
-            itemBeingDragged.transform.SetAsLastSibling();
+            if (!x.name.Contains("InventoryMen"))
+            {
+                transform.parent = null;
+                transform.parent = UICanvas.transform;
+
+                itemBeingDragged.transform.SetAsLastSibling();
+                
+            }
         }
+
         //invFix.SetActive(false);
     }
 
