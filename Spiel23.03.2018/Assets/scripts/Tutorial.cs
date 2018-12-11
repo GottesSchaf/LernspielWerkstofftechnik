@@ -36,6 +36,7 @@ public class Tutorial : MonoBehaviour
 
     [SerializeField] private GameObject[] Buttons;
 
+    [SerializeField] private NavMeshSurface surface;
     // Playerposition
     public Vector3 destination;
 
@@ -86,6 +87,7 @@ public class Tutorial : MonoBehaviour
             step2Done = true;
             table.SetActive(true);
             cube.SetActive(true);
+            surface.BuildNavMesh();
         }
 
         if(step2Done && !step3Done) // Pick Up Screen
@@ -97,6 +99,7 @@ public class Tutorial : MonoBehaviour
                 if(x.GetComponentInChildren<DragHandeler>())
                 {
                     table.SetActive(false);
+                    surface.BuildNavMesh();
                     step3Done = true;
                     spriteToChange.sprite = tutSprites[3];
                     break;
