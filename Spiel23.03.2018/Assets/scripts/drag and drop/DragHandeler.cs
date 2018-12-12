@@ -25,12 +25,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     GameObject gameOverScreen;
     DestroyMachine desMachine;
     GameObject invFix;
-    public Transform[] parents;
-
-    private void Update()
-    {
-        parents = GetComponentsInParent<Transform>(true);
-    }
+    bool transformDone;
 
     #region IBeginDragHandler implementation
 
@@ -53,19 +48,6 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         gameOverScreen = GameObject.Find("Maschine_Kaputt");
         //invFix = GameObject.Find("InventoryFix");
         //invFix.SetActive(true);
-        
-        foreach(Transform x in parents)
-        {
-            if (!x.name.Contains("InventoryMen"))
-            {
-                transform.parent = null;
-                transform.parent = UICanvas.transform;
-
-                itemBeingDragged.transform.SetAsLastSibling();
-                
-            }
-        }
-
         //invFix.SetActive(false);
     }
 
@@ -78,10 +60,28 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if ((this.gameObject.name.Contains("Tiegel_1") && BunsenBrenner.tiegelLocked20 == false) || (this.gameObject.name.Contains("Tiegel_2") && BunsenBrenner.tiegelLocked40 == false) || (this.gameObject.name.Contains("Tiegel_3") && BunsenBrenner.tiegelLocked60 == false) || (this.gameObject.name.Contains("Tiegel_4") && BunsenBrenner.tiegelLocked80 == false))
         {
             transform.position = Input.mousePosition; //eventData.position
+            if (CollisionDetection.itemInInventory == false)
+            {
+                if (transformDone == false)
+                {
+                    itemBeingDragged.transform.SetParent(UICanvas.transform, false);
+                    itemBeingDragged.transform.SetAsLastSibling();
+                    transformDone = true;
+                }
+            }
         }
         else if (this.gameObject.name.Contains("Tiegel_1") == false && this.gameObject.name.Contains("Tiegel_2") == false && this.gameObject.name.Contains("Tiegel_3") == false && this.gameObject.name.Contains("Tiegel_4") == false)
         {
             transform.position = Input.mousePosition; //eventData.position
+            if (CollisionDetection.itemInInventory == false)
+            {
+                if (transformDone == false)
+                {
+                    itemBeingDragged.transform.SetParent(UICanvas.transform, false);
+                    itemBeingDragged.transform.SetAsLastSibling();
+                    transformDone = true;
+                }
+            }
         }
         else
         {
@@ -169,6 +169,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         itemBeingDragged = null;
         draggingItem = false;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
+        transformDone = false;
 
         if (Slot.otherSlot == false || transform.parent.name.Equals("Canvas") || transform.parent == startParent) //!Inventory.activeSelf &&
         {

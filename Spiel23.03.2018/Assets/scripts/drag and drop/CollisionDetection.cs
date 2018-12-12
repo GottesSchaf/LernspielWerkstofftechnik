@@ -6,6 +6,7 @@ public class CollisionDetection : MonoBehaviour {
 
     bool isCollidingBlue, isCollidingRed;
     GameObject UICanvas;
+    public static bool itemInInventory = false;
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class CollisionDetection : MonoBehaviour {
                 DragHandeler.Inventory.SetActive(false);
                 DragHandeler.itemBeingDragged.transform.SetParent(UICanvas.transform);
                 DragHandeler.itemBeingDragged.transform.SetAsLastSibling();
+                itemInInventory = true;
             }
         }
     }
