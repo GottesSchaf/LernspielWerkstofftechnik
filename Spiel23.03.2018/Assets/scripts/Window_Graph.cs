@@ -104,7 +104,7 @@ public class Window_Graph : MonoBehaviour {
         }
         else if (tiegelColor == 80)
         {
-            gameObject.GetComponent<Image>().color = new Color(0, 0, 1, .75f); //R, G, B, Transparenz
+            gameObject.GetComponent<Image>().color = new Color(0, 106, 214, .75f); //R, G, B, Transparenz
         }
         RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
         Vector2 dir = (dotPositionB - dotPositionA).normalized;     //Setze die Länge des Vektors auf 1

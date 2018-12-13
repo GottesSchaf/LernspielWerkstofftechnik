@@ -12,6 +12,7 @@ public class GameOver : MonoBehaviour {
 
     public void ErneutVersuchen()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("level1", LoadSceneMode.Single);
     }
 }

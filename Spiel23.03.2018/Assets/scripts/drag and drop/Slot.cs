@@ -27,6 +27,14 @@ public class Slot : MonoBehaviour, IDropHandler
             DragHandeler.itemBeingDragged.transform.SetParent(transform);
             otherSlot = true;
             ExecuteEvents.ExecuteHierarchy<IHasChanged>(gameObject, null, (x, y) => x.HasChanged());
+            if (transform.parent.transform.parent.transform.parent.transform.name.Contains("InventoryMen"))
+            {
+                CollisionDetection.itemInInventory = true;
+            }
+            else
+            {
+                CollisionDetection.itemInInventory = false;
+            }
             //DragHandeler.itemBeingDragged = null;
         }
         else
