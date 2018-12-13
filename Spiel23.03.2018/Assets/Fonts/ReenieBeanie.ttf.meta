@@ -1,20 +1,19 @@
 fileFormatVersion: 2
-guid: 35d4b59daa6575a4eafd7f32300273f8
-timeCreated: 1538996683
+guid: ec5c7802f3f78414b831ede2cdacb675
+timeCreated: 1544707282
 licenseType: Free
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 16
+  fontSize: 300
   forceTextureCase: -1
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Calibri
+  fontName: Reenie Beanie
   fontNames:
-  - Calibri
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 0bf8ffb587baccc4ca86f9605dcee121, type: 3}
+  - Reenie Beanie
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
