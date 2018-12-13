@@ -133,6 +133,18 @@ public class BunsenBrenner : MonoBehaviour
         {
             StartCoroutine(BunsenBrennerRechnung());
         }
+        else if (hauptGasSchalter == false || platzGasSchalter == false)
+        {
+            waiting = false;
+            flamme1.SetActive(false);
+            BunsenBrennerFlammen[0].gameObject.SetActive(false);
+            flamme2.SetActive(false);
+            BunsenBrennerFlammen[1].gameObject.SetActive(false);
+            flamme3.SetActive(false);
+            BunsenBrennerFlammen[2].gameObject.SetActive(false);
+            flamme4.SetActive(false);
+            BunsenBrennerFlammen[3].gameObject.SetActive(false);
+        }
         if (flamme1.activeInHierarchy == true && slot1.transform.childCount == 0 && zeigeVerbrennung == false)
         {
             zeigeVerbrennung = true;
