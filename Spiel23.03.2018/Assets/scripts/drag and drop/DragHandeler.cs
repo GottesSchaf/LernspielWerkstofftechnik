@@ -27,7 +27,12 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     DestroyMachine desMachine;
     GameObject invFix;
     bool transformDone;
+    public static bool cantTransform;
 
+    private void Start()
+    {
+        cantTransform = false;
+    }
     #region IBeginDragHandler implementation
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -60,6 +65,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         if ((this.gameObject.name.Contains("Tiegel_1") && BunsenBrenner.tiegelLocked20 == false) || (this.gameObject.name.Contains("Tiegel_2") && BunsenBrenner.tiegelLocked40 == false) || (this.gameObject.name.Contains("Tiegel_3") && BunsenBrenner.tiegelLocked60 == false) || (this.gameObject.name.Contains("Tiegel_4") && BunsenBrenner.tiegelLocked80 == false))
         {
+            cantTransform = false;
             transform.position = Input.mousePosition; //eventData.position
             if (CollisionDetection.itemInInventory == false)
             {
@@ -73,6 +79,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
         else if (this.gameObject.name.Contains("Tiegel_1") == false && this.gameObject.name.Contains("Tiegel_2") == false && this.gameObject.name.Contains("Tiegel_3") == false && this.gameObject.name.Contains("Tiegel_4") == false)
         {
+            cantTransform = false;
             transform.position = Input.mousePosition; //eventData.position
             if (CollisionDetection.itemInInventory == false)
             {
@@ -87,6 +94,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         else
         {
             Debug.Log("Error: Kann GameObject nicht bewegen");
+            cantTransform = true;
         }
     }
 

@@ -22,7 +22,7 @@ public class Slot : MonoBehaviour, IDropHandler
     #region IDropHandler implementation
     public void OnDrop(PointerEventData eventData)
     {
-        if (!item)
+        if (!item && DragHandeler.cantTransform == false)
         {
             DragHandeler.itemBeingDragged.transform.SetParent(transform);
             otherSlot = true;

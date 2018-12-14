@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Elevator : Interactive
 {
 	public Vector3 destination;
-    public Interactive door;
+    public GameObject door;
 
     public override void Interact()
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GussformScript : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class GussformScript : MonoBehaviour {
     public GameObject BBScriptObjekt;
     BunsenBrenner bunsenBrenner;
     bool waiting;
-    [SerializeField] Material tiegelLeer;
+    [SerializeField] Sprite tiegelLeer;
 
     void Start()
     {
@@ -34,8 +35,8 @@ public class GussformScript : MonoBehaviour {
         //Schraubenschlüssel Slot
         if (slotWrenchTiegel.transform.childCount > 0 && slotWrenchTiegel.transform.GetChild(0).CompareTag("20SiHot"))
         {
-            slotWrenchTiegel.transform.GetChild(0).tag = "20SiEmpty";
-            slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = tiegelLeer;
+            slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
+            slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
             if (bunsenBrenner.istTemp[0] > 25 && bunsenBrenner.istTemp[0] <= 1250)
             {
                 bunsenBrenner.istTemp[0] -= bunsenBrenner.bBZieltemp[0] / bunsenBrenner.bBZeit[0];
@@ -54,13 +55,14 @@ public class GussformScript : MonoBehaviour {
                 GameObject newWrench = Instantiate(wrench);
                 newWrench.transform.SetParent(slotWrench);
                 newWrench.transform.tag = "Falsch";
+                slotWrenchTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
         //40%Si / 60%Ge
         else if (slotWrenchTiegel.transform.childCount > 0 && slotWrenchTiegel.transform.GetChild(0).CompareTag("40SiHot"))
         {
-            slotWrenchTiegel.transform.GetChild(0).tag = "40SiEmpty";
-            slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = tiegelLeer;
+            slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
+            slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
             if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
             {
                 bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
@@ -79,13 +81,14 @@ public class GussformScript : MonoBehaviour {
                 GameObject newWrench = Instantiate(wrench);
                 newWrench.transform.SetParent(slotWrench);
                 newWrench.transform.tag = "Falsch";
+                slotWrenchTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
         //60%Si / 40%Ge
         else if (slotWrenchTiegel.transform.childCount > 0 && slotWrenchTiegel.transform.GetChild(0).CompareTag("60SiHot"))
         {
-            slotWrenchTiegel.transform.GetChild(0).tag = "60SiEmpty";
-            slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = tiegelLeer;
+            slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
+            slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
             if (bunsenBrenner.istTemp[2] > 25 && bunsenBrenner.istTemp[2] <= 1250)
             {
                 bunsenBrenner.istTemp[2] -= bunsenBrenner.bBZieltemp[6] / bunsenBrenner.bBZeit[6];
@@ -104,13 +107,14 @@ public class GussformScript : MonoBehaviour {
                 GameObject newWrench = Instantiate(wrench);
                 newWrench.transform.SetParent(slotWrench);
                 newWrench.transform.tag = "Falsch";
+                slotWrenchTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
         //80%Si / 20%Ge
         else if (slotWrenchTiegel.transform.childCount > 0 && slotWrenchTiegel.transform.GetChild(0).CompareTag("80SiHot"))
         {
-            slotWrenchTiegel.transform.GetChild(0).tag = "80SiEmpty";
-            slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<Renderer>().material = tiegelLeer;
+            slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
+            slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
             if (bunsenBrenner.istTemp[3] > 25 && bunsenBrenner.istTemp[3] <= 1250)
             {
                 bunsenBrenner.istTemp[3] -= bunsenBrenner.bBZieltemp[9] / bunsenBrenner.bBZeit[9];
@@ -129,6 +133,7 @@ public class GussformScript : MonoBehaviour {
                 GameObject newWrench = Instantiate(wrench);
                 newWrench.transform.SetParent(slotWrench);
                 newWrench.transform.tag = "Falsch";
+                slotWrenchTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
         //Kaputtes Zahnrad
@@ -158,6 +163,8 @@ public class GussformScript : MonoBehaviour {
         //Pleuel Slot
         else if (slotPleuelTiegel.transform.childCount > 0 && slotPleuelTiegel.transform.GetChild(0).CompareTag("20SiHot"))
         {
+            slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
+            slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
             if (bunsenBrenner.istTemp[0] > 25 && bunsenBrenner.istTemp[0] <= 1250)
             {
                 bunsenBrenner.istTemp[0] -= bunsenBrenner.bBZieltemp[0] / bunsenBrenner.bBZeit[0];
@@ -176,12 +183,14 @@ public class GussformScript : MonoBehaviour {
                 GameObject newPleuel = Instantiate(pleuel);
                 newPleuel.transform.SetParent(slotPleuel.transform);
                 newPleuel.transform.tag = "Falsch";
-                slotPleuelTiegel.transform.GetChild(0).tag = "20SiEmpty";
+                slotPleuelTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
         //40%Si / 60%Ge
         else if (slotPleuelTiegel.transform.childCount > 0 && slotPleuelTiegel.transform.GetChild(0).CompareTag("40SiHot"))
         {
+            slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
+            slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
             if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
             {
                 bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
@@ -200,12 +209,14 @@ public class GussformScript : MonoBehaviour {
                 GameObject newPleuel = Instantiate(pleuel);
                 newPleuel.transform.SetParent(slotPleuel.transform);
                 newPleuel.transform.tag = "Falsch";
-                slotPleuelTiegel.transform.GetChild(0).tag = "40SiEmpty";
+                slotPleuelTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
         //60%Si / 40%Ge
         else if (slotPleuelTiegel.transform.childCount > 0 && slotPleuelTiegel.transform.GetChild(0).CompareTag("60SiHot"))
         {
+            slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
+            slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
             if (bunsenBrenner.istTemp[2] > 25 && bunsenBrenner.istTemp[2] <= 1250)
             {
                 bunsenBrenner.istTemp[2] -= bunsenBrenner.bBZieltemp[6] / bunsenBrenner.bBZeit[6];
@@ -224,12 +235,14 @@ public class GussformScript : MonoBehaviour {
                 GameObject newPleuel = Instantiate(pleuel);
                 newPleuel.transform.SetParent(slotPleuel.transform);
                 newPleuel.transform.tag = "Falsch";
-                slotPleuelTiegel.transform.GetChild(0).tag = "60SiEmpty";
+                slotPleuelTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
         //80%Si / 20%Ge
         else if (slotPleuelTiegel.transform.childCount > 0 && slotPleuelTiegel.transform.GetChild(0).CompareTag("80SiHot"))
         {
+            slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
+            slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
             if (bunsenBrenner.istTemp[3] > 25 && bunsenBrenner.istTemp[3] <= 1250)
             {
                 bunsenBrenner.istTemp[3] -= bunsenBrenner.bBZieltemp[9] / bunsenBrenner.bBZeit[9];
@@ -248,7 +261,7 @@ public class GussformScript : MonoBehaviour {
                 GameObject newPleuel = Instantiate(pleuel);
                 newPleuel.transform.SetParent(slotPleuel.transform);
                 newPleuel.transform.tag = "Falsch";
-                slotPleuelTiegel.transform.GetChild(0).tag = "80SiEmpty";
+                slotPleuelTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
         //Kaputtes Zahnrad
@@ -278,6 +291,8 @@ public class GussformScript : MonoBehaviour {
         //Zahnrad Slot
         else if (slotZahnradTiegel.transform.childCount > 0 && slotZahnradTiegel.transform.GetChild(0).CompareTag("20SiHot"))
         {
+            slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
+            slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
             if (bunsenBrenner.istTemp[0] > 25 && bunsenBrenner.istTemp[0] <= 1250)
             {
                 bunsenBrenner.istTemp[0] -= bunsenBrenner.bBZieltemp[0] / bunsenBrenner.bBZeit[0];
@@ -296,12 +311,14 @@ public class GussformScript : MonoBehaviour {
                 GameObject newZahnrad = Instantiate(zahnrad);
                 newZahnrad.transform.SetParent(slotZahnrad.transform);
                 newZahnrad.transform.tag = "Falsch";
-                slotZahnradTiegel.transform.GetChild(0).tag = "20SiEmpty";
+                slotZahnradTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
         //40%Si / 60%Ge
         else if (slotZahnradTiegel.transform.childCount > 0 && slotZahnradTiegel.transform.GetChild(0).CompareTag("40SiHot"))
         {
+            slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
+            slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
             if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
             {
                 bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
@@ -320,12 +337,14 @@ public class GussformScript : MonoBehaviour {
                 GameObject newZahnrad = Instantiate(zahnrad);
                 newZahnrad.transform.SetParent(slotZahnrad.transform);
                 newZahnrad.transform.tag = "Richtig";
-                slotZahnradTiegel.transform.GetChild(0).tag = "40SiEmpty";
+                slotZahnradTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
         //60%Si / 40%Ge
         else if (slotZahnradTiegel.transform.childCount > 0 && slotZahnradTiegel.transform.GetChild(0).CompareTag("60SiHot"))
         {
+            slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
+            slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
             if (bunsenBrenner.istTemp[2] > 25 && bunsenBrenner.istTemp[2] <= 1250)
             {
                 bunsenBrenner.istTemp[2] -= bunsenBrenner.bBZieltemp[6] / bunsenBrenner.bBZeit[6];
@@ -344,12 +363,14 @@ public class GussformScript : MonoBehaviour {
                 GameObject newZahnrad = Instantiate(zahnrad);
                 newZahnrad.transform.SetParent(slotZahnrad.transform);
                 newZahnrad.transform.tag = "Falsch";
-                slotZahnradTiegel.transform.GetChild(0).tag = "60SiEmpty";
+                slotZahnradTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
         //80%Si / 20%Ge
         else if (slotZahnradTiegel.transform.childCount > 0 && slotZahnradTiegel.transform.GetChild(0).CompareTag("80SiHot"))
         {
+            slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
+            slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
             if (bunsenBrenner.istTemp[3] > 25 && bunsenBrenner.istTemp[3] <= 1250)
             {
                 bunsenBrenner.istTemp[3] -= bunsenBrenner.bBZieltemp[9] / bunsenBrenner.bBZeit[9];
@@ -368,7 +389,7 @@ public class GussformScript : MonoBehaviour {
                 GameObject newZahnrad = Instantiate(zahnrad);
                 newZahnrad.transform.SetParent(slotZahnrad.transform);
                 newZahnrad.transform.tag = "Falsch";
-                slotZahnradTiegel.transform.GetChild(0).tag = "80SiEmpty";
+                slotZahnradTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
         //Kaputtes Zahnrad
