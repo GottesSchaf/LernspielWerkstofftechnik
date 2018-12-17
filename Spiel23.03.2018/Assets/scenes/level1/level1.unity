@@ -1595,6 +1595,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c6ad87e7d4d4fa4b8969455fd7d5b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!84 &66299045
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1144
+  m_Height: 535
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &67852780
 GameObject:
   m_ObjectHideFlags: 0
@@ -6341,7 +6368,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 1073331495}
+  m_TargetTexture: {fileID: 1051416991}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -8247,9 +8274,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '60% Si
+  m_Text: '60% Al
 
-    40% Zn'
+    40% Cu'
 --- !u!222 &319041212
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8482,7 +8509,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 323237892}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -940, y: 480.09875, z: 0}
+  m_LocalPosition: {x: -939.99994, y: 424.95102, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1320966915}
@@ -8973,8 +9000,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01, y: 0.016996987, z: 0.01}
-  m_Center: {x: -0.000000014901161, y: -0.0034984932, z: -0.0000000037252903}
+  m_Size: {x: 0.023840783, y: 0.016996987, z: 0.01}
+  m_Center: {x: 0.006920377, y: -0.003498493, z: -0.0000000036469994}
 --- !u!114 &343014334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30416,33 +30443,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0100000035, y: 0.009999999, z: 0.016515348}
   m_Center: {x: 0, y: 0, z: 0.003257688}
---- !u!84 &844063994
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1215
-  m_Height: 638
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &845551023
 GameObject:
   m_ObjectHideFlags: 0
@@ -39545,6 +39545,33 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!84 &1051416991
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1144
+  m_Height: 535
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1054921000
 GameObject:
   m_ObjectHideFlags: 0
@@ -39866,7 +39893,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1070567811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 960, y: -504.09875, z: 0}
+  m_LocalPosition: {x: 959.99994, y: -448.95102, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children:
   - {fileID: 2084803530}
@@ -40273,33 +40300,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1073300296}
   m_Mesh: {fileID: 4300046, guid: a3f57a62ec206ff49a08d7b351400655, type: 3}
---- !u!84 &1073331495
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1215
-  m_Height: 638
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1075912868
 GameObject:
   m_ObjectHideFlags: 0
@@ -40436,8 +40436,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 1075912873}
   outlineCamera: {fileID: 260511559}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 1073331495}
-  extraRenderTexture: {fileID: 844063994}
+  renderTexture: {fileID: 1051416991}
+  extraRenderTexture: {fileID: 66299045}
 --- !u!54 &1075912876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42953,7 +42953,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1170273870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -940, y: 387.09875, z: 0}
+  m_LocalPosition: {x: -939.99994, y: 331.95102, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1320966915}
@@ -50287,8 +50287,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1320966910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 607.5, y: 319, z: 0}
-  m_LocalScale: {x: 0.6328125, y: 0.6328125, z: 0.6328125}
+  m_LocalPosition: {x: 572, y: 267.5, z: 0}
+  m_LocalScale: {x: 0.59583336, y: 0.59583336, z: 0.59583336}
   m_Children:
   - {fileID: 323237893}
   - {fileID: 1170273871}
@@ -51379,8 +51379,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "*Hier Text einf\xFCgen*\n*Hier Text einf\xFCgen*\n*Hier Text einf\xFCgen*\n*Hier
-    Text einf\xFCgen*"
+  m_Text: "Achherje, die Beschriftungen befinden sich nicht an den Tiegeln. Und nun?\nIch
+    sollte herausfinden, welche Legierung \nzu welchem Tiegel geh\xF6rt."
 --- !u!222 &1355135545
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -54314,7 +54314,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1474821954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 164, z: 0}
+  m_LocalPosition: {x: -164, y: 164, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 131117222}
@@ -54322,7 +54322,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 164}
+  m_AnchoredPosition: {x: -164, y: 164}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1474821956
@@ -54346,18 +54346,19 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0bf8ffb587baccc4ca86f9605dcee121, type: 3}
-    m_FontSize: 30
+    m_FontSize: 38
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 300
-    m_Alignment: 4
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Gib hier einen Text ein
+  m_Text: "Zahnrad: \t\t\t\t\t\t\tCuAl40-C\n\nPleuel: \t\t\t\t\t\t\t\tAlMgSi4\n\nSchraubenschl\xFCssel:
+    \t\tC45\n\nKolben: \t\t\t\t\t\t\t\tCuAl9"
 --- !u!222 &1474821957
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -57494,7 +57495,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 432277502}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -504.09875, z: 0}
+  m_LocalPosition: {x: 0, y: -448.95102, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 360305723}
@@ -59168,7 +59169,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1666693635}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 790, y: -531.09875, z: 0}
+  m_LocalPosition: {x: 789.99994, y: -475.95102, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 327303164}
@@ -59789,7 +59790,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1676230241}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -950, y: 494.09875, z: 29}
+  m_LocalPosition: {x: -949.99994, y: 438.95102, z: 29}
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 1320966915}
@@ -59952,9 +59953,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '40% Si
+  m_Text: '40% Al
 
-    60% Zn'
+    60% Cu'
 --- !u!222 &1679419134
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -61008,9 +61009,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '20% Si
+  m_Text: '20% Al
 
-    80% Zn'
+    80% Cu'
 --- !u!222 &1730679532
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -63512,9 +63513,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '80% Si
+  m_Text: '80% Al
 
-    20% Zn'
+    20% Cu'
 --- !u!222 &1838634753
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -67075,7 +67076,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: db6e26ecf6f78eb44bf29478d2050d13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00df95a7ba712f142a0f860cf3a07674, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
