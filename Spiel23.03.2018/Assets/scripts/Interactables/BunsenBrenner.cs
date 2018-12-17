@@ -20,7 +20,7 @@ public class BunsenBrenner : MonoBehaviour
     public Text ausgabeText;
     public Transform slot1, slot2, slot3, slot4;
     [SerializeField] GameObject flamme1, flamme2, flamme3, flamme4;
-    bool flamme1Bool, flamme2Bool, flamme3Bool, flamme4Bool;
+    public static bool flamme1Bool, flamme2Bool, flamme3Bool, flamme4Bool;
     [SerializeField] GameObject tiegelZahnrad;
     [SerializeField] Window_Graph windowGraph;
     [SerializeField] Window_Graph_Tiegel2 windowGraphTiegel2;
@@ -42,6 +42,23 @@ public class BunsenBrenner : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //-------------Bei Neustart des Spiels werden alle Variablen zurückgesetzt----------------
+        hauptGasSchalter = false;
+        platzGasSchalter = false;
+        bBGasSchalter = false;
+        waiting = false;
+        instance = null;
+        verbrannt = false;
+        tiegelLocked20 = false;
+        tiegelLocked40 = false;
+        tiegelLocked60 = false;
+        tiegelLocked80 = false;
+        flamme1Bool = false;
+        flamme2Bool = false;
+        flamme3Bool = false;
+        flamme4Bool = false;
+        //----------------------------------------------------------------------------------------
+
         Vector3[] shuffleArray = new Vector3[bunsenBrennerTransf.Length];
         List<int> usedRnd = new List<int>();
         for (int i = 0; i < bunsenBrennerObjekt.Length; i++)
@@ -132,6 +149,18 @@ public class BunsenBrenner : MonoBehaviour
         if (hauptGasSchalter && platzGasSchalter && waiting == false)
         {
             StartCoroutine(BunsenBrennerRechnung());
+        }
+        else if (hauptGasSchalter == false || platzGasSchalter == false)
+        {
+            waiting = false;
+            flamme1.SetActive(false);
+            BunsenBrennerFlammen[0].gameObject.SetActive(false);
+            flamme2.SetActive(false);
+            BunsenBrennerFlammen[1].gameObject.SetActive(false);
+            flamme3.SetActive(false);
+            BunsenBrennerFlammen[2].gameObject.SetActive(false);
+            flamme4.SetActive(false);
+            BunsenBrennerFlammen[3].gameObject.SetActive(false);
         }
         if (flamme1.activeInHierarchy == true && slot1.transform.childCount == 0 && zeigeVerbrennung == false)
         {

@@ -10,7 +10,7 @@ public class MouseInput : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     public string RayHitsThis;
-    [SerializeField] GameObject laptop, bunsenBrenner, gussformWrench, gussformPleuel, gussformZahnrad, datenblatt, laborkittelError, tiegelBeschriftung, verbrannt, ofen;
+    [SerializeField] GameObject laptop, bunsenBrenner, gussformWrench, gussformPleuel, gussformZahnrad, datenblatt, laborkittelError, tiegelBeschriftung, verbrannt, ofen, tiegelInfo;
 
     void Start()
     {
@@ -42,7 +42,7 @@ public class MouseInput : MonoBehaviour
         RaycastHit interactionInfo;
         if (Physics.Raycast(interactionRay, out interactionInfo, Mathf.Infinity))
         {
-            if (laptop.activeInHierarchy == false && bunsenBrenner.activeInHierarchy == false && gussformPleuel.activeInHierarchy == false && gussformWrench.activeInHierarchy == false && gussformZahnrad.activeInHierarchy == false && datenblatt.activeInHierarchy == false && laborkittelError.activeInHierarchy == false && tiegelBeschriftung.activeInHierarchy == false && verbrannt.activeInHierarchy == false && ofen.activeInHierarchy == false) {
+            if (laptop.activeInHierarchy == false && bunsenBrenner.activeInHierarchy == false && gussformPleuel.activeInHierarchy == false && gussformWrench.activeInHierarchy == false && gussformZahnrad.activeInHierarchy == false && datenblatt.activeInHierarchy == false && laborkittelError.activeInHierarchy == false && tiegelBeschriftung.activeInHierarchy == false && verbrannt.activeInHierarchy == false && ofen.activeInHierarchy == false && tiegelInfo.activeInHierarchy == false) {
                 GameObject interactiveObject = interactionInfo.collider.gameObject;
                 if (interactiveObject.tag == "Interactive")
                 {

@@ -21,16 +21,13 @@ TagManager:
   - 60SiCold
   - 80SiCold
   - InvSlot
-  - 20SiEmpty
-  - 40SiEmpty
-  - 60SiEmpty
-  - 80SiEmpty
   - Machine
   - Geschmolzen
   - ZahnradKaputt
   - GeschmolzenEmpty
   - Richtig
   - Falsch
+  - Empty
   layers:
   - Default
   - TransparentFX

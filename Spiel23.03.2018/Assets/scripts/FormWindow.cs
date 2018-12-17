@@ -23,6 +23,7 @@ public class FormWindow : Interactive
     //Wenn der Close Button gedrückt wird, wird die Form "geschlossen"
     public void CloseWindow()
     {
+        
         formWindow.SetActive(false);
     }
     //Wenn man auf die Form klickt, öffnet sie sich

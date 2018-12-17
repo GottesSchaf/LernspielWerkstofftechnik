@@ -35,7 +35,7 @@ public class CameraFollow : MonoBehaviour
         {
             Vector3 newPosition = transform.position;
             newPosition.x = playerToFollow.position.x;
-			newPosition.y = playerToFollow.position.y +1f;
+			newPosition.y = playerToFollow.position.y +1.25f;
             newPosition.z = -7;
             transform.position = newPosition;
         }
