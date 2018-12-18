@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HauptGasSchalterScript : Interactive
 {
-    [SerializeField] Material fuseOn, fuseOff;
+    [SerializeField] public static Material fuseOn, fuseOff;
 
     public override void Interact()
     {
@@ -19,6 +19,18 @@ public class HauptGasSchalterScript : Interactive
             BunsenBrenner.hauptGasSchalter = false;
             this.gameObject.GetComponent<Renderer>().material = fuseOff;
             Debug.Log("Haupt Gas aus geschaltet");
+        }
+    }
+
+    public void UpdateMaterial()
+    {
+        if (BunsenBrenner.hauptGasSchalter == true)
+        {
+            this.gameObject.GetComponent<Renderer>().material = fuseOn;
+        }
+        else
+        {
+            this.gameObject.GetComponent<Renderer>().material = fuseOff;
         }
     }
 }

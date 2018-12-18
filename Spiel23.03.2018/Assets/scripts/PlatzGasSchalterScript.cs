@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatzGasSchalterScript : Interactive
 {
-    [SerializeField] Material platzGasOn, platzGasOff;
+    [SerializeField] public static Material platzGasOn, platzGasOff;
     [SerializeField] GameObject airDischarger;
     bool interacted;
 
@@ -43,5 +43,17 @@ public class PlatzGasSchalterScript : Interactive
             BunsenBrenner.flamme4Bool = false;
         }
 
+    }
+
+    public void UpdateMaterial()
+    {
+        if (BunsenBrenner.platzGasSchalter == true)
+        {
+            airDischarger.GetComponent<Renderer>().material = platzGasOn;
+        }
+        else
+        {
+            airDischarger.GetComponent<Renderer>().material = platzGasOff;
+        }
     }
 }

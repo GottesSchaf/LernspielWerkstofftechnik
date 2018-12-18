@@ -12,7 +12,15 @@ public class BunsenBrenner : MonoBehaviour
     [SerializeField] Transform tempGOTransf;
     [SerializeField] GameObject tempGO;
     public float[] bBZieltemp;                        //Array zum abspeichern der Rate in °C der jeweiligen Bunsen Brenner
+    [SerializeField] List<float> BB1_Zieltemp = new List<float>();
+    [SerializeField] List<float> BB2_Zieltemp = new List<float>();
+    [SerializeField] List<float> BB3_Zieltemp = new List<float>();
+    [SerializeField] List<float> BB4_Zieltemp = new List<float>();
     public int[] bBZeit;                        //Array zum abspeichern der Zeit in sekunden der jeweiligen Bunsen Brenner
+    [SerializeField] List<int> BB1_Zeit = new List<int>();
+    [SerializeField] List<int> BB2_Zeit = new List<int>();
+    [SerializeField] List<int> BB3_Zeit = new List<int>();
+    [SerializeField] List<int> BB4_Zeit = new List<int>();
     public float[] istTemp = new float[4];
     public static Transform instance;
     public CameraFollow followCam;
@@ -38,6 +46,7 @@ public class BunsenBrenner : MonoBehaviour
     [SerializeField] GameObject erstVerarztenFenster;
     [SerializeField] Transform infoBBAusgeschaltet;
     public static bool tiegelLocked20, tiegelLocked40, tiegelLocked60, tiegelLocked80;
+    int zeitZaehler, bBZeitInt;     //zeitZaehler zum hochrechnen zur Ziel Zeit, bbZeitInt als addierter zwischenspeicher der Ziel Zeiten
 
     // Use this for initialization
     void Start()
