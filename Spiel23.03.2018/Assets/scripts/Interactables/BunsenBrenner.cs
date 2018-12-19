@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -78,10 +79,10 @@ public class BunsenBrenner : MonoBehaviour
         //Mische die Bunsen Brenner, sodass die Studenten nicht schummeln können
         for (int i = 0; i < bunsenBrennerObjekt.Length; i++)
         {
-            int rnd = Random.Range(0, bunsenBrennerObjekt.Length);
+            int rnd = UnityEngine.Random.Range(0, bunsenBrennerObjekt.Length);
             while (usedRnd.Contains(rnd))
             {
-                rnd = Random.Range(0, bunsenBrennerObjekt.Length);
+                rnd = UnityEngine.Random.Range(0, bunsenBrennerObjekt.Length);
             }
             usedRnd.Add(rnd);
             bunsenBrennerObjekt[rnd].transform.position = shuffleArray[i];
@@ -93,6 +94,9 @@ public class BunsenBrenner : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    float modifier;
+    long time = 0;
     void Update()
     {
         #region Tiegel auf Bunsenbrenner
@@ -132,6 +136,7 @@ public class BunsenBrenner : MonoBehaviour
         //CheckInstance();
         if (hauptGasSchalter && platzGasSchalter && waiting == false)
         {
+            time = DateTime.Now.Ticks;
             StartCoroutine(BunsenBrennerRechnung());
         }
         else if (hauptGasSchalter == false || platzGasSchalter == false)
@@ -232,11 +237,21 @@ public class BunsenBrenner : MonoBehaviour
     }
 
     public IEnumerator BunsenBrennerRechnung()
-    {
+    {       
         waiting = true;
+        long timetocool = time + new TimeSpan(0, 0, 0, 10, 0).Ticks;
         while (true)
         {
+            time = DateTime.Now.Ticks;
             yield return new WaitForSeconds(1);
+        if(istTemp[0] <= 900 && istTemp[0] >= 650)
+        {
+            modifier = 0.0f;
+        }
+        else if(time > timetocool)
+        {
+            modifier = 1.0f;
+        }
             #region Bunsen Brenner Abfrage
             //20% Si / 80%Ge || Wenn der Tiegel auf einem Bunsen Brenner liegt und die jeweilige Flamme an ist, erhitze den Tiegel
             if (slot1.transform.childCount > 0 || slot2.transform.childCount > 0 || slot3.transform.childCount > 0 || slot4.transform.childCount > 0)
@@ -398,7 +413,7 @@ public class BunsenBrenner : MonoBehaviour
                             tiegelFarbe = 80;
                         }
                         windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
-                        istTemp[0] -= (bBZieltemp[1] - bBZieltemp[0]) / bBZeit[1];
+                        istTemp[0] -= (bBZieltemp[1] - bBZieltemp[0]) / bBZeit[1] * modifier;
                     }
                     else if (istTemp[0] > bBZieltemp[1])
                     {
