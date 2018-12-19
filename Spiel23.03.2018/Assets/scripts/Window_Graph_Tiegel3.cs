@@ -39,7 +39,7 @@ public class Window_Graph_Tiegel3 : MonoBehaviour {
         return gameObject;
     }
 
-    public void ShowGraph(float value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
+    public void ShowGraph(double value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
     {
         //if (changedPos == false)
         //{
@@ -79,8 +79,9 @@ public class Window_Graph_Tiegel3 : MonoBehaviour {
         //GameObject lastCircleGameObject = null; //Letzter Punkt, der erstellt wurde
         //Vorher: if(i < valueList.Count)
         float xPosition = i * xSize;
-        float yPosition = (value / yMaximum) * graphHeight;
-        GameObject circleGameObject = CreatCircle(new Vector2(xPosition, yPosition));
+        double yPosition = (value / yMaximum) * graphHeight;
+        float yPos = (float)yPosition;
+        GameObject circleGameObject = CreatCircle(new Vector2(xPosition, yPos));
         //Falls ein vorheriger Punkt vorhanden, erstelle eine Verbindung
         if (lastCircleGameObject != null)
         {

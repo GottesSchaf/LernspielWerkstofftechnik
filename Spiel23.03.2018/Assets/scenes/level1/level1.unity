@@ -5296,33 +5296,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 202881633}
---- !u!84 &205484428
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1224
-  m_Height: 620
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &207461677
 GameObject:
   m_ObjectHideFlags: 0
@@ -6745,7 +6718,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 205484428}
+  m_TargetTexture: {fileID: 1863636154}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -13486,33 +13459,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 512574345}
---- !u!84 &515494019
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1224
-  m_Height: 620
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &515977941
 GameObject:
   m_ObjectHideFlags: 0
@@ -41306,8 +41252,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 1075912873}
   outlineCamera: {fileID: 260511559}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 205484428}
-  extraRenderTexture: {fileID: 515494019}
+  renderTexture: {fileID: 1863636154}
+  extraRenderTexture: {fileID: 1516717509}
 --- !u!54 &1075912876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -56192,6 +56138,33 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1514011969}
+--- !u!84 &1516717509
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1224
+  m_Height: 620
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1517923482
 GameObject:
   m_ObjectHideFlags: 0
@@ -65050,6 +65023,33 @@ MonoBehaviour:
   m_Spacing: {x: 2, y: 3}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!84 &1863636154
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1224
+  m_Height: 620
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1866331196
 GameObject:
   m_ObjectHideFlags: 0
@@ -67092,8 +67092,8 @@ MonoBehaviour:
   tempGOTransf: {fileID: 0}
   tempGO: {fileID: 549973214}
   bBZieltemp:
-  - 1250
-  - 1400
+  - 900
+  - 901
   - 1550
   - 1100
   - 1350
@@ -67108,7 +67108,7 @@ MonoBehaviour:
   BB2_Zieltemp: []
   BB3_Zieltemp: []
   BB4_Zieltemp: []
-  bBZeit: 1e000000120000000900000024000000180000000c0000002a0000001e0000000c000000300000002400000012000000
+  bBZeit: 1e000000140000000900000024000000180000000c0000002a0000001e0000000c000000300000002400000012000000
   BB1_Zeit: 
   BB2_Zeit: 
   BB3_Zeit: 

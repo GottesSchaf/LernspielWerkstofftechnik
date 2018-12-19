@@ -39,38 +39,8 @@ public class Window_Graph_Tiegel4 : MonoBehaviour {
         return gameObject;
     }
 
-    public void ShowGraph(float value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
+    public void ShowGraph(double value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
     {
-        //if (changedPos == false)
-        //{
-        //    if (BBSlot[0].GetComponentInChildren<GameObject>().CompareTag("80SiCold"))
-        //    {
-        //        PanelTiegel.transform.position = new Vector2(-42, -101);
-        //        PanelTiegel.layer = 0;
-        //    }
-        //    else if (BBSlot[1].GetComponentInChildren<GameObject>().CompareTag("80SiCold"))
-        //    {
-        //        PanelTiegel.transform.position = new Vector2(-42, -231);
-        //        PanelTiegel.layer = 0;
-        //    }
-        //    else if (BBSlot[2].GetComponentInChildren<GameObject>().CompareTag("80SiCold"))
-        //    {
-        //        PanelTiegel.transform.position = new Vector2(-42, -387);
-        //        PanelTiegel.layer = 0;
-        //    }
-        //    else if (BBSlot[3].GetComponentInChildren<GameObject>().CompareTag("80SiCold"))
-        //    {
-        //        PanelTiegel.transform.position = new Vector2(-42, -541);
-        //        PanelTiegel.layer = 0;
-        //    }
-        //    else
-        //    {
-        //        PanelTiegel.transform.position = new Vector2(-42, -101);
-        //        PanelTiegel.layer = 1;
-        //        Debug.Log("Konnte kein Tiegel finden mit dem Tag '80SiCold'");
-        //    }
-        //    changedPos = true;
-        //}
         graphContainer = this.gameObject.GetComponentsInChildren<RectTransform>(true)[1];
         tiegelColor = tiegelFarbe;
         float graphHeight = graphContainer.sizeDelta.y; //Größe des Graphen
@@ -79,8 +49,9 @@ public class Window_Graph_Tiegel4 : MonoBehaviour {
         //GameObject lastCircleGameObject = null; //Letzter Punkt, der erstellt wurde
         //Vorher: if(i < valueList.Count)
         float xPosition = i * xSize;
-        float yPosition = (value / yMaximum) * graphHeight;
-        GameObject circleGameObject = CreatCircle(new Vector2(xPosition, yPosition));
+        double yPosition = (value / yMaximum) * graphHeight;
+        float yPos = (float)yPosition;
+        GameObject circleGameObject = CreatCircle(new Vector2(xPosition, yPos));
         //Falls ein vorheriger Punkt vorhanden, erstelle eine Verbindung
         if (lastCircleGameObject != null)
         {

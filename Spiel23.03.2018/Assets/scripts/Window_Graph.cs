@@ -37,7 +37,7 @@ public class Window_Graph : MonoBehaviour {
             i = 0;
         }
     }
-    public void ShowGraph(float value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
+    public void ShowGraph(double value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
     {
         //if (changedPos == false)
         //{
@@ -75,8 +75,9 @@ public class Window_Graph : MonoBehaviour {
         float yMaximum = 2000f; //Maximale Größe des Graphen
         float xSize = sekunden; //Abstand zwischen X Positionen (sekunden)
         float xPosition = i * xSize; //Berechne die X Position auf dem Graphen
-        float yPosition = (value / yMaximum) * graphHeight; //Berechne die Y Position auf dem Graphen
-        GameObject circleGameObject = CreatCircle(new Vector2(xPosition, yPosition));
+        double yPosition = (value / yMaximum) * graphHeight; //Berechne die Y Position auf dem Graphen
+        float yPos = (float)yPosition;
+        GameObject circleGameObject = CreatCircle(new Vector2(xPosition, yPos));
         //Falls ein vorheriger Punkt vorhanden, erstelle eine Verbindung
         if (lastCircleGameObject != null)
         {

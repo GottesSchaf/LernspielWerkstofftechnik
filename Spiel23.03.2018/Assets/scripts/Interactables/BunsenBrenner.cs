@@ -21,7 +21,7 @@ public class BunsenBrenner : MonoBehaviour
     [SerializeField] List<int> BB2_Zeit = new List<int>();
     [SerializeField] List<int> BB3_Zeit = new List<int>();
     [SerializeField] List<int> BB4_Zeit = new List<int>();
-    public float[] istTemp = new float[4];
+    public double[] istTemp = new double[4];
     public static Transform instance;
     public CameraFollow followCam;
     public static bool hauptGasSchalter = false, platzGasSchalter = false, bBGasSchalter = false, waiting = false; //Zur Überprüfung ob die jeweiligen Gas Schalter bereits betätigt wurden
@@ -47,6 +47,7 @@ public class BunsenBrenner : MonoBehaviour
     [SerializeField] Transform infoBBAusgeschaltet;
     public static bool tiegelLocked20, tiegelLocked40, tiegelLocked60, tiegelLocked80;
     int zeitZaehler, bBZeitInt;     //zeitZaehler zum hochrechnen zur Ziel Zeit, bbZeitInt als addierter zwischenspeicher der Ziel Zeiten
+    int zeit1, zeit2, zeit3, zeit4;
 
     // Use this for initialization
     void Start()
@@ -85,36 +86,10 @@ public class BunsenBrenner : MonoBehaviour
             usedRnd.Add(rnd);
             bunsenBrennerObjekt[rnd].transform.position = shuffleArray[i];
         }
-        for (int i = 0; i < istTemp.Length; i++)
-        {
-            istTemp[i] = 25;
-        }
-        //for (int i = 0; i < bunsenBrennerObjekt.Length; i++)
+        //for (int i = 0; i < istTemp.Length; i++)
         //{
-        //    if (slot1.transform.childCount == 0)
-        //    {
-        //        GameObject temp = Instantiate(bunsenBrennerObjekt[i], new Vector3(0, 0, 0), Quaternion.identity);
-        //        temp.transform.SetParent(slot1.transform);
-        //    }
-        //    else if (slot2.transform.childCount == 0)
-        //    {
-        //        GameObject temp = Instantiate(bunsenBrennerObjekt[i], new Vector3(0, 0, 0), Quaternion.identity);
-        //        temp.transform.SetParent(slot2.transform);
-        //    }
-        //    else if (slot3.transform.childCount == 0)
-        //    {
-        //        GameObject temp = Instantiate(bunsenBrennerObjekt[i], new Vector3(0, 0, 0), Quaternion.identity);
-        //        temp.transform.SetParent(slot3.transform);
-        //    }
-        //    else if (slot4.transform.childCount == 0)
-        //    {
-        //        GameObject temp = Instantiate(bunsenBrennerObjekt[i], new Vector3(0, 0, 0), Quaternion.identity);
-        //        temp.transform.SetParent(slot4.transform);
-        //    }
+        //    istTemp[i] = 25;
         //}
-
-
-        //StartCoroutine(BunsenBrennerRechnung());
     }
 
     // Update is called once per frame
@@ -274,18 +249,20 @@ public class BunsenBrenner : MonoBehaviour
                         windowGraph.DeleteGraph();
                         tiegel1Heated = false;
                     }
-                    if (istTemp[0] <= bBZieltemp[0])
+                    if (istTemp[0] < bBZieltemp[0])
                     {
                         istTemp[0] += bBZieltemp[0] / bBZeit[0];
                         tiegelFarbe = 20;
                         tiegel1Heated = true;
                         //windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
                     }
-                    else if (istTemp[0] <= bBZieltemp[1])
+                    else if (istTemp[0] < bBZieltemp[1])
                     {
                         istTemp[0] += (bBZieltemp[1] - bBZieltemp[0]) / bBZeit[1];
+                        
                         tiegelFarbe = 20;
                         tiegel1Heated = true;
+                        Debug.Log(istTemp[0]);
                         //windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
                     }
                     else if (istTemp[0] < bBZieltemp[2])
@@ -330,12 +307,26 @@ public class BunsenBrenner : MonoBehaviour
                             slot4.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelSprite[0];
                             slot4.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelSprite[0];
                         }
+                        istTemp[0] = bBZieltemp[2];
                     }
                 }
                 //Sonst kühl das ganze mit gleichen Raten ab
                 else
                 {
                     tiegelLocked20 = false;
+                    if (zeit1 == bBZeit[0])
+                    {
+                        zeit1 = 0;
+                    }
+                    if (zeit2 == bBZeit[1])
+                    {
+                        zeit2 = 0;
+                    }
+                    if (zeit3 == bBZeit[2])
+                    {
+                        zeit3 = 0;
+                    }
+
                     if (istTemp[0] > 25 && istTemp[0] <= bBZieltemp[0])
                     {
                         if (istTemp[0] >= 25 && istTemp[0] < 100)
@@ -430,9 +421,9 @@ public class BunsenBrenner : MonoBehaviour
                         windowGraph.ShowGraph(istTemp[0], 10, tiegelFarbe);
                         istTemp[0] -= (bBZieltemp[2] - bBZieltemp[1]) / bBZeit[2];
                     }
-                    else if (istTemp[0] < 25)
+                    else if (istTemp[0] < 0)
                     {
-                        istTemp[0] = 25;
+                        istTemp[0] = 0;
                     }
                 }
                 //40% Si / 60% Ge
