@@ -10,7 +10,7 @@ Kolben: 								CuAl9
 Sprechblase_Text~
 Ach herrje, die Beschriftungen befinden sich nicht an den Tiegeln. Und nun?
 Ich sollte herausfinden, welche Legierung 
-zu welchem Tiegel gehört.
+zu welchem Tiegel gehört. Vielleicht finde ich mehr Informationen in der Bibliothek.
 |
 Legie_1~
 20% Al
