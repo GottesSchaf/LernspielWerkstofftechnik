@@ -21,7 +21,6 @@ public class Tutorial : MonoBehaviour
     //Objects in Tut.Room
     [SerializeField] private GameObject door;
     [SerializeField] private GameObject doorframe;
-    [SerializeField] private GameObject table;
     [SerializeField] private GameObject cube;
 
     //Canvas Buttons
@@ -36,6 +35,7 @@ public class Tutorial : MonoBehaviour
 
     [SerializeField] private GameObject[] Buttons;
 
+    [SerializeField] private NavMeshSurface surface;
     // Playerposition
     public Vector3 destination;
 
@@ -84,7 +84,6 @@ public class Tutorial : MonoBehaviour
             spriteToChange.sprite = tutSprites[2];
             target.SetActive(false);
             step2Done = true;
-            table.SetActive(true);
             cube.SetActive(true);
         }
 
@@ -94,9 +93,8 @@ public class Tutorial : MonoBehaviour
             foreach(GameObject x in invSlots)
             { 
                 slot++;
-                if(x.GetComponentInChildren<DragHandeler>())
+                if (x.GetComponentInChildren<DragHandeler>())
                 {
-                    table.SetActive(false);
                     step3Done = true;
                     spriteToChange.sprite = tutSprites[3];
                     break;
@@ -106,6 +104,7 @@ public class Tutorial : MonoBehaviour
 
         if(step2Done && step3Done && !step4Done)
         {
+            CollisionDetection.itemInInventory = true;
             spriteToChange.sprite = tutSprites[4]; // In der Tasche sind deine Objekte (Bild)
             invOpen.SetActive(true);               // Icon für Inventar taucht auf
             foreach (GameObject x in invSlots)
@@ -129,6 +128,7 @@ public class Tutorial : MonoBehaviour
         }
         if (step2Done && step3Done && step4Done && !step5Done)
         {
+            CollisionDetection.itemInInventory = false;
             spriteToChange.sprite = tutSprites[5];
             if (pauseScreen.activeSelf)   
             {
@@ -144,6 +144,7 @@ public class Tutorial : MonoBehaviour
             spriteToChange.sprite = tutSprites[7];
             door.SetActive(true);
             doorframe.SetActive(true);
+            Time.timeScale = 1;
             step7Done = true;
         }
 

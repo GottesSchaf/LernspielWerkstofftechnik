@@ -70,8 +70,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 19.2, y: 10.8}
-    newSize: {x: 19.2, y: 10.8}
+    oldSize: {x: 10.8, y: 10.8}
+    newSize: {x: 10.8, y: 10.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -101,11 +101,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901acb5b391ea3f418f51c4600047914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPosition: {x: 0, y: 0, z: 0}
+  startParent: {fileID: 0}
   RadialMenue: {fileID: 0}
   cam: {fileID: 0}
   InventoryCollision: {fileID: 0}
   UICanvas: {fileID: 0}
   Machine: {fileID: 0}
+  machineNew: {fileID: 0}
+  machineNewParent: {fileID: 0}
+  iconSprite: {fileID: 0}
   MachineSlot: {fileID: 0}
   player: {fileID: 0}
   mesh: {fileID: 0}
@@ -175,7 +180,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 19.2, y: 10.8}
+  m_Size: {x: 10.8, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

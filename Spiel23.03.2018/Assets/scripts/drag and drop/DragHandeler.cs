@@ -17,6 +17,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public GameObject InventoryCollision;
     public GameObject UICanvas;
 	public GameObject Machine, machineNew, machineNewParent;
+    public GameObject iconSprite;
     GameObject[] shatter;
     List<GameObject> shatter1 = new List<GameObject>();
     public Slot MachineSlot;
@@ -24,27 +25,36 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public GameObject mesh;
     GameObject gameOverScreen;
     DestroyMachine desMachine;
+    GameObject invFix;
+    bool transformDone;
+    public static bool cantTransform;
 
-
+    private void Start()
+    {
+        cantTransform = false;
+    }
     #region IBeginDragHandler implementation
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-		itemBeingDragged = gameObject;
+        itemBeingDragged = gameObject;
         draggingItem = true;
         if (transform.parent != startParent)
         {
             startPosition = transform.position;
         }
-		startParent = transform.parent;
-		GetComponent<CanvasGroup>().blocksRaycasts = false;
+        startParent = transform.parent;
+        GetComponent<CanvasGroup>().blocksRaycasts = false;
 
-		RadialMenue = GameObject.Find("RadialMenue");
+        RadialMenue = GameObject.Find("RadialMenue");
         cam = GameObject.Find("Main Camera");
-		Inventory = GameObject.Find("InventoryMenue");
-		UICanvas = GameObject.Find("Canvas");
-		Machine = GameObject.Find("Machine");
+        Inventory = GameObject.Find("InventoryMenue");
+        UICanvas = GameObject.Find("Canvas");
+        Machine = GameObject.Find("Machine");
         gameOverScreen = GameObject.Find("Maschine_Kaputt");
+        //invFix = GameObject.Find("InventoryFix");
+        //invFix.SetActive(true);
+        //invFix.SetActive(false);
     }
 
     #endregion
@@ -55,15 +65,36 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         if ((this.gameObject.name.Contains("Tiegel_1") && BunsenBrenner.tiegelLocked20 == false) || (this.gameObject.name.Contains("Tiegel_2") && BunsenBrenner.tiegelLocked40 == false) || (this.gameObject.name.Contains("Tiegel_3") && BunsenBrenner.tiegelLocked60 == false) || (this.gameObject.name.Contains("Tiegel_4") && BunsenBrenner.tiegelLocked80 == false))
         {
+            cantTransform = false;
             transform.position = Input.mousePosition; //eventData.position
+            if (CollisionDetection.itemInInventory == false)
+            {
+                if (transformDone == false)
+                {
+                    itemBeingDragged.transform.SetParent(UICanvas.transform, false);
+                    itemBeingDragged.transform.SetAsLastSibling();
+                    transformDone = true;
+                }
+            }
         }
         else if (this.gameObject.name.Contains("Tiegel_1") == false && this.gameObject.name.Contains("Tiegel_2") == false && this.gameObject.name.Contains("Tiegel_3") == false && this.gameObject.name.Contains("Tiegel_4") == false)
         {
+            cantTransform = false;
             transform.position = Input.mousePosition; //eventData.position
+            if (CollisionDetection.itemInInventory == false)
+            {
+                if (transformDone == false)
+                {
+                    itemBeingDragged.transform.SetParent(UICanvas.transform, false);
+                    itemBeingDragged.transform.SetAsLastSibling();
+                    transformDone = true;
+                }
+            }
         }
         else
         {
             Debug.Log("Error: Kann GameObject nicht bewegen");
+            cantTransform = true;
         }
     }
 
@@ -81,22 +112,34 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             if (hit.transform.CompareTag("Machine") && itemBeingDragged.transform.tag == "Richtig")
             {
+                //Gewonnen
                 Machine = GameObject.Find("Crazy_Machine_Shatter");
-                //Machine.GetComponent<Rigidbody>().isKinematic = true;
-                for(int i = 0; i < Machine.transform.childCount; i++)
-                {
-                    shatter1.Add(Machine.transform.GetChild(i).gameObject);
-                }
-                int childCount = Machine.transform.childCount;
-                for(int i = 0; i < childCount; i++)
-                {
-                    Destroy(Machine.transform.GetChild(0).gameObject);
-                }
+                iconSprite = GameObject.Find("Gear_Icon");
+                Machine.SetActive(false);
                 machineNewParent = GameObject.Find("NewMachineParent");
                 machineNew = machineNewParent.transform.GetChild(0).gameObject;
-                machineNew.SetActive(true);
-                Destroy(itemBeingDragged);
-                Invoke("Gewonnen", 2);
+                //for (int i = 0; i < Machine.transform.childCount; i++)
+                //{
+                //    shatter1.Add(Machine.transform.GetChild(i).gameObject);
+                //}
+                //int childCount = Machine.transform.childCount;
+                //for(int i = 0; i < childCount; i++)
+                //{
+                //    Destroy(Machine.transform.GetChild(0).gameObject);
+                //}
+                if (machineNew != null)
+                {
+                    machineNew.SetActive(true);
+                    if (iconSprite != null)
+                    {
+                        iconSprite.SetActive(false);
+                    }
+                    Invoke("Gewonnen", 2);
+                }
+                else
+                {
+                    Debug.Log("Konnte keine machineNew finden!");
+                }
             }
             else if(hit.transform.CompareTag("Machine") && itemBeingDragged.transform.tag == "FalschCheat")
             {
@@ -112,7 +155,12 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 machineNew = machineNewParent.transform.GetChild(0).gameObject;
                 if (machineNew != null)
                 {
+                    iconSprite = GameObject.Find("Gear_Icon");
                     machineNew.SetActive(true);
+                    if (iconSprite != null)
+                    {
+                        iconSprite.SetActive(false);
+                    }
                     Invoke("DestroyMachine", 2);
                 }
                 else
@@ -140,6 +188,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         itemBeingDragged = null;
         draggingItem = false;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
+        transformDone = false;
 
         if (Slot.otherSlot == false || transform.parent.name.Equals("Canvas") || transform.parent == startParent) //!Inventory.activeSelf &&
         {
@@ -162,6 +211,7 @@ public class DragHandeler : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     void Gewonnen()
     {
+        Debug.Log("void Gewonnen()");
         desMachine = machineNew.GetComponent<DestroyMachine>();
         desMachine.ShowGameWonScreen();
     }
