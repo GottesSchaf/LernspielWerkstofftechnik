@@ -33,22 +33,43 @@ public class GussformScript : MonoBehaviour {
         //Schaue nach, welche Legierung in welchem Slot ist und kühle sie ab
         #region Slot Ueberpruefung
         //Schraubenschlüssel Slot
+        #region Schraubenschluessel
         if (slotWrenchTiegel.transform.childCount > 0 && slotWrenchTiegel.transform.GetChild(0).CompareTag("20SiHot"))
         {
             slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
             slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
-            if (bunsenBrenner.istTemp[0] > 25 && bunsenBrenner.istTemp[0] <= 1250)
+            if (bunsenBrenner.istTemp[0] > 25 && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[0])
             {
-                bunsenBrenner.istTemp[0] -= bunsenBrenner.bBZieltemp[0] / bunsenBrenner.bBZeit[0];
+                bunsenBrenner.istTemp[0] -= bunsenBrenner.BB1_Zieltemp[0] / bunsenBrenner.BB1_Zeit[0];
             }
-            else if (bunsenBrenner.istTemp[0] > 1250 && bunsenBrenner.istTemp[0] <= 1400)
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[0] && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[1])
             {
-                bunsenBrenner.istTemp[0] -= (bunsenBrenner.bBZieltemp[1] - bunsenBrenner.bBZieltemp[0]) / bunsenBrenner.bBZeit[1];
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[1] - bunsenBrenner.BB1_Zieltemp[0]) / bunsenBrenner.BB1_Zeit[1];
             }
-            else if (bunsenBrenner.istTemp[0] > 1400)
+            //3ter Graph Punkt
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[1] && bunsenBrenner.graphPunkt4 == false && bunsenBrenner.graphPunkt5 == false)
             {
-                bunsenBrenner.istTemp[0] -= (bunsenBrenner.bBZieltemp[2] - bunsenBrenner.bBZieltemp[1]) / bunsenBrenner.bBZeit[2];
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[1] && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //4ter Graph Punkt
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[3] - bunsenBrenner.BB1_Zieltemp[2]) / bunsenBrenner.BB1_Zeit[3];
+            }
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //5ter Graph Punkt
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[4] - bunsenBrenner.BB1_Zieltemp[3]) / bunsenBrenner.BB1_Zeit[4];
+            }
+            //---------------------------------------
             else if (bunsenBrenner.istTemp[0] <= 25)
             {
                 bunsenBrenner.istTemp[0] = 25;
@@ -63,18 +84,38 @@ public class GussformScript : MonoBehaviour {
         {
             slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
             slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
-            if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
+            if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[0])
             {
-                bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
+                bunsenBrenner.istTemp[1] -= bunsenBrenner.BB2_Zieltemp[0] / bunsenBrenner.BB2_Zeit[0];
             }
-            else if (bunsenBrenner.istTemp[1] > 1250 && bunsenBrenner.istTemp[1] <= 1400)
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[0] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[1])
             {
-                bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[4] - bunsenBrenner.bBZieltemp[3]) / bunsenBrenner.bBZeit[4];
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[1] - bunsenBrenner.BB2_Zieltemp[0]) / bunsenBrenner.BB2_Zeit[1];
             }
-            else if (bunsenBrenner.istTemp[1] > 1400)
+            //3ter Graph Punkt
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[1] && bunsenBrenner.graphPunkt4 == false && bunsenBrenner.graphPunkt5 == false)
             {
-                bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[5] - bunsenBrenner.bBZieltemp[4]) / bunsenBrenner.bBZeit[5];
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[1] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //4ter Graph Punkt
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[3] - bunsenBrenner.BB2_Zieltemp[2]) / bunsenBrenner.BB1_Zeit[3];
+            }
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //5ter Graph Punkt
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[4] - bunsenBrenner.BB2_Zieltemp[3]) / bunsenBrenner.BB1_Zeit[4];
+            }
+            //---------------------------------------
             else if (bunsenBrenner.istTemp[1] <= 25)
             {
                 bunsenBrenner.istTemp[1] = 25;
@@ -89,18 +130,38 @@ public class GussformScript : MonoBehaviour {
         {
             slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
             slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
-            if (bunsenBrenner.istTemp[2] > 25 && bunsenBrenner.istTemp[2] <= 1250)
+            if (bunsenBrenner.istTemp[2] > 25 && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[0])
             {
-                bunsenBrenner.istTemp[2] -= bunsenBrenner.bBZieltemp[6] / bunsenBrenner.bBZeit[6];
+                bunsenBrenner.istTemp[2] -= bunsenBrenner.BB3_Zieltemp[0] / bunsenBrenner.BB3_Zeit[0];
             }
-            else if (bunsenBrenner.istTemp[2] > 1250 && bunsenBrenner.istTemp[2] <= 1400)
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[0] && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[1])
             {
-                bunsenBrenner.istTemp[2] -= (bunsenBrenner.bBZieltemp[7] - bunsenBrenner.bBZieltemp[6]) / bunsenBrenner.bBZeit[7];
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[1] - bunsenBrenner.BB3_Zieltemp[0]) / bunsenBrenner.BB3_Zeit[1];
             }
-            else if (bunsenBrenner.istTemp[2] > 1400)
+            //3ter Graph Punkt
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[1] && bunsenBrenner.graphPunkt4 == false && bunsenBrenner.graphPunkt5 == false)
             {
-                bunsenBrenner.istTemp[2] -= (bunsenBrenner.bBZieltemp[8] - bunsenBrenner.bBZieltemp[7]) / bunsenBrenner.bBZeit[8];
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[1] && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //4ter Graph Punkt
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[3] - bunsenBrenner.BB3_Zieltemp[2]) / bunsenBrenner.BB1_Zeit[3];
+            }
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //5ter Graph Punkt
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[4] - bunsenBrenner.BB3_Zieltemp[3]) / bunsenBrenner.BB1_Zeit[4];
+            }
+            //---------------------------------------
             else if (bunsenBrenner.istTemp[2] <= 25)
             {
                 bunsenBrenner.istTemp[2] = 25;
@@ -115,18 +176,38 @@ public class GussformScript : MonoBehaviour {
         {
             slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
             slotWrenchTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
-            if (bunsenBrenner.istTemp[3] > 25 && bunsenBrenner.istTemp[3] <= 1250)
+            if (bunsenBrenner.istTemp[3] > 25 && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[0])
             {
-                bunsenBrenner.istTemp[3] -= bunsenBrenner.bBZieltemp[9] / bunsenBrenner.bBZeit[9];
+                bunsenBrenner.istTemp[3] -= bunsenBrenner.BB4_Zieltemp[0] / bunsenBrenner.BB4_Zeit[0];
             }
-            else if (bunsenBrenner.istTemp[3] > 1250 && bunsenBrenner.istTemp[3] <= 1400)
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[0] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[1])
             {
-                bunsenBrenner.istTemp[3] -= (bunsenBrenner.bBZieltemp[10] - bunsenBrenner.bBZieltemp[9]) / bunsenBrenner.bBZeit[10];
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[1] - bunsenBrenner.BB4_Zieltemp[0]) / bunsenBrenner.BB4_Zeit[1];
             }
-            else if (bunsenBrenner.istTemp[3] > 1400)
+            //3ter Graph Punkt
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[1] && bunsenBrenner.graphPunkt4 == false && bunsenBrenner.graphPunkt5 == false)
             {
-                bunsenBrenner.istTemp[3] -= (bunsenBrenner.bBZieltemp[11] - bunsenBrenner.bBZieltemp[10]) / bunsenBrenner.bBZeit[11];
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
             }
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[1] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //4ter Graph Punkt
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[3] - bunsenBrenner.BB4_Zieltemp[2]) / bunsenBrenner.BB1_Zeit[3];
+            }
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //5ter Graph Punkt
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[4] - bunsenBrenner.BB4_Zieltemp[3]) / bunsenBrenner.BB1_Zeit[4];
+            }
+            //---------------------------------------
             else if (bunsenBrenner.istTemp[3] <= 25)
             {
                 bunsenBrenner.istTemp[3] = 25;
@@ -136,46 +217,43 @@ public class GussformScript : MonoBehaviour {
                 slotWrenchTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
-        //Kaputtes Zahnrad
-        //else if (slotWrenchTiegel.transform.childCount > 0 && slotWrenchTiegel.transform.GetChild(0).CompareTag("Geschmolzen"))
-        //{
-        //    if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
-        //    {
-        //        bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
-        //    }
-        //    else if (bunsenBrenner.istTemp[1] > 1250 && bunsenBrenner.istTemp[1] <= 1400)
-        //    {
-        //        bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[4] - bunsenBrenner.bBZieltemp[3]) / bunsenBrenner.bBZeit[4];
-        //    }
-        //    else if (bunsenBrenner.istTemp[1] > 1400)
-        //    {
-        //        bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[5] - bunsenBrenner.bBZieltemp[4]) / bunsenBrenner.bBZeit[5];
-        //    }
-        //    else if (bunsenBrenner.istTemp[1] <= 25)
-        //    {
-        //        bunsenBrenner.istTemp[1] = 25;
-        //        GameObject newWrench = Instantiate(wrench);
-        //        newWrench.transform.SetParent(slotWrench);
-        //        newWrench.transform.tag = "Falsch";
-        //        slotWrenchTiegel.transform.GetChild(0).tag = "GeschmolzenEmpty";
-        //    }
-        //}
+        #endregion
         //Pleuel Slot
+        #region Pleuel
         else if (slotPleuelTiegel.transform.childCount > 0 && slotPleuelTiegel.transform.GetChild(0).CompareTag("20SiHot"))
         {
             slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
             slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
-            if (bunsenBrenner.istTemp[0] > 25 && bunsenBrenner.istTemp[0] <= 1250)
+            if (bunsenBrenner.istTemp[0] > 25 && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[0])
             {
-                bunsenBrenner.istTemp[0] -= bunsenBrenner.bBZieltemp[0] / bunsenBrenner.bBZeit[0];
+                bunsenBrenner.istTemp[0] -= bunsenBrenner.BB1_Zieltemp[0] / bunsenBrenner.BB1_Zeit[0];
             }
-            else if (bunsenBrenner.istTemp[0] > 1250 && bunsenBrenner.istTemp[0] <= 1400)
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[0] && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[1])
             {
-                bunsenBrenner.istTemp[0] -= (bunsenBrenner.bBZieltemp[1] - bunsenBrenner.bBZieltemp[0]) / bunsenBrenner.bBZeit[1];
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[1] - bunsenBrenner.BB1_Zieltemp[0]) / bunsenBrenner.BB1_Zeit[1];
             }
-            else if (bunsenBrenner.istTemp[0] > 1400)
+            //3ter Graph Punkt
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[1] && bunsenBrenner.graphPunkt4 == false && bunsenBrenner.graphPunkt5 == false)
             {
-                bunsenBrenner.istTemp[0] -= (bunsenBrenner.bBZieltemp[2] - bunsenBrenner.bBZieltemp[1]) / bunsenBrenner.bBZeit[2];
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[1] && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //4ter Graph Punkt
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[3] - bunsenBrenner.BB1_Zieltemp[2]) / bunsenBrenner.BB1_Zeit[3];
+            }
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //5ter Graph Punkt
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[4] - bunsenBrenner.BB1_Zieltemp[3]) / bunsenBrenner.BB1_Zeit[4];
             }
             else if (bunsenBrenner.istTemp[0] <= 25)
             {
@@ -191,17 +269,36 @@ public class GussformScript : MonoBehaviour {
         {
             slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
             slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
-            if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
+            if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[0])
             {
-                bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
+                bunsenBrenner.istTemp[1] -= bunsenBrenner.BB2_Zieltemp[0] / bunsenBrenner.BB2_Zeit[0];
             }
-            else if (bunsenBrenner.istTemp[1] > 1250 && bunsenBrenner.istTemp[1] <= 1400)
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[0] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[1])
             {
-                bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[4] - bunsenBrenner.bBZieltemp[3]) / bunsenBrenner.bBZeit[4];
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[1] - bunsenBrenner.BB2_Zieltemp[0]) / bunsenBrenner.BB2_Zeit[1];
             }
-            else if (bunsenBrenner.istTemp[1] > 1400)
+            //3ter Graph Punkt
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[1] && bunsenBrenner.graphPunkt4 == false && bunsenBrenner.graphPunkt5 == false)
             {
-                bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[5] - bunsenBrenner.bBZieltemp[4]) / bunsenBrenner.bBZeit[5];
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[1] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //4ter Graph Punkt
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[3] - bunsenBrenner.BB2_Zieltemp[2]) / bunsenBrenner.BB1_Zeit[3];
+            }
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //5ter Graph Punkt
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[4] - bunsenBrenner.BB2_Zieltemp[3]) / bunsenBrenner.BB1_Zeit[4];
             }
             else if (bunsenBrenner.istTemp[1] <= 25)
             {
@@ -217,17 +314,36 @@ public class GussformScript : MonoBehaviour {
         {
             slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
             slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
-            if (bunsenBrenner.istTemp[2] > 25 && bunsenBrenner.istTemp[2] <= 1250)
+            if (bunsenBrenner.istTemp[2] > 25 && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[0])
             {
-                bunsenBrenner.istTemp[2] -= bunsenBrenner.bBZieltemp[6] / bunsenBrenner.bBZeit[6];
+                bunsenBrenner.istTemp[2] -= bunsenBrenner.BB3_Zieltemp[0] / bunsenBrenner.BB3_Zeit[0];
             }
-            else if (bunsenBrenner.istTemp[2] > 1250 && bunsenBrenner.istTemp[2] <= 1400)
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[0] && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[1])
             {
-                bunsenBrenner.istTemp[2] -= (bunsenBrenner.bBZieltemp[7] - bunsenBrenner.bBZieltemp[6]) / bunsenBrenner.bBZeit[7];
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[1] - bunsenBrenner.BB3_Zieltemp[0]) / bunsenBrenner.BB3_Zeit[1];
             }
-            else if (bunsenBrenner.istTemp[2] > 1400)
+            //3ter Graph Punkt
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[1] && bunsenBrenner.graphPunkt4 == false && bunsenBrenner.graphPunkt5 == false)
             {
-                bunsenBrenner.istTemp[2] -= (bunsenBrenner.bBZieltemp[8] - bunsenBrenner.bBZieltemp[7]) / bunsenBrenner.bBZeit[8];
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[1] && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //4ter Graph Punkt
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[3] - bunsenBrenner.BB3_Zieltemp[2]) / bunsenBrenner.BB1_Zeit[3];
+            }
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //5ter Graph Punkt
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[4] - bunsenBrenner.BB3_Zieltemp[3]) / bunsenBrenner.BB1_Zeit[4];
             }
             else if (bunsenBrenner.istTemp[2] <= 25)
             {
@@ -243,17 +359,36 @@ public class GussformScript : MonoBehaviour {
         {
             slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
             slotPleuelTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
-            if (bunsenBrenner.istTemp[3] > 25 && bunsenBrenner.istTemp[3] <= 1250)
+            if (bunsenBrenner.istTemp[3] > 25 && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[0])
             {
-                bunsenBrenner.istTemp[3] -= bunsenBrenner.bBZieltemp[9] / bunsenBrenner.bBZeit[9];
+                bunsenBrenner.istTemp[3] -= bunsenBrenner.BB4_Zieltemp[0] / bunsenBrenner.BB4_Zeit[0];
             }
-            else if (bunsenBrenner.istTemp[3] > 1250 && bunsenBrenner.istTemp[3] <= 1400)
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[0] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[1])
             {
-                bunsenBrenner.istTemp[3] -= (bunsenBrenner.bBZieltemp[10] - bunsenBrenner.bBZieltemp[9]) / bunsenBrenner.bBZeit[10];
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[1] - bunsenBrenner.BB4_Zieltemp[0]) / bunsenBrenner.BB4_Zeit[1];
             }
-            else if (bunsenBrenner.istTemp[3] > 1400)
+            //3ter Graph Punkt
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[1] && bunsenBrenner.graphPunkt4 == false && bunsenBrenner.graphPunkt5 == false)
             {
-                bunsenBrenner.istTemp[3] -= (bunsenBrenner.bBZieltemp[11] - bunsenBrenner.bBZieltemp[10]) / bunsenBrenner.bBZeit[11];
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[1] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //4ter Graph Punkt
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[3] - bunsenBrenner.BB4_Zieltemp[2]) / bunsenBrenner.BB1_Zeit[3];
+            }
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //5ter Graph Punkt
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[4] - bunsenBrenner.BB4_Zieltemp[3]) / bunsenBrenner.BB1_Zeit[4];
             }
             else if (bunsenBrenner.istTemp[3] <= 25)
             {
@@ -264,46 +399,43 @@ public class GussformScript : MonoBehaviour {
                 slotPleuelTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
-        //Kaputtes Zahnrad
-        //else if (slotPleuelTiegel.transform.childCount > 0 && slotPleuelTiegel.transform.GetChild(0).CompareTag("Geschmolzen"))
-        //{
-        //    if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
-        //    {
-        //        bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
-        //    }
-        //    else if (bunsenBrenner.istTemp[1] > 1250 && bunsenBrenner.istTemp[1] <= 1400)
-        //    {
-        //        bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[4] - bunsenBrenner.bBZieltemp[3]) / bunsenBrenner.bBZeit[4];
-        //    }
-        //    else if (bunsenBrenner.istTemp[1] > 1400)
-        //    {
-        //        bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[5] - bunsenBrenner.bBZieltemp[4]) / bunsenBrenner.bBZeit[5];
-        //    }
-        //    else if (bunsenBrenner.istTemp[1] <= 25)
-        //    {
-        //        bunsenBrenner.istTemp[1] = 25;
-        //        GameObject newPleuel = Instantiate(pleuel);
-        //        newPleuel.transform.SetParent(slotPleuel.transform);
-        //        newPleuel.transform.tag = "Falsch";
-        //        slotPleuelTiegel.transform.GetChild(0).tag = "GeschmolzenEmpty";
-        //    }
-        //}
+        #endregion
         //Zahnrad Slot
+        #region Zahnrad
         else if (slotZahnradTiegel.transform.childCount > 0 && slotZahnradTiegel.transform.GetChild(0).CompareTag("20SiHot"))
         {
             slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
             slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
-            if (bunsenBrenner.istTemp[0] > 25 && bunsenBrenner.istTemp[0] <= 1250)
+            if (bunsenBrenner.istTemp[0] > 25 && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[0])
             {
-                bunsenBrenner.istTemp[0] -= bunsenBrenner.bBZieltemp[0] / bunsenBrenner.bBZeit[0];
+                bunsenBrenner.istTemp[0] -= bunsenBrenner.BB1_Zieltemp[0] / bunsenBrenner.BB1_Zeit[0];
             }
-            else if (bunsenBrenner.istTemp[0] > 1250 && bunsenBrenner.istTemp[0] <= 1400)
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[0] && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[1])
             {
-                bunsenBrenner.istTemp[0] -= (bunsenBrenner.bBZieltemp[1] - bunsenBrenner.bBZieltemp[0]) / bunsenBrenner.bBZeit[1];
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[1] - bunsenBrenner.BB1_Zieltemp[0]) / bunsenBrenner.BB1_Zeit[1];
             }
-            else if (bunsenBrenner.istTemp[0] > 1400)
+            //3ter Graph Punkt
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[1] && bunsenBrenner.graphPunkt4 == false && bunsenBrenner.graphPunkt5 == false)
             {
-                bunsenBrenner.istTemp[0] -= (bunsenBrenner.bBZieltemp[2] - bunsenBrenner.bBZieltemp[1]) / bunsenBrenner.bBZeit[2];
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[1] && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //4ter Graph Punkt
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[3] - bunsenBrenner.BB1_Zieltemp[2]) / bunsenBrenner.BB1_Zeit[3];
+            }
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[2] && bunsenBrenner.istTemp[0] <= bunsenBrenner.BB1_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[2] - bunsenBrenner.BB1_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //5ter Graph Punkt
+            else if (bunsenBrenner.istTemp[0] > bunsenBrenner.BB1_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[0] -= (bunsenBrenner.BB1_Zieltemp[4] - bunsenBrenner.BB1_Zieltemp[3]) / bunsenBrenner.BB1_Zeit[4];
             }
             else if (bunsenBrenner.istTemp[0] <= 25)
             {
@@ -319,17 +451,36 @@ public class GussformScript : MonoBehaviour {
         {
             slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
             slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
-            if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
+            if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[0])
             {
-                bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
+                bunsenBrenner.istTemp[1] -= bunsenBrenner.BB2_Zieltemp[0] / bunsenBrenner.BB2_Zeit[0];
             }
-            else if (bunsenBrenner.istTemp[1] > 1250 && bunsenBrenner.istTemp[1] <= 1400)
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[0] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[1])
             {
-                bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[4] - bunsenBrenner.bBZieltemp[3]) / bunsenBrenner.bBZeit[4];
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[1] - bunsenBrenner.BB2_Zieltemp[0]) / bunsenBrenner.BB2_Zeit[1];
             }
-            else if (bunsenBrenner.istTemp[1] > 1400)
+            //3ter Graph Punkt
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[1] && bunsenBrenner.graphPunkt4 == false && bunsenBrenner.graphPunkt5 == false)
             {
-                bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[5] - bunsenBrenner.bBZieltemp[4]) / bunsenBrenner.bBZeit[5];
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[1] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //4ter Graph Punkt
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[3] - bunsenBrenner.BB2_Zieltemp[2]) / bunsenBrenner.BB1_Zeit[3];
+            }
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[2] && bunsenBrenner.istTemp[1] <= bunsenBrenner.BB2_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[2] - bunsenBrenner.BB2_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //5ter Graph Punkt
+            else if (bunsenBrenner.istTemp[1] > bunsenBrenner.BB2_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[1] -= (bunsenBrenner.BB2_Zieltemp[4] - bunsenBrenner.BB2_Zieltemp[3]) / bunsenBrenner.BB1_Zeit[4];
             }
             else if (bunsenBrenner.istTemp[1] <= 25)
             {
@@ -345,17 +496,36 @@ public class GussformScript : MonoBehaviour {
         {
             slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
             slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
-            if (bunsenBrenner.istTemp[2] > 25 && bunsenBrenner.istTemp[2] <= 1250)
+            if (bunsenBrenner.istTemp[2] > 25 && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[0])
             {
-                bunsenBrenner.istTemp[2] -= bunsenBrenner.bBZieltemp[6] / bunsenBrenner.bBZeit[6];
+                bunsenBrenner.istTemp[2] -= bunsenBrenner.BB3_Zieltemp[0] / bunsenBrenner.BB3_Zeit[0];
             }
-            else if (bunsenBrenner.istTemp[2] > 1250 && bunsenBrenner.istTemp[2] <= 1400)
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[0] && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[1])
             {
-                bunsenBrenner.istTemp[2] -= (bunsenBrenner.bBZieltemp[7] - bunsenBrenner.bBZieltemp[6]) / bunsenBrenner.bBZeit[7];
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[1] - bunsenBrenner.BB3_Zieltemp[0]) / bunsenBrenner.BB3_Zeit[1];
             }
-            else if (bunsenBrenner.istTemp[2] > 1400)
+            //3ter Graph Punkt
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[1] && bunsenBrenner.graphPunkt4 == false && bunsenBrenner.graphPunkt5 == false)
             {
-                bunsenBrenner.istTemp[2] -= (bunsenBrenner.bBZieltemp[8] - bunsenBrenner.bBZieltemp[7]) / bunsenBrenner.bBZeit[8];
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[1] && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //4ter Graph Punkt
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[3] - bunsenBrenner.BB3_Zieltemp[2]) / bunsenBrenner.BB1_Zeit[3];
+            }
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[2] && bunsenBrenner.istTemp[2] <= bunsenBrenner.BB3_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[2] - bunsenBrenner.BB3_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //5ter Graph Punkt
+            else if (bunsenBrenner.istTemp[2] > bunsenBrenner.BB3_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[2] -= (bunsenBrenner.BB3_Zieltemp[4] - bunsenBrenner.BB3_Zieltemp[3]) / bunsenBrenner.BB1_Zeit[4];
             }
             else if (bunsenBrenner.istTemp[2] <= 25)
             {
@@ -371,17 +541,36 @@ public class GussformScript : MonoBehaviour {
         {
             slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = tiegelLeer;
             slotZahnradTiegel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = tiegelLeer;
-            if (bunsenBrenner.istTemp[3] > 25 && bunsenBrenner.istTemp[3] <= 1250)
+            if (bunsenBrenner.istTemp[3] > 25 && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[0])
             {
-                bunsenBrenner.istTemp[3] -= bunsenBrenner.bBZieltemp[9] / bunsenBrenner.bBZeit[9];
+                bunsenBrenner.istTemp[3] -= bunsenBrenner.BB4_Zieltemp[0] / bunsenBrenner.BB4_Zeit[0];
             }
-            else if (bunsenBrenner.istTemp[3] > 1250 && bunsenBrenner.istTemp[3] <= 1400)
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[0] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[1])
             {
-                bunsenBrenner.istTemp[3] -= (bunsenBrenner.bBZieltemp[10] - bunsenBrenner.bBZieltemp[9]) / bunsenBrenner.bBZeit[10];
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[1] - bunsenBrenner.BB4_Zieltemp[0]) / bunsenBrenner.BB4_Zeit[1];
             }
-            else if (bunsenBrenner.istTemp[3] > 1400)
+            //3ter Graph Punkt
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[1] && bunsenBrenner.graphPunkt4 == false && bunsenBrenner.graphPunkt5 == false)
             {
-                bunsenBrenner.istTemp[3] -= (bunsenBrenner.bBZieltemp[11] - bunsenBrenner.bBZieltemp[10]) / bunsenBrenner.bBZeit[11];
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[1] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //4ter Graph Punkt
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == false)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[3] - bunsenBrenner.BB4_Zieltemp[2]) / bunsenBrenner.BB1_Zeit[3];
+            }
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[2] && bunsenBrenner.istTemp[3] <= bunsenBrenner.BB4_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[2] - bunsenBrenner.BB4_Zieltemp[1]) / bunsenBrenner.BB1_Zeit[2];
+            }
+            //5ter Graph Punkt
+            else if (bunsenBrenner.istTemp[3] > bunsenBrenner.BB4_Zieltemp[3] && bunsenBrenner.graphPunkt4 == true && bunsenBrenner.graphPunkt5 == true)
+            {
+                bunsenBrenner.istTemp[3] -= (bunsenBrenner.BB4_Zieltemp[4] - bunsenBrenner.BB4_Zieltemp[3]) / bunsenBrenner.BB1_Zeit[4];
             }
             else if (bunsenBrenner.istTemp[3] <= 25)
             {
@@ -392,30 +581,7 @@ public class GussformScript : MonoBehaviour {
                 slotZahnradTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
-        //Kaputtes Zahnrad
-        //else if (slotZahnradTiegel.transform.childCount > 0 && slotZahnradTiegel.transform.GetChild(0).CompareTag("Geschmolzen"))
-        //{
-        //    if (bunsenBrenner.istTemp[1] > 25 && bunsenBrenner.istTemp[1] <= 1250)
-        //    {
-        //        bunsenBrenner.istTemp[1] -= bunsenBrenner.bBZieltemp[3] / bunsenBrenner.bBZeit[3];
-        //    }
-        //    else if (bunsenBrenner.istTemp[1] > 1250 && bunsenBrenner.istTemp[1] <= 1400)
-        //    {
-        //        bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[4] - bunsenBrenner.bBZieltemp[3]) / bunsenBrenner.bBZeit[4];
-        //    }
-        //    else if (bunsenBrenner.istTemp[1] > 1400)
-        //    {
-        //        bunsenBrenner.istTemp[1] -= (bunsenBrenner.bBZieltemp[5] - bunsenBrenner.bBZieltemp[4]) / bunsenBrenner.bBZeit[5];
-        //    }
-        //    else if (bunsenBrenner.istTemp[1] <= 25)
-        //    {
-        //        bunsenBrenner.istTemp[1] = 25;
-        //        GameObject newZahnrad = Instantiate(zahnrad);
-        //        newZahnrad.transform.SetParent(slotZahnrad.transform);
-        //        newZahnrad.transform.tag = "FalschCheat";
-        //        slotZahnradTiegel.transform.GetChild(0).tag = "GeschmolzenEmpty";
-        //    }
-        //}
+        #endregion
         waiting = false;
         #endregion
     }
