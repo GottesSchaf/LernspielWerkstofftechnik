@@ -39,18 +39,18 @@ public class Window_Graph_Tiegel2 : MonoBehaviour {
         return gameObject;
     }
 
-    public void ShowGraph(double value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
+    public void ShowGraph(float value, int sekunden, int tiegelFarbe) //Vorher: ShowGraph(List<int> valueList)
     {
         
         graphContainer = this.gameObject.GetComponentsInChildren<RectTransform>(true)[1];
         tiegelColor = tiegelFarbe;
         float graphHeight = graphContainer.sizeDelta.y; //Größe des Graphen
-        float yMaximum = 2000f; //Maximale Größe des Graphen
+        float yMaximum = 2000; //Maximale Größe des Graphen
         float xSize = sekunden; //Abstand zwischen X Positionen (sekunden)
         //GameObject lastCircleGameObject = null; //Letzter Punkt, der erstellt wurde
         //Vorher: if(i < valueList.Count)
         float xPosition = i * xSize;
-        double yPosition = (value / yMaximum) * graphHeight;
+        float yPosition = (value / yMaximum) * graphHeight;
         float yPos = (float)yPosition;
         GameObject circleGameObject = CreatCircle(new Vector2(xPosition, yPos));
         //Falls ein vorheriger Punkt vorhanden, erstelle eine Verbindung
