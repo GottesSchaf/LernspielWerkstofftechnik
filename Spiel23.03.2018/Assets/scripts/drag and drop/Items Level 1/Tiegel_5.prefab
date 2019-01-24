@@ -101,16 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 901acb5b391ea3f418f51c4600047914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {x: 0, y: 0, z: 0}
-  startParent: {fileID: 0}
   RadialMenue: {fileID: 0}
   cam: {fileID: 0}
   InventoryCollision: {fileID: 0}
   UICanvas: {fileID: 0}
   Machine: {fileID: 0}
-  machineNew: {fileID: 0}
-  machineNewParent: {fileID: 0}
-  iconSprite: {fileID: 0}
   MachineSlot: {fileID: 0}
   player: {fileID: 0}
   mesh: {fileID: 0}
