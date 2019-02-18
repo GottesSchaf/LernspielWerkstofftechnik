@@ -13,6 +13,7 @@ public class GussformScript : MonoBehaviour {
     BunsenBrenner bunsenBrenner;
     bool waiting;
     [SerializeField] Sprite tiegelLeer;
+    [SerializeField] GameObject falschGegossen;
 
     void Start()
     {
@@ -399,6 +400,7 @@ public class GussformScript : MonoBehaviour {
                 slotPleuelTiegel.transform.GetChild(0).tag = "Empty";
             }
         }
+        
         #endregion
         //Zahnrad Slot
         #region Zahnrad
