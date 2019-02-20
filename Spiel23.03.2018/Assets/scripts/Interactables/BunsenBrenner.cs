@@ -42,6 +42,9 @@ public class BunsenBrenner : MonoBehaviour
     [SerializeField] Window_Graph_Tiegel3 windowGraphTiegel3;
     [SerializeField] Window_Graph_Tiegel4 windowGraphTiegel4;
     [SerializeField] GameObject[] tiegelAufBB;
+    [SerializeField] List<GameObject> zahnradAufBB = new List<GameObject>();
+    [SerializeField] List<GameObject> pleuelAufBB = new List<GameObject>();
+    [SerializeField] List<GameObject> wrenchAufBB = new List<GameObject>();
     int tiegelFarbe, tiegel2Farbe, tiegel3Farbe, tiegel4Farbe;
     [SerializeField] ParticleSystem[] BunsenBrennerFlammen;
     bool tiegel1Heated, tiegel2Heated, tiegel3Heated, tiegel4Heated;
@@ -100,8 +103,9 @@ public class BunsenBrenner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        #region Tiegel auf Bunsenbrenner
-        if (slot1.transform.childCount > 0)
+        #region Objekte auf Bunsenbrenner
+        #region Tiegel
+        if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).name.Contains("Tiegel"))
         {
             tiegelAufBB[0].SetActive(true);
         }
@@ -109,7 +113,7 @@ public class BunsenBrenner : MonoBehaviour
         {
             tiegelAufBB[0].SetActive(false);
         }
-        if (slot2.transform.childCount > 0)
+        if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).name.Contains("Tiegel"))
         {
             tiegelAufBB[1].SetActive(true);
         }
@@ -117,7 +121,7 @@ public class BunsenBrenner : MonoBehaviour
         {
             tiegelAufBB[1].SetActive(false);
         }
-        if (slot3.transform.childCount > 0)
+        if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).name.Contains("Tiegel"))
         {
             tiegelAufBB[2].SetActive(true);
         }
@@ -125,7 +129,7 @@ public class BunsenBrenner : MonoBehaviour
         {
             tiegelAufBB[2].SetActive(false);
         }
-        if (slot4.transform.childCount > 0)
+        if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).name.Contains("Tiegel"))
         {
             tiegelAufBB[3].SetActive(true);
         }
@@ -133,6 +137,109 @@ public class BunsenBrenner : MonoBehaviour
         {
             tiegelAufBB[3].SetActive(false);
         }
+        #endregion
+        #region Zahnrad
+        if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).name.Contains("Zahnrad"))
+        {
+            zahnradAufBB[0].SetActive(true);
+        }
+        else
+        {
+            zahnradAufBB[0].SetActive(false);
+        }
+        if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).name.Contains("Zahnrad"))
+        {
+            zahnradAufBB[1].SetActive(true);
+        }
+        else
+        {
+            zahnradAufBB[1].SetActive(false);
+        }
+        if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).name.Contains("Zahnrad"))
+        {
+            zahnradAufBB[2].SetActive(true);
+        }
+        else
+        {
+            zahnradAufBB[2].SetActive(false);
+        }
+        if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).name.Contains("Zahnrad"))
+        {
+            zahnradAufBB[3].SetActive(true);
+        }
+        else
+        {
+            zahnradAufBB[3].SetActive(false);
+        }
+        #endregion
+        #region Pleuel
+        if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).name.Contains("Pleuel"))
+        {
+            pleuelAufBB[0].SetActive(true);
+        }
+        else
+        {
+            pleuelAufBB[0].SetActive(false);
+        }
+        if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).name.Contains("Pleuel"))
+        {
+            pleuelAufBB[1].SetActive(true);
+        }
+        else
+        {
+            pleuelAufBB[1].SetActive(false);
+        }
+        if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).name.Contains("Pleuel"))
+        {
+            pleuelAufBB[2].SetActive(true);
+        }
+        else
+        {
+            pleuelAufBB[2].SetActive(false);
+        }
+        if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).name.Contains("Pleuel"))
+        {
+            pleuelAufBB[3].SetActive(true);
+        }
+        else
+        {
+            pleuelAufBB[3].SetActive(false);
+        }
+        #endregion
+        #region Wrench
+        if (slot1.transform.childCount > 0 && slot1.transform.GetChild(0).name.Contains("Wrench"))
+        {
+            wrenchAufBB[0].SetActive(true);
+        }
+        else
+        {
+            wrenchAufBB[0].SetActive(false);
+        }
+        if (slot2.transform.childCount > 0 && slot2.transform.GetChild(0).name.Contains("Wrench"))
+        {
+            wrenchAufBB[1].SetActive(true);
+        }
+        else
+        {
+            wrenchAufBB[1].SetActive(false);
+        }
+        if (slot3.transform.childCount > 0 && slot3.transform.GetChild(0).name.Contains("Wrench"))
+        {
+            wrenchAufBB[2].SetActive(true);
+        }
+        else
+        {
+            wrenchAufBB[2].SetActive(false);
+        }
+        if (slot4.transform.childCount > 0 && slot4.transform.GetChild(0).name.Contains("Wrench"))
+        {
+            wrenchAufBB[3].SetActive(true);
+        }
+        else
+        {
+            wrenchAufBB[3].SetActive(false);
+        }
+        #endregion
         #endregion
         //CheckInstance();
         if (hauptGasSchalter && platzGasSchalter && waiting == false)
