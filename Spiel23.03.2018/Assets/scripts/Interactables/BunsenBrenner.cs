@@ -259,7 +259,7 @@ public class BunsenBrenner : MonoBehaviour
             flamme4.SetActive(false);
             BunsenBrennerFlammen[3].gameObject.SetActive(false);
         }
-        if (flamme1.activeInHierarchy == true && slot1.transform.childCount == 0 && zeigeVerbrennung == false)
+        if (flamme1.activeInHierarchy == true && slot1.transform.childCount == 0 && zeigeVerbrennung == false || (flamme1.activeInHierarchy && slot1.transform.childCount > 0 && slot1.transform.GetChild(0).CompareTag("Empty") && zeigeVerbrennung == false))
         {
             zeigeVerbrennung = true;
             verbranntFenster.SetActive(true);
@@ -268,7 +268,7 @@ public class BunsenBrenner : MonoBehaviour
             flamme1Bool = false;
             BunsenBrennerFlammen[0].gameObject.SetActive(false);
         }
-        else if (flamme2.activeInHierarchy == true && slot2.transform.childCount == 0 && zeigeVerbrennung == false)
+        else if (flamme2.activeInHierarchy == true && slot2.transform.childCount == 0 && zeigeVerbrennung == false || (flamme2.activeInHierarchy && slot2.transform.childCount > 0 && slot2.transform.GetChild(0).CompareTag("Empty") && zeigeVerbrennung == false))
         {
             zeigeVerbrennung = true;
             verbranntFenster.SetActive(true);
@@ -277,7 +277,7 @@ public class BunsenBrenner : MonoBehaviour
             flamme2Bool = false;
             BunsenBrennerFlammen[1].gameObject.SetActive(false);
         }
-        else if (flamme3.activeInHierarchy == true && slot3.transform.childCount == 0 && zeigeVerbrennung == false)
+        else if (flamme3.activeInHierarchy == true && slot3.transform.childCount == 0 && zeigeVerbrennung == false || (flamme3.activeInHierarchy && slot3.transform.childCount > 0 && slot3.transform.GetChild(0).CompareTag("Empty") && zeigeVerbrennung == false))
         {
             zeigeVerbrennung = true;
             verbranntFenster.SetActive(true);
@@ -286,7 +286,7 @@ public class BunsenBrenner : MonoBehaviour
             flamme3Bool = false;
             BunsenBrennerFlammen[2].gameObject.SetActive(false);
         }
-        else if (flamme4.activeInHierarchy == true && slot4.transform.childCount == 0 && zeigeVerbrennung == false)
+        else if (flamme4.activeInHierarchy == true && slot4.transform.childCount == 0 && zeigeVerbrennung == false || (flamme4.activeInHierarchy && slot4.transform.childCount > 0 && slot4.transform.GetChild(0).CompareTag("Empty") && zeigeVerbrennung == false))
         {
             zeigeVerbrennung = true;
             verbranntFenster.SetActive(true);
@@ -1738,7 +1738,7 @@ public class BunsenBrenner : MonoBehaviour
             erstVerarztenFenster.SetActive(true);
         }
         //Falls ein Tiegel auf dem 1. Bunsenbrenner liegt, aber nicht eines der geschmolzenen items, dann mache die Flamme an
-        if (flamme1.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false && slot1.transform.childCount > 0 && (slot1.transform.GetChild(0).CompareTag("Falsch") == false || slot1.transform.GetChild(0).CompareTag("Richtig") == false))
+        if (flamme1.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false && slot1.transform.childCount > 0 && (slot1.transform.GetChild(0).CompareTag("Falsch") == false && slot1.transform.GetChild(0).CompareTag("Richtig") == false))
         {
             flamme1.SetActive(true);
             flamme1Bool = true;
@@ -1771,7 +1771,7 @@ public class BunsenBrenner : MonoBehaviour
         {
             erstVerarztenFenster.SetActive(true);
         }
-        if (flamme2.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false && slot2.transform.childCount > 0 && (slot2.transform.GetChild(0).CompareTag("Falsch") == false || slot2.transform.GetChild(0).CompareTag("Richtig") == false))
+        if (flamme2.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false && slot2.transform.childCount > 0 && (slot2.transform.GetChild(0).CompareTag("Falsch") == false && slot2.transform.GetChild(0).CompareTag("Richtig") == false))
         {
             flamme2.SetActive(true);
             flamme2Bool = true;
@@ -1803,7 +1803,7 @@ public class BunsenBrenner : MonoBehaviour
         {
             erstVerarztenFenster.SetActive(true);
         }
-        if (flamme3.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false && slot3.transform.childCount > 0 && (slot3.transform.GetChild(0).CompareTag("Falsch") == false || slot3.transform.GetChild(0).CompareTag("Richtig") == false))
+        if (flamme3.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false && slot3.transform.childCount > 0 && (slot3.transform.GetChild(0).CompareTag("Falsch") == false && slot3.transform.GetChild(0).CompareTag("Richtig") == false))
         {
             flamme3.SetActive(true);
             flamme3Bool = true;
@@ -1835,7 +1835,7 @@ public class BunsenBrenner : MonoBehaviour
         {
             erstVerarztenFenster.SetActive(true);
         }
-        if (flamme4.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false && slot4.transform.childCount > 0 && (slot4.transform.GetChild(0).CompareTag("Falsch") == false || slot4.transform.GetChild(0).CompareTag("Richtig") == false))
+        if (flamme4.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false && slot4.transform.childCount > 0 && (slot4.transform.GetChild(0).CompareTag("Falsch") == false && slot4.transform.GetChild(0).CompareTag("Richtig") == false))
         {
             flamme4.SetActive(true);
             flamme4Bool = true;

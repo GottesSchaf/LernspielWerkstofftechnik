@@ -12,19 +12,19 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: Fancy Balloon Games
-  productName: TU ViaMaterialia
+  productName: TU Berlin ViaMaterialia
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.63529414, g: 0.82745105, b: 0.8078432, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
-  m_SplashScreenOverlayOpacity: 0.5
+  m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
-  m_SplashScreenLogoStyle: 1
+  m_SplashScreenLogoStyle: 0
   m_SplashScreenDrawMode: 1
   m_SplashScreenBackgroundAnimationZoom: 1
   m_SplashScreenLogoAnimationZoom: 1
-  m_SplashScreenBackgroundLandscapeAspect: 1
+  m_SplashScreenBackgroundLandscapeAspect: 1.7777778
   m_SplashScreenBackgroundPortraitAspect: 1
   m_SplashScreenBackgroundLandscapeUvs:
     serializedVersion: 2
@@ -39,6 +39,8 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
+  - logo: {fileID: 21300000, guid: 6369d548625b94e4aab169d02af581df, type: 3}
+    duration: 3
   - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
@@ -237,7 +239,8 @@ PlayerSettings:
     height: 180
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
-  resolutionDialogBanner: {fileID: 0}
+  resolutionDialogBanner: {fileID: 2800000, guid: 93a17c528697077449ac2523e6a46255,
+    type: 3}
   m_BuildTargetIcons:
   - m_BuildTarget: Standalone
     m_Icons:
@@ -542,7 +545,8 @@ PlayerSettings:
   psp2InfoBarColor: 0
   psp2ScriptOptimizationLevel: 0
   psmSplashimage: {fileID: 0}
-  splashScreenBackgroundSourceLandscape: {fileID: 0}
+  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: e22a96218d02e464989290a78c4240ba,
+    type: 3}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
   spritePackerPolicy: 
   webGLMemorySize: 256
