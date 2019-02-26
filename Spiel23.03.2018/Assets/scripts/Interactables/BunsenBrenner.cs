@@ -259,7 +259,7 @@ public class BunsenBrenner : MonoBehaviour
             flamme4.SetActive(false);
             BunsenBrennerFlammen[3].gameObject.SetActive(false);
         }
-        if (flamme1.activeInHierarchy == true && slot1.transform.childCount == 0 && zeigeVerbrennung == false || (flamme1.activeInHierarchy && slot1.transform.childCount > 0 && slot1.transform.GetChild(0).CompareTag("Empty") && zeigeVerbrennung == false))
+        if ((flamme1.activeInHierarchy && slot1.transform.childCount == 0 && zeigeVerbrennung == false) || (flamme1.activeInHierarchy && slot1.transform.childCount > 0 && slot1.transform.GetChild(0).CompareTag("Empty") && zeigeVerbrennung == false))
         {
             zeigeVerbrennung = true;
             verbranntFenster.SetActive(true);
@@ -1738,7 +1738,7 @@ public class BunsenBrenner : MonoBehaviour
             erstVerarztenFenster.SetActive(true);
         }
         //Falls ein Tiegel auf dem 1. Bunsenbrenner liegt, aber nicht eines der geschmolzenen items, dann mache die Flamme an
-        if (flamme1.activeInHierarchy == false && hauptGasSchalter == true && platzGasSchalter && verbrannt == false && slot1.transform.childCount > 0 && (slot1.transform.GetChild(0).CompareTag("Falsch") == false && slot1.transform.GetChild(0).CompareTag("Richtig") == false))
+        if (flamme1.activeInHierarchy == false && hauptGasSchalter && platzGasSchalter && verbrannt == false && slot1.transform.childCount > 0 && (slot1.transform.GetChild(0).CompareTag("Falsch") == false && slot1.transform.GetChild(0).CompareTag("Richtig") == false))
         {
             flamme1.SetActive(true);
             flamme1Bool = true;
@@ -1749,6 +1749,15 @@ public class BunsenBrenner : MonoBehaviour
         else if(slot1.transform.childCount > 0 && (slot1.transform.GetChild(0).CompareTag("Falsch") || slot1.transform.GetChild(0).CompareTag("Richtig")))
         {
             hinweisToolSchmelzen.SetActive(true);
+            flamme1.SetActive(false);
+            flamme1Bool = false;
+            BunsenBrennerFlammen[0].gameObject.SetActive(false);
+        }
+        else if(slot1.transform.childCount == 0 && verbrannt == false)
+        {
+            zeigeVerbrennung = true;
+            verbranntFenster.SetActive(true);
+            verbrannt = true;
             flamme1.SetActive(false);
             flamme1Bool = false;
             BunsenBrennerFlammen[0].gameObject.SetActive(false);
@@ -1785,6 +1794,15 @@ public class BunsenBrenner : MonoBehaviour
             flamme2Bool = false;
             BunsenBrennerFlammen[1].gameObject.SetActive(false);
         }
+        else if (slot2.transform.childCount == 0 && verbrannt == false)
+        {
+            zeigeVerbrennung = true;
+            verbranntFenster.SetActive(true);
+            verbrannt = true;
+            flamme2.SetActive(false);
+            flamme2Bool = false;
+            BunsenBrennerFlammen[1].gameObject.SetActive(false);
+        }
         else
         {
             flamme2.SetActive(false);
@@ -1817,6 +1835,15 @@ public class BunsenBrenner : MonoBehaviour
             flamme3Bool = false;
             BunsenBrennerFlammen[2].gameObject.SetActive(false);
         }
+        else if (slot3.transform.childCount == 0 && verbrannt == false)
+        {
+            zeigeVerbrennung = true;
+            verbranntFenster.SetActive(true);
+            verbrannt = true;
+            flamme3.SetActive(false);
+            flamme3Bool = false;
+            BunsenBrennerFlammen[2].gameObject.SetActive(false);
+        }
         else
         {
             flamme3.SetActive(false);
@@ -1845,6 +1872,15 @@ public class BunsenBrenner : MonoBehaviour
         else if (slot4.transform.childCount > 0 && (slot4.transform.GetChild(0).CompareTag("Falsch") || slot4.transform.GetChild(0).CompareTag("Richtig")))
         {
             hinweisToolSchmelzen.SetActive(true);
+            flamme4.SetActive(false);
+            flamme4Bool = false;
+            BunsenBrennerFlammen[3].gameObject.SetActive(false);
+        }
+        else if (slot4.transform.childCount == 0 && verbrannt == false)
+        {
+            zeigeVerbrennung = true;
+            verbranntFenster.SetActive(true);
+            verbrannt = true;
             flamme4.SetActive(false);
             flamme4Bool = false;
             BunsenBrennerFlammen[3].gameObject.SetActive(false);
