@@ -1,0 +1,162 @@
+Sprechblase_Text~
+Ach herrje, die Beschriftungen befinden sich nicht an den Tiegeln. Und nun?
+Ich sollte herausfinden, welche Legierung 
+zu welchem Tiegel gehört. Vielleicht finde ich mehr Informationen in der Bibliothek.
+|
+Legie_1~
+20% Al
+ 80% Cu
+|
+Legie_2~
+40% Al
+ 60% Cu
+|
+Legie_3~
+60% Al 
+40% Cu
+|
+Legie_4~
+80% Al
+ 20% Cu
+|
+Questfenster_Text~
+Die Maschine, die das Universum zusammenhält, ist kaputt gegangen. Ich sollte in den Keller gehen und nachsehen.
+|
+Y-Achse_Benennung~
+T[C°]
+|
+X-Achse_Benennung~
+t[min]
+|
+Gussform_Pleuel_WartenText~
+Bitte warten, bis das eingegossene Objekt erkaltet und im weißen Feld erscheint.
+|
+Gussform_Schraubenschl._WartenText~
+Bitte warten, bis das eingegossene Objekt erkaltet und im weißen Feld erscheint.
+|
+GussformZahnrad_Warten_Text~
+Bitte warten, bis das eingegossene Objekt erkaltet und im weißen Feld erscheint.
+|
+Name_der_Maschine_Datenblatt~
+Maschine des Universums
+|
+Datenblatt_Text_1.Zeile~
+Zahnrad: CuAl40-C
+|
+Datenblatt_Text_2.Zeile~
+Pleuel:  AlMgSi4 
+|
+Datenblatt_Text_3.Zeile~
+Schraubenschlüssel: C45 
+|
+Datenblatt_Text_4.Zeile~
+Kolben:  CuAl9
+|
+Labor_Tragepflicht_Text~
+Im Labor ist das Tragen von Laborkitteln und Handschuhen Pflicht, um mit den Geräten interagieren zu können. Ziehe zuerst den Kittel und die Handschuhe an, bevor du mit dem Gerät arbeitest.
+|
+SpielGewonnen_Text~
+Glückwunsch! Du hast es geschafft, die Maschine zu reparieren!
+|
+GameOver_MaschineKaputt_Text~
+Leider nicht geschafft. Die Maschine konnte nicht repariert werden.
+|
+Verbrannt_Text~
+Du hast dich verbrannt! Du solltest einen Erste-Hilfe-Kasten aufsuchen und dich verarzten!
+|
+Verarztet_Text~
+Sehr gut! Du hast dich verarztet und kannst nun weiterarbeiten!
+|
+ErstVerarzten_Text~
+Du musst dich zuerst verarzten, um weiterarbeiten zu können!
+|
+ErstVer_Btn_Text~
+Na gut.
+|
+Gaszufuhr_einschalten_Text~
+Die Gaszufuhr ist abgeschaltet. Um die Bunsenbrenner nutzen zu können, stelle zunächst die Gaszufuhr bereit.
+|
+ZahnradKaputt_Text~
+Oh je, das Zahnrad ist total kaputt. Ich sollte ein neues einschmelzen gehen, um die Maschine zu reparieren.
+|
+KeinLaborgerechtesVerhalten_Text~
+Das ist kein laborgerechtes Verhalten! Du gefährdest damit dich und andere.
+|
+Wrenchform_öffnen_Text~
+Form öffnen
+|
+Wrenchform_schließen_Text~
+Form schließen
+|
+Pleuelform_schließen_Text~
+Form schließen
+|
+Pleuelform_öffnen_Text~
+Form öffnen
+|
+Zahnradform_schließen_Text~
+Form schließen
+|
+Zahnradform_öffnen_Text~
+Form öffnen
+|
+Gaszufuhrausschalten_Text~
+Ich habe vergessen, die Gaszufuhren auszuschalten!
+|
+Level1:~
+Level: Tiegel
+|
+BuchLink1~
+https://demo-werkstofftechnik-app-c5c505b.velalu.qa/#app/phaseDiagram
+|
+BuchLink2~
+http://www.tu-berlin.de
+|
+BuchLink3~
+http://www.tu-berlin.de
+|
+BuchLink4~
+http://www.tu-berlin.de
+|
+BuchLink5~
+http://www.tu-berlin.de
+|
+BuchLink6~
+http://www.tu-berlin.de
+|
+BuchLink7~
+http://www.tu-berlin.de
+|
+BuchLink8~
+http://www.tu-berlin.de
+|
+BuchLink9~
+http://www.tu-berlin.de
+|
+BuchLink10~
+http://www.tu-berlin.de
+|
+BuchLink11~
+http://www.tu-berlin.de
+|
+BuchLink12~
+http://www.tu-berlin.de
+|
+BuchLink13~
+http://www.tu-berlin.de
+|
+BuchLink14~
+http://www.tu-berlin.de
+|
+BuchLink15~
+http://www.tu-berlin.de
+|
+BuchLink16~
+http://www.tu-berlin.de
+|
+BuchLink17~
+http://www.tu-berlin.de
+|
+BuchLink18~
+http://www.tu-berlin.de
+|
