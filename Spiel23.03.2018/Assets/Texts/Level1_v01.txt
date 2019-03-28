@@ -103,6 +103,10 @@ Form öffnen
 Gaszufuhrausschalten_Text~
 Ich habe vergessen, die Gaszufuhren auszuschalten!
 |
+Nichtverwundet_Text~
+Wunderbar! Du bist nicht verletzt. 
+Der Verbandskasten wird nicht benötigt.
+|
 Level1:~
 Level: Tiegel
 |

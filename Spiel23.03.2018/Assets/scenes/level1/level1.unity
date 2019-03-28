@@ -2652,7 +2652,7 @@ Prefab:
     - target: {fileID: 224523103464004454, guid: 86f75a4362ea4b74683e2db8bc1db101,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -567
+      value: -747
       objectReference: {fileID: 0}
     - target: {fileID: 224039103647841236, guid: 86f75a4362ea4b74683e2db8bc1db101,
         type: 2}
@@ -4369,7 +4369,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 1861320231}
+  m_TargetTexture: {fileID: 914601172}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
@@ -5616,7 +5616,7 @@ GameObject:
   - component: {fileID: 327043659}
   - component: {fileID: 327043658}
   m_Layer: 5
-  m_Name: Verarztet_Text
+  m_Name: Nichtverwundet_Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5750,6 +5750,7 @@ MonoBehaviour:
   - {fileID: 156506012}
   - {fileID: 156506011}
   - {fileID: 1042960425}
+  - {fileID: 327043656}
   bb: {fileID: 1956082817}
   book: {fileID: 1699518407}
 --- !u!4 &327621866
@@ -29511,6 +29512,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.011258562, y: 0.010871277, z: 0.010000001}
   m_Center: {x: -0.00030651668, y: 0.0000070435926, z: -2.419656e-10}
+--- !u!84 &914601172
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 704
+  m_Height: 319
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &915127692
 Prefab:
   m_ObjectHideFlags: 0
@@ -30559,33 +30587,6 @@ MonoBehaviour:
   destination: {x: -1.7, y: -10, z: -0.75}
   questWindow: {fileID: 0}
   gaszufuhrAus: {fileID: 0}
---- !u!84 &968382041
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 704
-  m_Height: 319
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!114 &969881971 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114398094351083388, guid: 86f75a4362ea4b74683e2db8bc1db101,
@@ -32226,8 +32227,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 1075912873}
   outlineCamera: {fileID: 260511559}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 1861320231}
-  extraRenderTexture: {fileID: 968382041}
+  renderTexture: {fileID: 914601172}
+  extraRenderTexture: {fileID: 1375756203}
 --- !u!54 &1075912876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -40545,6 +40546,33 @@ Transform:
   m_Father: {fileID: 688766540}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &1375756203
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 704
+  m_Height: 319
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1378139171
 GameObject:
   m_ObjectHideFlags: 0
@@ -47981,33 +48009,6 @@ Transform:
   m_Father: {fileID: 1652471757}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &1861320231
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 704
-  m_Height: 319
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1866331196
 GameObject:
   m_ObjectHideFlags: 0
@@ -49490,6 +49491,10 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  zaehler4: 0
+  zaehler3: 0
+  zaehler2: 0
+  zaehler1: 0
   followCam: {fileID: 0}
   ausgabeText: {fileID: 0}
   slot1: {fileID: 21394814}
