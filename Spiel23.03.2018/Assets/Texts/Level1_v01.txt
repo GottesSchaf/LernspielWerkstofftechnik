@@ -107,8 +107,104 @@ Nichtverwundet_Text~
 Wunderbar! Du bist nicht verletzt. 
 Der Verbandskasten wird nicht benötigt.
 |
+Verbrannt_Btn_Text~
+Och ne!
+|
+Play_Btn_Text~
+Weiterspielen
+|
+Options_Btn_Text~
+Optionen
+|
+Pausiert_Text~
+Pausiert
+|
+SpielBeenden_Btn~
+Spiel beenden
+|
+Zurueck_Btn_Text~
+Zurück
+|
+Farbenblindheitsmodus_Text~
+Farbenblindheitsmodus
+|
+LaptopTiegelText1~
+Bunsenbrenner 1
+|
+LaptopTiegelText2~
+Bunsenbrenner 2 
+|
+LaptopTiegelText3~
+Bunsenbrenner 3
+|
+LaptopTiegelText4~
+Bunsenbrenner 4
+|
+Weiter_Btn_Tutorial~
+Weiter
+|
+Yes_Button_Tutorial~
+Ja
+|
+No_Button_Tutorial~
+Nein
+|
+LaborkittelError_Btn_Text~
+OK
+|
+GameOver_Erneut_Btn_Text~
+Erneut versuchen
+|
+GameOver_SpielBeenden_Btn~
+Spiel beenden
+|
+GameWon_SpielBeenden_Btn~
+Spiel beenden
+|
+Verarztet_Btn_Text~
+Gut!
+|
+GaszufuhrEinschalten_Btn_Text~
+OK
+|
+LaptopAbkühlHinweis_Text~
+Die Abkühlkurven werden erst sichtbar, wenn die Schmelztemperatur der Tiegel erreicht und die Bunsenbrenner ausgeschaltet sind. 
+|
+LaptopHinweis_Btn_Text~
+OK
+|
+Tiegel_Hint_CloseBtn_Text~
+Schließen
+|
+ZahnradKaputt_Btn_Text~
+Schließen
+|
+GasAusBtn_Text~
+Schließen
+|
+InfoFalschesVerhalten_Btn_Text~
+OK
+|
+Falsch_Gegossen_SpielBeendenBtn_Text~
+Spiel beenden
+|
+Falsch_Gegossen_ErneutversuchenBtn~
+Erneut versuchen
+|
+NichtVerwundet_Btn_Text~
+Gut!
+|
+Quest_Understood_Btn_Text~
+Verstanden!
+|
 Level1:~
 Level: Tiegel
+|
+Hauptmenü_Text~
+Hauptmenü
+|
+SpielBeenden_Btn_Text~
+Spiel beenden
 |
 BuchLink1~
 https://demo-werkstofftechnik-app-c5c505b.velalu.qa/#app/phaseDiagram
