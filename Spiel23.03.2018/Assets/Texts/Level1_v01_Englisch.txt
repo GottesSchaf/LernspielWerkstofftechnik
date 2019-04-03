@@ -1,0 +1,259 @@
+Sprechblase_Text~
+Oh dear, the labels are not on the crucibles. And now? I should find out which alloy belongs to which crucible. Maybe I can find more informations in the library. 
+|
+Legie_1~
+20% Al
+ 80% Cu
+|
+Legie_2~
+40% Al
+ 60% Cu
+|
+Legie_3~
+60% Al 
+40% Cu
+|
+Legie_4~
+80% Al
+ 20% Cu
+|
+Questfenster_Text~
+The machine that holds the universe together has broken. I should take a look at it in the cellar. 
+|
+Y-Achse_Benennung~
+T[C°]
+|
+X-Achse_Benennung~
+t[min]
+|
+Gussform_Pleuel_WartenText~
+Please wait until the object cools down and appears in the white box.
+|
+Gussform_Schraubenschl._WartenText~
+Please wait until the object cools down and appears in the white box.
+|
+GussformZahnrad_Warten_Text~
+Please wait until the object cools down and appears in the white box.
+|
+Name_der_Maschine_Datenblatt~
+Machine of the universe
+|
+Datenblatt_Text_1.Zeile~
+Gear: CuAl40-C
+|
+Datenblatt_Text_2.Zeile~
+Conrod:  AlMgSi4 
+|
+Datenblatt_Text_3.Zeile~
+Wrench: C45 
+|
+Datenblatt_Text_4.Zeile~
+Piston:  CuAl9
+|
+Labor_Tragepflicht_Text~
+Wearing lab coats and gloves is a must to interact with the equipment. First put on the coat and the gloves before working with the device. 
+|
+SpielGewonnen_Text~
+Congratulations! You have managed to repair the machine!
+|
+GameOver_MaschineKaputt_Text~
+Unfortunately not done. You didn`t managed to repair the machine. 
+|
+Verbrannt_Text~
+You burned yourself! You should go to a first aid kit and treat yourself. 
+|
+Verarztet_Text~
+Very well! You have taken care of yourself and can continue working!
+|
+ErstVerarzten_Text~
+First you need to treat yourself, before going back to work.
+|
+ErstVer_Btn_Text~
+Fine.
+|
+Gaszufuhr_einschalten_Text~
+The gas supply is switched off. To be able to use the bunsenburners, first provide the gas supply.
+|
+ZahnradKaputt_Text~
+Oh dear, the gear is totally broken. I should melt a new one to fix the machine.
+|
+KeinLaborgerechtesVerhalten_Text~
+This is not a laboratory-oriented behavior! You endanger yourself and others.
+|
+Wrenchform_öffnen_Text~
+Open mold
+|
+Wrenchform_schließen_Text~
+Close mold
+|
+Pleuelform_schließen_Text~
+Close mold
+|
+Pleuelform_öffnen_Text~
+Open mold
+|
+Zahnradform_schließen_Text~
+Close mold
+|
+Zahnradform_öffnen_Text~
+Open mold
+|
+Gaszufuhrausschalten_Text~
+I forgot to turn off the gas supplies!
+|
+Nichtverwundet_Text~
+Wonderful! You are not hurt! The first aid kit is not needed.
+|
+Verbrannt_Btn_Text~
+Come on!
+|
+Play_Btn_Text~
+Continue playing
+|
+Options_Btn_Text~
+Options
+|
+Pausiert_Text~
+Paused
+|
+SpielBeenden_Btn~
+Quit
+|
+Zurueck_Btn_Text~
+Back
+|
+Farbenblindheitsmodus_Text~
+Color Blindness Mode
+|
+LaptopTiegelText1~
+Bunsenburner 1
+|
+LaptopTiegelText2~
+Bunsenburner 2 
+|
+LaptopTiegelText3~
+Bunsenburner 3
+|
+LaptopTiegelText4~
+Bunsenburner 4
+|
+Weiter_Btn_Tutorial~
+Continue
+|
+Yes_Button_Tutorial~
+Yes
+|
+No_Button_Tutorial~
+No
+|
+LaborkittelError_Btn_Text~
+OK
+|
+GameOver_Erneut_Btn_Text~
+Retry
+|
+GameOver_SpielBeenden_Btn~
+Quit
+|
+GameWon_SpielBeenden_Btn~
+Quit
+|
+Verarztet_Btn_Text~
+Great!
+|
+GaszufuhrEinschalten_Btn_Text~
+OK
+|
+LaptopAbkühlHinweis_Text~
+The cooling curves only become visible when the melting temperature reaches the crucibles and the Bunsenburners are switched off.
+|
+LaptopHinweis_Btn_Text~
+OK
+|
+Tiegel_Hint_CloseBtn_Text~
+Close
+|
+ZahnradKaputt_Btn_Text~
+Close
+|
+GasAusBtn_Text~
+Close
+|
+InfoFalschesVerhalten_Btn_Text~
+OK
+|
+Falsch_Gegossen_SpielBeendenBtn_Text~
+Quit
+|
+Falsch_Gegossen_ErneutversuchenBtn~
+Retry
+|
+NichtVerwundet_Btn_Text~
+Great!
+|
+Quest_Understood_Btn_Text~
+Understood!
+|
+Level1:~
+Level: Crucibles
+|
+Hauptmenü_Text~
+Main Menu
+|
+SpielBeenden_Btn_Text~
+Quit
+|
+BuchLink1~
+https://demo-werkstofftechnik-app-c5c505b.velalu.qa/#app/phaseDiagram
+|
+BuchLink2~
+http://www.tu-berlin.de
+|
+BuchLink3~
+http://www.tu-berlin.de
+|
+BuchLink4~
+http://www.tu-berlin.de
+|
+BuchLink5~
+http://www.tu-berlin.de
+|
+BuchLink6~
+http://www.tu-berlin.de
+|
+BuchLink7~
+http://www.tu-berlin.de
+|
+BuchLink8~
+http://www.tu-berlin.de
+|
+BuchLink9~
+http://www.tu-berlin.de
+|
+BuchLink10~
+http://www.tu-berlin.de
+|
+BuchLink11~
+http://www.tu-berlin.de
+|
+BuchLink12~
+http://www.tu-berlin.de
+|
+BuchLink13~
+http://www.tu-berlin.de
+|
+BuchLink14~
+http://www.tu-berlin.de
+|
+BuchLink15~
+http://www.tu-berlin.de
+|
+BuchLink16~
+http://www.tu-berlin.de
+|
+BuchLink17~
+http://www.tu-berlin.de
+|
+BuchLink18~
+http://www.tu-berlin.de
+|
